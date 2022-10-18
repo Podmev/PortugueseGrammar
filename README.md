@@ -9,6 +9,12 @@ Things to do:
  - create tests checking that conjugator works correct
  - most of forms should be evaluated analytically, exceptions should be saved in separate dicts
 
+ Future development of engine
+ - make lib
+ - publish lib
+ - make rest-api
+ - deploy conjugation service with rest-api
+
  Architecture:
   - enums for pronouns
   - enums for tenses and grammatic forms
