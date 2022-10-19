@@ -39,3 +39,8 @@ Quiz App (next project) - Conjugation test
  - Test by tenses or by verbs or by pronoun
  - Choose tense in list by verb in form (can be all tenses or just part)
  - Change verb to indirect speech
+
+
+ Links
+ https://github.com/jalvesaq/gconjugue
+ https://github.com/ian-hamlin/verb-data
