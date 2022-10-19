@@ -44,3 +44,7 @@ Quiz App (next project) - Conjugation test
  Links
  https://github.com/jalvesaq/gconjugue
  https://github.com/ian-hamlin/verb-data
+ https://www.conjugacao.com.br/verbos-regulares/
+ https://www.conjugacao.com.br/verbos-irregulares/
+ https://blog.flaviarita.com/51-verbos-que-vao-cair-na-sua-prova-portugues-para-concurso/#.Y09icHZBwzM
+ https://portuguesaletra.com/artigos/verbos-mais-usados-em-portugues/
