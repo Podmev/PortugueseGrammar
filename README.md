@@ -6,10 +6,11 @@ Main part is about verbs
 Things to do:
  - Find data for all verbs in all conjugation forms, like big dictionary in file
  - Find list of verbs
+ - validate input data (verbs and forms)
  - find list of verbs ordered by using frequency
  - Create conjugator for verbs with params: verb infinitive, pronoun, tense
  - create tests checking that conjugator works correct
- - most of forms should be evaluated analytically, exceptions should be saved in separate dicts
+ - most of the forms should be evaluated analytically, exceptions should be saved in separate dicts
 
  Future development of engine
  - make lib
@@ -17,7 +18,7 @@ Things to do:
  - make rest-api
  - deploy conjugation service with rest-api
  - deploy site with verb form constructor, quiz
- - support other languages grammar (with similar grammar) - Italian, French, Spanish
+ - support other languages' grammar (with similar grammar) - Italian, French, Spanish
 
  Architecture:
   - enums for pronouns
