@@ -4,12 +4,13 @@ import com.fasterxml.jackson.core.type.TypeReference
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.KotlinModule
 import com.podmev.portuguese.data.input.InputVerbMeta
+import com.podmev.portuguese.utils.consts.RESOURCES_PATH
 import com.podmev.portuguese.utils.file.getFilesFromDirectory
 import com.podmev.portuguese.utils.file.readTextFromFile
 import java.io.File
 
 fun getAllInputVerbMetas(): List<InputVerbMeta> {
-    val verbMetasPath = "src/main/resources/portuguese/content"
+    val verbMetasPath = "${RESOURCES_PATH}portuguese/content"
     val verbMetasSeparateFiles = getFilesFromDirectory(File(verbMetasPath))
     return verbMetasSeparateFiles.map { parseInputVerbMetaFromFile(it) }
 }
