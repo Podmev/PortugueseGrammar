@@ -1,0 +1,68 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version "1.6.20"
+    id "org.jetbrains.kotlin.plugin.allopen" version "1.6.20"
+    id "org.jetbrains.kotlin.plugin.noarg" version "1.6.20"
+//    id 'io.quarkus'
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    gradlePluginPortal()
+}
+
+dependencies {
+    implementation 'io.quarkus:quarkus-kotlin'
+    implementation 'io.quarkus:quarkus-mongodb-panache'
+    implementation enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}")
+    implementation 'io.quarkus:quarkus-resteasy'
+    implementation 'io.quarkus:quarkus-resteasy-jackson'
+    implementation 'com.fasterxml.jackson.module:jackson-module-kotlin'
+    implementation 'io.quarkus:quarkus-rest-client'
+    implementation 'io.quarkus:quarkus-smallrye-fault-tolerance'
+    implementation 'io.quarkus:quarkus-smallrye-health'
+    implementation 'io.quarkus:quarkus-scheduler'
+    implementation 'io.quarkus:quarkus-tika'
+    implementation 'io.quarkus:quarkus-junit5'
+    implementation 'io.rest-assured:rest-assured'
+    implementation 'io.quarkus:quarkus-junit5-mockito'
+    implementation 'org.jboss.logmanager:log4j2-jboss-logmanager'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
+    implementation 'io.quarkus:quarkus-smallrye-openapi'
+    implementation 'io.quarkus:quarkus-resteasy-mutiny'
+    implementation 'io.quarkus:quarkus-logging-json'
+    implementation 'org.json:json:20171018'
+
+
+    testImplementation 'io.quarkus:quarkus-junit5'
+    testImplementation 'io.rest-assured:kotlin-extensions'
+    testImplementation 'junit:junit:4.13'
+}
+
+group 'com.podmev.portuguese'
+version '1.0.0-SNAPSHOT'
+
+allOpen {
+    annotation("javax.ws.rs.Path")
+    annotation("javax.enterprise.context.ApplicationScoped")
+    annotation("io.quarkus.test.junit.QuarkusTest")
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+compileKotlin {
+    kotlinOptions.jvmTarget = JavaVersion.VERSION_17
+    kotlinOptions.javaParameters = true
+}
+
+compileTestKotlin {
+    kotlinOptions.jvmTarget = JavaVersion.VERSION_17
+}
+test {
+    useJUnit()
+    maxHeapSize = '1G'
+    systemProperty "java.util.logging.manager", "org.jboss.logmanager.LogManager"
+}

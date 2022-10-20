@@ -48,3 +48,7 @@ Quiz App (next project) - Conjugation test
  https://www.conjugacao.com.br/verbos-irregulares/
  https://blog.flaviarita.com/51-verbos-que-vao-cair-na-sua-prova-portugues-para-concurso/#.Y09icHZBwzM
  https://portuguesaletra.com/artigos/verbos-mais-usados-em-portugues/
+
+
+Gradle
+https://tomgregory.com/10-tips-to-use-gradle-with-intellij-idea/

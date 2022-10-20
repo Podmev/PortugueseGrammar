@@ -1,4 +1,4 @@
-package ru.bia.configshuffler
+package com.podmev.portuguese
 
 import javax.ws.rs.GET
 import javax.ws.rs.Path

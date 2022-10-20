@@ -1,4 +1,4 @@
-package bia.ru
+package com.podmev.portuguese
 
 import io.quarkus.test.junit.QuarkusTest
 import io.restassured.RestAssured.given
