@@ -59,7 +59,7 @@ class PersonalPronounTest {
                 PronounVos
             ),
             allPersonalPronouns()
-                .filter { it.gender == null }
+                .filter { it.gender == GrammaticalGender.UNDEFINED }
                 .toSet()
         )
     }

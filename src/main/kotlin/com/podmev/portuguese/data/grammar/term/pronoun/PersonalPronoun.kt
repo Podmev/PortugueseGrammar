@@ -6,7 +6,7 @@ import com.podmev.portuguese.data.grammar.term.general.GrammaticalPerson
 
 interface PersonalPronoun {
     val pronounGroup: PersonalPronounGroup
-    val gender: GrammaticalGender?
+    val gender: GrammaticalGender
 
     val spelling: String
 }
@@ -29,11 +29,17 @@ fun allPersonalPronouns(): List<PersonalPronoun> =
         PronounVos
     )
 
+fun personalPronounsByGroup(group: PersonalPronounGroup): List<PersonalPronoun> =
+    allPersonalPronouns().filter { it.pronounGroup == group }
+
+fun personalPronounsByGender(gender: GrammaticalGender): List<PersonalPronoun> =
+    allPersonalPronouns().filter { it.gender == gender }
+
 object PronounEu : PersonalPronoun {
     override val pronounGroup: PersonalPronounGroup
         get() = PersonalPronounGroup(GrammaticalNumber.SINGULAR, GrammaticalPerson.FIRST)
-    override val gender: GrammaticalGender?
-        get() = null
+    override val gender: GrammaticalGender
+        get() = GrammaticalGender.UNDEFINED
     override val spelling: String
         get() = "eu"
 
@@ -43,8 +49,8 @@ object PronounEu : PersonalPronoun {
 object PronounTu : PersonalPronoun {
     override val pronounGroup: PersonalPronounGroup
         get() = PersonalPronounGroup(GrammaticalNumber.SINGULAR, GrammaticalPerson.SECOND)
-    override val gender: GrammaticalGender?
-        get() = null
+    override val gender: GrammaticalGender
+        get() = GrammaticalGender.UNDEFINED
     override val spelling: String
         get() = "tu"
 
@@ -54,8 +60,8 @@ object PronounTu : PersonalPronoun {
 object PronounVoce : PersonalPronoun {
     override val pronounGroup: PersonalPronounGroup
         get() = PersonalPronounGroup(GrammaticalNumber.SINGULAR, GrammaticalPerson.THIRD)
-    override val gender: GrammaticalGender?
-        get() = null
+    override val gender: GrammaticalGender
+        get() = GrammaticalGender.UNDEFINED
     override val spelling: String
         get() = "você"
 
@@ -87,8 +93,8 @@ object PronounEla : PersonalPronoun {
 object PronounNos : PersonalPronoun {
     override val pronounGroup: PersonalPronounGroup
         get() = PersonalPronounGroup(GrammaticalNumber.PLURAL, GrammaticalPerson.FIRST)
-    override val gender: GrammaticalGender?
-        get() = null
+    override val gender: GrammaticalGender
+        get() = GrammaticalGender.UNDEFINED
     override val spelling: String
         get() = "nós"
 
@@ -120,8 +126,8 @@ object PronounSenhora : PersonalPronoun {
 object PronounVoces : PersonalPronoun {
     override val pronounGroup: PersonalPronounGroup
         get() = PersonalPronounGroup(GrammaticalNumber.PLURAL, GrammaticalPerson.THIRD)
-    override val gender: GrammaticalGender?
-        get() = null
+    override val gender: GrammaticalGender
+        get() = GrammaticalGender.UNDEFINED
     override val spelling: String
         get() = "vocês"
 
@@ -175,8 +181,8 @@ object PronounSenhoras : PersonalPronoun {
 object PronounVos : PersonalPronoun {
     override val pronounGroup: PersonalPronounGroup
         get() = PersonalPronounGroup(GrammaticalNumber.PLURAL, GrammaticalPerson.SECOND)
-    override val gender: GrammaticalGender?
-        get() = null
+    override val gender: GrammaticalGender
+        get() = GrammaticalGender.UNDEFINED
     override val spelling: String
         get() = "vós"
 
