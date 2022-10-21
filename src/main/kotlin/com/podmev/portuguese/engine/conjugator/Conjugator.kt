@@ -12,6 +12,6 @@ interface Conjugator {
     fun conjugateVerb(
         verbInInfinitive: String,
         tense: GrammaticalTense,
-        verbArgs : VerbArguments
+        verbArgs: VerbArguments
     ): List<String>
 }

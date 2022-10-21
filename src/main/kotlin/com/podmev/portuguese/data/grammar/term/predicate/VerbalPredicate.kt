@@ -1,6 +1,5 @@
 package com.podmev.portuguese.data.grammar.term.predicate
 
-import com.podmev.portuguese.data.grammar.term.general.GrammaticalPerson
 import com.podmev.portuguese.data.grammar.term.tense.GrammaticalTense
 import com.podmev.portuguese.data.grammar.term.verb.VerbForm
 
