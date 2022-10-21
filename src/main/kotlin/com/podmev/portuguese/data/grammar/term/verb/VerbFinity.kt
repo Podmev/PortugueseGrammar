@@ -1,4 +1,4 @@
-package com.podmev.portuguese.data.grammar.term.general
+package com.podmev.portuguese.data.grammar.term.verb
 
 /* property of verb to be finite or infinite
 *
