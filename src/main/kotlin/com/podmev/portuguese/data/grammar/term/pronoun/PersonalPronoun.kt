@@ -8,7 +8,7 @@ interface PersonalPronoun {
     val pronounGroup: PersonalPronounGroup
     val gender: GrammaticalGender?
 
-    val string: String
+    val spelling: String
 }
 
 fun allPersonalPronouns(): List<PersonalPronoun> =
@@ -29,128 +29,156 @@ fun allPersonalPronouns(): List<PersonalPronoun> =
         PronounVos
     )
 
-object PronounEu : PersonalPronoun{
+object PronounEu : PersonalPronoun {
     override val pronounGroup: PersonalPronounGroup
         get() = PersonalPronounGroup(GrammaticalNumber.SINGULAR, GrammaticalPerson.FIRST)
     override val gender: GrammaticalGender?
         get() = null
-    override val string: String
+    override val spelling: String
         get() = "eu"
+
+    override fun toString(): String = spelling
 }
 
-object PronounTu : PersonalPronoun{
+object PronounTu : PersonalPronoun {
     override val pronounGroup: PersonalPronounGroup
         get() = PersonalPronounGroup(GrammaticalNumber.SINGULAR, GrammaticalPerson.SECOND)
     override val gender: GrammaticalGender?
         get() = null
-    override val string: String
+    override val spelling: String
         get() = "tu"
+
+    override fun toString(): String = spelling
 }
 
-object PronounVoce : PersonalPronoun{
+object PronounVoce : PersonalPronoun {
     override val pronounGroup: PersonalPronounGroup
         get() = PersonalPronounGroup(GrammaticalNumber.SINGULAR, GrammaticalPerson.THIRD)
     override val gender: GrammaticalGender?
         get() = null
-    override val string: String
+    override val spelling: String
         get() = "você"
+
+    override fun toString(): String = spelling
 }
 
-object PronounEle : PersonalPronoun{
+object PronounEle : PersonalPronoun {
     override val pronounGroup: PersonalPronounGroup
         get() = PersonalPronounGroup(GrammaticalNumber.SINGULAR, GrammaticalPerson.THIRD)
     override val gender: GrammaticalGender
         get() = GrammaticalGender.MASCULINE
-    override val string: String
+    override val spelling: String
         get() = "ele"
+
+    override fun toString(): String = spelling
 }
 
-object PronounEla : PersonalPronoun{
+object PronounEla : PersonalPronoun {
     override val pronounGroup: PersonalPronounGroup
         get() = PersonalPronounGroup(GrammaticalNumber.SINGULAR, GrammaticalPerson.THIRD)
     override val gender: GrammaticalGender
         get() = GrammaticalGender.FEMININE
-    override val string: String
+    override val spelling: String
         get() = "ela"
+
+    override fun toString(): String = spelling
 }
 
-object PronounNos : PersonalPronoun{
+object PronounNos : PersonalPronoun {
     override val pronounGroup: PersonalPronounGroup
-        get() = PersonalPronounGroup(GrammaticalNumber.PLURAL, GrammaticalPerson.SECOND)
+        get() = PersonalPronounGroup(GrammaticalNumber.PLURAL, GrammaticalPerson.FIRST)
     override val gender: GrammaticalGender?
         get() = null
-    override val string: String
+    override val spelling: String
         get() = "nós"
+
+    override fun toString(): String = spelling
 }
 
-object PronounSenhor : PersonalPronoun{
+object PronounSenhor : PersonalPronoun {
     override val pronounGroup: PersonalPronounGroup
-        get() = PersonalPronounGroup(GrammaticalNumber.SINGULAR, GrammaticalPerson.FIRST)
+        get() = PersonalPronounGroup(GrammaticalNumber.SINGULAR, GrammaticalPerson.THIRD)
     override val gender: GrammaticalGender
         get() = GrammaticalGender.MASCULINE
-    override val string: String
+    override val spelling: String
         get() = "o Senhor"
+
+    override fun toString(): String = spelling
 }
 
-object PronounSenhora : PersonalPronoun{
+object PronounSenhora : PersonalPronoun {
     override val pronounGroup: PersonalPronounGroup
-        get() = PersonalPronounGroup(GrammaticalNumber.SINGULAR, GrammaticalPerson.FIRST)
+        get() = PersonalPronounGroup(GrammaticalNumber.SINGULAR, GrammaticalPerson.THIRD)
     override val gender: GrammaticalGender
         get() = GrammaticalGender.FEMININE
-    override val string: String
+    override val spelling: String
         get() = "a Senhora"
+
+    override fun toString(): String = spelling
 }
 
-object PronounVoces : PersonalPronoun{
+object PronounVoces : PersonalPronoun {
     override val pronounGroup: PersonalPronounGroup
         get() = PersonalPronounGroup(GrammaticalNumber.PLURAL, GrammaticalPerson.THIRD)
-    override val gender: GrammaticalGender
-        get() = GrammaticalGender.FEMININE
-    override val string: String
+    override val gender: GrammaticalGender?
+        get() = null
+    override val spelling: String
         get() = "vocês"
+
+    override fun toString(): String = spelling
 }
 
-object PronounEles : PersonalPronoun{
+object PronounEles : PersonalPronoun {
     override val pronounGroup: PersonalPronounGroup
         get() = PersonalPronounGroup(GrammaticalNumber.PLURAL, GrammaticalPerson.THIRD)
     override val gender: GrammaticalGender
         get() = GrammaticalGender.MASCULINE
-    override val string: String
+    override val spelling: String
         get() = "eles"
+
+    override fun toString(): String = spelling
 }
 
-object PronounElas : PersonalPronoun{
+object PronounElas : PersonalPronoun {
     override val pronounGroup: PersonalPronounGroup
         get() = PersonalPronounGroup(GrammaticalNumber.PLURAL, GrammaticalPerson.THIRD)
     override val gender: GrammaticalGender
         get() = GrammaticalGender.FEMININE
-    override val string: String
+    override val spelling: String
         get() = "elas"
+
+    override fun toString(): String = spelling
 }
 
-object PronounSenhores : PersonalPronoun{
+object PronounSenhores : PersonalPronoun {
     override val pronounGroup: PersonalPronounGroup
         get() = PersonalPronounGroup(GrammaticalNumber.PLURAL, GrammaticalPerson.THIRD)
     override val gender: GrammaticalGender
         get() = GrammaticalGender.MASCULINE
-    override val string: String
+    override val spelling: String
         get() = "os Senhores"
+
+    override fun toString(): String = spelling
 }
 
-object PronounSenhoras : PersonalPronoun{
+object PronounSenhoras : PersonalPronoun {
     override val pronounGroup: PersonalPronounGroup
         get() = PersonalPronounGroup(GrammaticalNumber.PLURAL, GrammaticalPerson.THIRD)
     override val gender: GrammaticalGender
         get() = GrammaticalGender.FEMININE
-    override val string: String
+    override val spelling: String
         get() = "as Senhoras"
+
+    override fun toString(): String = spelling
 }
 
-object PronounVos : PersonalPronoun{
+object PronounVos : PersonalPronoun {
     override val pronounGroup: PersonalPronounGroup
         get() = PersonalPronounGroup(GrammaticalNumber.PLURAL, GrammaticalPerson.SECOND)
     override val gender: GrammaticalGender?
         get() = null
-    override val string: String
+    override val spelling: String
         get() = "vós"
+
+    override fun toString(): String = spelling
 }

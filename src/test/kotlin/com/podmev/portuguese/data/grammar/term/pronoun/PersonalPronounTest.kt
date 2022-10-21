@@ -7,7 +7,6 @@ import io.quarkus.test.junit.QuarkusTest
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
-//@QuarkusTest
 class PersonalPronounTest {
     @Test
     fun singularTest() {
