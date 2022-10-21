@@ -6,10 +6,10 @@ import java.io.File
 
 fun findInputVerbMeta(verb: String): InputVerbMeta? {
     val normalizedVerb = verb.trim().toLowerCase()
-    val firstLetter = normalizedVerb.subSequence(0,1)
+    val firstLetter = normalizedVerb.subSequence(0, 1)
     val verbPath = "${RESOURCES_PATH}portuguese/content/${firstLetter}/${normalizedVerb}.json"
     val file = File(verbPath)
-    if(!file.isFile){
+    if (!file.isFile) {
         return null
     }
     return parseInputVerbMetaFromFile(file)
