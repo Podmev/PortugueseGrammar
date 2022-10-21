@@ -11,6 +11,24 @@ interface PersonalPronoun {
     val string: String
 }
 
+fun allPersonalPronouns(): List<PersonalPronoun> =
+    listOf(
+        PronounEu,
+        PronounTu,
+        PronounVoce,
+        PronounEle,
+        PronounEla,
+        PronounNos,
+        PronounSenhor,
+        PronounSenhora,
+        PronounVoces,
+        PronounEles,
+        PronounElas,
+        PronounSenhores,
+        PronounSenhoras,
+        PronounVos
+    )
+
 object PronounEu : PersonalPronoun{
     override val pronounGroup: PersonalPronounGroup
         get() = PersonalPronounGroup(GrammaticalNumber.SINGULAR, GrammaticalPerson.FIRST)
