@@ -7,6 +7,7 @@ package com.podmev.portuguese.data.grammar.term.tense
 
 //TODO add portuguese name for tense
 //TODO toString
+//TODO description
 
 interface GrammaticalTense {
 
