@@ -1,6 +1,6 @@
 package com.podmev.portuguese
 
-import com.podmev.portuguese.engine.dataset.verb.findInputVerbMeta
+import com.podmev.portuguese.engine.dataset.verb.getAllConjugationGroups
 
 fun main() {
 //    getAllVerbs().forEach {
@@ -11,5 +11,9 @@ fun main() {
 //        println(it)
 //    }
 
-    println(findInputVerbMeta("estar"))
+//    println(findInputVerbMeta("estar"))
+
+    getAllConjugationGroups().forEach {
+        println(it)
+    }
 }
