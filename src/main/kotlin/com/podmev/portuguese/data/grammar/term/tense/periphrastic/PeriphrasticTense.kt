@@ -6,5 +6,4 @@ import com.podmev.portuguese.data.grammar.term.tense.TenseCategory
 data class PeriphrasticTense(
     val tenseCategory: TenseCategory,
     val periphrasticTenseType: PeriphrasticTenseType
-    ) : GrammaticalTense {
-}
+) : GrammaticalTense

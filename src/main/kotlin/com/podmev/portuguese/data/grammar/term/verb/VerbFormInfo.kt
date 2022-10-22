@@ -5,6 +5,7 @@ import com.podmev.portuguese.data.grammar.term.general.GrammaticalPerson
 import com.podmev.portuguese.data.grammar.term.tense.GrammaticalTense
 
 data class VerbFormInfo(
+    val infinitive: String,
     val tense: GrammaticalTense,
     val person: GrammaticalPerson,
     val number: GrammaticalNumber,

@@ -2,5 +2,4 @@ package com.podmev.portuguese.data.grammar.term.tense.basic.implementations.subj
 
 import com.podmev.portuguese.data.grammar.term.tense.basic.BasicTense
 
-object SubjunctivePresentTense  : BasicTense(){
-}
+object SubjunctivePresentTense : BasicTense()

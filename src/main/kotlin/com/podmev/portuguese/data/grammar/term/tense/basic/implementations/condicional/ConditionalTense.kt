@@ -2,5 +2,4 @@ package com.podmev.portuguese.data.grammar.term.tense.basic.implementations.cond
 
 import com.podmev.portuguese.data.grammar.term.tense.basic.BasicTense
 
-object ConditionalTense : BasicTense() {
-}
+object ConditionalTense : BasicTense()
