@@ -1,5 +1,7 @@
 package com.podmev.portuguese.data.grammar.term.tense.basic.implementations.subjunctive
 
-object SubjunctivePluperfectTense {
+import com.podmev.portuguese.data.grammar.term.tense.basic.BasicTense
+
+object SubjunctivePluperfectTense  : BasicTense(){
 
 }

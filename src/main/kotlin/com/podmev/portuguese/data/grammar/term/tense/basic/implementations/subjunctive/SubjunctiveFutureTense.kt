@@ -1,4 +1,6 @@
 package com.podmev.portuguese.data.grammar.term.tense.basic.implementations.subjunctive
 
-object SubjunctiveFutureTense {
+import com.podmev.portuguese.data.grammar.term.tense.basic.BasicTense
+
+object SubjunctiveFutureTense : BasicTense(){
 }

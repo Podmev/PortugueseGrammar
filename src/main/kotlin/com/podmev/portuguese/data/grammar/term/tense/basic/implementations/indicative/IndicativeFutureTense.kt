@@ -1,4 +1,6 @@
 package com.podmev.portuguese.data.grammar.term.tense.basic.implementations.indicative
 
-object IndicativeFutureTense {
+import com.podmev.portuguese.data.grammar.term.tense.basic.BasicTense
+
+object IndicativeFutureTense  : BasicTense(){
 }
