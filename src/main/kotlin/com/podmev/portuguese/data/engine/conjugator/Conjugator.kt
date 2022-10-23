@@ -1,4 +1,4 @@
-package com.podmev.portuguese.engine.conjugator
+package com.podmev.portuguese.data.engine.conjugator
 
 import com.podmev.portuguese.data.grammar.term.tense.GrammaticalTense
 import com.podmev.portuguese.data.grammar.term.verb.VerbArguments

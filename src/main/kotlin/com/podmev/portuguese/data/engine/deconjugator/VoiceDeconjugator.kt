@@ -1,4 +1,4 @@
-package com.podmev.portuguese.engine.deconjugator
+package com.podmev.portuguese.data.engine.deconjugator
 
 import com.podmev.portuguese.data.grammar.term.verb.GrammaticalVoice
 
