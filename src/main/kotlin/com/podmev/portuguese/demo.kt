@@ -1,6 +1,7 @@
 package com.podmev.portuguese
 
-import com.podmev.portuguese.engine.dataset.verb.getAllConjugationGroups
+import com.podmev.portuguese.engine.dataset.verb.findInputVerbMeta
+import com.podmev.portuguese.reader.convertInputVerbMetaToVerbFormInfoMap
 
 fun main() {
 //    getAllVerbs().forEach {
@@ -13,7 +14,10 @@ fun main() {
 
 //    println(findInputVerbMeta("estar"))
 
-    getAllConjugationGroups().forEach {
-        println(it)
-    }
+//    getAllConjugationGroups().forEach {
+//        println(it)
+//    }
+
+    val verbMeta = findInputVerbMeta("estar")!!
+    convertInputVerbMetaToVerbFormInfoMap(verbMeta).forEach{println(it)}
 }
