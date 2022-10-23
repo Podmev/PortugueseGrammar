@@ -5,4 +5,8 @@ import com.podmev.portuguese.data.grammar.term.tense.GrammaticalTense
 data class GenericVerbInfinitiveTense(
     override val auxiliarVerb: String,
     override val auxiliarVerbTense: GrammaticalTense
-) : AbstractVerbInfinitiveTense
+) : AbstractVerbInfinitiveTense {
+    override fun toString(): String {
+        return "GenericVerbInfinitiveTense(auxiliarVerb='$auxiliarVerb', auxiliarVerbTense=$auxiliarVerbTense)"
+    }
+}

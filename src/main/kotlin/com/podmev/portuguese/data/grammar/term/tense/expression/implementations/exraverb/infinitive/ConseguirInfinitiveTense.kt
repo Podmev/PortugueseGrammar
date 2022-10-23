@@ -3,5 +3,5 @@ package com.podmev.portuguese.data.grammar.term.tense.expression.implementations
 import com.podmev.portuguese.data.grammar.term.tense.GrammaticalTense
 
 data class ConseguirInfinitiveTense(override val auxiliarVerbTense: GrammaticalTense) : AbstractVerbInfinitiveTense {
-    override val auxiliarVerb: String = "ir"
+    override val auxiliarVerb: String = "conseguir"
 }

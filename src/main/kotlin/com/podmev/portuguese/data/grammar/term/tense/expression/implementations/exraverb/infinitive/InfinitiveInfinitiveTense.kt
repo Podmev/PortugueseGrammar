@@ -6,5 +6,8 @@ import com.podmev.portuguese.data.grammar.term.tense.expression.implementations.
 
 data class InfinitiveInfinitiveTense(override val auxiliarVerb: String) : AbstractVerbDeInfinitiveTense {
     override val auxiliarVerbTense: GrammaticalTense = InfinitiveTense
+    override fun toString(): String {
+        return "InfinitiveInfinitiveTense(auxiliarVerb='$auxiliarVerb')"
+    }
 
 }

@@ -7,4 +7,7 @@ import com.podmev.portuguese.data.grammar.term.tense.GrammaticalTense
 data class EstarPastParticipleTense(override val auxiliarVerbTense: GrammaticalTense) :
     AbstractVerbPastParticipleTense {
     override val auxiliarVerb: String = "estar"
+    override fun toString(): String {
+        return "EstarPastParticipleTense(auxiliarVerbTense=$auxiliarVerbTense)"
+    }
 }

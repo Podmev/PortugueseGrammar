@@ -2,4 +2,8 @@ package com.podmev.portuguese.data.grammar.term.tense.basic.implementations.indi
 
 import com.podmev.portuguese.data.grammar.term.tense.basic.BasicTense
 
-object IndicativeImperfectTense : BasicTense()
+object IndicativeImperfectTense : BasicTense(){
+    override fun toString(): String {
+        return "IndicativeImperfectTense"
+    }
+}

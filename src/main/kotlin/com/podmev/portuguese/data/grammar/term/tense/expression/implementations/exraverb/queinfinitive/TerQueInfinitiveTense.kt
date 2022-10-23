@@ -4,4 +4,7 @@ import com.podmev.portuguese.data.grammar.term.tense.GrammaticalTense
 
 data class TerQueInfinitiveTense(override val auxiliarVerbTense: GrammaticalTense) : AbstractVerbQueInfinitiveTense {
     override val auxiliarVerb: String = "ter"
+    override fun toString(): String {
+        return "TerQueInfinitiveTense(auxiliarVerbTense=$auxiliarVerbTense)"
+    }
 }

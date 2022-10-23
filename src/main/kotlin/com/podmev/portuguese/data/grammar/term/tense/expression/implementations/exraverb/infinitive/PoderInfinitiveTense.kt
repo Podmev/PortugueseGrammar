@@ -4,4 +4,7 @@ import com.podmev.portuguese.data.grammar.term.tense.GrammaticalTense
 
 data class PoderInfinitiveTense(override val auxiliarVerbTense: GrammaticalTense) : AbstractVerbInfinitiveTense {
     override val auxiliarVerb: String = "poder"
+    override fun toString(): String {
+        return "PoderInfinitiveTense(auxiliarVerbTense=$auxiliarVerbTense)"
+    }
 }
