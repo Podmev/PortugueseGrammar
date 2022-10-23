@@ -1,6 +1,7 @@
 package com.podmev.portuguese.engine.conjugator.dataset.only
 
 import com.podmev.portuguese.data.engine.conjugator.Conjugator
+import com.podmev.portuguese.data.grammar.term.general.GrammaticalGender
 import com.podmev.portuguese.data.grammar.term.tense.GrammaticalTense
 import com.podmev.portuguese.data.grammar.term.verb.VerbArguments
 import com.podmev.portuguese.data.grammar.term.verb.VerbFormInfo
@@ -20,7 +21,9 @@ object OnlyDataSetConjugator : Conjugator {
             findInputVerbMeta(verbInInfinitive) ?: throw Exception("Verb $verbInInfinitive is not found in dataset")
         val verbFormInfoMap: Map<VerbFormInfo, String> = convertInputVerbMetaToVerbFormInfoMap(verbMeta)
         val currentVerbFormInfo = createVerbFormInfoWithVerbArgs(verbInInfinitive, tense, verbArgs)
-        val verbInForm = verbFormInfoMap[currentVerbFormInfo] ?: throw Exception("Not found form $currentVerbFormInfo")
+        val verbInForm = verbFormInfoMap[currentVerbFormInfo]
+            ?: verbFormInfoMap[removeGender(currentVerbFormInfo)] //We need to see undefined gender most of times
+            ?: throw Exception("Not found form $currentVerbFormInfo")
         if (verbInForm == "-") {
             throw Exception("This form doesn't exists $currentVerbFormInfo")
         }
@@ -30,6 +33,10 @@ object OnlyDataSetConjugator : Conjugator {
     private fun verbVariantsSplit(maybeVerbForms: String): List<String> {
         val forms = maybeVerbForms.split(" - ")
         return forms.map { it.trim() }
+    }
+
+    private fun removeGender(verbFormInfo: VerbFormInfo): VerbFormInfo{
+        return verbFormInfo.copy(gender = GrammaticalGender.UNDEFINED)
     }
 
 }
