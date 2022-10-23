@@ -53,3 +53,6 @@ Quiz App (next project) - Conjugation test
 
 Gradle
 https://tomgregory.com/10-tips-to-use-gradle-with-intellij-idea/
+
+ci-cd
+https://proandroiddev.com/how-do-i-setup-github-actions-for-my-gradle-or-android-project-17af6f2fac59
