@@ -7,6 +7,7 @@ import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.imper
 import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.indicative.*
 import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.subjunctive.SubjunctiveImperfectTense
 import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.subjunctive.SubjunctivePresentTense
+import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.subjunctive.SubjunctivePreteriteTense
 
 /*name of tenses is from conjugation dataset
 *
@@ -40,8 +41,8 @@ fun parseTenseByShortName(tenseName: String): GrammaticalTense? =
         "indicative/pluperfect" -> IndicativePluperfectTense
         "indicative/future" -> IndicativeFutureTense
 
-        "subjunctive/preterite" -> SubjunctivePresentTense
         "subjunctive/present" -> SubjunctivePresentTense
+        "subjunctive/preterite" -> SubjunctivePreteriteTense
         "subjunctive/imperfect" -> SubjunctiveImperfectTense
 
         "conditional" -> ConditionalTense
