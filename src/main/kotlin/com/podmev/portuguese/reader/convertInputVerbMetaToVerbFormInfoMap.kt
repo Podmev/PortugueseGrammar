@@ -7,7 +7,7 @@ fun convertInputVerbMetaToVerbFormInfoMap(inputVerbMeta: InputVerbMeta): Map<Ver
     val conjugations = inputVerbMeta.conjugations ?: return emptyMap()
     val infinitive = inputVerbMeta.word
     val resultMap = mutableMapOf<VerbFormInfo, String>()
-    for(conjugation in conjugations){
+    for (conjugation in conjugations) {
         val verbFormInfo = convertConjugationToVerbFormInfo(conjugation, infinitive) ?: continue
         val verbFormValue = conjugation.value
         resultMap[verbFormInfo] = verbFormValue

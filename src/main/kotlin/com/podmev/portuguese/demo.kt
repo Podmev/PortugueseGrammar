@@ -19,5 +19,5 @@ fun main() {
 //    }
 
     val verbMeta = findInputVerbMeta("estar")!!
-    convertInputVerbMetaToVerbFormInfoMap(verbMeta).forEach{println(it)}
+    convertInputVerbMetaToVerbFormInfoMap(verbMeta).forEach { println(it) }
 }

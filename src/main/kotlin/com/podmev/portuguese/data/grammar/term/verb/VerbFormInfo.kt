@@ -13,3 +13,17 @@ data class VerbFormInfo(
     val gender: GrammaticalGender,
     val voice: GrammaticalVoice,
 )
+
+fun createVerbFormInfoWithVerbArgs(
+    infinitive: String,
+    tense: GrammaticalTense,
+    verbArgs: VerbArguments
+): VerbFormInfo =
+    VerbFormInfo(
+        infinitive = infinitive,
+        tense = tense,
+        person = verbArgs.person,
+        number = verbArgs.number,
+        gender = verbArgs.gender,
+        voice = verbArgs.voice
+    )

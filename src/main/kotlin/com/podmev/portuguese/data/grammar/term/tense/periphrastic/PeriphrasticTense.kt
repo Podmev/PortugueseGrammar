@@ -6,7 +6,7 @@ import com.podmev.portuguese.data.grammar.term.tense.TenseCategory
 data class PeriphrasticTense(
     val tenseCategory: TenseCategory,
     val periphrasticTenseType: PeriphrasticTenseType
-) : GrammaticalTense{
+) : GrammaticalTense {
     override fun toString(): String {
         return "PeriphrasticTense(tenseCategory=$tenseCategory, periphrasticTenseType=$periphrasticTenseType)"
     }
