@@ -3,6 +3,13 @@ package com.podmev.portuguese.engine.conjugator.dataset.only
 import com.podmev.portuguese.data.engine.conjugator.Conjugator
 import com.podmev.portuguese.data.grammar.term.general.GrammaticalGender
 import com.podmev.portuguese.data.grammar.term.tense.GrammaticalTense
+import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.*
+import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.condicional.ConditionalTense
+import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.imperative.ImperativeTense
+import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.indicative.*
+import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.subjunctive.SubjunctiveImperfectTense
+import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.subjunctive.SubjunctivePresentTense
+import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.subjunctive.SubjunctivePreteriteTense
 import com.podmev.portuguese.data.grammar.term.verb.VerbArguments
 import com.podmev.portuguese.data.grammar.term.verb.VerbFormInfo
 import com.podmev.portuguese.data.grammar.term.verb.createVerbFormInfoWithVerbArgs
@@ -30,12 +37,32 @@ object OnlyDataSetConjugator : Conjugator {
         return verbVariantsSplit(verbInForm)
     }
 
+    fun getWorkingTenses(): List<GrammaticalTense> = listOf(
+        IndicativePresentTense,
+        IndicativeImperfectTense,
+        IndicativePreteriteTense,
+        IndicativePluperfectTense,
+        IndicativeFutureTense,
+
+        SubjunctivePresentTense,
+        SubjunctivePreteriteTense,
+        SubjunctiveImperfectTense,
+
+        ConditionalTense,
+        ImperativeTense,
+        InfinitiveTense,
+        PersonalInfinitiveTense,
+        PastParticipleForSerEstarTense,
+        PastParticipleTense,
+        GerundTense
+    )
+
     private fun verbVariantsSplit(maybeVerbForms: String): List<String> {
         val forms = maybeVerbForms.split(" - ")
         return forms.map { it.trim() }
     }
 
-    private fun removeGender(verbFormInfo: VerbFormInfo): VerbFormInfo{
+    private fun removeGender(verbFormInfo: VerbFormInfo): VerbFormInfo {
         return verbFormInfo.copy(gender = GrammaticalGender.UNDEFINED)
     }
 
