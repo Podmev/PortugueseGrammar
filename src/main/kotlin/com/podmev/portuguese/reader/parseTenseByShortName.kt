@@ -9,6 +9,9 @@ import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.subju
 import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.subjunctive.SubjunctivePresentTense
 import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.subjunctive.SubjunctivePreteriteTense
 
+
+//TODO add tests for parseTenseByShortName
+
 /*name of tenses is from conjugation dataset
 *
 * made list with util function getAllConjugationGroups
