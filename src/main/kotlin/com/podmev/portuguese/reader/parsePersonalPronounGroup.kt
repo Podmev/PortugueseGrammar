@@ -12,9 +12,12 @@ import com.podmev.portuguese.data.grammar.term.pronoun.PersonalPronounGroup
 * If format is wrong, returns null
 * */
 fun parsePersonalPronounGroup(s: String): PersonalPronounGroup? {
-    if (s.length !in 1..2) return null
-    val firstSymbol = s[0]
+    if (s.length !in 0..2) return null
+    val firstSymbol = s.getOrNull(0)
     val secondSymbol = s.getOrNull(1)
+    if(firstSymbol==null){
+        return PersonalPronounGroup(GrammaticalNumber.UNDEFINED, GrammaticalPerson.UNDEFINED)
+    }
     if (firstSymbol !in listOf('p', 's')) return null
     if (secondSymbol !in listOf('1', '2', '3', null)) return null
 

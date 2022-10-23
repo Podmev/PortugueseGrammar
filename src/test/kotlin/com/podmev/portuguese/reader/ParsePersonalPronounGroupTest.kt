@@ -8,6 +8,15 @@ import org.junit.Test
 
 class ParsePersonalPronounGroupTest {
     @Test
+    fun emptyTest(){
+        assertEquals(
+            "Empty string",
+            PersonalPronounGroup(GrammaticalNumber.UNDEFINED, GrammaticalPerson.UNDEFINED),
+            parsePersonalPronounGroup("")
+        )
+    }
+
+    @Test
     fun singularFirstTest(){
         assertEquals(
             "Singular first person s1",
@@ -79,17 +88,11 @@ class ParsePersonalPronounGroupTest {
         )
     }
 
+
+
+
+
     //Negative tests
-
-    @Test
-    fun negativeEmptyTest(){
-        assertEquals(
-            "Empty string",
-            null,
-            parsePersonalPronounGroup("")
-        )
-    }
-
     @Test
     fun negativeThreeSymbolsTest(){
         assertEquals(
