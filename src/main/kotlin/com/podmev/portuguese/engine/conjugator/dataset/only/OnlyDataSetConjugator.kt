@@ -1,7 +1,10 @@
 package com.podmev.portuguese.engine.conjugator.dataset.only
 
 import com.podmev.portuguese.data.engine.conjugator.Conjugator
+import com.podmev.portuguese.data.engine.conjugator.ConjugatorCoveringData
 import com.podmev.portuguese.data.grammar.term.general.GrammaticalGender
+import com.podmev.portuguese.data.grammar.term.general.GrammaticalNumber
+import com.podmev.portuguese.data.grammar.term.general.GrammaticalPerson
 import com.podmev.portuguese.data.grammar.term.tense.GrammaticalTense
 import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.*
 import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.condicional.ConditionalTense
@@ -10,10 +13,12 @@ import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.indic
 import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.subjunctive.SubjunctiveImperfectTense
 import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.subjunctive.SubjunctivePresentTense
 import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.subjunctive.SubjunctivePreteriteTense
+import com.podmev.portuguese.data.grammar.term.verb.GrammaticalVoice
 import com.podmev.portuguese.data.grammar.term.verb.VerbArguments
 import com.podmev.portuguese.data.grammar.term.verb.VerbFormInfo
 import com.podmev.portuguese.data.grammar.term.verb.createVerbFormInfoWithVerbArgs
 import com.podmev.portuguese.engine.dataset.verb.findInputVerbMeta
+import com.podmev.portuguese.engine.dataset.verb.getAllVerbs
 import com.podmev.portuguese.reader.convertInputVerbMetaToVerbFormInfoMap
 
 //TODO make custom exceptions
@@ -37,7 +42,17 @@ object OnlyDataSetConjugator : Conjugator {
         return verbVariantsSplit(verbInForm)
     }
 
-    fun getWorkingTenses(): List<GrammaticalTense> = listOf(
+    fun getConjugatorCoveringData() =
+        ConjugatorCoveringData(
+            getAllVerbs(),
+            getCoveredTenses(),
+            GrammaticalPerson.values().toList(),
+            GrammaticalNumber.values().toList(),
+            GrammaticalGender.values().toList(),
+            listOf(GrammaticalVoice.ACTIVE) //passive is not supported here
+        )
+
+    fun getCoveredTenses(): List<GrammaticalTense> = listOf(
         IndicativePresentTense,
         IndicativeImperfectTense,
         IndicativePreteriteTense,
