@@ -36,35 +36,35 @@ pastparticipleshort/feminine
 pastparticiple/feminine
 gerund
 * */
-fun parseTenseByShortName(tenseName: String): GrammaticalTense? =
+fun parseTenseByShortName(tenseName: String): List<GrammaticalTense> =
     when (tenseName) {
-        "indicative/present" -> IndicativePresentTense
-        "indicative/imperfect" -> IndicativeImperfectTense
-        "indicative/preterite" -> IndicativePreteriteTense
-        "indicative/pluperfect" -> IndicativePluperfectTense
-        "indicative/future" -> IndicativeFutureTense
+        "indicative/present" -> listOf(IndicativePresentTense)
+        "indicative/imperfect" -> listOf(IndicativeImperfectTense)
+        "indicative/preterite" -> listOf(IndicativePreteriteTense)
+        "indicative/pluperfect" -> listOf(IndicativePluperfectTense)
+        "indicative/future" -> listOf(IndicativeFutureTense)
 
-        "subjunctive/present" -> SubjunctivePresentTense
-        "subjunctive/preterite" -> SubjunctivePreteriteTense
-        "subjunctive/imperfect" -> SubjunctiveImperfectTense
+        "subjunctive/present" -> listOf(SubjunctivePresentTense)
+        "subjunctive/preterite" -> listOf(SubjunctivePreteriteTense)
+        "subjunctive/imperfect" -> listOf(SubjunctiveImperfectTense)
 
-        "conditional" -> ConditionalTense
+        "conditional" -> listOf(ConditionalTense)
 
         // let's not use imperative/negative - it is mostly incorrect in dataset. Anyway negative is not used in model
-        "imperative/negative" -> null
-        "imperative/affirmative" -> ImperativeTense
+        "imperative/negative" -> emptyList()
+        "imperative/affirmative" -> listOf(ImperativeTense)
 
-        "infinitive/impersonal" -> InfinitiveTense
-        "infinitive/personal" -> PersonalInfinitiveTense
+        "infinitive/impersonal" -> listOf(InfinitiveTense)
+        "infinitive/personal" -> listOf(PersonalInfinitiveTense)
 
-        "pastparticipleshort/masculine" -> PastParticipleForSerEstarTense
-        "pastparticipleshort/feminine" -> PastParticipleForSerEstarTense
+        "pastparticipleshort/masculine" -> listOf(PastParticipleForSerEstarTense)
+        "pastparticipleshort/feminine" -> listOf(PastParticipleForSerEstarTense)
 
-        "pastparticiplelong/masculine" -> PastParticipleTense
-        "pastparticiplelong/feminine" -> PastParticipleTense
-        "pastparticiple/masculine" -> PastParticipleTense
-        "pastparticiple/feminine" -> PastParticipleTense
+        "pastparticiplelong/masculine" -> listOf(PastParticipleTense)
+        "pastparticiplelong/feminine" -> listOf(PastParticipleTense)
+        "pastparticiple/masculine" -> listOf(PastParticipleTense)
+        "pastparticiple/feminine" -> listOf(PastParticipleTense)
 
-        "gerund" -> GerundTense
-        else -> null
+        "gerund" -> listOf(GerundTense)
+        else -> emptyList()
     }

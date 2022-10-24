@@ -3,13 +3,13 @@ package com.podmev.portuguese.engine.conjugator.dataset.only
 import com.podmev.portuguese.data.grammar.term.general.GrammaticalGender
 import com.podmev.portuguese.data.grammar.term.general.GrammaticalNumber
 import com.podmev.portuguese.data.grammar.term.general.GrammaticalPerson
+import com.podmev.portuguese.data.grammar.term.pronoun.PersonalPronounGroup
 import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.GerundTense
 import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.InfinitiveTense
 import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.indicative.IndicativeImperfectTense
 import com.podmev.portuguese.data.grammar.term.verb.GrammaticalVoice
 import com.podmev.portuguese.data.grammar.term.verb.VerbArguments
 import org.junit.Assert.assertEquals
-import org.junit.Ignore
 import org.junit.Test
 import org.junit.jupiter.api.assertDoesNotThrow
 
@@ -76,30 +76,31 @@ class OnlyDataSetConjugatorTest {
     //TODO fix test - more intellectual getting person and maybe number
     /*long test - cartesian params for all verbs*/
     @Test
-    @Ignore("wrong")
+//    @Ignore("wrong")
     fun allExistingCombinationsTest() {
         val coveringData = conjugator.getConjugatorCoveringData()
         //TODO refactor with ConjugatorCoveringData.getAllVerbFormInfos
         for (verb in coveringData.verbInfinitives) {
             for (tense in coveringData.tenses) {
-                for (person in coveringData.persons) {
-                    for (number in coveringData.numbers) {
-                        for (gender in coveringData.genders) {
-                            for (voice in coveringData.voices) {
-                                assertDoesNotThrow("Combination: $verb, $tense, $person, $number, $gender, $voice") {
-                                    val verbInForm: List<String> = conjugator.conjugateVerb(
-                                        verbInInfinitive = verb,
-                                        tense = tense,
-                                        verbArgs = VerbArguments(
-                                            person = person,
-                                            number = number,
-                                            gender = gender,
-                                            voice = voice
+                for (person in tense.possiblePersons()) {
+                    for (number in tense.possibleNumbers()) {
+                        if (PersonalPronounGroup(number, person) !in tense.pronounGroupExceptions())
+                            for (gender in tense.possibleGenders()) {
+                                for (voice in coveringData.voices) {
+                                    assertDoesNotThrow("Combination: $verb, $tense, $person, $number, $gender, $voice") {
+                                        val verbInForm: List<String> = conjugator.conjugateVerb(
+                                            verbInInfinitive = verb,
+                                            tense = tense,
+                                            verbArgs = VerbArguments(
+                                                person = person,
+                                                number = number,
+                                                gender = gender,
+                                                voice = voice
+                                            )
                                         )
-                                    )
+                                    }
                                 }
                             }
-                        }
                     }
                 }
             }

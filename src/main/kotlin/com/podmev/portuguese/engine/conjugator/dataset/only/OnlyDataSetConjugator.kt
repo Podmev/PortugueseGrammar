@@ -46,13 +46,10 @@ object OnlyDataSetConjugator : Conjugator {
         ConjugatorCoveringData(
             getAllVerbs(),
             getCoveredTenses(),
-            GrammaticalPerson.values().toList(),
-            GrammaticalNumber.values().toList(),
-            GrammaticalGender.values().toList(),
             listOf(GrammaticalVoice.ACTIVE) //passive is not supported here
         )
 
-    fun getCoveredTenses(): List<GrammaticalTense> = listOf(
+    private fun getCoveredTenses(): List<GrammaticalTense> = listOf(
         IndicativePresentTense,
         IndicativeImperfectTense,
         IndicativePreteriteTense,
