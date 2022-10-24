@@ -7,13 +7,13 @@ import com.podmev.portuguese.data.grammar.term.tense.GrammaticalTense
 import com.podmev.portuguese.data.grammar.term.verb.GrammaticalVoice
 import com.podmev.portuguese.data.grammar.term.verb.VerbFormInfo
 
+/*
+* persons, numbers and genders you can take from tense
+* */
 data class ConjugatorCoveringData(
     val verbInfinitives: List<String>,
     val tenses: List<GrammaticalTense>,
-    val persons: List<GrammaticalPerson>,
-    val numbers: List<GrammaticalNumber>,
-    val genders: List<GrammaticalGender>,
-    val voices: List<GrammaticalVoice>,
+    val voices: List<GrammaticalVoice>
 ){
 
     /*

@@ -1,5 +1,8 @@
 package com.podmev.portuguese.data.grammar.term.tense
 
+import com.podmev.portuguese.data.grammar.term.general.GrammaticalGender
+import com.podmev.portuguese.data.grammar.term.general.GrammaticalNumber
+import com.podmev.portuguese.data.grammar.term.general.GrammaticalPerson
 import com.podmev.portuguese.data.grammar.term.verb.GrammaticalMood
 
 //TODO add next tenses:
@@ -9,10 +12,15 @@ import com.podmev.portuguese.data.grammar.term.verb.GrammaticalMood
 
 //TODO add portuguese name for tense
 //TODO description
+//TODO canHaveVoice
 
-interface GrammaticalTense{
+interface GrammaticalTense {
     val mood: GrammaticalMood
     val canHavePerson: Boolean
     val canHaveNumber: Boolean
     val canHaveGender: Boolean
+
+    fun possiblePersons(): List<GrammaticalPerson> = GrammaticalPerson.getDefinedList(canHavePerson)
+    fun possibleNumbers(): List<GrammaticalNumber> = GrammaticalNumber.getDefinedList(canHaveNumber)
+    fun possibleGenders(): List<GrammaticalGender> = GrammaticalGender.getDefinedList(canHaveGender)
 }
