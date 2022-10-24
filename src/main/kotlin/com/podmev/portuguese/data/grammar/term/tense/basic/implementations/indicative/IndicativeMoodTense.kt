@@ -1,18 +1,15 @@
-package com.podmev.portuguese.data.grammar.term.tense.basic.implementations
+package com.podmev.portuguese.data.grammar.term.tense.basic.implementations.indicative
 
 import com.podmev.portuguese.data.grammar.term.tense.basic.BasicTense
 import com.podmev.portuguese.data.grammar.term.verb.GrammaticalMood
 
-object PersonalInfinitiveTense : BasicTense {
+interface IndicativeMoodTense: BasicTense {
     override val mood: GrammaticalMood
-        get() = GrammaticalMood.UNDEFINED
+        get() = GrammaticalMood.INDICATIVE
     override val canHavePerson: Boolean
         get() = true
     override val canHaveNumber: Boolean
         get() = true
     override val canHaveGender: Boolean
         get() = false
-    override fun toString(): String {
-        return "PersonalInfinitiveTense"
-    }
 }

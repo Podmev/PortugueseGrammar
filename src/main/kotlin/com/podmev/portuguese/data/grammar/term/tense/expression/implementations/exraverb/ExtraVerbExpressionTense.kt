@@ -2,6 +2,7 @@ package com.podmev.portuguese.data.grammar.term.tense.expression.implementations
 
 import com.podmev.portuguese.data.grammar.term.tense.GrammaticalTense
 import com.podmev.portuguese.data.grammar.term.tense.expression.ExpressionTense
+import com.podmev.portuguese.data.grammar.term.verb.GrammaticalMood
 
 //TODO add field - limits for tenses it can be used for
 /*General formula:
@@ -14,4 +15,12 @@ interface ExtraVerbExpressionTense : ExpressionTense {
 
     /* connection word can be absent in some cases*/
     val connectionWord: String?
+    override val mood: GrammaticalMood
+        get() = auxiliarVerbTense.mood
+    override val canHavePerson: Boolean
+        get() = auxiliarVerbTense.canHavePerson
+    override val canHaveNumber: Boolean
+        get() = auxiliarVerbTense.canHaveNumber
+    override val canHaveGender: Boolean
+        get() = auxiliarVerbTense.canHaveGender
 }

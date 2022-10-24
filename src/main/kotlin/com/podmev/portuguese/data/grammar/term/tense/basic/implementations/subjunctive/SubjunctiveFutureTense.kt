@@ -2,7 +2,7 @@ package com.podmev.portuguese.data.grammar.term.tense.basic.implementations.subj
 
 import com.podmev.portuguese.data.grammar.term.tense.basic.BasicTense
 
-object SubjunctiveFutureTense : BasicTense() {
+object SubjunctiveFutureTense : SubjunctiveMoodTense {
     override fun toString(): String {
         return "SubjunctiveFutureTense"
     }

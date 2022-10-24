@@ -4,5 +4,6 @@ enum class GrammaticalMood {
     INDICATIVE,
     SUBJUNCTIVE,
     IMPERATIVE,
-    CONDICIONAL
+    CONDICIONAL,
+    UNDEFINED
 }

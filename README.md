@@ -55,4 +55,11 @@ Gradle
 https://tomgregory.com/10-tips-to-use-gradle-with-intellij-idea/
 
 ci-cd
+https://tomgregory.com/build-gradle-projects-with-github-actions/
 https://proandroiddev.com/how-do-i-setup-github-actions-for-my-gradle-or-android-project-17af6f2fac59
+
+
+the underlying problem is that the file is not executable, which you'll need to change in your repository. If you're on Windows, that may be why the file did not get added as executable in your repository. On Windows, you can run:
+
+    git update-index --chmod=+x gradlew
+Then commit and push this change.
