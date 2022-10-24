@@ -62,8 +62,8 @@ fun parseTenseByShortName(tenseName: String): List<GrammaticalTense> =
 
         "pastparticiplelong/masculine" -> listOf(PastParticipleTense)
         "pastparticiplelong/feminine" -> listOf(PastParticipleTense)
-        "pastparticiple/masculine" -> listOf(PastParticipleTense)
-        "pastparticiple/feminine" -> listOf(PastParticipleTense)
+        "pastparticiple/masculine" -> listOf(PastParticipleTense, PastParticipleForSerEstarTense)
+        "pastparticiple/feminine" -> listOf(PastParticipleTense, PastParticipleForSerEstarTense)
 
         "gerund" -> listOf(GerundTense)
         else -> emptyList()
