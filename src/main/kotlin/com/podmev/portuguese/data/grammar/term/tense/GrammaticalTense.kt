@@ -3,6 +3,7 @@ package com.podmev.portuguese.data.grammar.term.tense
 import com.podmev.portuguese.data.grammar.term.general.GrammaticalGender
 import com.podmev.portuguese.data.grammar.term.general.GrammaticalNumber
 import com.podmev.portuguese.data.grammar.term.general.GrammaticalPerson
+import com.podmev.portuguese.data.grammar.term.pronoun.PersonalPronounGroup
 import com.podmev.portuguese.data.grammar.term.verb.GrammaticalMood
 
 //TODO add next tenses:
@@ -23,4 +24,7 @@ interface GrammaticalTense {
     fun possiblePersons(): List<GrammaticalPerson> = GrammaticalPerson.getDefinedList(canHavePerson)
     fun possibleNumbers(): List<GrammaticalNumber> = GrammaticalNumber.getDefinedList(canHaveNumber)
     fun possibleGenders(): List<GrammaticalGender> = GrammaticalGender.getDefinedList(canHaveGender)
+
+    /*empty for almost all tenses, except for imperative*/
+    fun pronounGroupExceptions(): List<PersonalPronounGroup> = emptyList()
 }

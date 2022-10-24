@@ -7,9 +7,9 @@ object PastParticipleForSerEstarTense : BasicTense {
     override val mood: GrammaticalMood
         get() = GrammaticalMood.UNDEFINED
     override val canHavePerson: Boolean
-        get() = true
-    override val canHaveNumber: Boolean
         get() = false
+    override val canHaveNumber: Boolean
+        get() = true
     override val canHaveGender: Boolean
         get() = true
     override fun toString(): String {
