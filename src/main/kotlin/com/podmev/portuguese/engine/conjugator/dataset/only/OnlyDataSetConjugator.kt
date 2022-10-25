@@ -44,7 +44,7 @@ object OnlyDataSetConjugator : Conjugator {
 
     fun getConjugatorCoveringData() =
         ConjugatorCoveringData(
-            getAllVerbs(),
+            getCoveredVerbs(),
             getCoveredTenses(),
             listOf(GrammaticalVoice.ACTIVE) //passive is not supported here
         )
@@ -68,6 +68,8 @@ object OnlyDataSetConjugator : Conjugator {
         PastParticipleTense,
         GerundTense
     )
+    private fun getCoveredVerbs(): List<String> =
+        getAllVerbs().filter { findInputVerbMeta(it)?.conjugations !=null }
 
     private fun verbVariantsSplit(maybeVerbForms: String): List<String> {
         val forms = maybeVerbForms.split(" - ")
