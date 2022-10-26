@@ -7,33 +7,30 @@ import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.MethodSource
 
-//todo maybe transform tests into several by tenses
 
 /* 373168 cases by using data set
 * */
 class AnalyticConjugatorCheckByDataSetTest {
-    private val onlyDataSetConjugator = OnlyDataSetConjugator
-    private val analyticConjugator = OnlyDataSetConjugator
 
     @ParameterizedTest
     @MethodSource("allVerbForms")
-    fun parametrizedTest(data: VerbFormInfo) {
+    fun parametrizedTest(verbFormInfo: VerbFormInfo) {
         val verbArgs = VerbArguments(
-            person = data.person,
-            number = data.number,
-            gender = data.gender,
-            voice = data.voice
+            person = verbFormInfo.person,
+            number = verbFormInfo.number,
+            gender = verbFormInfo.gender,
+            voice = verbFormInfo.voice
         )
         Assertions.assertEquals(
-            onlyDataSetConjugator.conjugateVerb(
-                verbInInfinitive = data.infinitive,
-                tense = data.tense,
+            OnlyDataSetConjugator.conjugateVerb(
+                verbInInfinitive = verbFormInfo.infinitive,
+                tense = verbFormInfo.tense,
                 verbArgs = verbArgs
-            ), analyticConjugator.conjugateVerb(
-                verbInInfinitive = data.infinitive,
-                tense = data.tense,
+            ), AnalyticConjugator.conjugateVerb(
+                verbInInfinitive = verbFormInfo.infinitive,
+                tense = verbFormInfo.tense,
                 verbArgs = verbArgs
-            ), "Combination: $data"
+            ), "Combination: $verbFormInfo"
         )
     }
 

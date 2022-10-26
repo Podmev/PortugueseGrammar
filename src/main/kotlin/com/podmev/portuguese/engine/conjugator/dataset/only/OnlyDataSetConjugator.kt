@@ -3,8 +3,6 @@ package com.podmev.portuguese.engine.conjugator.dataset.only
 import com.podmev.portuguese.data.engine.conjugator.Conjugator
 import com.podmev.portuguese.data.engine.conjugator.ConjugatorCoveringData
 import com.podmev.portuguese.data.grammar.term.general.GrammaticalGender
-import com.podmev.portuguese.data.grammar.term.general.GrammaticalNumber
-import com.podmev.portuguese.data.grammar.term.general.GrammaticalPerson
 import com.podmev.portuguese.data.grammar.term.tense.GrammaticalTense
 import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.*
 import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.condicional.ConditionalTense
@@ -50,6 +48,13 @@ object OnlyDataSetConjugator : Conjugator {
             listOf(GrammaticalVoice.ACTIVE).asSequence() //passive is not supported here
         )
 
+    fun getConjugatorCoveringDataWithFixedTense(tense: GrammaticalTense) =
+        ConjugatorCoveringData(
+            getCoveredVerbs().asSequence(),
+            sequenceOf(tense),
+            listOf(GrammaticalVoice.ACTIVE).asSequence() //passive is not supported here
+        )
+
     private fun getCoveredTenses(): List<GrammaticalTense> = listOf(
         IndicativePresentTense,
         IndicativeImperfectTense,
@@ -69,8 +74,9 @@ object OnlyDataSetConjugator : Conjugator {
         PastParticipleTense,
         GerundTense
     )
+
     private fun getCoveredVerbs(): List<String> =
-        getAllVerbs().filter { findInputVerbMeta(it)?.conjugations !=null }
+        getAllVerbs().filter { findInputVerbMeta(it)?.conjugations != null }
 
     private fun verbVariantsSplit(maybeVerbForms: String): List<String> {
         val forms = maybeVerbForms.split(" - ")
