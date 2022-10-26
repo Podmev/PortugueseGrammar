@@ -21,10 +21,15 @@ interface GrammaticalTense {
     val canHaveNumber: Boolean
     val canHaveGender: Boolean
 
-    fun possiblePersons(): List<GrammaticalPerson> = GrammaticalPerson.getDefinedList(canHavePerson)
-    fun possibleNumbers(): List<GrammaticalNumber> = GrammaticalNumber.getDefinedList(canHaveNumber)
-    fun possibleGenders(): List<GrammaticalGender> = GrammaticalGender.getDefinedList(canHaveGender)
+    fun possiblePersons(): Sequence<GrammaticalPerson> = GrammaticalPerson.getDefinedList(canHavePerson).asSequence()
+    fun possibleNumbers(): Sequence<GrammaticalNumber> = GrammaticalNumber.getDefinedList(canHaveNumber).asSequence()
+    fun possibleGenders(): Sequence<GrammaticalGender> = GrammaticalGender.getDefinedList(canHaveGender).asSequence()
 
     /*empty for almost all tenses, except for imperative*/
     fun pronounGroupExceptions(): List<PersonalPronounGroup> = emptyList()
+
+    fun possiblePronounGroups(): Sequence<PersonalPronounGroup> =
+        possiblePersons().flatMap {
+            person->possibleNumbers().map { PersonalPronounGroup(it, person)  }
+        }.filter { it !in pronounGroupExceptions() }
 }

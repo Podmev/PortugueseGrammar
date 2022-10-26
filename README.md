@@ -1,5 +1,5 @@
 # PortugueseGrammar
-Grammatic engine for Brazilian Portuguese
+Grammatical engine for Brazilian Portuguese
 
 Main part is about verbs
 
@@ -22,7 +22,7 @@ Things to do:
 
  Architecture:
   - enums for pronouns
-  - enums for tenses and grammatic forms
+  - enums for tenses and grammatical forms
   - structure for all forms for one verb
 
 

@@ -11,14 +11,13 @@ import com.podmev.portuguese.data.grammar.term.verb.VerbFormInfo
 * persons, numbers and genders you can take from tense
 * */
 data class ConjugatorCoveringData(
-    val verbInfinitives: List<String>,
-    val tenses: List<GrammaticalTense>,
-    val voices: List<GrammaticalVoice>
+    val verbInfinitives: Sequence<String>,
+    val tenses: Sequence<GrammaticalTense>,
+    val voices: Sequence<GrammaticalVoice>
 ){
 
-    /*
-    *
-example for for comprehension
+
+//example for comprehension
 fun pythagoreanTriples(n: Int) =
     (1..n).flatMap {
         x -> (x..n).flatMap {
@@ -31,7 +30,7 @@ fun pythagoreanTriples(n: Int) =
 fun main(args: Array<String>) {
     println(pythagoreanTriples(20))
 }
-    * */
+
     //TODO look how to make iterables with for-comprehension
 //    fun getAllVerbFormInfos(): Iterable<VerbFormInfo>  =
 //        {for (verb in verbInfinitives)

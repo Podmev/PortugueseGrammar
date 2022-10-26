@@ -44,9 +44,9 @@ object OnlyDataSetConjugator : Conjugator {
 
     fun getConjugatorCoveringData() =
         ConjugatorCoveringData(
-            getCoveredVerbs(),
-            getCoveredTenses(),
-            listOf(GrammaticalVoice.ACTIVE) //passive is not supported here
+            getCoveredVerbs().asSequence(),
+            getCoveredTenses().asSequence(),
+            listOf(GrammaticalVoice.ACTIVE).asSequence() //passive is not supported here
         )
 
     private fun getCoveredTenses(): List<GrammaticalTense> = listOf(

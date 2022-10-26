@@ -72,38 +72,4 @@ class OnlyDataSetConjugatorTest {
             /* actual = */  verbInForm
         )
     }
-
-    //TODO fix test - more intellectual getting person and maybe number
-    /*long test - cartesian params for all verbs*/
-    @Test
-//    @Ignore("wrong")
-    fun allExistingCombinationsTest() {
-        val coveringData = conjugator.getConjugatorCoveringData()
-        //TODO refactor with ConjugatorCoveringData.getAllVerbFormInfos
-        for (verb in coveringData.verbInfinitives) {
-            for (tense in coveringData.tenses) {
-                for (person in tense.possiblePersons()) {
-                    for (number in tense.possibleNumbers()) {
-                        if (PersonalPronounGroup(number, person) !in tense.pronounGroupExceptions())
-                            for (gender in tense.possibleGenders()) {
-                                for (voice in coveringData.voices) {
-                                    assertDoesNotThrow("Combination: $verb, $tense, $person, $number, $gender, $voice") {
-                                        val verbInForm: List<String> = conjugator.conjugateVerb(
-                                            verbInInfinitive = verb,
-                                            tense = tense,
-                                            verbArgs = VerbArguments(
-                                                person = person,
-                                                number = number,
-                                                gender = gender,
-                                                voice = voice
-                                            )
-                                        )
-                                    }
-                                }
-                            }
-                    }
-                }
-            }
-        }
-    }
 }
