@@ -6,13 +6,13 @@ import com.podmev.portuguese.engine.conjugator.analytic.ConjugatorLocalizer
 
 object SubjunctiveMoodTenseConjugatorLocalizer : ConjugatorLocalizer<SubjunctiveMoodTense> {
     override fun conjugatorLocalize(tense: SubjunctiveMoodTense): Conjugator =
-    when (tense) {
-        is SubjunctivePresentTense -> SubjunctivePresentTenseConjugator
-        is SubjunctivePreteriteTense -> SubjunctivePreteriteTenseConjugator
-        is SubjunctivePluperfectTense -> SubjunctivePluperfectTenseConjugator
-        is SubjunctiveFutureTense -> SubjunctiveFutureTenseConjugator
-        is SubjunctiveImperfectTense -> SubjunctiveImperfectTenseConjugator
+        when (tense) {
+            is SubjunctivePresentTense -> SubjunctivePresentTenseConjugator
+            is SubjunctivePreteriteTense -> SubjunctivePreteriteTenseConjugator
+            is SubjunctivePluperfectTense -> SubjunctivePluperfectTenseConjugator
+            is SubjunctiveFutureTense -> SubjunctiveFutureTenseConjugator
+            is SubjunctiveImperfectTense -> SubjunctiveImperfectTenseConjugator
 
-        else -> throw Exception("Unknown tense")
-    }
+            else -> throw Exception("Unknown tense")
+        }
 }

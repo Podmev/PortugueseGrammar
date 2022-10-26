@@ -4,6 +4,4 @@ import com.podmev.portuguese.data.engine.conjugator.Conjugator
 
 //TODO think what api can be here
 //TODO add tense type checker
-interface SingleTenseConjugator : Conjugator {
-
-}
+interface SingleTenseConjugator : Conjugator

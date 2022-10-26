@@ -2,6 +2,4 @@ package com.podmev.portuguese.engine.conjugator.analytic.tense.basic.implementat
 
 import com.podmev.portuguese.engine.conjugator.analytic.tense.basic.BasicTenseConjugator
 
-interface IndicativeMoodTenseConjugator : BasicTenseConjugator {
-
-}
+interface IndicativeMoodTenseConjugator : BasicTenseConjugator

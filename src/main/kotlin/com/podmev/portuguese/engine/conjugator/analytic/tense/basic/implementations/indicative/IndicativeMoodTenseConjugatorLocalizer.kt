@@ -6,13 +6,13 @@ import com.podmev.portuguese.engine.conjugator.analytic.ConjugatorLocalizer
 
 object IndicativeMoodTenseConjugatorLocalizer : ConjugatorLocalizer<IndicativeMoodTense> {
     override fun conjugatorLocalize(tense: IndicativeMoodTense): Conjugator =
-    when (tense) {
-        is IndicativePresentTense -> IndicativePresentTenseConjugator
-        is IndicativePreteriteTense -> IndicativePreteriteTenseConjugator
-        is IndicativePluperfectTense -> IndicativePluperfectTenseConjugator
-        is IndicativeFutureTense -> IndicativeFutureTenseConjugator
-        is IndicativeImperfectTense -> IndicativeImperfectTenseConjugator
+        when (tense) {
+            is IndicativePresentTense -> IndicativePresentTenseConjugator
+            is IndicativePreteriteTense -> IndicativePreteriteTenseConjugator
+            is IndicativePluperfectTense -> IndicativePluperfectTenseConjugator
+            is IndicativeFutureTense -> IndicativeFutureTenseConjugator
+            is IndicativeImperfectTense -> IndicativeImperfectTenseConjugator
 
-        else -> throw Exception("Unknown tense")
-    }
+            else -> throw Exception("Unknown tense")
+        }
 }
