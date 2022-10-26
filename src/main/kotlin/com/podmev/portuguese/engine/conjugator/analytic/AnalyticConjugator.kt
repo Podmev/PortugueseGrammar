@@ -10,6 +10,7 @@ import com.podmev.portuguese.engine.conjugator.analytic.tense.basic.BasicTenseCo
 import com.podmev.portuguese.engine.conjugator.analytic.tense.expression.ExpressionTenseConjugatorLocalizer
 import com.podmev.portuguese.engine.conjugator.analytic.tense.periphrastic.PeriphrasticTenseConjugator
 
+//TODO make somehow specific tense in each Conjugators
 object AnalyticConjugator : Conjugator, ConjugatorLocalizer<GrammaticalTense> {
     override fun conjugateVerb(
         verbInInfinitive: String,

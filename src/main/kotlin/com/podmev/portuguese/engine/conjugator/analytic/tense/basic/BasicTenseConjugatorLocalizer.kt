@@ -8,10 +8,7 @@ import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.imper
 import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.indicative.IndicativeMoodTense
 import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.subjunctive.SubjunctiveMoodTense
 import com.podmev.portuguese.engine.conjugator.analytic.ConjugatorLocalizer
-import com.podmev.portuguese.engine.conjugator.analytic.tense.basic.implementations.GerundTenseConjugator
-import com.podmev.portuguese.engine.conjugator.analytic.tense.basic.implementations.PastParticipleForSerEstarTenseConjugator
-import com.podmev.portuguese.engine.conjugator.analytic.tense.basic.implementations.PastParticipleTenseConjugator
-import com.podmev.portuguese.engine.conjugator.analytic.tense.basic.implementations.PersonalInfinitiveTenseConjugator
+import com.podmev.portuguese.engine.conjugator.analytic.tense.basic.implementations.*
 import com.podmev.portuguese.engine.conjugator.analytic.tense.basic.implementations.condicional.ConditionalTenseConjugator
 import com.podmev.portuguese.engine.conjugator.analytic.tense.basic.implementations.imperative.ImperativeTenseConjugator
 import com.podmev.portuguese.engine.conjugator.analytic.tense.basic.implementations.indicative.IndicativeMoodTenseConjugatorLocalizer

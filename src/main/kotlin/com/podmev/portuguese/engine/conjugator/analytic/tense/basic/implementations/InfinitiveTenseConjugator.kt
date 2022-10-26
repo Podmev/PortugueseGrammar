@@ -1,4 +1,4 @@
-package com.podmev.portuguese.data.grammar.term.tense.basic.implementations
+package com.podmev.portuguese.engine.conjugator.analytic.tense.basic.implementations
 
 import com.podmev.portuguese.data.grammar.term.tense.GrammaticalTense
 import com.podmev.portuguese.data.grammar.term.verb.VerbArguments
@@ -10,7 +10,7 @@ object InfinitiveTenseConjugator : BasicTenseConjugator {
         tense: GrammaticalTense,
         verbArgs: VerbArguments
     ): List<String> {
-        TODO("Not yet implemented")
+        return listOf(verbInInfinitive) //doesn't change
     }
 
     override fun toString(): String {
