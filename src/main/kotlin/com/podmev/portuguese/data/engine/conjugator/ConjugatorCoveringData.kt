@@ -29,7 +29,7 @@ data class ConjugatorCoveringData(
         println(pythagoreanTriples(20))
     }
 
-    fun getAllVerbFormInfos(): Iterable<VerbFormInfo>  =
+    fun getAllVerbFormInfos(): Iterable<VerbFormInfo> =
         verbInfinitives.flatMap { verb ->
             tenses.flatMap { tense ->
                 tense.possiblePronounGroups().flatMap { pronounGroup: PersonalPronounGroup ->

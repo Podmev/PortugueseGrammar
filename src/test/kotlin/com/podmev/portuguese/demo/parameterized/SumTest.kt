@@ -19,8 +19,8 @@ class SumTest {
         @JvmStatic
         fun sumProvider(): Stream<Arguments> {
             return Stream.of(
-                    Arguments.of(1, 2, 3),
-                    Arguments.of(5, 10, 15)
+                Arguments.of(1, 2, 3),
+                Arguments.of(5, 10, 15)
             )
         }
     }

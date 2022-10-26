@@ -18,7 +18,9 @@ object ImperativeTense : BasicTense {
         get() = true
 
     /*really doesn't exist this form in imperative*/
-    private val pronounGroupExceptionList = listOf(PersonalPronounGroup(GrammaticalNumber.SINGULAR, GrammaticalPerson.FIRST))
+    private val pronounGroupExceptionList =
+        listOf(PersonalPronounGroup(GrammaticalNumber.SINGULAR, GrammaticalPerson.FIRST))
+
     override fun pronounGroupExceptions(): List<PersonalPronounGroup> = pronounGroupExceptionList
 
     override fun toString(): String {

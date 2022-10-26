@@ -27,6 +27,7 @@ class OnlyDataSetConjugatorParameterizedTest {
             )
         }
     }
+
     companion object {
         @JvmStatic
         fun allVerbForms(): Iterable<VerbFormInfo> {

@@ -29,7 +29,7 @@ interface GrammaticalTense {
     fun pronounGroupExceptions(): List<PersonalPronounGroup> = emptyList()
 
     fun possiblePronounGroups(): Sequence<PersonalPronounGroup> =
-        possiblePersons().flatMap {
-            person->possibleNumbers().map { PersonalPronounGroup(it, person)  }
+        possiblePersons().flatMap { person ->
+            possibleNumbers().map { PersonalPronounGroup(it, person) }
         }.filter { it !in pronounGroupExceptions() }
 }

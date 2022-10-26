@@ -13,6 +13,6 @@ enum class GrammaticalNumber {
         val undefinedList = listOf(UNDEFINED)
 
         fun getDefinedList(defined: Boolean): List<GrammaticalNumber> =
-            if(defined) definedList else undefinedList
+            if (defined) definedList else undefinedList
     }
 }

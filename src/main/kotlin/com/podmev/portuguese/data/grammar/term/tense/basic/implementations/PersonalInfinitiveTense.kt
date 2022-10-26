@@ -12,6 +12,7 @@ object PersonalInfinitiveTense : BasicTense {
         get() = true
     override val canHaveGender: Boolean
         get() = false
+
     override fun toString(): String {
         return "PersonalInfinitiveTense"
     }

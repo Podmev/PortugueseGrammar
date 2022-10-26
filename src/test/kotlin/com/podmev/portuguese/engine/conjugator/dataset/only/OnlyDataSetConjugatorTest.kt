@@ -3,7 +3,6 @@ package com.podmev.portuguese.engine.conjugator.dataset.only
 import com.podmev.portuguese.data.grammar.term.general.GrammaticalGender
 import com.podmev.portuguese.data.grammar.term.general.GrammaticalNumber
 import com.podmev.portuguese.data.grammar.term.general.GrammaticalPerson
-import com.podmev.portuguese.data.grammar.term.pronoun.PersonalPronounGroup
 import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.GerundTense
 import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.InfinitiveTense
 import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.indicative.IndicativeImperfectTense
@@ -11,7 +10,6 @@ import com.podmev.portuguese.data.grammar.term.verb.GrammaticalVoice
 import com.podmev.portuguese.data.grammar.term.verb.VerbArguments
 import org.junit.Assert.assertEquals
 import org.junit.Test
-import org.junit.jupiter.api.assertDoesNotThrow
 
 class OnlyDataSetConjugatorTest {
     private val conjugator = OnlyDataSetConjugator

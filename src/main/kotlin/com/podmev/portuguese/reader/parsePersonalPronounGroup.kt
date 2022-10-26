@@ -15,7 +15,7 @@ fun parsePersonalPronounGroup(s: String): PersonalPronounGroup? {
     if (s.length !in 0..2) return null
     val firstSymbol = s.getOrNull(0)
     val secondSymbol = s.getOrNull(1)
-    if(firstSymbol==null){
+    if (firstSymbol == null) {
         return PersonalPronounGroup(GrammaticalNumber.UNDEFINED, GrammaticalPerson.UNDEFINED)
     }
     if (firstSymbol !in listOf('p', 's')) return null

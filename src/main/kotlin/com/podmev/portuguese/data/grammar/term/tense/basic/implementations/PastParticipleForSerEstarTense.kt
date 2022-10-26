@@ -12,6 +12,7 @@ object PastParticipleForSerEstarTense : BasicTense {
         get() = true
     override val canHaveGender: Boolean
         get() = true
+
     override fun toString(): String {
         return "PastParticipleForSerEstarTense"
     }

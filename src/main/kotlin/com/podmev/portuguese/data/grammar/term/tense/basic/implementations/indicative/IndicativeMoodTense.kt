@@ -3,7 +3,7 @@ package com.podmev.portuguese.data.grammar.term.tense.basic.implementations.indi
 import com.podmev.portuguese.data.grammar.term.tense.basic.BasicTense
 import com.podmev.portuguese.data.grammar.term.verb.GrammaticalMood
 
-interface IndicativeMoodTense: BasicTense {
+interface IndicativeMoodTense : BasicTense {
     override val mood: GrammaticalMood
         get() = GrammaticalMood.INDICATIVE
     override val canHavePerson: Boolean

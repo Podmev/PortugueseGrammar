@@ -13,6 +13,6 @@ enum class GrammaticalGender {
         val undefinedList = listOf(UNDEFINED)
 
         fun getDefinedList(defined: Boolean): List<GrammaticalGender> =
-            if(defined) definedList else undefinedList
+            if (defined) definedList else undefinedList
     }
 }

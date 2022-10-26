@@ -8,7 +8,7 @@ import org.junit.Test
 
 class ParsePersonalPronounGroupTest {
     @Test
-    fun emptyTest(){
+    fun emptyTest() {
         assertEquals(
             "Empty string",
             PersonalPronounGroup(GrammaticalNumber.UNDEFINED, GrammaticalPerson.UNDEFINED),
@@ -17,7 +17,7 @@ class ParsePersonalPronounGroupTest {
     }
 
     @Test
-    fun singularFirstTest(){
+    fun singularFirstTest() {
         assertEquals(
             "Singular first person s1",
             PersonalPronounGroup(GrammaticalNumber.SINGULAR, GrammaticalPerson.FIRST),
@@ -26,7 +26,7 @@ class ParsePersonalPronounGroupTest {
     }
 
     @Test
-    fun singularSecondTest(){
+    fun singularSecondTest() {
         assertEquals(
             "Singular second person s2",
             PersonalPronounGroup(GrammaticalNumber.SINGULAR, GrammaticalPerson.SECOND),
@@ -35,7 +35,7 @@ class ParsePersonalPronounGroupTest {
     }
 
     @Test
-    fun singularThirdTest(){
+    fun singularThirdTest() {
         assertEquals(
             "Singular third person s3",
             PersonalPronounGroup(GrammaticalNumber.SINGULAR, GrammaticalPerson.THIRD),
@@ -44,7 +44,7 @@ class ParsePersonalPronounGroupTest {
     }
 
     @Test
-    fun singularUndefinedTest(){
+    fun singularUndefinedTest() {
         assertEquals(
             "Singular undefined person s",
             PersonalPronounGroup(GrammaticalNumber.SINGULAR, GrammaticalPerson.UNDEFINED),
@@ -53,7 +53,7 @@ class ParsePersonalPronounGroupTest {
     }
 
     @Test
-    fun pluralFirstTest(){
+    fun pluralFirstTest() {
         assertEquals(
             "Plural first person p1",
             PersonalPronounGroup(GrammaticalNumber.PLURAL, GrammaticalPerson.FIRST),
@@ -62,7 +62,7 @@ class ParsePersonalPronounGroupTest {
     }
 
     @Test
-    fun pluralSecondTest(){
+    fun pluralSecondTest() {
         assertEquals(
             "Plural second person p2",
             PersonalPronounGroup(GrammaticalNumber.PLURAL, GrammaticalPerson.SECOND),
@@ -71,7 +71,7 @@ class ParsePersonalPronounGroupTest {
     }
 
     @Test
-    fun pluralThirdTest(){
+    fun pluralThirdTest() {
         assertEquals(
             "Plural third person p3",
             PersonalPronounGroup(GrammaticalNumber.PLURAL, GrammaticalPerson.THIRD),
@@ -80,7 +80,7 @@ class ParsePersonalPronounGroupTest {
     }
 
     @Test
-    fun pluralUndefinedTest(){
+    fun pluralUndefinedTest() {
         assertEquals(
             "Plural undefined person p",
             PersonalPronounGroup(GrammaticalNumber.PLURAL, GrammaticalPerson.UNDEFINED),
@@ -89,12 +89,9 @@ class ParsePersonalPronounGroupTest {
     }
 
 
-
-
-
     //Negative tests
     @Test
-    fun negativeThreeSymbolsTest(){
+    fun negativeThreeSymbolsTest() {
         assertEquals(
             "Three symbols abc",
             null,
@@ -103,7 +100,7 @@ class ParsePersonalPronounGroupTest {
     }
 
     @Test
-    fun negativeSingularZeroTest(){
+    fun negativeSingularZeroTest() {
         assertEquals(
             "singular zero",
             null,
@@ -112,7 +109,7 @@ class ParsePersonalPronounGroupTest {
     }
 
     @Test
-    fun negativePluralZeroTest(){
+    fun negativePluralZeroTest() {
         assertEquals(
             "plural zero",
             null,
@@ -121,7 +118,7 @@ class ParsePersonalPronounGroupTest {
     }
 
     @Test
-    fun negativeSingular4Test(){
+    fun negativeSingular4Test() {
         assertEquals(
             "singular 4",
             null,
@@ -130,7 +127,7 @@ class ParsePersonalPronounGroupTest {
     }
 
     @Test
-    fun negativePlural4Test(){
+    fun negativePlural4Test() {
         assertEquals(
             "plural 4",
             null,
@@ -139,7 +136,7 @@ class ParsePersonalPronounGroupTest {
     }
 
     @Test
-    fun negativeOtherLetter2Test(){
+    fun negativeOtherLetter2Test() {
         assertEquals(
             "other letter 2",
             null,

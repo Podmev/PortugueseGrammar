@@ -11,6 +11,6 @@ enum class GrammaticalPerson {
         val undefinedList = listOf(UNDEFINED)
 
         fun getDefinedList(defined: Boolean): List<GrammaticalPerson> =
-            if(defined) definedList else undefinedList
+            if (defined) definedList else undefinedList
     }
 }

@@ -12,6 +12,7 @@ object InfinitiveTense : BasicTense {
         get() = false
     override val canHaveGender: Boolean
         get() = false
+
     override fun toString(): String {
         return "InfinitiveTense"
     }

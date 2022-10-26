@@ -3,7 +3,6 @@ package com.podmev.portuguese.data.grammar.term.pronoun
 import com.podmev.portuguese.data.grammar.term.general.GrammaticalGender
 import com.podmev.portuguese.data.grammar.term.general.GrammaticalNumber
 import com.podmev.portuguese.data.grammar.term.general.GrammaticalPerson
-import io.quarkus.test.junit.QuarkusTest
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
