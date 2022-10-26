@@ -25,6 +25,7 @@ data class ConjugatorCoveringData(
             }
         }
 
+    @Suppress("UNUSED_PARAMETER")
     fun main(args: Array<String>) {
         println(pythagoreanTriples(20))
     }
