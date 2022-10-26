@@ -12,7 +12,7 @@ class OnlyDataSetConjugatorParameterizedTest {
     private val conjugator = OnlyDataSetConjugator
 
     @ParameterizedTest
-    @MethodSource("testDataCollection")
+    @MethodSource("allVerbForms")
     fun parametrizedTest(data: VerbFormInfo) {
         assertDoesNotThrow("Combination: $data") {
             conjugator.conjugateVerb(
@@ -29,7 +29,7 @@ class OnlyDataSetConjugatorParameterizedTest {
     }
     companion object {
         @JvmStatic
-        fun testDataCollection(): Iterable<VerbFormInfo> {
+        fun allVerbForms(): Iterable<VerbFormInfo> {
             val conjugator = OnlyDataSetConjugator
             val coveringData = conjugator.getConjugatorCoveringData()
             return coveringData.getAllVerbFormInfos()
