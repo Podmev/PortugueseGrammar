@@ -37,7 +37,8 @@ object OnlyDataSetConjugator : Conjugator {
             ?: verbFormInfoMap[removeGender(currentVerbFormInfo)] //We need to see undefined gender most of times
             ?: throw Exception("Not found form $currentVerbFormInfo")
         if (verbInForm == "-") {
-            throw Exception("This form doesn't exists $currentVerbFormInfo")
+            //It is not valid to throw Exception
+            return emptyList()
         }
         return verbVariantsSplit(verbInForm)
     }
