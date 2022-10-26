@@ -1,8 +1,6 @@
 package com.podmev.portuguese.data.engine.conjugator
 
-import com.podmev.portuguese.data.grammar.term.general.GrammaticalGender
-import com.podmev.portuguese.data.grammar.term.general.GrammaticalNumber
-import com.podmev.portuguese.data.grammar.term.general.GrammaticalPerson
+import com.podmev.portuguese.data.grammar.term.pronoun.PersonalPronounGroup
 import com.podmev.portuguese.data.grammar.term.tense.GrammaticalTense
 import com.podmev.portuguese.data.grammar.term.verb.GrammaticalVoice
 import com.podmev.portuguese.data.grammar.term.verb.VerbFormInfo
@@ -14,27 +12,41 @@ data class ConjugatorCoveringData(
     val verbInfinitives: Sequence<String>,
     val tenses: Sequence<GrammaticalTense>,
     val voices: Sequence<GrammaticalVoice>
-){
+) {
 
 
-//example for comprehension
-fun pythagoreanTriples(n: Int) =
-    (1..n).flatMap {
-        x -> (x..n).flatMap {
-            y -> (y..n).filter {
-                z ->  x * x + y * y == z * z
-            }.map { Triple(x, y, it) }
+    //example for comprehension
+    fun pythagoreanTriples(n: Int) =
+        (1..n).flatMap { x ->
+            (x..n).flatMap { y ->
+                (y..n).filter { z ->
+                    x * x + y * y == z * z
+                }.map { Triple(x, y, it) }
+            }
         }
+
+    fun main(args: Array<String>) {
+        println(pythagoreanTriples(20))
     }
 
-fun main(args: Array<String>) {
-    println(pythagoreanTriples(20))
-}
-
-    //TODO look how to make iterables with for-comprehension
-//    fun getAllVerbFormInfos(): Iterable<VerbFormInfo>  =
-//        {for (verb in verbInfinitives)
-//            VerbFormInfo(verb)
-//        }
+    fun getAllVerbFormInfos(): Iterable<VerbFormInfo>  =
+        verbInfinitives.flatMap { verb ->
+            tenses.flatMap { tense ->
+                tense.possiblePronounGroups().flatMap { pronounGroup: PersonalPronounGroup ->
+                    tense.possibleGenders().flatMap { gender ->
+                        voices.map { voice ->
+                            VerbFormInfo(
+                                verb,
+                                tense,
+                                pronounGroup.grammaticalPerson,
+                                pronounGroup.grammaticalNumber,
+                                gender,
+                                voice
+                            )
+                        }
+                    }
+                }
+            }
+        }.asIterable()
 
 }
