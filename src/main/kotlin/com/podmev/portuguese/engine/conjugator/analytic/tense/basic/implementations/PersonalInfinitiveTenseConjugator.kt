@@ -42,6 +42,10 @@ object PersonalInfinitiveTenseConjugator : BasicTenseConjugator {
             //change last 'i' for 'í': with acute accent (acento agudo)
             return infinitive.dropLast(2) + "ír"
         }
+        if(infinitive.endsWith("air") && (person == SECOND && number == SINGULAR || person == THIRD && number == PLURAL)){
+            //change last 'i' for 'í': with acute accent (acento agudo)
+            return infinitive.dropLast(2) + "ír"
+        }
         if(infinitive.endsWith("ôr")){
             //change last 'ô' for 'o': with circumflex. verbs pôr, oppôr
             return infinitive.dropLast(2) + "or"
