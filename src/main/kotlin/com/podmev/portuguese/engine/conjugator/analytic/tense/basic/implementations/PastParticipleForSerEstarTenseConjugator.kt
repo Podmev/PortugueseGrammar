@@ -10,6 +10,7 @@ object PastParticipleForSerEstarTenseConjugator : BasicTenseConjugator {
         tense: GrammaticalTense,
         verbArgs: VerbArguments
     ): List<String> {
+        //NOTE check list of exceptions then use form of PastParticipleTense
         TODO("Not yet implemented")
     }
 
