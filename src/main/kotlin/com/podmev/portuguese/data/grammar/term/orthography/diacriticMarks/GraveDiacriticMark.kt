@@ -6,4 +6,5 @@ object GraveDiacriticMark: DiacriticMark {
     override val englishTerm: String = "Grave accent"
     override val portugueseTerm: String = "Acento grave"
     override val symbol: String = "◌́"
+    override val obsolete: Boolean = false
 }

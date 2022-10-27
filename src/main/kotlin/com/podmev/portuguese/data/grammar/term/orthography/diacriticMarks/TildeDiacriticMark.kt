@@ -6,4 +6,5 @@ object TildeDiacriticMark: DiacriticMark {
     override val englishTerm: String = "Tilde"
     override val portugueseTerm: String = "Til"
     override val symbol: String = "◌̃"
+    override val obsolete: Boolean = false
 }
