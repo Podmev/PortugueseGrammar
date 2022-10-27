@@ -1,9 +1,9 @@
 package com.podmev.portuguese.data.grammar.term.orthography.letters
 
-import com.podmev.portuguese.data.grammar.term.orthography.Letter
+import com.podmev.portuguese.data.grammar.term.orthography.AbstractLetter
 import com.podmev.portuguese.data.grammar.term.orthography.LetterCategory
 
-object P_Letter : Letter {
+object P_Letter : AbstractLetter() {
     override val uppercase: Char = 'P'
     override val lowercase: Char = 'p'
     override val category: LetterCategory = LetterCategory.CONSONANT
