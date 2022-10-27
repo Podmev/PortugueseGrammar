@@ -35,7 +35,7 @@ object PersonalInfinitiveTenseConjugator : BasicTenseConjugator {
 
     private fun changeBase(infinitive: String, person: GrammaticalPerson, number: GrammaticalNumber): String{
         if(infinitive.endsWith("uir") && (person == SECOND && number == SINGULAR || person == THIRD && number == PLURAL)){
-            if(infinitive.endsWith("guir")){
+            if(infinitive.endsWith("guir") || infinitive.endsWith("quir")){
                 //in this case rule doesn't work
                 return infinitive
             }
