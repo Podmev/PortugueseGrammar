@@ -8,6 +8,7 @@ import com.podmev.portuguese.data.grammar.term.general.GrammaticalPerson.*
 import com.podmev.portuguese.data.grammar.term.tense.GrammaticalTense
 import com.podmev.portuguese.data.grammar.term.verb.VerbArguments
 import com.podmev.portuguese.engine.conjugator.analytic.tense.basic.BasicTenseConjugator
+
 /*Additional rules:
 1 -    Combination: VerbFormInfo(infinitive=instituir, tense=PersonalInfinitiveTense, person=THIRD, number=PLURAL, gender=UNDEFINED, voice=ACTIVE) ==>
 expected: <[instituírem]> but was: <[instituirem]>
@@ -24,7 +25,7 @@ object PersonalInfinitiveTenseConjugator : BasicTenseConjugator {
         verbArgs: VerbArguments
     ): List<String> {
         val ending = getAdditionalSuffix(verbArgs.person, verbArgs.number)
-        if(ending.isEmpty()){
+        if (ending.isEmpty()) {
             return listOf(verbInInfinitive)
         }
         //since now word will be bigger
@@ -33,20 +34,20 @@ object PersonalInfinitiveTenseConjugator : BasicTenseConjugator {
         return listOf(form)
     }
 
-    private fun changeBase(infinitive: String, person: GrammaticalPerson, number: GrammaticalNumber): String{
-        if(infinitive.endsWith("uir") && (person == SECOND && number == SINGULAR || person == THIRD && number == PLURAL)){
-            if(infinitive.endsWith("guir") || infinitive.endsWith("quir")){
+    private fun changeBase(infinitive: String, person: GrammaticalPerson, number: GrammaticalNumber): String {
+        if (infinitive.endsWith("uir") && (person == SECOND && number == SINGULAR || person == THIRD && number == PLURAL)) {
+            if (infinitive.endsWith("guir") || infinitive.endsWith("quir")) {
                 //in this case rule doesn't work
                 return infinitive
             }
             //change last 'i' for 'í': with acute accent (acento agudo)
             return infinitive.dropLast(2) + "ír"
         }
-        if(infinitive.endsWith("air") && (person == SECOND && number == SINGULAR || person == THIRD && number == PLURAL)){
+        if (infinitive.endsWith("air") && (person == SECOND && number == SINGULAR || person == THIRD && number == PLURAL)) {
             //change last 'i' for 'í': with acute accent (acento agudo)
             return infinitive.dropLast(2) + "ír"
         }
-        if(infinitive.endsWith("ôr")){
+        if (infinitive.endsWith("ôr")) {
             //change last 'ô' for 'o': with circumflex. verbs pôr, oppôr
             return infinitive.dropLast(2) + "or"
         }
