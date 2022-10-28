@@ -80,23 +80,23 @@ object Alphabet {
         UmlautDiacriticMark
     )
 
-    val allGenericLetters: List<GenericLetter> = letters + diacriticLetters
-    val vowelGenericLetters = allGenericLetters.filter { it.category() == VOWEL }
-    val consonantGenericLetters = allGenericLetters.filter { it.category() == CONSONANT }
+    val genericLetters: List<GenericLetter> = letters + diacriticLetters
+    val vowelGenericLetters = genericLetters.filter { it.category() == VOWEL }
+    val consonantGenericLetters = genericLetters.filter { it.category() == CONSONANT }
 
-    val allExactLetters: List<ExactLetter> = allGenericLetters.flatMap { it.allExactLetters() }
-    val vowelExactLetters: List<ExactLetter> = allExactLetters.filter { it.genericLetter.category() == VOWEL }
-    val consonantExactLetters: List<ExactLetter> = allExactLetters.filter { it.genericLetter.category() == CONSONANT }
+    val exactLetters: List<ExactLetter> = genericLetters.flatMap { it.allExactLetters() }
+    val vowelExactLetters: List<ExactLetter> = exactLetters.filter { it.genericLetter.category() == VOWEL }
+    val consonantExactLetters: List<ExactLetter> = exactLetters.filter { it.genericLetter.category() == CONSONANT }
 
-    //TODO rename allPossibleChars
-    val allPossibleChars: List<Char> = allExactLetters.map { it.view }
+    //TODO rename possibleChars
+    val possibleChars: List<Char> = exactLetters.map { it.view }
     val vowelChars: List<Char> = vowelExactLetters.map { it.view }
     val consonantChars: List<Char> = consonantExactLetters.map { it.view }
 
     fun isVowelChar(c: Char) = c in vowelChars
     fun isConsonantChar(c: Char) = c in consonantChars
 
-    private val exactLetterViewMap: Map<Char, ExactLetter> = allExactLetters.associateBy { it.view }
+    private val exactLetterViewMap: Map<Char, ExactLetter> = exactLetters.associateBy { it.view }
     fun parseExactLetter(c: Char): ExactLetter? = exactLetterViewMap[c]
 
 }

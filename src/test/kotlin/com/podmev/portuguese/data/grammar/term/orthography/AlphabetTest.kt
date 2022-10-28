@@ -202,7 +202,7 @@ class AlphabetTest {
     inner class GenericLetters {
         @Test
         fun genericLettersAreUniqueTest() {
-            val genericLetters: List<GenericLetter> = Alphabet.allGenericLetters
+            val genericLetters: List<GenericLetter> = Alphabet.genericLetters
             Assertions.assertEquals(genericLetters.size, genericLetters.distinct().size, "Generic letters don't repeat")
         }
 
@@ -215,13 +215,13 @@ class AlphabetTest {
         @ParameterizedTest()
         @MethodSource("com.podmev.portuguese.data.grammar.term.orthography.AlphabetTest#letterProvider")
         fun letterIsGenericLetterTest(letter: Letter) {
-            Truth.assertThat(letter in Alphabet.allGenericLetters).isTrue()
+            Truth.assertThat(letter in Alphabet.genericLetters).isTrue()
         }
 
         @ParameterizedTest()
         @MethodSource("com.podmev.portuguese.data.grammar.term.orthography.AlphabetTest#diacriticLetterProvider")
         fun diacriticLetterIsGenericLetterTest(diacriticLetter: DiacriticLetter) {
-            Truth.assertThat(diacriticLetter in Alphabet.allGenericLetters).isTrue()
+            Truth.assertThat(diacriticLetter in Alphabet.genericLetters).isTrue()
         }
 
         @Test
@@ -240,13 +240,13 @@ class AlphabetTest {
     inner class ExactLetters{
         @Test
         fun exactLettersAreUniqueTest() {
-            val exactLetters: List<ExactLetter> = Alphabet.allExactLetters
+            val exactLetters: List<ExactLetter> = Alphabet.exactLetters
             Assertions.assertEquals(exactLetters.size, exactLetters.distinct().size, "Exact letters don't repeat")
         }
 
         @Test
         fun exactLetterViewsAreUniqueTest() {
-            val exactLetters: List<ExactLetter> = Alphabet.allExactLetters
+            val exactLetters: List<ExactLetter> = Alphabet.exactLetters
             Assertions.assertEquals(
                 /* expected = */ exactLetters.size,
                 /* actual = */ exactLetters.map { it.view }.distinct().size,
@@ -316,7 +316,7 @@ class AlphabetTest {
 
         @JvmStatic
         fun charProvider(): Stream<Arguments> =
-            Alphabet.allPossibleChars.stream().map{char->Arguments.of(char)}
+            Alphabet.possibleChars.stream().map{ char->Arguments.of(char)}
 
         @JvmStatic
         fun diacriticMarkProvider(): Stream<Arguments> =
