@@ -7,4 +7,6 @@ interface Letter : GenericLetter{
 
     val relatedDiacriticLetters: List<DiacriticLetter>
 
+    fun addDiacriticMark(mark: DiacriticMark): DiacriticLetter?
+
 }

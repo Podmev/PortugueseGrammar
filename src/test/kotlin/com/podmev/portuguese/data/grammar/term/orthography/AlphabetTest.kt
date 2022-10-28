@@ -196,6 +196,24 @@ class AlphabetTest {
                 letter.relatedDiacriticLetters.all{diacriticLetter ->  diacriticLetter.baseLetter() == letter}
             ).isTrue()
         }
+
+        @ParameterizedTest()
+        @MethodSource("com.podmev.portuguese.data.grammar.term.orthography.AlphabetTest#diacriticLetterProvider")
+        fun baseAddDiacriticPositiveTest(diacriticLetter: DiacriticLetter) {
+            Truth.assertThat(diacriticLetter.baseLetter().addDiacriticMark(diacriticLetter.diacriticMark))
+                .isEqualTo(diacriticLetter)
+        }
+
+        /*adding diacritic mark which is not used in letter gives result null*/
+        @ParameterizedTest()
+        @MethodSource("com.podmev.portuguese.data.grammar.term.orthography.AlphabetTest#letterProvider")
+        fun baseAddNotUsedDiacriticMarksNegativeTest(letter: Letter) {
+            val usedMarks = letter.relatedDiacriticLetters.map { it.diacriticMark }
+            val notUsedMarks = Alphabet.diacriticMarks.filter { it !in usedMarks }
+
+            Truth.assertThat(notUsedMarks.all{letter.addDiacriticMark(it)==null})
+                .isTrue()
+        }
     }
 
     @Nested
