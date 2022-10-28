@@ -5,9 +5,13 @@ import com.podmev.portuguese.data.grammar.term.general.GrammaticalNumber.PLURAL
 import com.podmev.portuguese.data.grammar.term.general.GrammaticalNumber.SINGULAR
 import com.podmev.portuguese.data.grammar.term.general.GrammaticalPerson
 import com.podmev.portuguese.data.grammar.term.general.GrammaticalPerson.*
+import com.podmev.portuguese.data.grammar.term.orthography.Alphabet
+import com.podmev.portuguese.data.grammar.term.orthography.diacriticMarks.AcuteDiacriticMark
+import com.podmev.portuguese.data.grammar.term.orthography.letters.I_Letter
 import com.podmev.portuguese.data.grammar.term.tense.GrammaticalTense
 import com.podmev.portuguese.data.grammar.term.verb.VerbArguments
 import com.podmev.portuguese.engine.conjugator.analytic.tense.basic.BasicTenseConjugator
+import com.podmev.portuguese.engine.utils.word.Wordifier
 
 /*Additional rules:
 1 -    Combination: VerbFormInfo(infinitive=instituir, tense=PersonalInfinitiveTense, person=THIRD, number=PLURAL, gender=UNDEFINED, voice=ACTIVE) ==>
@@ -29,27 +33,29 @@ object PersonalInfinitiveTenseConjugator : BasicTenseConjugator {
             return listOf(verbInInfinitive)
         }
         //since now word will be bigger
-        val newBase = changeBase(verbInInfinitive, verbArgs.person, verbArgs.number)
+        val newBase = changeBase(verbInInfinitive, ending)
         val form = "$newBase$ending"
         return listOf(form)
     }
 
-    private fun changeBase(infinitive: String, person: GrammaticalPerson, number: GrammaticalNumber): String {
-        if (infinitive.endsWith("uir") && (person == SECOND && number == SINGULAR || person == THIRD && number == PLURAL)) {
+    private fun endingStartsWithVowel(ending: String): Boolean = Alphabet.isVowelChar(ending.first())
+
+    private fun changeBase(infinitive: String, ending: String): String {
+        if (infinitive.endsWith("uir") && endingStartsWithVowel(ending)) {
             if (infinitive.endsWith("guir") || infinitive.endsWith("quir")) {
                 //in this case rule doesn't work
                 return infinitive
             }
             //change last 'i' for 'í': with acute accent (acento agudo)
-            return infinitive.dropLast(2) + "ír"
+            return Wordifier.addDiacriticsToLastFoundLetter(infinitive, I_Letter, AcuteDiacriticMark)
         }
-        if (infinitive.endsWith("air") && (person == SECOND && number == SINGULAR || person == THIRD && number == PLURAL)) {
+        if (infinitive.endsWith("air") && endingStartsWithVowel(ending)) {
             //change last 'i' for 'í': with acute accent (acento agudo)
-            return infinitive.dropLast(2) + "ír"
+            return Wordifier.addDiacriticsToLastFoundLetter(infinitive, I_Letter, AcuteDiacriticMark)
         }
         if (infinitive.endsWith("ôr")) {
             //change last 'ô' for 'o': with circumflex. verbs pôr, oppôr
-            return infinitive.dropLast(2) + "or"
+            return Wordifier.deleteLastDiacritics(infinitive)
         }
         return infinitive
     }
@@ -77,4 +83,10 @@ object PersonalInfinitiveTenseConjugator : BasicTenseConjugator {
     override fun toString(): String {
         return "PersonalInfinitiveTenseConjugator"
     }
+
+//    fun addAcuteAccentToLastI_Letter(s: String):String{
+//
+//    }
+//
+//    fun replaceLastFoundGeneralLetter()
 }
