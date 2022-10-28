@@ -31,4 +31,6 @@ interface GenericLetter {
 
     fun allExactLetters(): List<ExactLetter> =
         listOf(uppercaseExactLetter(), lowercaseExactLetter())
+
+    fun hasDiacritics() : Boolean = diacriticMark!=null
 }

@@ -10,21 +10,37 @@ object Wordifier {
     ): String {
         val diacriticLetter: DiacriticLetter = letter.addDiacriticMark(diacriticMark)
             ?: throw Exception("Cannot add $diacriticMark to letter $letter")
-        return replaceLastFoundGeneralLetter(word, letter, diacriticLetter)
+        return replaceLastFoundGenericLetter(word, letter, diacriticLetter)
     }
 
-    fun replaceLastFoundGeneralLetter(
-        word: String,
-        fromGeneralLetter: GenericLetter,
-        toGeneralLetter: GenericLetter
+    fun deleteLastDiacritics(
+        word: String
     ): String {
         /*not very optimal, but anyway*/
         val exactLetters: List<ExactLetter> = word2ExactLetters(word)
         val genericLetters = exactLetters.map { it.genericLetter }
-        val replacementIndex: Int = genericLetters.lastIndexOf(fromGeneralLetter)
+        val replacementIndex: Int = genericLetters.indexOfLast(GenericLetter::hasDiacritics)
+        val oldReplacementExactLetter = exactLetters[replacementIndex]
+        val oldReplacementGenericLetter = oldReplacementExactLetter.genericLetter
+        val newReplacementGenericLetter = oldReplacementGenericLetter.baseLetter()
+        val letterSize: LetterSize = oldReplacementExactLetter.size
+        val exactLetterReplacement: ExactLetter = newReplacementGenericLetter.exactLetterBySize(letterSize)
+        val updatedExactLetters = replaceElementByIndex(exactLetters, replacementIndex, exactLetterReplacement)
+        return exactLetters2Word(updatedExactLetters)
+    }
+
+    fun replaceLastFoundGenericLetter(
+        word: String,
+        fromGenericLetter: GenericLetter,
+        toGenericLetter: GenericLetter
+    ): String {
+        /*not very optimal, but anyway*/
+        val exactLetters: List<ExactLetter> = word2ExactLetters(word)
+        val genericLetters = exactLetters.map { it.genericLetter }
+        val replacementIndex: Int = genericLetters.lastIndexOf(fromGenericLetter)
         val exactLetterForChanging: ExactLetter = exactLetters[replacementIndex]
         val letterSize: LetterSize = exactLetterForChanging.size
-        val exactLetterReplacement: ExactLetter = toGeneralLetter.exactLetterBySize(letterSize)
+        val exactLetterReplacement: ExactLetter = toGenericLetter.exactLetterBySize(letterSize)
         val updatedExactLetters = replaceElementByIndex(exactLetters, replacementIndex, exactLetterReplacement)
         return exactLetters2Word(updatedExactLetters)
     }
