@@ -1,9 +1,9 @@
 package com.podmev.portuguese.data.grammar.term.orthography
 
-interface Letter {
-    val uppercase: Char
-    val lowercase: Char
-    val category: LetterCategory
+interface Letter : GenericLetter{
+    override val uppercase: Char
+    override val lowercase: Char
+    override val category: LetterCategory
 
     val relatedDiacriticLetters: List<DiacriticLetter>
 

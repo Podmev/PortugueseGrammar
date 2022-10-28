@@ -31,7 +31,7 @@ class AlphabetTest {
         @Test
         fun alphabetLettersQuantity26Test() {
             val letters: List<Letter> = Alphabet.letters
-            Assertions.assertEquals(26, letters.size, "Letters don't repeat")
+            Assertions.assertEquals(26, letters.size, "Alphabet has exact 26 letters")
         }
 
         @Test

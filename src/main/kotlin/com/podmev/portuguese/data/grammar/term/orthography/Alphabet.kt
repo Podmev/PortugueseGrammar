@@ -70,4 +70,6 @@ object Alphabet {
         U_Umlaut_Letter
     )
 
+    val allGenericLetters: List<GenericLetter> = letters + diacriticLetters
+
 }
