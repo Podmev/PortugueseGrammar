@@ -5,4 +5,6 @@ interface Letter {
     val lowercase: Char
     val category: LetterCategory
 
+    val relatedDiacriticLetters: List<DiacriticLetter>
+
 }
