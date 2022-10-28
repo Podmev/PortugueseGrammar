@@ -2,6 +2,7 @@ package com.podmev.portuguese.data.grammar.term.orthography
 
 interface DiacriticMark {
     val englishTerm: String
+    val shortEnglishTerm: String
     val portugueseTerm: String
 
     /*cannot use char, because of size - too big*/

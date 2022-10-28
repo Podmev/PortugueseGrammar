@@ -4,6 +4,7 @@ import com.podmev.portuguese.data.grammar.term.orthography.DiacriticMark
 
 object CedillaDiacriticMark : DiacriticMark {
     override val englishTerm: String = "Cedilla"
+    override val shortEnglishTerm: String = "Cedilla"
     override val portugueseTerm: String = "Cedilha"
     override val symbol: String = "◌̧"
     override val obsolete: Boolean = false

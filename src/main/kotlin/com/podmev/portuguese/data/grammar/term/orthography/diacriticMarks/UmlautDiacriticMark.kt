@@ -4,6 +4,7 @@ import com.podmev.portuguese.data.grammar.term.orthography.DiacriticMark
 
 object UmlautDiacriticMark : DiacriticMark {
     override val englishTerm: String = "Umlaut"
+    override val shortEnglishTerm: String = "Umlaut"
     override val portugueseTerm: String = "Trema"
     override val symbol: String = "◌̈"
     override val obsolete: Boolean = true

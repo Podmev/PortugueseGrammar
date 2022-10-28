@@ -4,6 +4,7 @@ import com.podmev.portuguese.data.grammar.term.orthography.DiacriticMark
 
 object GraveDiacriticMark : DiacriticMark {
     override val englishTerm: String = "Grave accent"
+    override val shortEnglishTerm: String = "Grave"
     override val portugueseTerm: String = "Acento grave"
     override val symbol: String = "◌́"
     override val obsolete: Boolean = false

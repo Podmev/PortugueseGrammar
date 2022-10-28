@@ -3,7 +3,7 @@ package com.podmev.portuguese.data.grammar.term.orthography
 import com.podmev.portuguese.data.grammar.term.orthography.LetterCategory.CONSONANT
 import com.podmev.portuguese.data.grammar.term.orthography.LetterCategory.VOWEL
 import com.podmev.portuguese.data.grammar.term.orthography.diacriticLetters.acute.*
-import com.podmev.portuguese.data.grammar.term.orthography.diacriticLetters.cedilla.C_Cidilla_Letter
+import com.podmev.portuguese.data.grammar.term.orthography.diacriticLetters.cedilla.C_Cedilla_Letter
 import com.podmev.portuguese.data.grammar.term.orthography.diacriticLetters.circumflex.A_Circumflex_Letter
 import com.podmev.portuguese.data.grammar.term.orthography.diacriticLetters.circumflex.E_Circumflex_Letter
 import com.podmev.portuguese.data.grammar.term.orthography.diacriticLetters.circumflex.O_Circumflex_Letter
@@ -51,7 +51,7 @@ object Alphabet {
         A_Grave_Letter,
         A_Tilde_Letter,
 
-        C_Cidilla_Letter,
+        C_Cedilla_Letter,
 
         E_Acute_Letter,
         E_Circumflex_Letter,
