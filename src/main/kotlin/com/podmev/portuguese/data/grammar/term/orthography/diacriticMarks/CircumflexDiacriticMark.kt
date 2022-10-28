@@ -7,4 +7,7 @@ object CircumflexDiacriticMark: DiacriticMark {
     override val portugueseTerm: String = "Acento circunflexo"
     override val symbol: String = "◌̂"
     override val obsolete: Boolean = false
+    override val meaning: String =
+        "Indicates that a vowel is stressed and the quality of the accented vowel and, more precisely, " +
+                "its height: â, ê, and ô are high vowels"
 }

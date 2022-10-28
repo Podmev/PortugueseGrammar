@@ -8,4 +8,5 @@ interface DiacriticMark {
 
     /*is forbidden in actual grammar (can be found in ald texts)*/
     val obsolete:Boolean
+    val meaning: String
 }
