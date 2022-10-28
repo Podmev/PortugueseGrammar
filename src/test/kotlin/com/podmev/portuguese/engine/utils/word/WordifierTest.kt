@@ -1,7 +1,10 @@
 package com.podmev.portuguese.engine.utils.word
 
 import com.google.common.truth.Truth
+import com.podmev.portuguese.data.grammar.term.orthography.diacriticLetters.acute.I_Acute_Letter
 import com.podmev.portuguese.data.grammar.term.orthography.diacriticLetters.circumflex.O_Circumflex_Letter
+import com.podmev.portuguese.data.grammar.term.orthography.diacriticMarks.AcuteDiacriticMark
+import com.podmev.portuguese.data.grammar.term.orthography.letters.I_Letter
 import com.podmev.portuguese.data.grammar.term.orthography.letters.P_Letter
 import com.podmev.portuguese.data.grammar.term.orthography.letters.R_Letter
 import org.junit.jupiter.api.Nested
@@ -10,17 +13,29 @@ import org.junit.jupiter.api.Test
 class WordifierTest {
     @Nested
     inner class AddDiacriticsToLastFoundLetter {
-
+        @Test
+        fun positiveTest() {
+            Truth.assertThat(Wordifier.addDiacriticsToLastFoundLetter("instituir", I_Letter, AcuteDiacriticMark) )
+                .isEqualTo("instituír")
+        }
     }
 
     @Nested
     inner class DeleteLastDiacritics {
-
+        @Test
+        fun positiveTest() {
+            Truth.assertThat(Wordifier.deleteLastDiacritics("instituír") )
+                .isEqualTo("instituir")
+        }
     }
 
     @Nested
     inner class ReplaceLastFoundGenericLetter {
-
+        @Test
+        fun positiveTest() {
+            Truth.assertThat(Wordifier.replaceLastFoundGenericLetter("instituir", I_Letter, I_Acute_Letter) )
+                .isEqualTo("instituír")
+        }
     }
 
     @Nested

@@ -1,7 +1,6 @@
 package com.podmev.portuguese.engine.utils.word
 
 import com.podmev.portuguese.data.grammar.term.orthography.*
-//TODO tests for Wordifier
 
 /*tools for changing words*/
 object Wordifier {
