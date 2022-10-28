@@ -2,6 +2,15 @@ package com.podmev.portuguese.data.grammar.term.orthography
 
 import com.podmev.portuguese.data.grammar.term.orthography.LetterCategory.CONSONANT
 import com.podmev.portuguese.data.grammar.term.orthography.LetterCategory.VOWEL
+import com.podmev.portuguese.data.grammar.term.orthography.diacriticLetters.acute.*
+import com.podmev.portuguese.data.grammar.term.orthography.diacriticLetters.cedilla.C_Cidilla_Letter
+import com.podmev.portuguese.data.grammar.term.orthography.diacriticLetters.circumflex.A_Circumflex_Letter
+import com.podmev.portuguese.data.grammar.term.orthography.diacriticLetters.circumflex.E_Circumflex_Letter
+import com.podmev.portuguese.data.grammar.term.orthography.diacriticLetters.circumflex.O_Circumflex_Letter
+import com.podmev.portuguese.data.grammar.term.orthography.diacriticLetters.grave.*
+import com.podmev.portuguese.data.grammar.term.orthography.diacriticLetters.tilde.A_Tilde_Letter
+import com.podmev.portuguese.data.grammar.term.orthography.diacriticLetters.tilde.O_Tilde_Letter
+import com.podmev.portuguese.data.grammar.term.orthography.diacriticLetters.umlaut.U_Umlaut_Letter
 import com.podmev.portuguese.data.grammar.term.orthography.letters.*
 
 object Alphabet {
@@ -35,5 +44,30 @@ object Alphabet {
     )
     val vowelLetters = letters.filter { it.category == VOWEL }
     val consonantLetters = letters.filter { it.category == CONSONANT }
+
+    val diacriticLetters = listOf(
+        A_Acute_Letter,
+        A_Circumflex_Letter,
+        A_Grave_Letter,
+        A_Tilde_Letter,
+
+        C_Cidilla_Letter,
+
+        E_Acute_Letter,
+        E_Circumflex_Letter,
+        E_Grave_Letter,
+
+        I_Acute_Letter,
+        I_Grave_Letter,
+
+        O_Acute_Letter,
+        O_Circumflex_Letter,
+        O_Grave_Letter,
+        O_Tilde_Letter,
+
+        U_Acute_Letter,
+        U_Grave_Letter,
+        U_Umlaut_Letter
+    )
 
 }
