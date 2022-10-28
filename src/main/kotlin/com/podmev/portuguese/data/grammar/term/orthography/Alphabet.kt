@@ -71,5 +71,7 @@ object Alphabet {
     )
 
     val allGenericLetters: List<GenericLetter> = letters + diacriticLetters
+    val vowelGenericLetters = allGenericLetters.filter { it.category() == VOWEL }
+    val consonantGenericLetters = allGenericLetters.filter { it.category() == CONSONANT }
 
 }

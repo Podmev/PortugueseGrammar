@@ -10,4 +10,9 @@ interface GenericLetter {
     /*is forbidden in actual grammar (can be found in ald texts)*/
     fun obsolete(): Boolean
 
+    fun viewBySize(letterSize: LetterSize): Char =
+        when(letterSize){
+            LetterSize.UPPER_CASE -> uppercase
+            LetterSize.LOWER_CASE -> lowercase
+        }
 }
