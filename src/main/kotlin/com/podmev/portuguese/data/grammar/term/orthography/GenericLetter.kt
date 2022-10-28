@@ -3,9 +3,11 @@ package com.podmev.portuguese.data.grammar.term.orthography
 interface GenericLetter {
     val uppercase: Char
     val lowercase: Char
-    val category: LetterCategory
-
-    val baseLetter: Letter
     val diacriticMark: DiacriticMark?
+
+    fun baseLetter(): Letter
+    fun category(): LetterCategory
+    /*is forbidden in actual grammar (can be found in ald texts)*/
+    fun obsolete(): Boolean
 
 }

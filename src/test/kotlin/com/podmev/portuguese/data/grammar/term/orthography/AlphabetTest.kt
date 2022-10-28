@@ -156,7 +156,7 @@ class AlphabetTest {
         @MethodSource("com.podmev.portuguese.data.grammar.term.orthography.AlphabetTest#diacriticLetterProvider")
         fun uppercaseTest(diacriticLetter: DiacriticLetter) {
             val firstLetterOfClassName = diacriticLetter.javaClass.simpleName[0]
-            Truth.assertThat(firstLetterOfClassName).isEqualTo(diacriticLetter.baseLetter.uppercase)
+            Truth.assertThat(firstLetterOfClassName).isEqualTo(diacriticLetter.baseLetter().uppercase)
         }
 
         @ParameterizedTest()
@@ -175,14 +175,14 @@ class AlphabetTest {
         @ParameterizedTest()
         @MethodSource("com.podmev.portuguese.data.grammar.term.orthography.AlphabetTest#diacriticLetterProvider")
         fun diacriticLetterCorrespondenceToLetterTest(diacriticLetter: DiacriticLetter) {
-            Truth.assertThat(diacriticLetter.baseLetter.relatedDiacriticLetters.contains(diacriticLetter)).isTrue()
+            Truth.assertThat(diacriticLetter.baseLetter().relatedDiacriticLetters.contains(diacriticLetter)).isTrue()
         }
 
         @ParameterizedTest()
         @MethodSource("com.podmev.portuguese.data.grammar.term.orthography.AlphabetTest#letterProvider")
         fun letterCorrespondenceToDiacriticLettersTest(letter: Letter) {
             Truth.assertThat(
-                letter.relatedDiacriticLetters.all{diacriticLetter ->  diacriticLetter.baseLetter == letter}
+                letter.relatedDiacriticLetters.all{diacriticLetter ->  diacriticLetter.baseLetter() == letter}
             ).isTrue()
         }
     }

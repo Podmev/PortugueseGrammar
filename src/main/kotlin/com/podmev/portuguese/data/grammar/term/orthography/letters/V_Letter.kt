@@ -6,5 +6,5 @@ import com.podmev.portuguese.data.grammar.term.orthography.LetterCategory
 object V_Letter : AbstractLetter() {
     override val uppercase: Char = 'V'
     override val lowercase: Char = 'v'
-    override val category: LetterCategory = LetterCategory.CONSONANT
+    override fun category(): LetterCategory = LetterCategory.CONSONANT
 }

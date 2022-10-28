@@ -10,6 +10,6 @@ import com.podmev.portuguese.data.grammar.term.orthography.letters.O_Letter
 object O_Grave_Letter : DiacriticLetter {
     override val uppercase: Char = 'Ò'
     override val lowercase: Char = 'ò'
-    override val baseLetter: Letter = O_Letter
+    override fun baseLetter(): Letter = O_Letter
     override val diacriticMark: DiacriticMark = GraveDiacriticMark
 }

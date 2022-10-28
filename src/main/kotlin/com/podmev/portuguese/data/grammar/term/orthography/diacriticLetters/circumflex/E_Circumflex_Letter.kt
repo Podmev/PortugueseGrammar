@@ -9,6 +9,6 @@ import com.podmev.portuguese.data.grammar.term.orthography.letters.E_Letter
 object E_Circumflex_Letter : DiacriticLetter {
     override val uppercase: Char = 'Ê'
     override val lowercase: Char = 'ê'
-    override val baseLetter: Letter = E_Letter
+    override fun baseLetter(): Letter = E_Letter
     override val diacriticMark: DiacriticMark = CircumflexDiacriticMark
 }

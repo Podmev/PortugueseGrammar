@@ -9,6 +9,6 @@ import com.podmev.portuguese.data.grammar.term.orthography.letters.C_Letter
 object C_Cedilla_Letter : DiacriticLetter {
     override val uppercase: Char = 'Ç'
     override val lowercase: Char = 'ç'
-    override val baseLetter: Letter = C_Letter
+    override fun baseLetter(): Letter = C_Letter
     override val diacriticMark: DiacriticMark = CedillaDiacriticMark
 }

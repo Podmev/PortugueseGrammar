@@ -8,7 +8,7 @@ import com.podmev.portuguese.data.grammar.term.orthography.diacriticLetters.cedi
 object C_Letter : AbstractLetter() {
     override val uppercase: Char = 'C'
     override val lowercase: Char = 'c'
-    override val category: LetterCategory = LetterCategory.CONSONANT
+    override fun category(): LetterCategory = LetterCategory.CONSONANT
 
     override val relatedDiacriticLetters: List<DiacriticLetter> = listOf(C_Cedilla_Letter)
 }

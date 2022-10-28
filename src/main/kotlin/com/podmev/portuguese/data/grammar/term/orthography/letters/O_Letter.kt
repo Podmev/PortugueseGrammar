@@ -11,7 +11,7 @@ import com.podmev.portuguese.data.grammar.term.orthography.diacriticLetters.tild
 object O_Letter : AbstractLetter() {
     override val uppercase: Char = 'O'
     override val lowercase: Char = 'o'
-    override val category: LetterCategory = LetterCategory.VOWEL
+    override fun category(): LetterCategory = LetterCategory.VOWEL
 
     override val relatedDiacriticLetters: List<DiacriticLetter> = listOf(
         O_Acute_Letter,

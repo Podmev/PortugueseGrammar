@@ -10,7 +10,7 @@ import com.podmev.portuguese.data.grammar.term.orthography.diacriticLetters.umla
 object U_Letter : AbstractLetter() {
     override val uppercase: Char = 'U'
     override val lowercase: Char = 'u'
-    override val category: LetterCategory = LetterCategory.VOWEL
+    override fun category(): LetterCategory = LetterCategory.VOWEL
 
     override val relatedDiacriticLetters: List<DiacriticLetter> = listOf(
         U_Acute_Letter,

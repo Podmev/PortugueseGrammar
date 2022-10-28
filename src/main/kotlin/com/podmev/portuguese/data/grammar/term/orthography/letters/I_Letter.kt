@@ -9,7 +9,7 @@ import com.podmev.portuguese.data.grammar.term.orthography.diacriticLetters.grav
 object I_Letter : AbstractLetter() {
     override val uppercase: Char = 'I'
     override val lowercase: Char = 'i'
-    override val category: LetterCategory = LetterCategory.VOWEL
+    override fun category(): LetterCategory = LetterCategory.VOWEL
 
     override val relatedDiacriticLetters: List<DiacriticLetter> = listOf(
         I_Acute_Letter,
