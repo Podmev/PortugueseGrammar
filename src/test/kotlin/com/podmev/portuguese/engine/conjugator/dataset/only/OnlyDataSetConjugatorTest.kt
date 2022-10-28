@@ -9,7 +9,7 @@ import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.indic
 import com.podmev.portuguese.data.grammar.term.verb.GrammaticalVoice
 import com.podmev.portuguese.data.grammar.term.verb.VerbArguments
 import org.junit.Assert.assertEquals
-import org.junit.Test
+import org.junit.jupiter.api.Test
 
 class OnlyDataSetConjugatorTest {
     private val conjugator = OnlyDataSetConjugator
