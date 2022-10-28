@@ -8,7 +8,7 @@ import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.Infin
 import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.indicative.IndicativeImperfectTense
 import com.podmev.portuguese.data.grammar.term.verb.GrammaticalVoice
 import com.podmev.portuguese.data.grammar.term.verb.VerbArguments
-import org.junit.Assert.assertEquals
+import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 
 class OnlyDataSetConjugatorTest {
@@ -26,10 +26,10 @@ class OnlyDataSetConjugatorTest {
                 voice = GrammaticalVoice.ACTIVE
             )
         )
-        assertEquals(
-            /* message = */ "Verb 'estar' in indicative imperfect for third person singular, masculine, active",
+        Assertions.assertEquals(
             /* expected = */ listOf("estava"),
-            /* actual = */  verbInForm
+            /* actual = */ verbInForm,
+            /* message = */ "Verb 'estar' in indicative imperfect for third person singular, masculine, active"
         )
     }
 
@@ -45,10 +45,10 @@ class OnlyDataSetConjugatorTest {
                 voice = GrammaticalVoice.ACTIVE
             )
         )
-        assertEquals(
-            /* message = */ "Verb 'estar' in infinitive",
+        Assertions.assertEquals(
             /* expected = */ listOf("estar"),
-            /* actual = */  verbInForm
+            /* actual = */ verbInForm,
+            /* message = */ "Verb 'estar' in infinitive"
         )
     }
 
@@ -64,10 +64,10 @@ class OnlyDataSetConjugatorTest {
                 voice = GrammaticalVoice.ACTIVE
             )
         )
-        assertEquals(
-            /* message = */ "Verb 'fazer' in gerund",
+        Assertions.assertEquals(
             /* expected = */ listOf("fazendo"),
-            /* actual = */  verbInForm
+            /* actual = */ verbInForm,
+            /* message = */ "Verb 'fazer' in gerund"
         )
     }
 }
