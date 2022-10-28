@@ -17,6 +17,7 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
+import java.util.*
 import java.util.stream.Stream
 
 class AlphabetTest {
@@ -93,6 +94,16 @@ class AlphabetTest {
         @MethodSource("com.podmev.portuguese.data.grammar.term.orthography.AlphabetTest#letterProvider")
         fun upperAndLowercaseCorrespondenceTest(letter: Letter) {
             Truth.assertThat(letter.uppercase.toLowerCase()).isEqualTo(letter.lowercase)
+        }
+
+        @Test
+        fun disjointVowelAndConsonantsLettersTest(){
+            Truth.assertThat(
+                Collections.disjoint(
+                    Alphabet.vowelLetters,
+                    Alphabet.consonantLetters
+                )
+            ).isTrue()
         }
 
     }
@@ -187,6 +198,113 @@ class AlphabetTest {
         }
     }
 
+    @Nested
+    inner class GenericLetters {
+        @Test
+        fun genericLettersAreUniqueTest() {
+            val genericLetters: List<GenericLetter> = Alphabet.allGenericLetters
+            Assertions.assertEquals(genericLetters.size, genericLetters.distinct().size, "Generic letters don't repeat")
+        }
+
+        @ParameterizedTest()
+        @MethodSource("com.podmev.portuguese.data.grammar.term.orthography.AlphabetTest#letterProvider")
+        fun baseLetterOfLetterIsTheSameTest(letter: Letter) {
+            Truth.assertThat(letter.baseLetter()).isEqualTo(letter)
+        }
+
+        @ParameterizedTest()
+        @MethodSource("com.podmev.portuguese.data.grammar.term.orthography.AlphabetTest#letterProvider")
+        fun letterIsGenericLetterTest(letter: Letter) {
+            Truth.assertThat(letter in Alphabet.allGenericLetters).isTrue()
+        }
+
+        @ParameterizedTest()
+        @MethodSource("com.podmev.portuguese.data.grammar.term.orthography.AlphabetTest#diacriticLetterProvider")
+        fun diacriticLetterIsGenericLetterTest(diacriticLetter: DiacriticLetter) {
+            Truth.assertThat(diacriticLetter in Alphabet.allGenericLetters).isTrue()
+        }
+
+        @Test
+        fun disjointVowelAndConsonantsGenericLettersTest(){
+            Truth.assertThat(
+                Collections.disjoint(
+                    Alphabet.vowelGenericLetters,
+                    Alphabet.consonantGenericLetters
+                )
+            ).isTrue()
+        }
+
+    }
+
+    @Nested
+    inner class ExactLetters{
+        @Test
+        fun exactLettersAreUniqueTest() {
+            val exactLetters: List<ExactLetter> = Alphabet.allExactLetters
+            Assertions.assertEquals(exactLetters.size, exactLetters.distinct().size, "Exact letters don't repeat")
+        }
+
+        @Test
+        fun exactLetterViewsAreUniqueTest() {
+            val exactLetters: List<ExactLetter> = Alphabet.allExactLetters
+            Assertions.assertEquals(
+                /* expected = */ exactLetters.size,
+                /* actual = */ exactLetters.map { it.view }.distinct().size,
+                /* message = */ "Exact letters' views don't repeat"
+            )
+        }
+
+        @Test
+        fun disjointVowelAndConsonantsExactLettersTest(){
+            Truth.assertThat(
+                Collections.disjoint(
+                    Alphabet.vowelExactLetters,
+                    Alphabet.consonantExactLetters
+                )
+            ).isTrue()
+        }
+    }
+
+    @Nested
+    inner class Chars{
+        @ParameterizedTest()
+        @MethodSource("com.podmev.portuguese.data.grammar.term.orthography.AlphabetTest#charProvider")
+        fun parseExactLetterFromCharTest(char: Char) {
+            Truth.assertThat(Alphabet.parseExactLetter(char)?.view).isEqualTo(char)
+        }
+
+        @Test
+        fun disjointVowelAndConsonantsCharsTest(){
+            Truth.assertThat(
+                Collections.disjoint(
+                    Alphabet.vowelChars,
+                    Alphabet.consonantChars
+                )
+            ).isTrue()
+        }
+
+        @ParameterizedTest()
+        @MethodSource("com.podmev.portuguese.data.grammar.term.orthography.AlphabetTest#charProvider")
+        fun charCanBeOnlyVowelOrConsonantTest(char: Char) {
+            Truth.assertThat(Alphabet.isVowelChar(char) xor Alphabet.isConsonantChar(char)).isTrue()
+        }
+    }
+
+    @Nested
+    inner class DiacriticMarks{
+        @ParameterizedTest()
+        @MethodSource("com.podmev.portuguese.data.grammar.term.orthography.AlphabetTest#diacriticMarkProvider")
+        fun allDiacriticMarksUsedTest(diacriticMark: DiacriticMark) {
+            Truth.assertThat(Alphabet.diacriticLetters.any{it.diacriticMark==diacriticMark}).isTrue()
+        }
+
+        @ParameterizedTest()
+        @MethodSource("com.podmev.portuguese.data.grammar.term.orthography.AlphabetTest#diacriticMarkProvider")
+        fun shortEnglishNameIsOneWordTest(diacriticMark: DiacriticMark) {
+            Truth.assertThat(diacriticMark.shortEnglishTerm.split(' ').size).isEqualTo(1)
+        }
+    }
+
     companion object {
         @JvmStatic
         fun letterProvider(): Stream<Arguments> =
@@ -194,7 +312,15 @@ class AlphabetTest {
 
         @JvmStatic
         fun diacriticLetterProvider(): Stream<Arguments> =
-            Alphabet.diacriticLetters.stream().map{letter->Arguments.of(letter)}
+            Alphabet.diacriticLetters.stream().map{diacriticLetter->Arguments.of(diacriticLetter)}
+
+        @JvmStatic
+        fun charProvider(): Stream<Arguments> =
+            Alphabet.allPossibleChars.stream().map{char->Arguments.of(char)}
+
+        @JvmStatic
+        fun diacriticMarkProvider(): Stream<Arguments> =
+            Alphabet.diacriticMarks.stream().map{diacriticMark->Arguments.of(diacriticMark)}
 
     }
 

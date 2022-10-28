@@ -11,6 +11,7 @@ import com.podmev.portuguese.data.grammar.term.orthography.diacriticLetters.grav
 import com.podmev.portuguese.data.grammar.term.orthography.diacriticLetters.tilde.A_Tilde_Letter
 import com.podmev.portuguese.data.grammar.term.orthography.diacriticLetters.tilde.O_Tilde_Letter
 import com.podmev.portuguese.data.grammar.term.orthography.diacriticLetters.umlaut.U_Umlaut_Letter
+import com.podmev.portuguese.data.grammar.term.orthography.diacriticMarks.*
 import com.podmev.portuguese.data.grammar.term.orthography.letters.*
 
 object Alphabet {
@@ -70,6 +71,15 @@ object Alphabet {
         U_Umlaut_Letter
     )
 
+    val diacriticMarks: List<DiacriticMark> = listOf(
+        AcuteDiacriticMark,
+        CedillaDiacriticMark,
+        CircumflexDiacriticMark,
+        GraveDiacriticMark,
+        TildeDiacriticMark,
+        UmlautDiacriticMark
+    )
+
     val allGenericLetters: List<GenericLetter> = letters + diacriticLetters
     val vowelGenericLetters = allGenericLetters.filter { it.category() == VOWEL }
     val consonantGenericLetters = allGenericLetters.filter { it.category() == CONSONANT }
@@ -86,7 +96,7 @@ object Alphabet {
     fun isVowelChar(c: Char) = c in vowelChars
     fun isConsonantChar(c: Char) = c in consonantChars
 
-    val exactLetterViewMap: Map<Char, ExactLetter> = allExactLetters.associateBy { it.view }
+    private val exactLetterViewMap: Map<Char, ExactLetter> = allExactLetters.associateBy { it.view }
     fun parseExactLetter(c: Char): ExactLetter? = exactLetterViewMap[c]
 
 }
