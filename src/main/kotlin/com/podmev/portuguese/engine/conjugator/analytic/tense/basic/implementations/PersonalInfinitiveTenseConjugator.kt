@@ -12,6 +12,7 @@ import com.podmev.portuguese.data.grammar.term.tense.GrammaticalTense
 import com.podmev.portuguese.data.grammar.term.verb.VerbArguments
 import com.podmev.portuguese.engine.conjugator.analytic.tense.basic.BasicTenseConjugator
 import com.podmev.portuguese.engine.utils.word.Wordifier
+import com.podmev.portuguese.engine.utils.word.VerbEnds
 
 /*Additional rules:
 1 -    Combination: VerbFormInfo(infinitive=instituir, tense=PersonalInfinitiveTense, person=THIRD, number=PLURAL, gender=UNDEFINED, voice=ACTIVE) ==>
@@ -41,19 +42,19 @@ object PersonalInfinitiveTenseConjugator : BasicTenseConjugator {
     private fun endingStartsWithVowel(ending: String): Boolean = Alphabet.isVowelChar(ending.first())
 
     private fun changeBase(infinitive: String, ending: String): String {
-        if (infinitive.endsWith("uir") && endingStartsWithVowel(ending)) {
-            if (infinitive.endsWith("guir") || infinitive.endsWith("quir")) {
+        if (infinitive.endsWith(VerbEnds.UIR) && endingStartsWithVowel(ending)) {
+            if (infinitive.endsWith(VerbEnds.GUIR) || infinitive.endsWith(VerbEnds.QUIR)) {
                 //in this case rule doesn't work
                 return infinitive
             }
             //change last 'i' for 'í': with acute accent (acento agudo)
             return Wordifier.addDiacriticsToLastFoundLetter(infinitive, I_Letter, AcuteDiacriticMark)
         }
-        if (infinitive.endsWith("air") && endingStartsWithVowel(ending)) {
+        if (infinitive.endsWith(VerbEnds.AIR) && endingStartsWithVowel(ending)) {
             //change last 'i' for 'í': with acute accent (acento agudo)
             return Wordifier.addDiacriticsToLastFoundLetter(infinitive, I_Letter, AcuteDiacriticMark)
         }
-        if (infinitive.endsWith("ôr")) {
+        if (infinitive.endsWith(VerbEnds.O_CIRCUMFLEX_R)) {
             //change last 'ô' for 'o': with circumflex. verbs pôr, oppôr
             return Wordifier.deleteLastDiacritics(infinitive)
         }
