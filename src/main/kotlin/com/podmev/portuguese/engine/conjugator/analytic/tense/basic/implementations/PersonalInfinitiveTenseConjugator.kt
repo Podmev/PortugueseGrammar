@@ -10,6 +10,7 @@ import com.podmev.portuguese.data.grammar.term.orthography.diacriticMarks.AcuteD
 import com.podmev.portuguese.data.grammar.term.orthography.letters.I_Letter
 import com.podmev.portuguese.data.grammar.term.tense.GrammaticalTense
 import com.podmev.portuguese.data.grammar.term.verb.VerbArguments
+import com.podmev.portuguese.engine.conjugator.analytic.VerbLists
 import com.podmev.portuguese.engine.conjugator.analytic.tense.basic.BasicTenseConjugator
 import com.podmev.portuguese.engine.utils.word.Wordifier
 import com.podmev.portuguese.engine.utils.word.VerbEnds
@@ -22,6 +23,7 @@ expected: <[porem]> but was: <[pôrem]>
 3 - Combination: VerbFormInfo(infinitive=oppôr, tense=PersonalInfinitiveTense, person=FIRST, number=PLURAL, gender=UNDEFINED, voice=ACTIVE) ==>
 expected: <[oppormos]> but was: <[oppôrmos]>
 4 - Combination: VerbFormInfo(infinitive=prazer, tense=PersonalInfinitiveTense, person=FIRST, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE) ==> expected: <[-Normally defective:prazer]> but was: <[prazer]>
+
 */
 object PersonalInfinitiveTenseConjugator : BasicTenseConjugator {
     override fun conjugateVerb(
@@ -29,6 +31,9 @@ object PersonalInfinitiveTenseConjugator : BasicTenseConjugator {
         tense: GrammaticalTense,
         verbArgs: VerbArguments
     ): List<String> {
+        if(forbiddenOnNotThirdSingularForm(verbInInfinitive, verbArgs)){
+            return emptyList()
+        }
         val ending = getAdditionalSuffix(verbArgs.person, verbArgs.number)
         if (ending.isEmpty()) {
             return listOf(verbInInfinitive)
@@ -39,11 +44,20 @@ object PersonalInfinitiveTenseConjugator : BasicTenseConjugator {
         return listOf(form)
     }
 
+    private fun forbiddenOnNotThirdSingularForm(verbInInfinitive: String, verbArgs: VerbArguments) =
+        verbInInfinitive in VerbLists.onlyThirdSingularFormVerbs &&
+        !(verbArgs.person==THIRD && verbArgs.number==SINGULAR)
+
     private fun endingStartsWithVowel(ending: String): Boolean = Alphabet.isVowelChar(ending.first())
+
+    val uirEndingExceptions = listOf(
+        VerbEnds.GUIR,
+        VerbEnds.QUIR
+    )
 
     private fun changeBase(infinitive: String, ending: String): String {
         if (infinitive.endsWith(VerbEnds.UIR) && endingStartsWithVowel(ending)) {
-            if (infinitive.endsWith(VerbEnds.GUIR) || infinitive.endsWith(VerbEnds.QUIR)) {
+            if (Wordifier.endsWithAny(infinitive, uirEndingExceptions)) {
                 //in this case rule doesn't work
                 return infinitive
             }

@@ -55,6 +55,9 @@ object Wordifier {
     fun exactLetters2Word(exactLetters :List<ExactLetter>): String =
         exactLetters.map {it.view}.joinToString ("")
 
+    //TODO make tests for endsWithAny
+    fun endsWithAny(word: String, endings: List<String>): Boolean = endings.any{word.endsWith(it)}
+
     //TODO rewrite better
     fun <E> replaceElementByIndex(list: List<E>, index: Int, newValue: E): List<E>{
         return list.mapIndexed{i: Int, value: E -> if(i==index) newValue else value}
