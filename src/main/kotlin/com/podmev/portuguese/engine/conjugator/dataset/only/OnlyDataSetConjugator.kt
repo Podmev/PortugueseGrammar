@@ -38,6 +38,10 @@ object OnlyDataSetConjugator : Conjugator {
             //It is not valid to throw Exception
             return emptyList()
         }
+        if(verbInForm.startsWith("-Normally defective")){
+            //form doesn't exists for verb
+            return emptyList()
+        }
         return verbVariantsSplit(verbInForm)
     }
 
