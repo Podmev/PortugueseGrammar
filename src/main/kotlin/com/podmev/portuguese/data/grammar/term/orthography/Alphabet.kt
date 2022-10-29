@@ -46,7 +46,7 @@ object Alphabet {
     val vowelLetters = letters.filter { it.category() == VOWEL }
     val consonantLetters = letters.filter { it.category() == CONSONANT }
 
-    val diacriticLetters = listOf(
+    val diacriticLetters: List<DiacriticLetter> = listOf(
         A_Acute_Letter,
         A_Circumflex_Letter,
         A_Grave_Letter,
