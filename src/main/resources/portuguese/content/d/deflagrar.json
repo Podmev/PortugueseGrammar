@@ -4,461 +4,461 @@
       "group": "infinitive/impersonal",
       "group_sort": 0,
       "sort": 0,
-      "value": "deflagar"
+      "value": "deflagrar"
     },
     {
       "form": "s1",
       "group": "infinitive/personal",
       "group_sort": 1,
       "sort": 0,
-      "value": "deflagar"
+      "value": "deflagrar"
     },
     {
       "form": "s2",
       "group": "infinitive/personal",
       "group_sort": 1,
       "sort": 1,
-      "value": "deflagares"
+      "value": "deflagrares"
     },
     {
       "form": "s3",
       "group": "infinitive/personal",
       "group_sort": 1,
       "sort": 2,
-      "value": "deflagar"
+      "value": "deflagrar"
     },
     {
       "form": "p1",
       "group": "infinitive/personal",
       "group_sort": 1,
       "sort": 3,
-      "value": "deflagarmos"
+      "value": "deflagrarmos"
     },
     {
       "form": "p2",
       "group": "infinitive/personal",
       "group_sort": 1,
       "sort": 4,
-      "value": "deflagardes"
+      "value": "deflagrardes"
     },
     {
       "form": "p3",
       "group": "infinitive/personal",
       "group_sort": 1,
       "sort": 5,
-      "value": "deflagarem"
+      "value": "deflagrarem"
     },
     {
       "group": "gerund",
       "group_sort": 2,
       "sort": 0,
-      "value": "deflagando"
+      "value": "deflagrando"
     },
     {
       "form": "s",
       "group": "pastparticiple/masculine",
       "group_sort": 3,
       "sort": 0,
-      "value": "deflagado"
+      "value": "deflagrado"
     },
     {
       "form": "p",
       "group": "pastparticiple/masculine",
       "group_sort": 3,
       "sort": 1,
-      "value": "deflagados"
+      "value": "deflagrados"
     },
     {
       "form": "s",
       "group": "pastparticiple/feminine",
       "group_sort": 4,
       "sort": 0,
-      "value": "deflagada"
+      "value": "deflagrada"
     },
     {
       "form": "p",
       "group": "pastparticiple/feminine",
       "group_sort": 4,
       "sort": 1,
-      "value": "deflagadas"
+      "value": "deflagradas"
     },
     {
       "form": "s1",
       "group": "indicative/present",
       "group_sort": 5,
       "sort": 0,
-      "value": "deflago"
+      "value": "deflagro"
     },
     {
       "form": "s2",
       "group": "indicative/present",
       "group_sort": 5,
       "sort": 1,
-      "value": "deflagas"
+      "value": "deflagras"
     },
     {
       "form": "s3",
       "group": "indicative/present",
       "group_sort": 5,
       "sort": 2,
-      "value": "deflaga"
+      "value": "deflagra"
     },
     {
       "form": "p1",
       "group": "indicative/present",
       "group_sort": 5,
       "sort": 3,
-      "value": "deflagamos"
+      "value": "deflagramos"
     },
     {
       "form": "p2",
       "group": "indicative/present",
       "group_sort": 5,
       "sort": 4,
-      "value": "deflagais"
+      "value": "deflagrais"
     },
     {
       "form": "p3",
       "group": "indicative/present",
       "group_sort": 5,
       "sort": 5,
-      "value": "deflagam"
+      "value": "deflagram"
     },
     {
       "form": "s1",
       "group": "indicative/imperfect",
       "group_sort": 6,
       "sort": 0,
-      "value": "deflagava"
+      "value": "deflagrava"
     },
     {
       "form": "s2",
       "group": "indicative/imperfect",
       "group_sort": 6,
       "sort": 1,
-      "value": "deflagavas"
+      "value": "deflagravas"
     },
     {
       "form": "s3",
       "group": "indicative/imperfect",
       "group_sort": 6,
       "sort": 2,
-      "value": "deflagava"
+      "value": "deflagrava"
     },
     {
       "form": "p1",
       "group": "indicative/imperfect",
       "group_sort": 6,
       "sort": 3,
-      "value": "deflagávamos"
+      "value": "deflagrávamos"
     },
     {
       "form": "p2",
       "group": "indicative/imperfect",
       "group_sort": 6,
       "sort": 4,
-      "value": "deflagáveis"
+      "value": "deflagráveis"
     },
     {
       "form": "p3",
       "group": "indicative/imperfect",
       "group_sort": 6,
       "sort": 5,
-      "value": "deflagavam"
+      "value": "deflagravam"
     },
     {
       "form": "s1",
       "group": "indicative/preterite",
       "group_sort": 7,
       "sort": 0,
-      "value": "deflagei"
+      "value": "deflagrei"
     },
     {
       "form": "s2",
       "group": "indicative/preterite",
       "group_sort": 7,
       "sort": 1,
-      "value": "deflagaste"
+      "value": "deflagraste"
     },
     {
       "form": "s3",
       "group": "indicative/preterite",
       "group_sort": 7,
       "sort": 2,
-      "value": "deflagou"
+      "value": "deflagrou"
     },
     {
       "form": "p1",
       "group": "indicative/preterite",
       "group_sort": 7,
       "sort": 3,
-      "value": "deflagamos - deflagámos"
+      "value": "deflagramos - deflagrámos"
     },
     {
       "form": "p2",
       "group": "indicative/preterite",
       "group_sort": 7,
       "sort": 4,
-      "value": "deflagastes"
+      "value": "deflagrastes"
     },
     {
       "form": "p3",
       "group": "indicative/preterite",
       "group_sort": 7,
       "sort": 5,
-      "value": "deflagaram"
+      "value": "deflagraram"
     },
     {
       "form": "s1",
       "group": "indicative/pluperfect",
       "group_sort": 8,
       "sort": 0,
-      "value": "deflagara"
+      "value": "deflagrara"
     },
     {
       "form": "s2",
       "group": "indicative/pluperfect",
       "group_sort": 8,
       "sort": 1,
-      "value": "deflagaras"
+      "value": "deflagraras"
     },
     {
       "form": "s3",
       "group": "indicative/pluperfect",
       "group_sort": 8,
       "sort": 2,
-      "value": "deflagara"
+      "value": "deflagrara"
     },
     {
       "form": "p1",
       "group": "indicative/pluperfect",
       "group_sort": 8,
       "sort": 3,
-      "value": "deflagáramos"
+      "value": "deflagráramos"
     },
     {
       "form": "p2",
       "group": "indicative/pluperfect",
       "group_sort": 8,
       "sort": 4,
-      "value": "deflagáreis"
+      "value": "deflagráreis"
     },
     {
       "form": "p3",
       "group": "indicative/pluperfect",
       "group_sort": 8,
       "sort": 5,
-      "value": "deflagaram"
+      "value": "deflagraram"
     },
     {
       "form": "s1",
       "group": "indicative/future",
       "group_sort": 9,
       "sort": 0,
-      "value": "deflagarei"
+      "value": "deflagrarei"
     },
     {
       "form": "s2",
       "group": "indicative/future",
       "group_sort": 9,
       "sort": 1,
-      "value": "deflagarás"
+      "value": "deflagrarás"
     },
     {
       "form": "s3",
       "group": "indicative/future",
       "group_sort": 9,
       "sort": 2,
-      "value": "deflagará"
+      "value": "deflagrará"
     },
     {
       "form": "p1",
       "group": "indicative/future",
       "group_sort": 9,
       "sort": 3,
-      "value": "deflagaremos"
+      "value": "deflagraremos"
     },
     {
       "form": "p2",
       "group": "indicative/future",
       "group_sort": 9,
       "sort": 4,
-      "value": "deflagareis"
+      "value": "deflagrareis"
     },
     {
       "form": "p3",
       "group": "indicative/future",
       "group_sort": 9,
       "sort": 5,
-      "value": "deflagarão"
+      "value": "deflagrarão"
     },
     {
       "form": "s1",
       "group": "conditional",
       "group_sort": 10,
       "sort": 0,
-      "value": "deflagaria"
+      "value": "deflagraria"
     },
     {
       "form": "s2",
       "group": "conditional",
       "group_sort": 10,
       "sort": 1,
-      "value": "deflagarias"
+      "value": "deflagrarias"
     },
     {
       "form": "s3",
       "group": "conditional",
       "group_sort": 10,
       "sort": 2,
-      "value": "deflagaria"
+      "value": "deflagraria"
     },
     {
       "form": "p1",
       "group": "conditional",
       "group_sort": 10,
       "sort": 3,
-      "value": "deflagaríamos"
+      "value": "deflagraríamos"
     },
     {
       "form": "p2",
       "group": "conditional",
       "group_sort": 10,
       "sort": 4,
-      "value": "deflagaríeis"
+      "value": "deflagraríeis"
     },
     {
       "form": "p3",
       "group": "conditional",
       "group_sort": 10,
       "sort": 5,
-      "value": "deflagariam"
+      "value": "deflagrariam"
     },
     {
       "form": "s1",
       "group": "subjunctive/present",
       "group_sort": 11,
       "sort": 0,
-      "value": "deflage"
+      "value": "deflagre"
     },
     {
       "form": "s2",
       "group": "subjunctive/present",
       "group_sort": 11,
       "sort": 1,
-      "value": "deflages"
+      "value": "deflagres"
     },
     {
       "form": "s3",
       "group": "subjunctive/present",
       "group_sort": 11,
       "sort": 2,
-      "value": "deflage"
+      "value": "deflagre"
     },
     {
       "form": "p1",
       "group": "subjunctive/present",
       "group_sort": 11,
       "sort": 3,
-      "value": "deflagemos"
+      "value": "deflagremos"
     },
     {
       "form": "p2",
       "group": "subjunctive/present",
       "group_sort": 11,
       "sort": 4,
-      "value": "deflageis"
+      "value": "deflagreis"
     },
     {
       "form": "p3",
       "group": "subjunctive/present",
       "group_sort": 11,
       "sort": 5,
-      "value": "deflagem"
+      "value": "deflagrem"
     },
     {
       "form": "s1",
       "group": "subjunctive/imperfect",
       "group_sort": 12,
       "sort": 0,
-      "value": "deflagasse"
+      "value": "deflagrasse"
     },
     {
       "form": "s2",
       "group": "subjunctive/imperfect",
       "group_sort": 12,
       "sort": 1,
-      "value": "deflagasses"
+      "value": "deflagrasses"
     },
     {
       "form": "s3",
       "group": "subjunctive/imperfect",
       "group_sort": 12,
       "sort": 2,
-      "value": "deflagasse"
+      "value": "deflagrasse"
     },
     {
       "form": "p1",
       "group": "subjunctive/imperfect",
       "group_sort": 12,
       "sort": 3,
-      "value": "deflagássemos"
+      "value": "deflagrássemos"
     },
     {
       "form": "p2",
       "group": "subjunctive/imperfect",
       "group_sort": 12,
       "sort": 4,
-      "value": "deflagásseis"
+      "value": "deflagrásseis"
     },
     {
       "form": "p3",
       "group": "subjunctive/imperfect",
       "group_sort": 12,
       "sort": 5,
-      "value": "deflagassem"
+      "value": "deflagrassem"
     },
     {
       "form": "s1",
       "group": "subjunctive/preterite",
       "group_sort": 13,
       "sort": 0,
-      "value": "deflagar"
+      "value": "deflagrar"
     },
     {
       "form": "s2",
       "group": "subjunctive/preterite",
       "group_sort": 13,
       "sort": 1,
-      "value": "deflagares"
+      "value": "deflagrares"
     },
     {
       "form": "s3",
       "group": "subjunctive/preterite",
       "group_sort": 13,
       "sort": 2,
-      "value": "deflagar"
+      "value": "deflagrar"
     },
     {
       "form": "p1",
       "group": "subjunctive/preterite",
       "group_sort": 13,
       "sort": 3,
-      "value": "deflagarmos"
+      "value": "deflagrarmos"
     },
     {
       "form": "p2",
       "group": "subjunctive/preterite",
       "group_sort": 13,
       "sort": 4,
-      "value": "deflagardes"
+      "value": "deflagrardes"
     },
     {
       "form": "p3",
       "group": "subjunctive/preterite",
       "group_sort": 13,
       "sort": 5,
-      "value": "deflagarem"
+      "value": "deflagrarem"
     },
     {
       "form": "s1",
@@ -472,35 +472,35 @@
       "group": "imperative/affirmative",
       "group_sort": 14,
       "sort": 1,
-      "value": "deflaga"
+      "value": "deflagra"
     },
     {
       "form": "s3",
       "group": "imperative/affirmative",
       "group_sort": 14,
       "sort": 2,
-      "value": "deflage"
+      "value": "deflagre"
     },
     {
       "form": "p1",
       "group": "imperative/affirmative",
       "group_sort": 14,
       "sort": 3,
-      "value": "deflagemos"
+      "value": "deflagremos"
     },
     {
       "form": "p2",
       "group": "imperative/affirmative",
       "group_sort": 14,
       "sort": 4,
-      "value": "deflagai"
+      "value": "deflagrai"
     },
     {
       "form": "p3",
       "group": "imperative/affirmative",
       "group_sort": 14,
       "sort": 5,
-      "value": "deflagem"
+      "value": "deflagrem"
     },
     {
       "form": "s1",
@@ -514,43 +514,43 @@
       "group": "imperative/negative",
       "group_sort": 15,
       "sort": 1,
-      "value": "deflages"
+      "value": "deflagres"
     },
     {
       "form": "s3",
       "group": "imperative/negative",
       "group_sort": 15,
       "sort": 2,
-      "value": "deflage"
+      "value": "deflagre"
     },
     {
       "form": "p1",
       "group": "imperative/negative",
       "group_sort": 15,
       "sort": 3,
-      "value": "deflagemos"
+      "value": "deflagremos"
     },
     {
       "form": "p2",
       "group": "imperative/negative",
       "group_sort": 15,
       "sort": 4,
-      "value": "deflageis"
+      "value": "deflagreis"
     },
     {
       "form": "p3",
       "group": "imperative/negative",
       "group_sort": 15,
       "sort": 5,
-      "value": "deflagem"
+      "value": "deflagrem"
     }
   ],
   "definitions": [
     "(transitive, intransitive) to deflagrate, to burn",
     "(figurative, transitive) to cause something to appear or happen, to lead to"
   ],
-  "description": "deflagar (first-person singular present indicative deflago, past participle deflagado)",
-  "etymology": "From Latin deflagare.",
+  "description": "deflagrar (first-person singular present indicative deflagro, past participle deflagrado)",
+  "etymology": "From Latin deflagrare.",
   "page_id": 1393313,
   "pronunciations": [
     "IPA(key): /de.fla.ˈɡɾa(ɾ)/, /de.fla.ˈɡɾa(χ)/",
