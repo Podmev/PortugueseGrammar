@@ -1,8 +1,8 @@
 package com.podmev.portuguese.data.grammar.term.orthography.diacriticMarks
 
-import com.podmev.portuguese.data.grammar.term.orthography.DiacriticMark
+import com.podmev.portuguese.data.grammar.term.orthography.AbstractDiacriticMark
 
-object UmlautDiacriticMark : DiacriticMark {
+object UmlautDiacriticMark : AbstractDiacriticMark() {
     override val englishTerm: String = "Umlaut"
     override val shortEnglishTerm: String = "Umlaut"
     override val portugueseTerm: String = "Trema"

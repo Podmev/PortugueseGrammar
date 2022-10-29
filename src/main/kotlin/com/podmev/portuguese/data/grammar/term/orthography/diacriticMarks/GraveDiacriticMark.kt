@@ -1,8 +1,8 @@
 package com.podmev.portuguese.data.grammar.term.orthography.diacriticMarks
 
-import com.podmev.portuguese.data.grammar.term.orthography.DiacriticMark
+import com.podmev.portuguese.data.grammar.term.orthography.AbstractDiacriticMark
 
-object GraveDiacriticMark : DiacriticMark {
+object GraveDiacriticMark : AbstractDiacriticMark() {
     override val englishTerm: String = "Grave accent"
     override val shortEnglishTerm: String = "Grave"
     override val portugueseTerm: String = "Acento grave"

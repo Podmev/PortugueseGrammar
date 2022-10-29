@@ -1,8 +1,8 @@
 package com.podmev.portuguese.data.grammar.term.orthography.diacriticMarks
 
-import com.podmev.portuguese.data.grammar.term.orthography.DiacriticMark
+import com.podmev.portuguese.data.grammar.term.orthography.AbstractDiacriticMark
 
-object AcuteDiacriticMark : DiacriticMark {
+object AcuteDiacriticMark : AbstractDiacriticMark() {
     override val englishTerm: String = "Acute accent"
     override val shortEnglishTerm: String = "Acute"
     override val portugueseTerm: String = "Acento agudo"

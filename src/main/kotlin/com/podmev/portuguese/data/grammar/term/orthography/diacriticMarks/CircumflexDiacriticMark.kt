@@ -1,8 +1,8 @@
 package com.podmev.portuguese.data.grammar.term.orthography.diacriticMarks
 
-import com.podmev.portuguese.data.grammar.term.orthography.DiacriticMark
+import com.podmev.portuguese.data.grammar.term.orthography.AbstractDiacriticMark
 
-object CircumflexDiacriticMark : DiacriticMark {
+object CircumflexDiacriticMark : AbstractDiacriticMark() {
     override val englishTerm: String = "Circumflex"
     override val shortEnglishTerm: String = "Circumflex"
     override val portugueseTerm: String = "Acento circunflexo"

@@ -1,8 +1,8 @@
 package com.podmev.portuguese.data.grammar.term.orthography.diacriticMarks
 
-import com.podmev.portuguese.data.grammar.term.orthography.DiacriticMark
+import com.podmev.portuguese.data.grammar.term.orthography.AbstractDiacriticMark
 
-object TildeDiacriticMark : DiacriticMark {
+object TildeDiacriticMark : AbstractDiacriticMark() {
     override val englishTerm: String = "Tilde"
     override val shortEnglishTerm: String = "Tilde"
     override val portugueseTerm: String = "Til"

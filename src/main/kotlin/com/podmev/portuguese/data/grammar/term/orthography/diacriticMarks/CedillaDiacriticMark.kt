@@ -1,8 +1,8 @@
 package com.podmev.portuguese.data.grammar.term.orthography.diacriticMarks
 
-import com.podmev.portuguese.data.grammar.term.orthography.DiacriticMark
+import com.podmev.portuguese.data.grammar.term.orthography.AbstractDiacriticMark
 
-object CedillaDiacriticMark : DiacriticMark {
+object CedillaDiacriticMark : AbstractDiacriticMark() {
     override val englishTerm: String = "Cedilla"
     override val shortEnglishTerm: String = "Cedilla"
     override val portugueseTerm: String = "Cedilha"
