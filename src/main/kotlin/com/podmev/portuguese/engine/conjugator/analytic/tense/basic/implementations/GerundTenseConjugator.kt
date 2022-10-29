@@ -10,9 +10,10 @@ object GerundTenseConjugator : BasicTenseConjugator {
         tense: GrammaticalTense,
         verbArgs: VerbArguments
     ): List<String> {
-        TODO("Not yet implemented")
+        return listOf(regularChanging(verbInInfinitive))
     }
 
+    private fun regularChanging(verbInInfinitive: String):String = verbInInfinitive.dropLast(1) + "ndo"
 
     override fun toString(): String {
         return "GerundTenseConjugator"
