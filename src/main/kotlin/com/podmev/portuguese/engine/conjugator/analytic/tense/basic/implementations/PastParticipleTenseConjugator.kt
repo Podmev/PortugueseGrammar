@@ -27,15 +27,21 @@ object PastParticipleTenseConjugator : BasicTenseConjugator {
         return listOf(result)
     }
 
+    private const val regularImmutableSuffixPart = "d"
+
     private fun getRegularSuffix(gender: GrammaticalGender, number: GrammaticalNumber): String =
+        regularImmutableSuffixPart + getMutableSuffixPart(gender, number)
+
+    //TODO can be defined in common code
+    private fun getMutableSuffixPart(gender: GrammaticalGender, number: GrammaticalNumber): String =
         when (number){
             SINGULAR, UNDEFINED  -> when(gender){
-                MASCULINE, GrammaticalGender.UNDEFINED -> "do"
-                FEMININE -> "da"
+                MASCULINE, GrammaticalGender.UNDEFINED -> "o"
+                FEMININE -> "a"
             }
             PLURAL -> when(gender){
-                MASCULINE, GrammaticalGender.UNDEFINED -> "dos"
-                FEMININE -> "das"
+                MASCULINE, GrammaticalGender.UNDEFINED -> "os"
+                FEMININE -> "as"
             }
         }
 
