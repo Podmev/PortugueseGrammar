@@ -10,6 +10,9 @@ object VerbHelper {
     /*drop the last letter 'r' of infinitive*/
     fun dropInfinitiveSuffixR(infinitive: String):String = infinitive.dropLast(1)
 
+    /*drop the last letter 'o' of */
+    fun dropSuffixO(infinitive: String):String = infinitive.dropLast(1)
+
     val uirEndingExceptions = listOf(
         VerbEnds.GUIR,
         VerbEnds.QUIR

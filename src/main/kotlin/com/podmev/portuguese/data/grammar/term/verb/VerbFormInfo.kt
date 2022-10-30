@@ -12,7 +12,10 @@ data class VerbFormInfo(
     val number: GrammaticalNumber,
     val gender: GrammaticalGender,
     val voice: GrammaticalVoice,
-)
+){
+    fun getVerbArgs(): VerbArguments =
+        VerbArguments(person, number, gender, voice)
+}
 
 fun createVerbFormInfoWithVerbArgs(
     infinitive: String,

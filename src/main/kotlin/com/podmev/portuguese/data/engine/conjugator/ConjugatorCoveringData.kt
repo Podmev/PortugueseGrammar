@@ -1,5 +1,8 @@
 package com.podmev.portuguese.data.engine.conjugator
 
+import com.podmev.portuguese.data.grammar.term.general.GrammaticalGender
+import com.podmev.portuguese.data.grammar.term.general.GrammaticalNumber
+import com.podmev.portuguese.data.grammar.term.general.GrammaticalPerson
 import com.podmev.portuguese.data.grammar.term.pronoun.PersonalPronounGroup
 import com.podmev.portuguese.data.grammar.term.tense.GrammaticalTense
 import com.podmev.portuguese.data.grammar.term.verb.GrammaticalVoice
@@ -46,6 +49,23 @@ data class ConjugatorCoveringData(
                             )
                         }
                     }
+                }
+            }
+        }.asIterable()
+
+    /*for tests*/
+    fun getVerbFormSingularMasculineNoPersonInfos(): Iterable<VerbFormInfo> =
+        verbInfinitives.flatMap { verb ->
+            tenses.flatMap { tense ->
+                        voices.map { voice ->
+                            VerbFormInfo(
+                                verb,
+                                tense,
+                                GrammaticalPerson.UNDEFINED,
+                                GrammaticalNumber.SINGULAR,
+                                GrammaticalGender.MASCULINE,
+                                voice
+                            )
                 }
             }
         }.asIterable()

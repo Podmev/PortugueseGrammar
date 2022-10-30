@@ -1,7 +1,6 @@
 package com.podmev.portuguese.engine.conjugator.generator
 
 import com.podmev.portuguese.data.engine.conjugator.Conjugator
-import com.podmev.portuguese.data.grammar.term.tense.GrammaticalTense
 import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.PastParticipleTense
 import com.podmev.portuguese.data.grammar.term.verb.VerbFormInfo
 import com.podmev.portuguese.engine.conjugator.analytic.AnalyticConjugator
