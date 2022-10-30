@@ -2,6 +2,7 @@ package com.podmev.portuguese.engine.conjugator.analytic.tense.basic.implementat
 
 import com.podmev.portuguese.data.grammar.term.tense.GrammaticalTense
 import com.podmev.portuguese.data.grammar.term.verb.VerbArguments
+import com.podmev.portuguese.engine.conjugator.analytic.VerbHelper
 import com.podmev.portuguese.engine.conjugator.analytic.tense.basic.BasicTenseConjugator
 import com.podmev.portuguese.engine.utils.word.VerbEnds
 import com.podmev.portuguese.engine.utils.word.Wordifier
@@ -13,7 +14,7 @@ object GerundTenseConjugator : BasicTenseConjugator {
         verbArgs: VerbArguments
     ): List<String> {
         val preparedInfinitive = prepareInfinitive(verbInInfinitive)
-        val preparedBase = takeInfinitiveSuffix(preparedInfinitive)
+        val preparedBase = VerbHelper.dropInfinitiveSuffixR(preparedInfinitive)
         val result = regularChanging(preparedBase)
         return listOf(result)
     }
@@ -21,8 +22,6 @@ object GerundTenseConjugator : BasicTenseConjugator {
     const val regularSuffix = "ndo"
 
     private fun regularChanging(preparedBase: String):String = preparedBase + regularSuffix
-    /*drop the last letter 'r'*/
-    private fun takeInfinitiveSuffix(infinitive: String):String = infinitive.dropLast(1)
 
     private fun prepareInfinitive(originalInfinitive: String): String {
         if(originalInfinitive.endsWith(VerbEnds.O_CIRCUMFLEX_R)){
