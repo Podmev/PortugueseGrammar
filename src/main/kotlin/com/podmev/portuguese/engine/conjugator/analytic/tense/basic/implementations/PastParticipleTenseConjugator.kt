@@ -5,6 +5,8 @@ import com.podmev.portuguese.data.grammar.term.general.GrammaticalGender.*
 import com.podmev.portuguese.data.grammar.term.general.GrammaticalNumber
 import com.podmev.portuguese.data.grammar.term.general.GrammaticalNumber.*
 import com.podmev.portuguese.data.grammar.term.general.GrammaticalNumber.UNDEFINED
+import com.podmev.portuguese.data.grammar.term.orthography.letters.E_Letter
+import com.podmev.portuguese.data.grammar.term.orthography.letters.I_Letter
 import com.podmev.portuguese.data.grammar.term.tense.GrammaticalTense
 import com.podmev.portuguese.data.grammar.term.verb.VerbArguments
 import com.podmev.portuguese.engine.conjugator.analytic.VerbHelper
@@ -39,12 +41,21 @@ object PastParticipleTenseConjugator : BasicTenseConjugator {
 
     private fun regularChanging(preparedBase: String, suffix: String):String = preparedBase + suffix
 
-    private fun prepareInfinitive(originalInfinitive: String): String {
-        if(originalInfinitive.endsWith(VerbEnds.O_CIRCUMFLEX_R)){
-            return Wordifier.deleteLastDiacritics(originalInfinitive)
+    private fun prepareInfinitive(infinitive: String): String {
+        if(infinitive.endsWith(VerbEnds.O_CIRCUMFLEX_R)){
+            return Wordifier.deleteLastDiacritics(infinitive)
+        }
+        if(infinitive.endsWith(VerbEnds.ER)){
+            return Wordifier.replaceLastFoundGenericLetter(infinitive, E_Letter, I_Letter)
+        }
+        if(infinitive.endsWith(VerbEnds.IR)){
+            val changedForm = VerbHelper.replaceIfNecessaryLastI_LetterForI_Acute_LetterOrNull(infinitive)
+            if(changedForm!=null){
+                return changedForm
+            }
         }
         //the most of the cases we don't change anything
-        return originalInfinitive
+        return infinitive
     }
 
     override fun toString(): String {
