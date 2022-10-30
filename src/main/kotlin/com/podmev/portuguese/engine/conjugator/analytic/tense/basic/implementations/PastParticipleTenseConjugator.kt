@@ -2,7 +2,10 @@ package com.podmev.portuguese.engine.conjugator.analytic.tense.basic.implementat
 
 import com.podmev.portuguese.data.grammar.term.tense.GrammaticalTense
 import com.podmev.portuguese.data.grammar.term.verb.VerbArguments
+import com.podmev.portuguese.engine.conjugator.analytic.VerbHelper
 import com.podmev.portuguese.engine.conjugator.analytic.tense.basic.BasicTenseConjugator
+import com.podmev.portuguese.engine.utils.word.VerbEnds
+import com.podmev.portuguese.engine.utils.word.Wordifier
 
 object PastParticipleTenseConjugator : BasicTenseConjugator {
     override fun conjugateVerb(
@@ -10,7 +13,22 @@ object PastParticipleTenseConjugator : BasicTenseConjugator {
         tense: GrammaticalTense,
         verbArgs: VerbArguments
     ): List<String> {
-        TODO("Not yet implemented")
+        val preparedInfinitive = prepareInfinitive(verbInInfinitive)
+        val preparedBase = VerbHelper.dropInfinitiveSuffixR(preparedInfinitive)
+        val result = regularChanging(preparedBase)
+        return listOf(result)
+    }
+
+    const val regularSuffix = "do"
+
+    private fun regularChanging(preparedBase: String):String = preparedBase + regularSuffix
+
+    private fun prepareInfinitive(originalInfinitive: String): String {
+        if(originalInfinitive.endsWith(VerbEnds.O_CIRCUMFLEX_R)){
+            return Wordifier.deleteLastDiacritics(originalInfinitive)
+        }
+        //the most of the cases we don't change anything
+        return originalInfinitive
     }
 
     override fun toString(): String {
