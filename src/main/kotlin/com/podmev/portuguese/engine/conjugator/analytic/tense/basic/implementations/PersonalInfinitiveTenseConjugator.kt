@@ -10,6 +10,7 @@ import com.podmev.portuguese.data.grammar.term.orthography.diacriticMarks.AcuteD
 import com.podmev.portuguese.data.grammar.term.orthography.letters.I_Letter
 import com.podmev.portuguese.data.grammar.term.tense.GrammaticalTense
 import com.podmev.portuguese.data.grammar.term.verb.VerbArguments
+import com.podmev.portuguese.engine.conjugator.analytic.VerbHelper
 import com.podmev.portuguese.engine.conjugator.analytic.VerbLists
 import com.podmev.portuguese.engine.conjugator.analytic.tense.basic.BasicTenseConjugator
 import com.podmev.portuguese.engine.utils.word.Wordifier
@@ -50,24 +51,14 @@ object PersonalInfinitiveTenseConjugator : BasicTenseConjugator {
 
     private fun endingStartsWithVowel(ending: String): Boolean = Alphabet.isVowelChar(ending.first())
 
-    val uirEndingExceptions = listOf(
-        VerbEnds.GUIR,
-        VerbEnds.QUIR
-    )
-
     private fun changeBase(infinitive: String, ending: String): String {
-        if (infinitive.endsWith(VerbEnds.UIR) && endingStartsWithVowel(ending)) {
-            if (Wordifier.endsWithAny(infinitive, uirEndingExceptions)) {
-                //in this case rule doesn't work
-                return infinitive
+        if(endingStartsWithVowel(ending)){
+            val changedForm = VerbHelper.replaceIfNecessaryLastI_LetterForI_Acute_LetterOrNull(infinitive)
+            if(changedForm!=null){
+                return changedForm
             }
-            //change last 'i' for 'í': with acute accent (acento agudo)
-            return Wordifier.addDiacriticsToLastFoundLetter(infinitive, I_Letter, AcuteDiacriticMark)
         }
-        if (infinitive.endsWith(VerbEnds.AIR) && endingStartsWithVowel(ending)) {
-            //change last 'i' for 'í': with acute accent (acento agudo)
-            return Wordifier.addDiacriticsToLastFoundLetter(infinitive, I_Letter, AcuteDiacriticMark)
-        }
+
         if (infinitive.endsWith(VerbEnds.O_CIRCUMFLEX_R)) {
             //change last 'ô' for 'o': with circumflex. verbs pôr, oppôr
             return Wordifier.deleteLastDiacritics(infinitive)
