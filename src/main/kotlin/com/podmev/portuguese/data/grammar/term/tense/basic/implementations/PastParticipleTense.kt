@@ -9,9 +9,9 @@ object PastParticipleTense : BasicTense {
     override val canHavePerson: Boolean
         get() = false
     override val canHaveNumber: Boolean
-        get() = false
+        get() = true
     override val canHaveGender: Boolean
-        get() = false
+        get() = true
 
     override fun toString(): String {
         return "PastParticipleTense"
