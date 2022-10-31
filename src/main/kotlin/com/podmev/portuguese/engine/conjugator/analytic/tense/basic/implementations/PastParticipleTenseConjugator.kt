@@ -299,7 +299,6 @@ object PastParticipleTenseConjugator : BasicTenseConjugator {
         Pair("moer", "moído"),
         Pair("pôr", "posto"),
         Pair("prender", "preso"),
-        Pair("prostituir", "prostituido"),
         Pair("revolver", "revolto"),
         Pair("roer", "roído"),
         Pair("soer", "soído"),
