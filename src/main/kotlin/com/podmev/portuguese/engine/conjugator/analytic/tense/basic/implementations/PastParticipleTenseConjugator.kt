@@ -295,7 +295,6 @@ object PastParticipleTenseConjugator : BasicTenseConjugator {
         Pair("dizer", "dito"),
         Pair("doer", "doído"),
         Pair("escrever", "escrito"),
-        Pair("esvair", "esvaido"),
         Pair("fazer", "feito"),
         Pair("moer", "moído"),
         Pair("pôr", "posto"),
