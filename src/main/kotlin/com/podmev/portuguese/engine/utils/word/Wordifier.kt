@@ -48,14 +48,16 @@ object Wordifier {
 
     fun groupByEndOfWords(words: List<String>) : Map<String, List<String>>{
         val map: Map<String, MutableList<String>> = words.associateWith { mutableListOf<String>() }
+        val usedSet: MutableSet<String> = mutableSetOf<String>()
         for(word in words){
             for((key, list) in map){
                 if(key!=word  && word.endsWith(key)){
                     list.add(word)
+                    usedSet.add(word)
                 }
             }
         }
-        return map.filterValues { it.isNotEmpty() }
+        return map.filter { entry -> entry.value.isNotEmpty() || !usedSet.contains(entry.key) }
     }
 
     fun word2ExactLetters(word: String): List<ExactLetter> =
