@@ -56,31 +56,59 @@
     },
     {
       "form": "s",
-      "group": "pastparticiple/masculine",
+      "group": "pastparticipleshort/masculine",
       "group_sort": 3,
       "sort": 0,
       "value": "emerso"
     },
     {
       "form": "p",
-      "group": "pastparticiple/masculine",
+      "group": "pastparticipleshort/masculine",
       "group_sort": 3,
       "sort": 1,
       "value": "emersos"
     },
     {
       "form": "s",
-      "group": "pastparticiple/feminine",
+      "group": "pastparticipleshort/feminine",
       "group_sort": 4,
       "sort": 0,
-      "value": "emergisa"
+      "value": "emersa"
     },
     {
       "form": "p",
-      "group": "pastparticiple/feminine",
+      "group": "pastparticipleshort/feminine",
       "group_sort": 4,
       "sort": 1,
       "value": "emersas"
+    },
+    {
+      "form": "s",
+      "group": "pastparticiplelong/masculine",
+      "group_sort": 5,
+      "sort": 0,
+      "value": "emergido"
+    },
+    {
+      "form": "p",
+      "group": "pastparticiplelong/masculine",
+      "group_sort": 5,
+      "sort": 1,
+      "value": "emergidos"
+    },
+    {
+      "form": "s",
+      "group": "pastparticiplelong/feminine",
+      "group_sort": 6,
+      "sort": 0,
+      "value": "emergida"
+    },
+    {
+      "form": "p",
+      "group": "pastparticiplelong/feminine",
+      "group_sort": 6,
+      "sort": 1,
+      "value": "emergidas"
     },
     {
       "form": "s1",
