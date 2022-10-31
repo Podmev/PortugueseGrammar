@@ -46,6 +46,18 @@ object Wordifier {
         return exactLetters2Word(updatedExactLetters)
     }
 
+    fun groupByEndOfWords(words: List<String>) : Map<String, List<String>>{
+        val map: Map<String, MutableList<String>> = words.associateWith { mutableListOf<String>() }
+        for(word in words){
+            for((key, list) in map){
+                if(key!=word  && word.endsWith(key)){
+                    list.add(word)
+                }
+            }
+        }
+        return map.filterValues { it.isNotEmpty() }
+    }
+
     fun word2ExactLetters(word: String): List<ExactLetter> =
         word.map {
             Alphabet.parseExactLetter(it)

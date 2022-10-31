@@ -97,11 +97,24 @@ pastParticipleTest(VerbFormInfo)
 [4406] VerbFormInfo(infinitive=ver, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=MASCULINE, voice=ACTIVE)
 [4440] VerbFormInfo(infinitive=vir, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=MASCULINE, voice=ACTIVE)
 
-[7474] VerbFormInfo(infinitive=emergir, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=FEMININE, voice=ACTIVE)
-[9277] VerbFormInfo(infinitive=europeizar, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=MASCULINE, voice=ACTIVE)
-[9278] VerbFormInfo(infinitive=europeizar, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=FEMININE, voice=ACTIVE)
-[9279] VerbFormInfo(infinitive=europeizar, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=MASCULINE, voice=ACTIVE)
-[9280] VerbFormInfo(infinitive=europeizar, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=FEMININE, voice=ACTIVE)
+afazer=[contrafazer]
+apor=[contrapor, justapor]
+cobrir=[descobrir, encobrir, recobrir, redescobrir]
+compor=[decompor, descompor]
+descobrir=[redescobrir]
+descrever=[redescrever]
+dizer=[bendizer, condizer, contradizer, desdizer, maldizer, predizer]
+escrever=[descrever, prescrever, redescrever, reescrever]
+fazer=[afazer, contrafazer, desfazer, liquefazer, perfazer, putrefazer, rarefazer, refazer, satisfazer, tumefazer]
+moer=[remoer]
+opor=[propor]
+pôr=[decompôr, oppôr]
+refazer=[putrefazer, rarefazer]
+rever=[circunscrever, descrever, escrever, inscrever, prescrever, prever, proscrever, redescrever, reescrever, subscrever, transcrever]
+roer=[corroer]
+supor=[pressupor]
+ver=[circunscrever, descrever, escrever, inscrever, prescrever, prever, proscrever, redescrever, reescrever, rever, revolver, subscrever, transcrever]
+vir=[advir, avir, convir, devir, intervir, provir, sobrevir]
 * */
 object PastParticipleTenseConjugator : BasicTenseConjugator {
     override fun conjugateVerb(
