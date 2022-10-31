@@ -97,24 +97,47 @@ pastParticipleTest(VerbFormInfo)
 [4406] VerbFormInfo(infinitive=ver, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=MASCULINE, voice=ACTIVE)
 [4440] VerbFormInfo(infinitive=vir, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=MASCULINE, voice=ACTIVE)
 
+abrir=[]
 afazer=[contrafazer]
+aluir=[]
+antepor=[]
 apor=[contrapor, justapor]
 cobrir=[descobrir, encobrir, recobrir, redescobrir]
 compor=[decompor, descompor]
+depor=[]
 descobrir=[redescobrir]
 descrever=[redescrever]
+dispor=[]
 dizer=[bendizer, condizer, contradizer, desdizer, maldizer, predizer]
+doer=[]
 escrever=[descrever, prescrever, redescrever, reescrever]
+esvair=[]
+expor=[]
 fazer=[afazer, contrafazer, desfazer, liquefazer, perfazer, putrefazer, rarefazer, refazer, satisfazer, tumefazer]
+impor=[]
+interpor=[]
 moer=[remoer]
 opor=[propor]
 pôr=[decompôr, oppôr]
+pospor=[]
+prender=[]
+prostituir=[]
 refazer=[putrefazer, rarefazer]
 rever=[circunscrever, descrever, escrever, inscrever, prescrever, prever, proscrever, redescrever, reescrever, subscrever, transcrever]
 roer=[corroer]
+sobrepor=[]
+soer=[]
 supor=[pressupor]
+transpor=[]
 ver=[circunscrever, descrever, escrever, inscrever, prescrever, prever, proscrever, redescrever, reescrever, rever, revolver, subscrever, transcrever]
 vir=[advir, avir, convir, devir, intervir, provir, sobrevir]
+
+
+problems:
+ - escrever: need to use base form screver
+ - abrir: need to use base form brir
+ - pôr: should ignore diacritics
+ - escrever vs ver : we should choose longer verb
 * */
 object PastParticipleTenseConjugator : BasicTenseConjugator {
     override fun conjugateVerb(
@@ -129,7 +152,7 @@ object PastParticipleTenseConjugator : BasicTenseConjugator {
     }
 
     private fun isRegular(verbInInfinitive: String): Boolean{
-        return !simpleIrregularFormMap.containsKey(verbInInfinitive)
+        return !fullIrregularFormMap.containsKey(verbInInfinitive)
     }
 
     private fun regularConjugate(verbInInfinitive: String, verbArgs: VerbArguments): List<String> {
@@ -141,7 +164,7 @@ object PastParticipleTenseConjugator : BasicTenseConjugator {
     }
 
     private fun irregularConjugate(verbInInfinitive: String, verbArgs: VerbArguments): List<String>{
-        val masculineSingularForm = simpleIrregularFormMap[verbInInfinitive]!!
+        val masculineSingularForm = fullIrregularFormMap[verbInInfinitive]!!
         val reducedForm = VerbHelper.dropSuffixO(masculineSingularForm)
         val formInGenderAndNumber = reducedForm + getMutableSuffixPart(verbArgs.gender, verbArgs.number)
         return listOf(formInGenderAndNumber)
@@ -186,7 +209,7 @@ object PastParticipleTenseConjugator : BasicTenseConjugator {
 
     //TODO from here complicated verbs formed from others
     /*only masculine, singular*/
-    val simpleIrregularFormMap: Map<String, String> = mapOf(
+    val fullIrregularFormMap: Map<String, String> = mapOf(
         Pair("abrir", "aberto"),
         Pair("advir", "advindo"),
         Pair("afazer", "afeito"),
@@ -264,9 +287,27 @@ object PastParticipleTenseConjugator : BasicTenseConjugator {
         Pair("transpor", "transposto"),
         Pair("tumefazer", "tumefeito"),
         Pair("ver", "visto"),
-        Pair("vir", "vindo"),
-
+        Pair("vir", "vindo")
         )
+
+    val simpleIrregularFormMap: Map<String, String> = mapOf(
+        Pair("abrir", "aberto"),
+        Pair("aluir", "aluido"),
+        Pair("dizer", "dito"),
+        Pair("doer", "doído"),
+        Pair("escrever", "escrito"),
+        Pair("esvair", "esvaido"),
+        Pair("fazer", "feito"),
+        Pair("moer", "moído"),
+        Pair("pôr", "posto"),
+        Pair("prender", "preso"),
+        Pair("prostituir", "prostituido"),
+        Pair("revolver", "revolto"),
+        Pair("roer", "roído"),
+        Pair("soer", "soído"),
+        Pair("ver", "visto"),
+        Pair("vir", "vindo")
+    )
 
     override fun toString(): String {
         return "PastParticipleTenseConjugator"
