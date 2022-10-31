@@ -292,7 +292,6 @@ object PastParticipleTenseConjugator : BasicTenseConjugator {
 
     val simpleIrregularFormMap: Map<String, String> = mapOf(
         Pair("abrir", "aberto"),
-        Pair("aluir", "aluido"),
         Pair("dizer", "dito"),
         Pair("doer", "doído"),
         Pair("escrever", "escrito"),
