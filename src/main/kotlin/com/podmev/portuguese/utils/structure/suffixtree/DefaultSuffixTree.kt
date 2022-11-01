@@ -200,6 +200,30 @@ class DefaultSuffixTree<T>() : MutableSuffixTree<T> {
             return oldValue
         }
 
+        override fun equals(other: Any?): Boolean {
+            if (this === other) return true
+            if (javaClass != other?.javaClass) return false
+
+            other as NodeData<*>
+
+            if (word != other.word) return false
+            if (value != other.value) return false
+            if (key != other.key) return false
+
+            return true
+        }
+
+        override fun hashCode(): Int {
+            var result = word.hashCode()
+            result = 31 * result + (value?.hashCode() ?: 0)
+            result = 31 * result + key.hashCode()
+            return result
+        }
+
+        override fun toString(): String {
+            return "NodeData(word='$word', value=$value, key='$key')"
+        }
+
     }
 
     companion object {
