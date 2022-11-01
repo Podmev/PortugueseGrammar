@@ -81,6 +81,41 @@ class DefaultSuffixTreeTest {
         fun empty() =
             Truth.assertThat(DefaultSuffixTree<Int>().remove("abc"))
                 .isNull()
+
+        @Test
+        fun onePutOneRemove() {
+            val suffixTree: MutableSuffixTree<Int> = DefaultSuffixTree<Int>()
+            suffixTree["abc"] = 1
+            val oldValue = suffixTree.remove("abc")
+            assertAll(
+                { Truth.assertThat(oldValue).isEqualTo(1) },
+                { Truth.assertThat(suffixTree.size).isEqualTo(0) }
+            )
+        }
+
+        @Test
+        fun twoPutSameBranchOneRemove() {
+            val suffixTree: MutableSuffixTree<Int> = DefaultSuffixTree<Int>()
+            suffixTree["abc"] = 1
+            suffixTree["abcdef"] = 2
+            val oldValue = suffixTree.remove("abcdef")
+            assertAll(
+                { Truth.assertThat(oldValue).isEqualTo(2) },
+                { Truth.assertThat(suffixTree.size).isEqualTo(1) }
+            )
+        }
+
+        @Test
+        fun twoPutDifferentBranchOneRemove() {
+            val suffixTree: MutableSuffixTree<Int> = DefaultSuffixTree<Int>()
+            suffixTree["abc"] = 1
+            suffixTree["def"] = 2
+            val oldValue = suffixTree.remove("def")
+            assertAll(
+                { Truth.assertThat(oldValue).isEqualTo(2) },
+                { Truth.assertThat(suffixTree.size).isEqualTo(1) }
+            )
+        }
     }
 
     @Nested

@@ -99,7 +99,7 @@ class DefaultSuffixTree<T>() : MutableSuffixTree<T> {
     private fun removeEmptyNodesFromTheEnd(nodePath: List<Node<T>>): Int {
         var count = 1
         for ((node, prevNode) in nodePath.reversed().paired()) {
-            if (prevNode.hasData()) {
+            if (prevNode.hasData() || prevNode == root) {
                 //found node with data - we need to remove child
                 prevNode.children.remove(node.letter)
                 return count
