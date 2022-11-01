@@ -4,7 +4,7 @@ import com.podmev.portuguese.utils.structure.suffixTreeMap.suffixTreeMapOf
 
 class SuffixTreeIrregularSubVerber(
     verbFormMap: Map<String, String>,
-    prepareEntry: (key: String, value: String) -> Pair<String, String>
+    prepareEntry: (key: String, value: String) -> List<Pair<String, String>>
 //    minCommonSuffixSize: Int
 ) : IrregularSubVerber {
 
@@ -36,12 +36,13 @@ class SuffixTreeIrregularSubVerber(
 
     private fun prepareMap(
         verbFormMap: Map<String, String>,
-        prepareEntry: (key: String, value: String) -> Pair<String, String>
+        prepareEntry: (key: String, value: String) -> List<Pair<String, String>>
     ): Map<String, String> {
         val map = mutableMapOf<String, String>()
         for ((key, value) in verbFormMap) {
-            val (newKey, newValue) = prepareEntry(key, value)
-            map[newKey] = newValue
+            for((newKey, newValue) in prepareEntry(key, value)){
+                map[newKey] = newValue
+            }
         }
         return map
     }
