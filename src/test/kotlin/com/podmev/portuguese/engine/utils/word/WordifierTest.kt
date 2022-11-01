@@ -30,6 +30,27 @@ class WordifierTest {
     }
 
     @Nested
+    inner class DeleteAllDiacriticMarks {
+        @Test
+        fun positiveTest() {
+            Truth.assertThat(Wordifier.deleteAllDiacriticMarks("instituír") )
+                .isEqualTo("instituir")
+        }
+
+        @Test
+        fun emptyTest() {
+            Truth.assertThat(Wordifier.deleteAllDiacriticMarks("instituir") )
+                .isEqualTo("instituir")
+        }
+
+        @Test
+        fun tripleTest() {
+            Truth.assertThat(Wordifier.deleteAllDiacriticMarks("ínstítuir") )
+                .isEqualTo("instituir")
+        }
+    }
+
+    @Nested
     inner class ReplaceLastFoundGenericLetter {
         @Test
         fun positiveTest() {
