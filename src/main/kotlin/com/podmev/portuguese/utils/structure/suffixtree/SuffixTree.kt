@@ -15,7 +15,8 @@ class DefaultSuffixTree<T>() : MutableSuffixTree<T> {
     override val entries: MutableSet<MutableMap.MutableEntry<String, T>>
         get() = TODO("Not yet implemented")
     override val keys: MutableSet<String>
-        get() = TODO("Not yet implemented")
+        get() = keysByNode(root)
+
     override val size: Int
         get() = countSizeByNode(root)
 
@@ -164,6 +165,14 @@ class DefaultSuffixTree<T>() : MutableSuffixTree<T> {
         val curValue = node.data?.value
         if (curValue!=null) valuesList.add(curValue)
         return valuesList
+    }
+
+    private fun keysByNode(node: Node<T>): MutableSet<String> {
+        val keysSet = mutableSetOf<String>()
+        for (child in node.children) keysSet.addAll(keysByNode(child.value))
+        val curKey = node.data?.word
+        if (curKey != null) keysSet.add(curKey)
+        return keysSet
     }
 
     private fun createEmptyNode(letter: Char, level: Int) = Node<T>(letter, level, HashMap(), null)
