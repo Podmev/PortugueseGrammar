@@ -11,7 +11,7 @@ import com.podmev.portuguese.data.grammar.term.tense.GrammaticalTense
 import com.podmev.portuguese.data.grammar.term.verb.VerbArguments
 import com.podmev.portuguese.engine.conjugator.analytic.VerbHelper
 import com.podmev.portuguese.engine.conjugator.analytic.tense.basic.BasicTenseConjugator
-import com.podmev.portuguese.engine.utils.word.VerbEnds
+import com.podmev.portuguese.engine.utils.verb.VerbEnds
 import com.podmev.portuguese.engine.utils.word.Wordifier
 /*[root]
 AnalyticConjugatorCheckByDataSetSeparateTenseTest

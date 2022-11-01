@@ -2,8 +2,7 @@ package com.podmev.portuguese.engine.conjugator.analytic
 
 import com.podmev.portuguese.data.grammar.term.orthography.diacriticMarks.AcuteDiacriticMark
 import com.podmev.portuguese.data.grammar.term.orthography.letters.I_Letter
-import com.podmev.portuguese.engine.conjugator.analytic.tense.basic.implementations.PersonalInfinitiveTenseConjugator
-import com.podmev.portuguese.engine.utils.word.VerbEnds
+import com.podmev.portuguese.engine.utils.verb.VerbEnds
 import com.podmev.portuguese.engine.utils.word.Wordifier
 
 object VerbHelper {

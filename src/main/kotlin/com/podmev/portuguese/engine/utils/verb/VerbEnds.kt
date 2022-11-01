@@ -1,4 +1,4 @@
-package com.podmev.portuguese.engine.utils.word
+package com.podmev.portuguese.engine.utils.verb
 
 object VerbEnds {
     const val AR = "ar"

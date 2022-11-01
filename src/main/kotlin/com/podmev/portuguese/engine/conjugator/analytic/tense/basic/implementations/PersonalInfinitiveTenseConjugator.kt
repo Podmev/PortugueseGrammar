@@ -6,15 +6,13 @@ import com.podmev.portuguese.data.grammar.term.general.GrammaticalNumber.SINGULA
 import com.podmev.portuguese.data.grammar.term.general.GrammaticalPerson
 import com.podmev.portuguese.data.grammar.term.general.GrammaticalPerson.*
 import com.podmev.portuguese.data.grammar.term.orthography.Alphabet
-import com.podmev.portuguese.data.grammar.term.orthography.diacriticMarks.AcuteDiacriticMark
-import com.podmev.portuguese.data.grammar.term.orthography.letters.I_Letter
 import com.podmev.portuguese.data.grammar.term.tense.GrammaticalTense
 import com.podmev.portuguese.data.grammar.term.verb.VerbArguments
 import com.podmev.portuguese.engine.conjugator.analytic.VerbHelper
 import com.podmev.portuguese.engine.conjugator.analytic.VerbLists
 import com.podmev.portuguese.engine.conjugator.analytic.tense.basic.BasicTenseConjugator
 import com.podmev.portuguese.engine.utils.word.Wordifier
-import com.podmev.portuguese.engine.utils.word.VerbEnds
+import com.podmev.portuguese.engine.utils.verb.VerbEnds
 
 /*Additional rules:
 1 -    Combination: VerbFormInfo(infinitive=instituir, tense=PersonalInfinitiveTense, person=THIRD, number=PLURAL, gender=UNDEFINED, voice=ACTIVE) ==>
