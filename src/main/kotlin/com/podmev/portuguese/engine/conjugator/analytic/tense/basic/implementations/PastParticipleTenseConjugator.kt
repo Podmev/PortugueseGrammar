@@ -11,8 +11,14 @@ import com.podmev.portuguese.data.grammar.term.tense.GrammaticalTense
 import com.podmev.portuguese.data.grammar.term.verb.VerbArguments
 import com.podmev.portuguese.engine.conjugator.analytic.VerbHelper
 import com.podmev.portuguese.engine.conjugator.analytic.tense.basic.BasicTenseConjugator
+import com.podmev.portuguese.engine.utils.verb.IrregularSubVerber
+import com.podmev.portuguese.engine.utils.verb.SuffixTreeIrregularSubVerber
 import com.podmev.portuguese.engine.utils.verb.VerbEnds
+import com.podmev.portuguese.engine.utils.verb.searchRules.DiacriticsRule
+import com.podmev.portuguese.engine.utils.verb.searchRules.LetterInFrontRule
+import com.podmev.portuguese.engine.utils.verb.searchRules.PreparingRule
 import com.podmev.portuguese.engine.utils.word.Wordifier
+
 /*[root]
 AnalyticConjugatorCheckByDataSetSeparateTenseTest
 pastParticipleTest(VerbFormInfo)
@@ -132,6 +138,160 @@ transpor=[]
 ver=[circunscrever, descrever, escrever, inscrever, prescrever, prever, proscrever, redescrever, reescrever, rever, revolver, subscrever, transcrever]
 vir=[advir, avir, convir, devir, intervir, provir, sobrevir]
 
+[237] VerbFormInfo(infinitive=absolver, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=MASCULINE, voice=ACTIVE)
+[238] VerbFormInfo(infinitive=absolver, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=FEMININE, voice=ACTIVE)
+[239] VerbFormInfo(infinitive=absolver, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=MASCULINE, voice=ACTIVE)
+[240] VerbFormInfo(infinitive=absolver, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=FEMININE, voice=ACTIVE)
+[241] VerbFormInfo(infinitive=absorver, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=MASCULINE, voice=ACTIVE)
+[242] VerbFormInfo(infinitive=absorver, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=FEMININE, voice=ACTIVE)
+[243] VerbFormInfo(infinitive=absorver, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=MASCULINE, voice=ACTIVE)
+[244] VerbFormInfo(infinitive=absorver, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=FEMININE, voice=ACTIVE)
+[745] VerbFormInfo(infinitive=adsorver, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=MASCULINE, voice=ACTIVE)
+[746] VerbFormInfo(infinitive=adsorver, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=FEMININE, voice=ACTIVE)
+[747] VerbFormInfo(infinitive=adsorver, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=MASCULINE, voice=ACTIVE)
+[748] VerbFormInfo(infinitive=adsorver, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=FEMININE, voice=ACTIVE)
+[2061] VerbFormInfo(infinitive=aprender, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=MASCULINE, voice=ACTIVE)
+[2062] VerbFormInfo(infinitive=aprender, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=FEMININE, voice=ACTIVE)
+[2063] VerbFormInfo(infinitive=aprender, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=MASCULINE, voice=ACTIVE)
+[2064] VerbFormInfo(infinitive=aprender, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=FEMININE, voice=ACTIVE)
+[2741] VerbFormInfo(infinitive=atrever, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=MASCULINE, voice=ACTIVE)
+[2742] VerbFormInfo(infinitive=atrever, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=FEMININE, voice=ACTIVE)
+[2743] VerbFormInfo(infinitive=atrever, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=MASCULINE, voice=ACTIVE)
+[2744] VerbFormInfo(infinitive=atrever, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=FEMININE, voice=ACTIVE)
+[3929] VerbFormInfo(infinitive=chouver, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=MASCULINE, voice=ACTIVE)
+[3930] VerbFormInfo(infinitive=chouver, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=FEMININE, voice=ACTIVE)
+[3931] VerbFormInfo(infinitive=chouver, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=MASCULINE, voice=ACTIVE)
+[3932] VerbFormInfo(infinitive=chouver, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=FEMININE, voice=ACTIVE)
+[3933] VerbFormInfo(infinitive=chover, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=MASCULINE, voice=ACTIVE)
+[3934] VerbFormInfo(infinitive=chover, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=FEMININE, voice=ACTIVE)
+[3935] VerbFormInfo(infinitive=chover, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=MASCULINE, voice=ACTIVE)
+[3936] VerbFormInfo(infinitive=chover, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=FEMININE, voice=ACTIVE)
+[4105] VerbFormInfo(infinitive=cobrir, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=MASCULINE, voice=ACTIVE)
+[4106] VerbFormInfo(infinitive=cobrir, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=FEMININE, voice=ACTIVE)
+[4107] VerbFormInfo(infinitive=cobrir, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=MASCULINE, voice=ACTIVE)
+[4108] VerbFormInfo(infinitive=cobrir, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=FEMININE, voice=ACTIVE)
+[4325] VerbFormInfo(infinitive=comover, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=MASCULINE, voice=ACTIVE)
+[4326] VerbFormInfo(infinitive=comover, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=FEMININE, voice=ACTIVE)
+[4327] VerbFormInfo(infinitive=comover, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=MASCULINE, voice=ACTIVE)
+[4328] VerbFormInfo(infinitive=comover, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=FEMININE, voice=ACTIVE)
+[4413] VerbFormInfo(infinitive=comprender, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=MASCULINE, voice=ACTIVE)
+[4414] VerbFormInfo(infinitive=comprender, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=FEMININE, voice=ACTIVE)
+[4415] VerbFormInfo(infinitive=comprender, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=MASCULINE, voice=ACTIVE)
+[4416] VerbFormInfo(infinitive=comprender, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=FEMININE, voice=ACTIVE)
+[5833] VerbFormInfo(infinitive=desaprender, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=MASCULINE, voice=ACTIVE)
+[5834] VerbFormInfo(infinitive=desaprender, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=FEMININE, voice=ACTIVE)
+[5835] VerbFormInfo(infinitive=desaprender, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=MASCULINE, voice=ACTIVE)
+[5836] VerbFormInfo(infinitive=desaprender, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=FEMININE, voice=ACTIVE)
+[5973] VerbFormInfo(infinitive=descobrir, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=MASCULINE, voice=ACTIVE)
+[5974] VerbFormInfo(infinitive=descobrir, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=FEMININE, voice=ACTIVE)
+[5975] VerbFormInfo(infinitive=descobrir, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=MASCULINE, voice=ACTIVE)
+[5976] VerbFormInfo(infinitive=descobrir, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=FEMININE, voice=ACTIVE)
+[6229] VerbFormInfo(infinitive=desenvolver, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=MASCULINE, voice=ACTIVE)
+[6230] VerbFormInfo(infinitive=desenvolver, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=FEMININE, voice=ACTIVE)
+[6231] VerbFormInfo(infinitive=desenvolver, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=MASCULINE, voice=ACTIVE)
+[6232] VerbFormInfo(infinitive=desenvolver, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=FEMININE, voice=ACTIVE)
+[6617] VerbFormInfo(infinitive=desprender, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=MASCULINE, voice=ACTIVE)
+[6618] VerbFormInfo(infinitive=desprender, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=FEMININE, voice=ACTIVE)
+[6619] VerbFormInfo(infinitive=desprender, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=MASCULINE, voice=ACTIVE)
+[6620] VerbFormInfo(infinitive=desprender, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=FEMININE, voice=ACTIVE)
+[6633] VerbFormInfo(infinitive=desprover, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=MASCULINE, voice=ACTIVE)
+[6634] VerbFormInfo(infinitive=desprover, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=FEMININE, voice=ACTIVE)
+[6635] VerbFormInfo(infinitive=desprover, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=MASCULINE, voice=ACTIVE)
+[6636] VerbFormInfo(infinitive=desprover, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=FEMININE, voice=ACTIVE)
+[6813] VerbFormInfo(infinitive=dever, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=MASCULINE, voice=ACTIVE)
+[6814] VerbFormInfo(infinitive=dever, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=FEMININE, voice=ACTIVE)
+[6815] VerbFormInfo(infinitive=dever, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=MASCULINE, voice=ACTIVE)
+[6816] VerbFormInfo(infinitive=dever, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=FEMININE, voice=ACTIVE)
+[6825] VerbFormInfo(infinitive=devolver, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=MASCULINE, voice=ACTIVE)
+[6826] VerbFormInfo(infinitive=devolver, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=FEMININE, voice=ACTIVE)
+[6827] VerbFormInfo(infinitive=devolver, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=MASCULINE, voice=ACTIVE)
+[6828] VerbFormInfo(infinitive=devolver, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=FEMININE, voice=ACTIVE)
+[7025] VerbFormInfo(infinitive=dissolver, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=MASCULINE, voice=ACTIVE)
+[7026] VerbFormInfo(infinitive=dissolver, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=FEMININE, voice=ACTIVE)
+[7027] VerbFormInfo(infinitive=dissolver, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=MASCULINE, voice=ACTIVE)
+[7028] VerbFormInfo(infinitive=dissolver, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=FEMININE, voice=ACTIVE)
+[7805] VerbFormInfo(infinitive=encobrir, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=MASCULINE, voice=ACTIVE)
+[7806] VerbFormInfo(infinitive=encobrir, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=FEMININE, voice=ACTIVE)
+[7807] VerbFormInfo(infinitive=encobrir, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=MASCULINE, voice=ACTIVE)
+[7808] VerbFormInfo(infinitive=encobrir, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=FEMININE, voice=ACTIVE)
+[8329] VerbFormInfo(infinitive=entrever, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=MASCULINE, voice=ACTIVE)
+[8330] VerbFormInfo(infinitive=entrever, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=FEMININE, voice=ACTIVE)
+[8331] VerbFormInfo(infinitive=entrever, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=MASCULINE, voice=ACTIVE)
+[8332] VerbFormInfo(infinitive=entrever, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=FEMININE, voice=ACTIVE)
+[8401] VerbFormInfo(infinitive=envolver, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=MASCULINE, voice=ACTIVE)
+[8402] VerbFormInfo(infinitive=envolver, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=FEMININE, voice=ACTIVE)
+[8403] VerbFormInfo(infinitive=envolver, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=MASCULINE, voice=ACTIVE)
+[8404] VerbFormInfo(infinitive=envolver, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=FEMININE, voice=ACTIVE)
+[9264] VerbFormInfo(infinitive=esvair, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=FEMININE, voice=ACTIVE)
+[9321] VerbFormInfo(infinitive=evolver, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=MASCULINE, voice=ACTIVE)
+[9322] VerbFormInfo(infinitive=evolver, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=FEMININE, voice=ACTIVE)
+[9323] VerbFormInfo(infinitive=evolver, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=MASCULINE, voice=ACTIVE)
+[9324] VerbFormInfo(infinitive=evolver, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=FEMININE, voice=ACTIVE)
+[9789] VerbFormInfo(infinitive=ferver, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=MASCULINE, voice=ACTIVE)
+[9790] VerbFormInfo(infinitive=ferver, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=FEMININE, voice=ACTIVE)
+[9791] VerbFormInfo(infinitive=ferver, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=MASCULINE, voice=ACTIVE)
+[9792] VerbFormInfo(infinitive=ferver, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=FEMININE, voice=ACTIVE)
+[10625] VerbFormInfo(infinitive=haver, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=MASCULINE, voice=ACTIVE)
+[10626] VerbFormInfo(infinitive=haver, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=FEMININE, voice=ACTIVE)
+[10627] VerbFormInfo(infinitive=haver, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=MASCULINE, voice=ACTIVE)
+[10628] VerbFormInfo(infinitive=haver, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=FEMININE, voice=ACTIVE)
+[12549] VerbFormInfo(infinitive=mover, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=MASCULINE, voice=ACTIVE)
+[12550] VerbFormInfo(infinitive=mover, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=FEMININE, voice=ACTIVE)
+[12551] VerbFormInfo(infinitive=mover, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=MASCULINE, voice=ACTIVE)
+[12552] VerbFormInfo(infinitive=mover, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=FEMININE, voice=ACTIVE)
+[13033] VerbFormInfo(infinitive=ouvir, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=MASCULINE, voice=ACTIVE)
+[13034] VerbFormInfo(infinitive=ouvir, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=FEMININE, voice=ACTIVE)
+[13035] VerbFormInfo(infinitive=ouvir, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=MASCULINE, voice=ACTIVE)
+[13036] VerbFormInfo(infinitive=ouvir, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=FEMININE, voice=ACTIVE)
+[14109] VerbFormInfo(infinitive=promover, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=MASCULINE, voice=ACTIVE)
+[14110] VerbFormInfo(infinitive=promover, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=FEMININE, voice=ACTIVE)
+[14111] VerbFormInfo(infinitive=promover, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=MASCULINE, voice=ACTIVE)
+[14112] VerbFormInfo(infinitive=promover, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=FEMININE, voice=ACTIVE)
+[14205] VerbFormInfo(infinitive=prover, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=MASCULINE, voice=ACTIVE)
+[14206] VerbFormInfo(infinitive=prover, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=FEMININE, voice=ACTIVE)
+[14207] VerbFormInfo(infinitive=prover, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=MASCULINE, voice=ACTIVE)
+[14208] VerbFormInfo(infinitive=prover, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=FEMININE, voice=ACTIVE)
+[14669] VerbFormInfo(infinitive=recobrir, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=MASCULINE, voice=ACTIVE)
+[14670] VerbFormInfo(infinitive=recobrir, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=FEMININE, voice=ACTIVE)
+[14671] VerbFormInfo(infinitive=recobrir, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=MASCULINE, voice=ACTIVE)
+[14672] VerbFormInfo(infinitive=recobrir, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=FEMININE, voice=ACTIVE)
+[14801] VerbFormInfo(infinitive=redescobrir, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=MASCULINE, voice=ACTIVE)
+[14802] VerbFormInfo(infinitive=redescobrir, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=FEMININE, voice=ACTIVE)
+[14803] VerbFormInfo(infinitive=redescobrir, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=MASCULINE, voice=ACTIVE)
+[14804] VerbFormInfo(infinitive=redescobrir, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=FEMININE, voice=ACTIVE)
+[15141] VerbFormInfo(infinitive=remover, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=MASCULINE, voice=ACTIVE)
+[15142] VerbFormInfo(infinitive=remover, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=FEMININE, voice=ACTIVE)
+[15143] VerbFormInfo(infinitive=remover, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=MASCULINE, voice=ACTIVE)
+[15144] VerbFormInfo(infinitive=remover, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=FEMININE, voice=ACTIVE)
+[15381] VerbFormInfo(infinitive=resolver, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=MASCULINE, voice=ACTIVE)
+[15382] VerbFormInfo(infinitive=resolver, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=FEMININE, voice=ACTIVE)
+[15383] VerbFormInfo(infinitive=resolver, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=MASCULINE, voice=ACTIVE)
+[15384] VerbFormInfo(infinitive=resolver, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=FEMININE, voice=ACTIVE)
+[16069] VerbFormInfo(infinitive=servir, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=MASCULINE, voice=ACTIVE)
+[16070] VerbFormInfo(infinitive=servir, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=FEMININE, voice=ACTIVE)
+[16071] VerbFormInfo(infinitive=servir, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=MASCULINE, voice=ACTIVE)
+[16072] VerbFormInfo(infinitive=servir, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=FEMININE, voice=ACTIVE)
+[16225] VerbFormInfo(infinitive=sobreviver, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=MASCULINE, voice=ACTIVE)
+[16226] VerbFormInfo(infinitive=sobreviver, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=FEMININE, voice=ACTIVE)
+[16227] VerbFormInfo(infinitive=sobreviver, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=MASCULINE, voice=ACTIVE)
+[16228] VerbFormInfo(infinitive=sobreviver, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=FEMININE, voice=ACTIVE)
+[16369] VerbFormInfo(infinitive=sorver, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=MASCULINE, voice=ACTIVE)
+[16370] VerbFormInfo(infinitive=sorver, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=FEMININE, voice=ACTIVE)
+[16371] VerbFormInfo(infinitive=sorver, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=MASCULINE, voice=ACTIVE)
+[16372] VerbFormInfo(infinitive=sorver, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=FEMININE, voice=ACTIVE)
+[16761] VerbFormInfo(infinitive=tchover, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=MASCULINE, voice=ACTIVE)
+[16762] VerbFormInfo(infinitive=tchover, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=FEMININE, voice=ACTIVE)
+[16763] VerbFormInfo(infinitive=tchover, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=MASCULINE, voice=ACTIVE)
+[16764] VerbFormInfo(infinitive=tchover, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=FEMININE, voice=ACTIVE)
+[17805] VerbFormInfo(infinitive=viver, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=MASCULINE, voice=ACTIVE)
+[17806] VerbFormInfo(infinitive=viver, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=FEMININE, voice=ACTIVE)
+[17807] VerbFormInfo(infinitive=viver, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=MASCULINE, voice=ACTIVE)
+[17808] VerbFormInfo(infinitive=viver, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=FEMININE, voice=ACTIVE)
+[17837] VerbFormInfo(infinitive=volver, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=MASCULINE, voice=ACTIVE)
+[17838] VerbFormInfo(infinitive=volver, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=FEMININE, voice=ACTIVE)
+[17839] VerbFormInfo(infinitive=volver, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=MASCULINE, voice=ACTIVE)
+[17840] VerbFormInfo(infinitive=volver, tense=PastParticipleTense, person=UNDEFINED, number=PLURAL, gender=FEMININE, voice=ACTIVE)
+
 
 problems:
  - escrever: need to use base form screver
@@ -145,14 +305,15 @@ object PastParticipleTenseConjugator : BasicTenseConjugator {
         tense: GrammaticalTense,
         verbArgs: VerbArguments
     ): List<String> {
-        if(isRegular(verbInInfinitive)){
+        if (isRegular(verbInInfinitive)) {
             return regularConjugate(verbInInfinitive, verbArgs)
         }
         return irregularConjugate(verbInInfinitive, verbArgs)
     }
 
-    private fun isRegular(verbInInfinitive: String): Boolean{
-        return !fullIrregularFormMap.containsKey(verbInInfinitive)
+    private fun isRegular(verbInInfinitive: String): Boolean {
+        return !irregularSubVerber.isIrregularVerb(verbInInfinitive)
+//        return !fullIrregularFormMap.containsKey(verbInInfinitive)
     }
 
     private fun regularConjugate(verbInInfinitive: String, verbArgs: VerbArguments): List<String> {
@@ -163,8 +324,8 @@ object PastParticipleTenseConjugator : BasicTenseConjugator {
         return listOf(result)
     }
 
-    private fun irregularConjugate(verbInInfinitive: String, verbArgs: VerbArguments): List<String>{
-        val masculineSingularForm = fullIrregularFormMap[verbInInfinitive]!!
+    private fun irregularConjugate(verbInInfinitive: String, verbArgs: VerbArguments): List<String> {
+        val masculineSingularForm = irregularSubVerber.getIrregularForm(verbInInfinitive)!!
         val reducedForm = VerbHelper.dropSuffixO(masculineSingularForm)
         val formInGenderAndNumber = reducedForm + getMutableSuffixPart(verbArgs.gender, verbArgs.number)
         return listOf(formInGenderAndNumber)
@@ -177,29 +338,30 @@ object PastParticipleTenseConjugator : BasicTenseConjugator {
 
     //TODO can be defined in common code
     private fun getMutableSuffixPart(gender: GrammaticalGender, number: GrammaticalNumber): String =
-        when (number){
-            SINGULAR, UNDEFINED  -> when(gender){
+        when (number) {
+            SINGULAR, UNDEFINED -> when (gender) {
                 MASCULINE, GrammaticalGender.UNDEFINED -> "o"
                 FEMININE -> "a"
             }
-            PLURAL -> when(gender){
+
+            PLURAL -> when (gender) {
                 MASCULINE, GrammaticalGender.UNDEFINED -> "os"
                 FEMININE -> "as"
             }
         }
 
-    private fun regularChanging(preparedBase: String, suffix: String):String = preparedBase + suffix
+    private fun regularChanging(preparedBase: String, suffix: String): String = preparedBase + suffix
 
     private fun prepareInfinitive(infinitive: String): String {
-        if(infinitive.endsWith(VerbEnds.O_CIRCUMFLEX_R)){
+        if (infinitive.endsWith(VerbEnds.O_CIRCUMFLEX_R)) {
             return Wordifier.deleteLastDiacritics(infinitive)
         }
-        if(infinitive.endsWith(VerbEnds.ER)){
+        if (infinitive.endsWith(VerbEnds.ER)) {
             return Wordifier.replaceLastFoundGenericLetter(infinitive, E_Letter, I_Letter)
         }
-        if(infinitive.endsWith(VerbEnds.IR)){
+        if (infinitive.endsWith(VerbEnds.IR)) {
             val changedForm = VerbHelper.replaceIfNecessaryLastI_LetterForI_Acute_LetterOrNull(infinitive)
-            if(changedForm!=null){
+            if (changedForm != null) {
                 return changedForm
             }
         }
@@ -288,7 +450,7 @@ object PastParticipleTenseConjugator : BasicTenseConjugator {
         Pair("tumefazer", "tumefeito"),
         Pair("ver", "visto"),
         Pair("vir", "vindo")
-        )
+    )
 
     val simpleIrregularFormMap: Map<String, String> = mapOf(
         Pair("abrir", "aberto"),
@@ -305,6 +467,14 @@ object PastParticipleTenseConjugator : BasicTenseConjugator {
         Pair("ver", "visto"),
         Pair("vir", "vindo")
     )
+
+    private val preparingRules: List<PreparingRule> = listOf(
+        LetterInFrontRule(I_Letter),
+        LetterInFrontRule(E_Letter),
+        DiacriticsRule
+    )
+
+    val irregularSubVerber: IrregularSubVerber = SuffixTreeIrregularSubVerber(simpleIrregularFormMap, preparingRules)
 
     override fun toString(): String {
         return "PastParticipleTenseConjugator"
