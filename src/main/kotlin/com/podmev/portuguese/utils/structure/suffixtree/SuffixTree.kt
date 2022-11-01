@@ -13,6 +13,9 @@ fun <T> suffixTreeOf(entries: Map<String, T>): SuffixTree<T> {
     return tree
 }
 
+public fun <T> suffixTreeOf(vararg pairs: Pair<String, T>): SuffixTree<T> =
+    if (pairs.isNotEmpty()) suffixTreeOf(pairs.toMap()) else emptySuffixTree()
+
 
 
 
