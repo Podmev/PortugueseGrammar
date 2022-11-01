@@ -1,5 +1,7 @@
 package com.podmev.portuguese.utils.structure.suffixtree
 
+import com.podmev.portuguese.utils.lang.paired
+
 interface SuffixTree<T> : Map<String, T> {
     fun findLongestSuffix(word: String): String?
 }
@@ -28,7 +30,23 @@ class DefaultSuffixTree<T>() : MutableSuffixTree<T> {
     override fun isEmpty(): Boolean = root.children.isEmpty()
 
     override fun remove(key: String): T? {
-        TODO("Not yet implemented")
+        //finding path from root till exact node with key
+        val nodePath: List<Node<T>> = getNodePathByKey(key) ?: return null
+        val exactNode = nodePath.last()
+
+        //removing data
+        val oldValue = exactNode.data!!.value
+        exactNode.data = null // removing data
+
+        //cleaning empty nodes if needed
+        if (exactNode.children.isEmpty()) {
+            //no children - so we need to remove all empty node since current till one with data, going to root
+            removeEmptyNodesFromTheEnd(nodePath)
+        }
+        //other case: cannot remove this node, only content
+
+        //always has value to return when we found path
+        return oldValue
     }
 
     override fun putAll(from: Map<out String, T>) {
@@ -63,13 +81,43 @@ class DefaultSuffixTree<T>() : MutableSuffixTree<T> {
     }
 
 
-
     private fun getNodeByKey(key: String): Node<T>? {
         var curNode = root
         var curIndex = key.length - 1
         while (true) {
             if (curIndex == -1) {
                 return curNode
+            }
+            val curChar = key[curIndex]
+            curNode = curNode.children[curChar] ?: return null
+            curIndex--
+        }
+    }
+
+    /*from root to leaf
+    * return
+    * */
+    private fun removeEmptyNodesFromTheEnd(nodePath: List<Node<T>>): Int {
+        var count = 1
+        for ((node, prevNode) in nodePath.reversed().paired()) {
+            if (prevNode.hasData()) {
+                //found node with data - we need to remove child
+                prevNode.children.remove(node.letter)
+                return count
+            }
+            count++
+        }
+        throw Exception("Unreachable code")
+    }
+
+    private fun getNodePathByKey(key: String): List<Node<T>>? {
+        var curNode = root
+        var curIndex = key.length - 1
+        val nodeList = ArrayList<Node<T>>()
+        while (true) {
+            nodeList.add(curNode)
+            if (curIndex == -1) {
+                return nodeList
             }
             val curChar = key[curIndex]
             curNode = curNode.children[curChar] ?: return null
@@ -97,7 +145,7 @@ class DefaultSuffixTree<T>() : MutableSuffixTree<T> {
         }
         val lastChar = wordPrefix.last()
         val prefixWithoutLastChar = wordPrefix.dropLast(1)
-        val nextNode = createEmptyNode(lastChar, node.level+1)
+        val nextNode = createEmptyNode(lastChar, node.level + 1)
         node.children[lastChar] = nextNode
         return createEmptyNodes(nextNode, prefixWithoutLastChar)
     }
@@ -110,13 +158,11 @@ class DefaultSuffixTree<T>() : MutableSuffixTree<T> {
         val children: MutableMap<Char, Node<T>>,
         var data: NodeData<T>?
     ) {
-//        fun hasData(): Boolean = data!=null
+        fun hasData(): Boolean = data != null
     }
 
 
-    inner class NodeData<T>(val word: String, val value: T) {
-
-    }
+    inner class NodeData<T>(val word: String, val value: T)
 
     companion object {
         const val ROOT_CHAR = '$'
