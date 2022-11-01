@@ -20,7 +20,7 @@ class DefaultSuffixTree<T>() : MutableSuffixTree<T> {
         get() = countSizeByNode(root)
 
     override val values: MutableCollection<T>
-        get() = TODO("Not yet implemented")
+        get() = valuesByNode(root)
 
     override fun clear() = root.children.clear()
 
@@ -156,6 +156,14 @@ class DefaultSuffixTree<T>() : MutableSuffixTree<T> {
         for (child in node.children) count+=countSizeByNode(child.value)
         if (node.hasData()) count++
         return count
+    }
+
+    private fun valuesByNode(node: Node<T>): MutableCollection<T>{
+        val valuesList = mutableListOf<T>()
+        for (child in node.children) valuesList.addAll(valuesByNode(child.value))
+        val curValue = node.data?.value
+        if (curValue!=null) valuesList.add(curValue)
+        return valuesList
     }
 
     private fun createEmptyNode(letter: Char, level: Int) = Node<T>(letter, level, HashMap(), null)
