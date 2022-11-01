@@ -24,6 +24,20 @@ class DefaultSuffixTreeTest {
                     )
                 )
         }
+
+        @Test
+        fun twoPut() {
+            val suffixTree: MutableSuffixTree<Int> = DefaultSuffixTree<Int>()
+            suffixTree["abc"] = 1
+            suffixTree["def"] = 2
+            Truth.assertThat(suffixTree.entries)
+                .isEqualTo(
+                    setOf<MutableMap.MutableEntry<String, Int>>(
+                        DefaultSuffixTree.NodeData("abc", 1),
+                        DefaultSuffixTree.NodeData("def", 2),
+                    )
+                )
+        }
     }
 
     @Nested
@@ -32,11 +46,23 @@ class DefaultSuffixTreeTest {
         fun empty() =
             Truth.assertThat(DefaultSuffixTree<Int>().keys)
                 .isEqualTo(emptySet<String>())
+
         @Test
         fun onePut() {
             val suffixTree: MutableSuffixTree<Int> = DefaultSuffixTree<Int>()
             suffixTree["abc"] = 1
             Truth.assertThat(suffixTree.keys).isEqualTo(setOf("abc"))
+        }
+
+        @Test
+        fun twoPut() {
+            val suffixTree: MutableSuffixTree<Int> = DefaultSuffixTree<Int>()
+            suffixTree["abc"] = 1
+            suffixTree["def"] = 2
+            Truth.assertThat(suffixTree.keys)
+                .isEqualTo(
+                    setOf<String>("abc", "def")
+                )
         }
     }
 
@@ -54,6 +80,13 @@ class DefaultSuffixTreeTest {
             Truth.assertThat(suffixTree.size).isEqualTo(1)
         }
 
+        @Test
+        fun twoPut() {
+            val suffixTree: MutableSuffixTree<Int> = DefaultSuffixTree<Int>()
+            suffixTree["abc"] = 1
+            suffixTree["def"] = 2
+            Truth.assertThat(suffixTree.size).isEqualTo(2)
+        }
     }
 
     @Nested
@@ -68,6 +101,14 @@ class DefaultSuffixTreeTest {
             val suffixTree: MutableSuffixTree<Int> = DefaultSuffixTree<Int>()
             suffixTree["abc"] = 1
             Truth.assertThat(suffixTree.values).isEqualTo(listOf(1))
+        }
+
+        @Test
+        fun twoPut() {
+            val suffixTree: MutableSuffixTree<Int> = DefaultSuffixTree<Int>()
+            suffixTree["abc"] = 1
+            suffixTree["def"] = 2
+            Truth.assertThat(suffixTree.values).isEqualTo(listOf(1, 2))
         }
     }
 
@@ -88,6 +129,15 @@ class DefaultSuffixTreeTest {
             suffixTree.clear()
             Truth.assertThat(suffixTree.size).isEqualTo(0)
         }
+
+        @Test
+        fun twoPut() {
+            val suffixTree: MutableSuffixTree<Int> = DefaultSuffixTree<Int>()
+            suffixTree["abc"] = 1
+            suffixTree["def"] = 2
+            suffixTree.clear()
+            Truth.assertThat(suffixTree.size).isEqualTo(0)
+        }
     }
 
     @Nested
@@ -102,6 +152,17 @@ class DefaultSuffixTreeTest {
             val suffixTree: MutableSuffixTree<Int> = DefaultSuffixTree<Int>()
             suffixTree["abc"] = 1
             Truth.assertThat(suffixTree.containsKey("abc")).isTrue()
+        }
+
+        @Test
+        fun twoPut() {
+            val suffixTree: MutableSuffixTree<Int> = DefaultSuffixTree<Int>()
+            suffixTree["abc"] = 1
+            suffixTree["def"] = 2
+            assertAll(
+                { Truth.assertThat(suffixTree.containsKey("abc")).isTrue() },
+                { Truth.assertThat(suffixTree.containsKey("def")).isTrue() }
+            )
         }
     }
 
@@ -119,6 +180,17 @@ class DefaultSuffixTreeTest {
             suffixTree["abc"] = 1
             Truth.assertThat(suffixTree.get("abc")).isEqualTo(1)
         }
+
+        @Test
+        fun twoPut() {
+            val suffixTree: MutableSuffixTree<Int> = DefaultSuffixTree<Int>()
+            suffixTree["abc"] = 1
+            suffixTree["def"] = 2
+            assertAll(
+                { Truth.assertThat(suffixTree.get("abc")).isEqualTo(1) },
+                { Truth.assertThat(suffixTree.get("def")).isEqualTo(2) }
+            )
+        }
     }
 
     @Nested
@@ -127,6 +199,21 @@ class DefaultSuffixTreeTest {
         fun empty() =
             Truth.assertThat(DefaultSuffixTree<Int>().isEmpty())
                 .isTrue()
+
+        @Test
+        fun onePut() {
+            val suffixTree: MutableSuffixTree<Int> = DefaultSuffixTree<Int>()
+            suffixTree["abc"] = 1
+            Truth.assertThat(suffixTree.isEmpty()).isFalse()
+        }
+
+        @Test
+        fun twoPut() {
+            val suffixTree: MutableSuffixTree<Int> = DefaultSuffixTree<Int>()
+            suffixTree["abc"] = 1
+            suffixTree["def"] = 2
+            Truth.assertThat(suffixTree.isEmpty()).isFalse()
+        }
     }
 
     @Nested
@@ -249,7 +336,7 @@ class DefaultSuffixTreeTest {
                     }
                 }
             }
-            Truth.assertThat(suffixTree.size).isEqualTo(26*26*26)
+            Truth.assertThat(suffixTree.size).isEqualTo(26 * 26 * 26)
         }
     }
 
@@ -266,10 +353,22 @@ class DefaultSuffixTreeTest {
             suffixTree["abc"] = 1
             Truth.assertThat(suffixTree.containsValue(1)).isTrue()
         }
+
+        @Test
+        fun twoPut() {
+            val suffixTree: MutableSuffixTree<Int> = DefaultSuffixTree<Int>()
+            suffixTree["abc"] = 1
+            suffixTree["def"] = 2
+            assertAll(
+                { Truth.assertThat(suffixTree.containsValue(1)).isTrue() },
+                { Truth.assertThat(suffixTree.containsValue(2)).isTrue() }
+            )
+        }
+
     }
 
     @Nested
-    inner class SuffixTreeOf(){
+    inner class SuffixTreeOf() {
         @Test
         fun threeValuesSize() {
             val suffixTree: SuffixTree<Int> = suffixTreeOf(
@@ -296,8 +395,16 @@ class DefaultSuffixTreeTest {
         @Test
         fun onePut() {
             val suffixTree: MutableSuffixTree<Int> = DefaultSuffixTree<Int>()
-            suffixTree["abc"] = 1
-            Truth.assertThat(suffixTree.findLongestSuffix("abcdef")).isEqualTo("abc")
+            suffixTree["cba"] = 1
+            Truth.assertThat(suffixTree.findLongestSuffix("fedcba")).isEqualTo("cba")
+        }
+
+        @Test
+        fun twoSameBranch() {
+            val suffixTree: MutableSuffixTree<Int> = DefaultSuffixTree<Int>()
+            suffixTree["cba"] = 1
+            suffixTree["fedcba"] = 2
+            Truth.assertThat(suffixTree.findLongestSuffix("ghfedcba")).isEqualTo("fedcba")
         }
     }
 }
