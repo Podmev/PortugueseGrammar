@@ -3,7 +3,7 @@ package com.podmev.portuguese.utils.structure.suffixtree
 import com.podmev.portuguese.utils.lang.paired
 
 interface SuffixTree<T> : Map<String, T> {
-    fun findLongestSuffix(word: String): String?
+    fun findLongestSuffix(word: String): String
 }
 
 interface MutableSuffixTree<T> : MutableMap<String, T>, SuffixTree<T> {
@@ -79,10 +79,13 @@ class DefaultSuffixTree<T>() : MutableSuffixTree<T> {
         return values.contains(value)
     }
 
-    override fun findLongestSuffix(word: String): String? {
-        TODO("Not yet implemented")
+    override fun findLongestSuffix(word: String): String {
+        val closestNode = getMaxCloseNodeByKey(word)
+        val level = closestNode.level
+        return word.drop(word.length - level)
     }
 
+   //-------details----------
 
     private fun getNodeByKey(key: String): Node<T>? {
         var curNode = root
