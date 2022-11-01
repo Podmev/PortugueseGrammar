@@ -12,15 +12,9 @@ class SuffixTreeIrregularSubVerber(
         prepareMap(verbFormMap, preparingRules)
     )
 
-    override fun findNonEmptySuffix(verb: String): String? {
-        val suffix = getLongestSuffix(verb)
-        if (suffix.isEmpty()) {
-            return null
-        }
-        return suffix
-    }
+    override fun findNonEmptySuffix(verb: String): String? = suffixTreeMap.findLongestSuffix(verb)
 
-    override fun isIrregularVerb(verb: String): Boolean = getLongestSuffix(verb).isNotEmpty()
+    override fun isIrregularVerb(verb: String): Boolean = findNonEmptySuffix(verb)!=null
 
     override fun getIrregularForm(verb: String): String? {
         val suffix = findNonEmptySuffix(verb) ?: return null
@@ -31,8 +25,6 @@ class SuffixTreeIrregularSubVerber(
         val prefix = verb.dropLast(suffix.length)
         return prefix + suffixForm
     }
-
-    private fun getLongestSuffix(verb: String): String = suffixTreeMap.findLongestSuffix(verb)
 
     private fun prepareMap(
         verbFormMap: Map<String, String>,
