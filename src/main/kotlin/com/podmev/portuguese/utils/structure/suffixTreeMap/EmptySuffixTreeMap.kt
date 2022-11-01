@@ -1,7 +1,7 @@
-package com.podmev.portuguese.utils.structure.suffixtree
+package com.podmev.portuguese.utils.structure.suffixTreeMap
 
-object EmptySuffixTree : SuffixTree<Any?> {
-    override fun equals(other: Any?): Boolean = other is SuffixTree<*> && other.isEmpty()
+object EmptySuffixTreeMap : SuffixTreeMap<Any?> {
+    override fun equals(other: Any?): Boolean = other is SuffixTreeMap<*> && other.isEmpty()
     override fun hashCode(): Int = 0
     override fun toString(): String = "{}"
 
@@ -18,4 +18,4 @@ object EmptySuffixTree : SuffixTree<Any?> {
     override fun findLongestSuffix(word: String): String = ""
 }
 
-fun <T> emptySuffixTree(): SuffixTree<T> = @Suppress("UNCHECKED_CAST") (EmptySuffixTree as SuffixTree<T>)
+fun <T> emptySuffixTreeMap(): SuffixTreeMap<T> = @Suppress("UNCHECKED_CAST") (EmptySuffixTreeMap as SuffixTreeMap<T>)

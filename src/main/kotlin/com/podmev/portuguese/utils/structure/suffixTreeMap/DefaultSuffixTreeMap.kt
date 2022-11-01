@@ -1,8 +1,8 @@
-package com.podmev.portuguese.utils.structure.suffixtree
+package com.podmev.portuguese.utils.structure.suffixTreeMap
 
 import com.podmev.portuguese.utils.lang.paired
 
-class DefaultSuffixTree<T>() : MutableSuffixTree<T> {
+class DefaultSuffixTreeMap<T>() : MutableSuffixTreeMap<T> {
     private val root = createEmptyNode(ROOT_CHAR, 0)
 
     override val entries: MutableSet<MutableMap.MutableEntry<String, T>>
