@@ -13,7 +13,8 @@ class DefaultSuffixTree<T>() : MutableSuffixTree<T> {
     private val root = createEmptyNode(ROOT_CHAR, 0)
 
     override val entries: MutableSet<MutableMap.MutableEntry<String, T>>
-        get() = TODO("Not yet implemented")
+        get() = entriesByNode(root)
+
     override val keys: MutableSet<String>
         get() = keysByNode(root)
 
@@ -175,6 +176,14 @@ class DefaultSuffixTree<T>() : MutableSuffixTree<T> {
         return keysSet
     }
 
+    private fun entriesByNode(node: Node<T>): MutableSet<MutableMap.MutableEntry<String, T>> {
+        val entrySet = mutableSetOf<MutableMap.MutableEntry<String, T>>()
+        for (child in node.children) entrySet.addAll(entriesByNode(child.value))
+        val curData = node.data
+        if (curData != null) entrySet.add(curData)
+        return entrySet
+    }
+
     private fun createEmptyNode(letter: Char, level: Int) = Node<T>(letter, level, HashMap(), null)
 
     inner class Node<T>(
@@ -186,8 +195,16 @@ class DefaultSuffixTree<T>() : MutableSuffixTree<T> {
         fun hasData(): Boolean = data != null
     }
 
+    class NodeData<T>(val word: String, override var value: T) : MutableMap.MutableEntry<String, T> {
+        override val key: String = word
 
-    inner class NodeData<T>(val word: String, val value: T)
+        override fun setValue(newValue: T): T {
+            val oldValue = value
+            value = newValue
+            return oldValue
+        }
+
+    }
 
     companion object {
         const val ROOT_CHAR = '$'
