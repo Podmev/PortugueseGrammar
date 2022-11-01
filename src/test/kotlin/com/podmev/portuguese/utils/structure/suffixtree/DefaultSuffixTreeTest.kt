@@ -172,6 +172,22 @@ class DefaultSuffixTreeTest {
                 .isFalse()
     }
 
+    @Nested
+    inner class SuffixTreeOf(){
+        @Test
+        fun threeValuesSize() {
+            val suffixTree: SuffixTree<Int> = suffixTreeOf(
+                mapOf(
+                    Pair("abc", 1),
+                    Pair("abd", 2),
+                    Pair("ac", 3)
+                )
+            )
+            Truth.assertThat(suffixTree.size)
+                .isEqualTo(3)
+        }
+    }
+
     //specific api
 
     @Nested
