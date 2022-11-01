@@ -3,10 +3,11 @@ package com.podmev.portuguese.utils.structure.suffixtree
 import com.google.common.truth.Truth
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertAll
 
 class DefaultSuffixTreeTest {
     @Nested
-    inner class Entries{
+    inner class Entries {
         @Test
         fun empty() =
             Truth.assertThat(DefaultSuffixTree<Int>().entries)
@@ -14,7 +15,7 @@ class DefaultSuffixTreeTest {
     }
 
     @Nested
-    inner class Keys{
+    inner class Keys {
         @Test
         fun empty() =
             Truth.assertThat(DefaultSuffixTree<Int>().keys)
@@ -22,7 +23,7 @@ class DefaultSuffixTreeTest {
     }
 
     @Nested
-    inner class Size{
+    inner class Size {
         @Test
         fun empty() =
             Truth.assertThat(DefaultSuffixTree<Int>().size)
@@ -31,7 +32,7 @@ class DefaultSuffixTreeTest {
     }
 
     @Nested
-    inner class Values{
+    inner class Values {
         @Test
         fun empty() =
             Truth.assertThat(DefaultSuffixTree<Int>().values)
@@ -39,7 +40,7 @@ class DefaultSuffixTreeTest {
     }
 
     @Nested
-    inner class Clear{
+    inner class Clear {
         @Test
         fun empty() {
             val suffixTree: MutableSuffixTree<Int> = DefaultSuffixTree<Int>()
@@ -50,7 +51,7 @@ class DefaultSuffixTreeTest {
     }
 
     @Nested
-    inner class ContainsKey{
+    inner class ContainsKey {
         @Test
         fun empty() =
             Truth.assertThat(DefaultSuffixTree<Int>().containsKey("abc"))
@@ -59,7 +60,7 @@ class DefaultSuffixTreeTest {
 
     @Nested
     @Suppress("ReplaceGetOrSet")
-    inner class Get{
+    inner class Get {
         @Test
         fun empty() =
             Truth.assertThat(DefaultSuffixTree<Int>().get("abc"))
@@ -67,7 +68,7 @@ class DefaultSuffixTreeTest {
     }
 
     @Nested
-    inner class IsEmpty{
+    inner class IsEmpty {
         @Test
         fun empty() =
             Truth.assertThat(DefaultSuffixTree<Int>().isEmpty())
@@ -75,7 +76,7 @@ class DefaultSuffixTreeTest {
     }
 
     @Nested
-    inner class Remove{
+    inner class Remove {
         @Test
         fun empty() =
             Truth.assertThat(DefaultSuffixTree<Int>().remove("abc"))
@@ -83,14 +84,16 @@ class DefaultSuffixTreeTest {
     }
 
     @Nested
-    inner class PutAll{
+    inner class PutAll {
         @Test
         fun threeValuesSize() {
             val suffixTree: MutableSuffixTree<Int> = DefaultSuffixTree<Int>()
-            suffixTree.putAll(mapOf(
-                Pair("abc", 1),
-                Pair("abd", 2),
-                Pair("ac", 3))
+            suffixTree.putAll(
+                mapOf(
+                    Pair("abc", 1),
+                    Pair("abd", 2),
+                    Pair("ac", 3)
+                )
             )
             Truth.assertThat(suffixTree.size)
                 .isEqualTo(3)
@@ -99,7 +102,7 @@ class DefaultSuffixTreeTest {
 
     @Suppress("ReplacePutWithAssignment")
     @Nested
-    inner class Put{
+    inner class Put {
         @Test
         fun oneValueSize() {
             val suffixTree: MutableSuffixTree<Int> = DefaultSuffixTree<Int>()
@@ -107,10 +110,62 @@ class DefaultSuffixTreeTest {
             Truth.assertThat(suffixTree.size)
                 .isEqualTo(1)
         }
+
+        @Test
+        fun oneAndOneValuesSize() {
+            val suffixTree: MutableSuffixTree<Int> = DefaultSuffixTree<Int>()
+            suffixTree.put("abc", 1)
+            suffixTree.put("abd", 2)
+            Truth.assertThat(suffixTree.size)
+                .isEqualTo(2)
+        }
+
+        @Test
+        fun oneValuesContainsAndGet() {
+            val suffixTree: MutableSuffixTree<Int> = DefaultSuffixTree()
+            suffixTree.put("abc", 1)
+            suffixTree.put("abd", 2)
+            assertAll(
+                "two entries",
+                { Truth.assertThat(suffixTree.containsKey("abc")).isTrue() },
+                { Truth.assertThat(suffixTree.containsKey("abd")).isTrue() },
+                { Truth.assertThat(suffixTree.containsValue(1)).isTrue() },
+                { Truth.assertThat(suffixTree.containsValue(2)).isTrue() },
+                { Truth.assertThat(suffixTree["abc"]).isEqualTo(1) },
+                { Truth.assertThat(suffixTree["abd"]).isEqualTo(2) },
+            )
+        }
+
+        @Test
+        fun doubleSameKey() {
+            val suffixTree: MutableSuffixTree<Int> = DefaultSuffixTree()
+            val key = "abc"
+            suffixTree.put(key, 1)
+            suffixTree.put(key, 2)
+            assertAll(
+                "two entries",
+                { Truth.assertThat(suffixTree.size).isEqualTo(1) },
+                { Truth.assertThat(suffixTree.containsValue(1)).isFalse() },
+                { Truth.assertThat(suffixTree[key]).isEqualTo(2) },
+            )
+        }
+
+        @Test
+        fun every3Letters() {
+            val suffixTree: MutableSuffixTree<Int> = DefaultSuffixTree()
+            for (c1 in 'a'..'z') {
+                for (c2 in 'a'..'z') {
+                    for (c3 in 'a'..'z') {
+                        suffixTree.put("$c1$c2$c3", 1)
+                    }
+                }
+            }
+            Truth.assertThat(suffixTree.size).isEqualTo(26*26*26)
+        }
     }
 
     @Nested
-    inner class ContainsValue{
+    inner class ContainsValue {
         @Test
         fun empty() =
             Truth.assertThat(DefaultSuffixTree<Int>().containsValue(3))
@@ -120,7 +175,7 @@ class DefaultSuffixTreeTest {
     //specific api
 
     @Nested
-    inner class FindLongestSuffix{
+    inner class FindLongestSuffix {
         @Test
         fun empty() =
             Truth.assertThat(DefaultSuffixTree<Int>().findLongestSuffix("abc"))
