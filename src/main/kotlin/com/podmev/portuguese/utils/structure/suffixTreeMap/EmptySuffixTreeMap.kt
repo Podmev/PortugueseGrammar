@@ -15,7 +15,7 @@ object EmptySuffixTreeMap : SuffixTreeMap<Any?> {
     override val keys: Set<String> get() = emptySet()
     override val values: Collection<Nothing> get() = emptyList()
 
-    override fun findLongestSuffix(word: String): String = ""
+    override fun findLongestSuffix(word: String): String? = null
 }
 
 fun <T> emptySuffixTreeMap(): SuffixTreeMap<T> = @Suppress("UNCHECKED_CAST") (EmptySuffixTreeMap as SuffixTreeMap<T>)

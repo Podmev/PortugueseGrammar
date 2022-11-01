@@ -72,8 +72,8 @@ class DefaultSuffixTreeMap<T>() : MutableSuffixTreeMap<T> {
         return values.contains(value)
     }
 
-    override fun findLongestSuffix(word: String): String {
-        val closestNode = getMaxCloseNodeByKey(word)
+    override fun findLongestSuffix(word: String): String? {
+        val closestNode: Node<T> = getMaxCloseNonEmptyNodeByKey(word) ?: return null
         val level = closestNode.level
         return word.drop(word.length - level)
     }
@@ -133,6 +133,23 @@ class DefaultSuffixTreeMap<T>() : MutableSuffixTreeMap<T> {
             }
             val curChar = key[curIndex]
             curNode = curNode.children[curChar] ?: return curNode
+            curIndex--
+        }
+    }
+
+    private fun getMaxCloseNonEmptyNodeByKey(key: String): Node<T>? {
+        var curNode: Node<T> = root
+        var curNonEmptyNode: Node<T>? = null
+        var curIndex = key.length - 1
+        while (true) {
+            if (curIndex == -1) {
+                return curNonEmptyNode
+            }
+            val curChar = key[curIndex]
+            curNode = curNode.children[curChar] ?: return curNonEmptyNode
+            if (curNode.hasData()) {
+                curNonEmptyNode = curNode
+            }
             curIndex--
         }
     }

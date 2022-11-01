@@ -390,13 +390,20 @@ class DefaultSuffixTreeMapTest {
         @Test
         fun empty() =
             Truth.assertThat(DefaultSuffixTreeMap<Int>().findLongestSuffix("abc"))
-                .isEqualTo("")
+                .isNull()
 
         @Test
         fun onePut() {
             val suffixTreeMap: MutableSuffixTreeMap<Int> = DefaultSuffixTreeMap<Int>()
             suffixTreeMap["cba"] = 1
             Truth.assertThat(suffixTreeMap.findLongestSuffix("fedcba")).isEqualTo("cba")
+        }
+
+        @Test
+        fun negative() {
+            val suffixTreeMap: MutableSuffixTreeMap<Int> = DefaultSuffixTreeMap<Int>()
+            suffixTreeMap["cba"] = 1
+            Truth.assertThat(suffixTreeMap.findLongestSuffix("dba")).isNull()
         }
 
         @Test
