@@ -14,3 +14,6 @@ data class VerbArguments(
     val gender: GrammaticalGender,
     val voice: GrammaticalVoice
 )
+
+fun VerbArguments.isFirstSingular(): Boolean =
+    person == GrammaticalPerson.FIRST && number == GrammaticalNumber.SINGULAR

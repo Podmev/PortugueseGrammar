@@ -82,6 +82,11 @@ object Wordifier {
     //TODO make tests for endsWithAny
     fun endsWithAny(word: String, endings: List<String>): Boolean = endings.any{word.endsWith(it)}
 
+    /*checks if word truncated in the end with n-characters finishes with ending
+    * endsWithDroppingLast("indicar", "c", 2) == true
+    *  */
+    fun endsWithDroppingLast(word: String, ending: String, n: Int): Boolean = word.dropLast(n).endsWith(ending)
+
     //TODO rewrite better
     fun <E> replaceElementByIndex(list: List<E>, index: Int, newValue: E): List<E>{
         return list.mapIndexed{i: Int, value: E -> if(i==index) newValue else value}
