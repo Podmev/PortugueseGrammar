@@ -19,14 +19,18 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteT
 
     object UZIR_Suffix_Rule : SpecialEndingSuffixRule {
         override val wordEnding = VerbEnds.UZIR
-
         override fun getSuffix(verb: String, regularSuffix: SuffixGroup) =
             regularSuffix.copy(singularThird = "") //finishes with -z
-
+    }
+    object AIR_Suffix_Rule : SpecialEndingSuffixRule {
+        override val wordEnding = VerbEnds.AIR
+        override fun getSuffix(verb: String, regularSuffix: SuffixGroup) =
+            SuffixGroup("io", "is", "i", "ímos", "ís", regularSuffix.pluralThird)
     }
 
     override val specialEndingSuffixRules: List<SpecialEndingSuffixRule> = listOf(
-        UZIR_Suffix_Rule
+        UZIR_Suffix_Rule,
+        AIR_Suffix_Rule
     )
 
     object C_TO_C_Cedilla_Rule : BaseChangingRule {
