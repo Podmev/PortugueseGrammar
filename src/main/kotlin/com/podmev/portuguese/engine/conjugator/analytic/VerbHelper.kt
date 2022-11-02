@@ -68,4 +68,15 @@ object VerbHelper {
         }
         return null
     }
+
+    fun diffVerbAndOrigin(verb: String, originIrregularVerb: String): String {
+        val verbWithoutDiacritics = Wordifier.deleteAllDiacriticMarks(verb)
+        val originWithoutDiacritics = Wordifier.deleteAllDiacriticMarks(originIrregularVerb)
+        for(i in 0..originWithoutDiacritics.length){
+            if(verbWithoutDiacritics.endsWith(originWithoutDiacritics.drop(i))){
+                return verbWithoutDiacritics.dropLast(originWithoutDiacritics.length-i)
+            }
+        }
+        throw Exception("Unreachable code")
+    }
 }

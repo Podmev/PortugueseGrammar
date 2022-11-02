@@ -21,7 +21,7 @@ interface FiniteTenseConjugator : Conjugator {
     ): List<String> {
         val regularTransformation = regularChanging(verbInInfinitive, verbArgs)
         val irregularForm = irregularChanging(verbInInfinitive, verbArgs, regularTransformation)
-        if(irregularForm!=null){
+        if (irregularForm != null) {
             return irregularForm //can be list
         }
         //irregular form doesn't exist so use regular
@@ -30,18 +30,29 @@ interface FiniteTenseConjugator : Conjugator {
         }
         return listOf()
     }
+
     /* origin irregular or derivative from one
     * */
-    private fun irregularChanging(verb: String, verbArgs: VerbArguments, regularTransformation: RegularTransformation?): List<String>? {
+    private fun irregularChanging(
+        verb: String,
+        verbArgs: VerbArguments,
+        regularTransformation: RegularTransformation?
+    ): List<String>? {
         val irregularForm: IrregularForm? = irregularForms[verb]
-        if(irregularForm!=null){
+        if (irregularForm != null) {
             return applyIrregularChanging(verb, irregularForm, verbArgs, regularTransformation)
         }
         //trying to find derivatives
         val originIrregularVerb: String = VerbLists.irregularVerbOriginMap[verb] ?: return null
         val originIrregularForm = irregularForms[originIrregularVerb]
-        if(originIrregularForm!=null){
-            return applyDerivativeIrregularChanging(verb, originIrregularVerb, originIrregularForm, verbArgs, regularTransformation)
+        if (originIrregularForm != null) {
+            return applyDerivativeIrregularChanging(
+                verb,
+                originIrregularVerb,
+                originIrregularForm,
+                verbArgs,
+                regularTransformation
+            )
         }
         //verb in irregular list, but no irregular form for it
         return null
@@ -57,12 +68,13 @@ interface FiniteTenseConjugator : Conjugator {
     private fun applyDerivativeIrregularChanging(
         verb: String,
         originIrregularVerb: String,
-        irregularForm: IrregularForm,
+        originIrregularForm: IrregularForm,
         verbArgs: VerbArguments,
         regularTransformation: RegularTransformation?
     ): List<String>? {
-        //TODO
-        return null
+        val originForm = originIrregularForm.getForm(verbArgs, regularTransformation) ?: return null
+        val diff: String = VerbHelper.diffVerbAndOrigin(verb, originIrregularVerb)
+        return originForm.map { singleOriginForm -> diff + singleOriginForm }
     }
 
     private fun regularChanging(verb: String, verbArgs: VerbArguments): RegularTransformation? {
