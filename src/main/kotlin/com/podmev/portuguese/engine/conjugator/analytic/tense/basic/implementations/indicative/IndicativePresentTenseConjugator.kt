@@ -1,14 +1,12 @@
 package com.podmev.portuguese.engine.conjugator.analytic.tense.basic.implementations.indicative
 
-import com.podmev.portuguese.data.engine.conjugator.SuffixGroup
+import com.podmev.portuguese.data.engine.conjugator.*
 import com.podmev.portuguese.data.grammar.term.orthography.diacriticLetters.acute.O_Acute_Letter
 import com.podmev.portuguese.data.grammar.term.orthography.letters.O_Letter
 import com.podmev.portuguese.data.grammar.term.orthography.letters.U_Letter
 import com.podmev.portuguese.data.grammar.term.verb.*
-import com.podmev.portuguese.data.engine.conjugator.BaseChangingRule
-import com.podmev.portuguese.data.engine.conjugator.IrregularForm
 import com.podmev.portuguese.engine.conjugator.analytic.FiniteTenseConjugator
-import com.podmev.portuguese.data.engine.conjugator.SpecialEndingSuffixRule
+import com.podmev.portuguese.engine.conjugator.analytic.IrregularVerbs
 import com.podmev.portuguese.engine.conjugator.analytic.VerbHelper.replaceIfNecessaryC_LetterForC_Cedilla_LetterOrNull
 import com.podmev.portuguese.engine.conjugator.analytic.VerbHelper.replaceIfNecessaryEGU_FragmentForIG_FragmentOrNull
 import com.podmev.portuguese.engine.conjugator.analytic.VerbHelper.replaceIfNecessaryE_LetterForI_LetterOrNull
@@ -21,7 +19,31 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteT
     override val erSuffix = SuffixGroup("o", "es", "e", "emos", "eis", "em")
     override val irSuffix = SuffixGroup("o", "es", "e", "imos", "is", "em")
 
-    override val irregularForms: Map<String, IrregularForm> = emptyMap()
+    override val irregularForms: Map<String, IrregularForm> = mapOf(
+        Pair(IrregularVerbs.SER, IrregularForm(FormGroup("sou", "és", "é", "somos", "sois", "são"))),
+        Pair(IrregularVerbs.ESTAR, IrregularForm(FormGroup("estou", "estás", "está", null, null, "estão"))),
+        Pair(IrregularVerbs.TER, IrregularForm(FormGroup("tenho", "tens", "tem", "temos", "tendes", "têm"))),
+        Pair(IrregularVerbs.HAVER, IrregularForm(FormGroup("hei", "hás", "há", null, null, "hão"))),
+        Pair(IrregularVerbs.POR, IrregularForm(FormGroup("ponho", "pões", "põe", "pomos", "pondes", "põem"))),
+        Pair(IrregularVerbs.IR, IrregularForm(FormGroup("vou", "vais", "vai", "vamos", "ides", "vão"))),
+        Pair(IrregularVerbs.FAZER, IrregularForm(FormGroup("faço", null, "faz", null, null, null))),
+        Pair(IrregularVerbs.DIZER, IrregularForm(FormGroup("digo", null, "diz", null, null, null))),
+        Pair(IrregularVerbs.PODER, IrregularForm(FormGroup("posso", null, null, null, null, null))),
+        Pair(IrregularVerbs.VER, IrregularForm(FormGroup("vejo", "vês", "vê", null, "vedes", "veem"))),
+        Pair(IrregularVerbs.DAR, IrregularForm(FormGroup("dou", "dás", "dá", null, null, "dão"))),
+        Pair(IrregularVerbs.SABER, IrregularForm(FormGroup("sei", null, null, null, null, null))),
+        Pair(IrregularVerbs.VIR, IrregularForm(FormGroup("venho", "vens", "vem", null, "vindes", "vêm"))),
+        Pair(IrregularVerbs.QUERER, IrregularForm(FormGroup("venho", "vens", "vem", null, "vindes", "vêm"))),
+        Pair(IrregularVerbs.OUVIR, IrregularForm(FormGroup("ouço", null, null, null, null, null))), //ouço ≈ oiço
+        Pair(IrregularVerbs.PEDIR, IrregularForm(FormGroup("peço", null, null, null, null, null))),
+        Pair(IrregularVerbs.LER, IrregularForm(FormGroup("leio", "lês", "lê", null, "ledes", "leem"))),
+        Pair(IrregularVerbs.TRAZER, IrregularForm(FormGroup("trago", null, "traz", null, null, null))),
+        Pair(IrregularVerbs.PERDER, IrregularForm(FormGroup("perco", null, null, null, null, null))),
+        Pair(IrregularVerbs.DORMIR, IrregularForm(FormGroup("durmo", null, null, null, null, null))),
+        Pair(IrregularVerbs.SUBIR, IrregularForm(FormGroup(null, "sobes", "sobe", null, null, "sobem"))), //Think how to make
+        Pair(IrregularVerbs.FUGIR, IrregularForm(FormGroup(null, "fobes", "foge", null, null, "fogem"))),//Think how to make
+        Pair(IrregularVerbs.RIR, IrregularForm(FormGroup("rio", "ris", "ri", null, "rides", "riem"))),
+    )
 
     object UZIR_Suffix_Rule : SpecialEndingSuffixRule {
         override val wordEnding = VerbEnds.UZIR
