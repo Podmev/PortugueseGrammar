@@ -16,7 +16,7 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator {
     ): List<String> {
         //TODO add exceptions
         val regularForm = regularChanging(verbInInfinitive, verbArgs)
-        if(regularForm!=null) {
+        if (regularForm != null) {
             return listOf(regularForm)
         }
         return listOf()
@@ -33,7 +33,7 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator {
 
     private fun prepareInfinitive(infinitive: String, suffix: String, verbArgs: VerbArguments): String {
         if (verbArgs.isFirstSingular()) {
-            //c->c_cedilla
+            //c->c_cedilla for -er
             val preparedCedilla = replaceIfNecessaryC_LetterForC_Cedilla_LetterOrNull(infinitive)
             if (preparedCedilla != null) return preparedCedilla
             //g->j
@@ -44,7 +44,16 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator {
         return infinitive
     }
 
-    private fun getSuffixGroup(verb: String): SuffixGroup? =
+    private fun getSuffixGroup(verb: String): SuffixGroup? {
+        val regularSuffix = getRegularSuffixGroup(verb) ?: return null
+        return when {
+            verb.endsWith(VerbEnds.UZIR) -> regularSuffix.copy(singularThird = "") //finishes with -z
+            else -> regularSuffix
+        }
+    }
+
+
+    private fun getRegularSuffixGroup(verb: String): SuffixGroup? =
         when {
             verb.endsWith(VerbEnds.AR) -> SuffixGroup("o", "as", "a", "amos", "ais", "am")
             verb.endsWith(VerbEnds.ER) -> SuffixGroup("o", "es", "a", "emos", "eis", "em")
