@@ -2,10 +2,7 @@ package com.podmev.portuguese.engine.conjugator.analytic
 
 import com.podmev.portuguese.data.grammar.term.orthography.diacriticMarks.AcuteDiacriticMark
 import com.podmev.portuguese.data.grammar.term.orthography.diacriticMarks.CedillaDiacriticMark
-import com.podmev.portuguese.data.grammar.term.orthography.letters.C_Letter
-import com.podmev.portuguese.data.grammar.term.orthography.letters.G_Letter
-import com.podmev.portuguese.data.grammar.term.orthography.letters.I_Letter
-import com.podmev.portuguese.data.grammar.term.orthography.letters.J_Letter
+import com.podmev.portuguese.data.grammar.term.orthography.letters.*
 import com.podmev.portuguese.engine.utils.verb.VerbBaseEnds
 import com.podmev.portuguese.engine.utils.verb.VerbEnds
 import com.podmev.portuguese.engine.utils.word.Wordifier
@@ -55,5 +52,21 @@ object VerbHelper {
             return Wordifier.replaceLastFoundGenericLetter(infinitive, G_Letter, J_Letter)
         }
         return null //not this case
+    }
+
+    /*only in correct form of person and number (first-singular)*/
+    fun replaceIfNecessaryE_LetterForI_LetterOrNull(infinitive: String): String? {
+        if (infinitive.endsWith(VerbEnds.IR) && infinitive.contains(E_Letter.lowercase)) {
+            return Wordifier.replaceLastFoundGenericLetter(infinitive, E_Letter, I_Letter)
+        }
+        return null //not this case
+    }
+
+    /*only in correct form of person and number (first-singular)*/
+    fun replaceIfNecessaryEGU_FragmentForEG_FragmentOrNull(infinitive: String): String?{
+        if (infinitive.endsWith(VerbEnds.EGUIR)){
+            return Wordifier.replaceEnding(infinitive, VerbEnds.EGUIR, VerbEnds.IGIR)
+        }
+        return null
     }
 }

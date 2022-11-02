@@ -19,6 +19,9 @@ object VerbEnds {
 
     const val UZIR = "uzir"
 
+    const val EGUIR = "eguir"
+    const val IGIR = "igir"
+
     const val O_CIRCUMFLEX_R = "ôr"
 
 }

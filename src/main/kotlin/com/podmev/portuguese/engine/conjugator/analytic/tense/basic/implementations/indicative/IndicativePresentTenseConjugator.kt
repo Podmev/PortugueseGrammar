@@ -6,6 +6,8 @@ import com.podmev.portuguese.data.grammar.term.verb.VerbArguments
 import com.podmev.portuguese.data.grammar.term.verb.isFirstSingular
 import com.podmev.portuguese.engine.conjugator.analytic.VerbHelper
 import com.podmev.portuguese.engine.conjugator.analytic.VerbHelper.replaceIfNecessaryC_LetterForC_Cedilla_LetterOrNull
+import com.podmev.portuguese.engine.conjugator.analytic.VerbHelper.replaceIfNecessaryEGU_FragmentForEG_FragmentOrNull
+import com.podmev.portuguese.engine.conjugator.analytic.VerbHelper.replaceIfNecessaryE_LetterForI_LetterOrNull
 import com.podmev.portuguese.engine.conjugator.analytic.VerbHelper.replaceIfNecessaryG_LetterForJ_LetterOrNull
 import com.podmev.portuguese.engine.utils.verb.VerbEnds
 
@@ -42,7 +44,11 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator {
             val preparedG = replaceIfNecessaryG_LetterForJ_LetterOrNull(infinitive)
             if (preparedG != null) return preparedG
             //egu->ig
+            val preparedEGU = replaceIfNecessaryEGU_FragmentForEG_FragmentOrNull(infinitive)
+            if (preparedEGU != null) return preparedEGU
             //e-i
+//            val preparedEI = replaceIfNecessaryE_LetterForI_LetterOrNull(infinitive)
+//            if (preparedEI != null) return preparedEI
         }
         //TODO add rules
         return infinitive

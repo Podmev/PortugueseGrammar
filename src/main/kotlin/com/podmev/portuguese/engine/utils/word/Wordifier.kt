@@ -70,6 +70,11 @@ object Wordifier {
         return map.filter { entry -> entry.value.isNotEmpty() || !usedSet.contains(entry.key) }
     }
 
+    fun replaceEnding(word: String, originalEnding: String, replacementEnding: String): String {
+        assert(word.endsWith(originalEnding))
+        return word.dropLast(originalEnding.length) + replacementEnding
+    }
+
     fun word2ExactLetters(word: String): List<ExactLetter> =
         word.map {
             Alphabet.parseExactLetter(it)
