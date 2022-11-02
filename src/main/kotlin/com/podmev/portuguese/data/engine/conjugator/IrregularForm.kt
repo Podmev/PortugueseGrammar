@@ -9,22 +9,22 @@ data class IrregularForm(
     val suffixGroup: SuffixGroup? = null,
     val base: String? = null
 ){
-    fun getForm(verbArguments: VerbArguments, regularTransformation: RegularTransformation?): String?{
+    fun getForm(verbArguments: VerbArguments, regularTransformation: RegularTransformation?): List<String>?{
         //trying formGroup
         val createdByFormGroup = formGroup?.getForm(verbArguments)
         if(createdByFormGroup!=null){
-            return  createdByFormGroup
+            return listOf(createdByFormGroup)
         }
         val irregularSuffix = suffixGroup?.getSuffix(verbArguments)
         if(irregularSuffix==null){
             if(base!=null && regularTransformation!=null){
-                return base + regularTransformation.suffix
+                return listOf(base + regularTransformation.suffix)
             }
         } else {
             if(base!=null){
-                return base + irregularSuffix
+                return listOf(base + irregularSuffix)
             } else if(regularTransformation!=null){
-                return regularTransformation.base + irregularSuffix
+                return listOf(regularTransformation.base + irregularSuffix)
             }
         }
         //there is no irregular form

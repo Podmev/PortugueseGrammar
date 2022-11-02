@@ -52,10 +52,7 @@ interface FiniteTenseConjugator : Conjugator {
         irregularForm: IrregularForm,
         verbArgs: VerbArguments,
         regularTransformation: RegularTransformation?
-    ): List<String>? {
-        //TODO
-       return null
-    }
+    ): List<String>? = irregularForm.getForm(verbArgs, regularTransformation)
 
     private fun applyDerivativeIrregularChanging(
         verb: String,
