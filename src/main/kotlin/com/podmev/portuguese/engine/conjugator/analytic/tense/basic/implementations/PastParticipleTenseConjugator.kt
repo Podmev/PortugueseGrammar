@@ -180,6 +180,9 @@ vir=[advir, avir, convir, devir, intervir, provir, sobrevir]
 [17837] VerbFormInfo(infinitive=volver, tense=PastParticipleTense, person=UNDEFINED, number=SINGULAR, gender=MASCULINE, voice=ACTIVE)
 
 
+list of irregular verbs, which do not affect derivatives:
+prender, but aprender, comprender, desaprender, desprender
+
 problems:
  - escrever: need to use base form screver
  - abrir: need to use base form brir
