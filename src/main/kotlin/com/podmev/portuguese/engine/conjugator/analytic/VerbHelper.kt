@@ -3,7 +3,9 @@ package com.podmev.portuguese.engine.conjugator.analytic
 import com.podmev.portuguese.data.grammar.term.orthography.diacriticMarks.AcuteDiacriticMark
 import com.podmev.portuguese.data.grammar.term.orthography.diacriticMarks.CedillaDiacriticMark
 import com.podmev.portuguese.data.grammar.term.orthography.letters.C_Letter
+import com.podmev.portuguese.data.grammar.term.orthography.letters.G_Letter
 import com.podmev.portuguese.data.grammar.term.orthography.letters.I_Letter
+import com.podmev.portuguese.data.grammar.term.orthography.letters.J_Letter
 import com.podmev.portuguese.engine.utils.verb.VerbBaseEnds
 import com.podmev.portuguese.engine.utils.verb.VerbEnds
 import com.podmev.portuguese.engine.utils.word.Wordifier
@@ -43,6 +45,14 @@ object VerbHelper {
     fun replaceIfNecessaryC_LetterForC_Cedilla_LetterOrNull(infinitive: String): String? {
         if (infinitive.endsWith(VerbEnds.CER)) {
             return Wordifier.addDiacriticsToLastFoundLetter(infinitive, C_Letter, CedillaDiacriticMark)
+        }
+        return null //not this case
+    }
+
+    /*only in correct form of person and number (first-singular)*/
+    fun replaceIfNecessaryG_LetterForJ_LetterOrNull(infinitive: String): String? {
+        if (infinitive.endsWith(VerbEnds.GIR)) {
+            return Wordifier.replaceLastFoundGenericLetter(infinitive, G_Letter, J_Letter)
         }
         return null //not this case
     }

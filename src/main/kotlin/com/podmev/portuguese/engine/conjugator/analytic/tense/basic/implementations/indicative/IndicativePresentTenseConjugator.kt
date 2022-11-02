@@ -6,6 +6,7 @@ import com.podmev.portuguese.data.grammar.term.verb.VerbArguments
 import com.podmev.portuguese.data.grammar.term.verb.isFirstSingular
 import com.podmev.portuguese.engine.conjugator.analytic.VerbHelper
 import com.podmev.portuguese.engine.conjugator.analytic.VerbHelper.replaceIfNecessaryC_LetterForC_Cedilla_LetterOrNull
+import com.podmev.portuguese.engine.conjugator.analytic.VerbHelper.replaceIfNecessaryG_LetterForJ_LetterOrNull
 import com.podmev.portuguese.engine.utils.verb.VerbEnds
 
 object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator {
@@ -33,12 +34,15 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator {
 
     private fun prepareInfinitive(infinitive: String, suffix: String, verbArgs: VerbArguments): String {
         if (verbArgs.isFirstSingular()) {
+            //TODO make stream with first
             //c->c_cedilla for -er
             val preparedCedilla = replaceIfNecessaryC_LetterForC_Cedilla_LetterOrNull(infinitive)
             if (preparedCedilla != null) return preparedCedilla
             //g->j
-
-            //gu->g
+            val preparedG = replaceIfNecessaryG_LetterForJ_LetterOrNull(infinitive)
+            if (preparedG != null) return preparedG
+            //egu->ig
+            //e-i
         }
         //TODO add rules
         return infinitive
