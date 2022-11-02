@@ -112,7 +112,7 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteT
         C_TO_C_Cedilla_Rule,
         G_TO_J_Rule,
         EGU_TO_IG_Rule,
-//        E_TO_I_Rule - excluded for now
+        E_TO_I_Rule,// - excluded for now
         Construir_Destruir_U_TO_O_Rule
     )
 

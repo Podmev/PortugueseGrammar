@@ -1,5 +1,6 @@
 package com.podmev.portuguese.engine.conjugator.analytic
 
+import com.podmev.portuguese.data.grammar.term.orthography.Alphabet
 import com.podmev.portuguese.data.grammar.term.orthography.diacriticMarks.AcuteDiacriticMark
 import com.podmev.portuguese.data.grammar.term.orthography.diacriticMarks.CedillaDiacriticMark
 import com.podmev.portuguese.data.grammar.term.orthography.letters.*
@@ -55,15 +56,18 @@ object VerbHelper {
 
     /*only in correct form of person and number (first-singular)*/
     fun replaceIfNecessaryE_LetterForI_LetterOrNull(infinitive: String): String? {
-        if (infinitive.endsWith(VerbEnds.IR) && infinitive.contains(E_Letter.lowercase)) {
+        if (infinitive.endsWith(VerbEnds.IR) &&
+            infinitive.contains(E_Letter.lowercase) &&
+            dropInfinitiveSuffixXR(infinitive).findLast { Alphabet.isVowelChar(it) } == E_Letter.lowercase //checking last vowel of base is e
+        ) {
             return Wordifier.replaceLastFoundGenericLetter(infinitive, E_Letter, I_Letter)
         }
         return null //not this case
     }
 
     /*only in correct form of person and number (first-singular)*/
-    fun replaceIfNecessaryEGU_FragmentForIG_FragmentOrNull(infinitive: String): String?{
-        if (infinitive.endsWith(VerbEnds.EGUIR)){
+    fun replaceIfNecessaryEGU_FragmentForIG_FragmentOrNull(infinitive: String): String? {
+        if (infinitive.endsWith(VerbEnds.EGUIR)) {
             return Wordifier.replaceEnding(infinitive, VerbEnds.EGUIR, VerbEnds.IGIR)
         }
         return null
@@ -72,9 +76,9 @@ object VerbHelper {
     fun diffVerbAndOrigin(verb: String, originIrregularVerb: String): String {
         val verbWithoutDiacritics = Wordifier.deleteAllDiacriticMarks(verb)
         val originWithoutDiacritics = Wordifier.deleteAllDiacriticMarks(originIrregularVerb)
-        for(i in 0..originWithoutDiacritics.length){
-            if(verbWithoutDiacritics.endsWith(originWithoutDiacritics.drop(i))){
-                return verbWithoutDiacritics.dropLast(originWithoutDiacritics.length-i)
+        for (i in 0..originWithoutDiacritics.length) {
+            if (verbWithoutDiacritics.endsWith(originWithoutDiacritics.drop(i))) {
+                return verbWithoutDiacritics.dropLast(originWithoutDiacritics.length - i)
             }
         }
         throw Exception("Unreachable code")
