@@ -4,14 +4,18 @@ import com.podmev.portuguese.data.engine.conjugator.SuffixGroup
 import com.podmev.portuguese.data.grammar.term.tense.GrammaticalTense
 import com.podmev.portuguese.data.grammar.term.verb.VerbArguments
 import com.podmev.portuguese.data.grammar.term.verb.isFirstSingular
+import com.podmev.portuguese.engine.conjugator.analytic.FiniteTenseConjugator
 import com.podmev.portuguese.engine.conjugator.analytic.VerbHelper
 import com.podmev.portuguese.engine.conjugator.analytic.VerbHelper.replaceIfNecessaryC_LetterForC_Cedilla_LetterOrNull
 import com.podmev.portuguese.engine.conjugator.analytic.VerbHelper.replaceIfNecessaryEGU_FragmentForEG_FragmentOrNull
-import com.podmev.portuguese.engine.conjugator.analytic.VerbHelper.replaceIfNecessaryE_LetterForI_LetterOrNull
 import com.podmev.portuguese.engine.conjugator.analytic.VerbHelper.replaceIfNecessaryG_LetterForJ_LetterOrNull
 import com.podmev.portuguese.engine.utils.verb.VerbEnds
 
-object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator {
+object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteTenseConjugator {
+    override val arSuffix = SuffixGroup("o", "as", "a", "amos", "ais", "am")
+    override val erSuffix = SuffixGroup("o", "es", "e", "emos", "eis", "em")
+    override val irSuffix = SuffixGroup("o", "es", "e", "imos", "is", "em")
+
     override fun conjugateVerb(
         verbInInfinitive: String,
         tense: GrammaticalTense,
@@ -62,15 +66,6 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator {
             else -> regularSuffix
         }
     }
-
-
-    private fun getRegularSuffixGroup(verb: String): SuffixGroup? =
-        when {
-            verb.endsWith(VerbEnds.AR) -> SuffixGroup("o", "as", "a", "amos", "ais", "am")
-            verb.endsWith(VerbEnds.ER) -> SuffixGroup("o", "es", "e", "emos", "eis", "em")
-            verb.endsWith(VerbEnds.IR) -> SuffixGroup("o", "es", "e", "imos", "is", "em")
-            else -> null
-        }
 
     override fun toString(): String {
         return "IndicativePresentTenseConjugator"
