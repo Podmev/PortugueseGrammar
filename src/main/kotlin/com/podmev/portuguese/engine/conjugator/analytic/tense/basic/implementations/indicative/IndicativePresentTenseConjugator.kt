@@ -5,9 +5,9 @@ import com.podmev.portuguese.data.grammar.term.orthography.diacriticLetters.acut
 import com.podmev.portuguese.data.grammar.term.orthography.letters.O_Letter
 import com.podmev.portuguese.data.grammar.term.orthography.letters.U_Letter
 import com.podmev.portuguese.data.grammar.term.verb.*
-import com.podmev.portuguese.engine.conjugator.analytic.BaseChangingRule
+import com.podmev.portuguese.data.engine.conjugator.BaseChangingRule
 import com.podmev.portuguese.engine.conjugator.analytic.FiniteTenseConjugator
-import com.podmev.portuguese.engine.conjugator.analytic.SpecialEndingSuffixRule
+import com.podmev.portuguese.data.engine.conjugator.SpecialEndingSuffixRule
 import com.podmev.portuguese.engine.conjugator.analytic.VerbHelper.replaceIfNecessaryC_LetterForC_Cedilla_LetterOrNull
 import com.podmev.portuguese.engine.conjugator.analytic.VerbHelper.replaceIfNecessaryEGU_FragmentForIG_FragmentOrNull
 import com.podmev.portuguese.engine.conjugator.analytic.VerbHelper.replaceIfNecessaryE_LetterForI_LetterOrNull

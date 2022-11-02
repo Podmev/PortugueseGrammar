@@ -1,4 +1,4 @@
-package com.podmev.portuguese.engine.conjugator.analytic
+package com.podmev.portuguese.data.engine.conjugator
 
 import com.podmev.portuguese.data.engine.conjugator.SuffixGroup
 

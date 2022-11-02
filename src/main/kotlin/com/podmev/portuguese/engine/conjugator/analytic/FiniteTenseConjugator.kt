@@ -1,6 +1,8 @@
 package com.podmev.portuguese.engine.conjugator.analytic
 
+import com.podmev.portuguese.data.engine.conjugator.BaseChangingRule
 import com.podmev.portuguese.data.engine.conjugator.Conjugator
+import com.podmev.portuguese.data.engine.conjugator.SpecialEndingSuffixRule
 import com.podmev.portuguese.data.engine.conjugator.SuffixGroup
 import com.podmev.portuguese.data.grammar.term.tense.GrammaticalTense
 import com.podmev.portuguese.data.grammar.term.verb.VerbArguments
