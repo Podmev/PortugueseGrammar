@@ -27,10 +27,15 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteT
         override fun getSuffix(verb: String, regularSuffix: SuffixGroup) =
             SuffixGroup("io", "is", "i", "ímos", "ís", regularSuffix.pluralThird)
     }
-
+    object UIR_Suffix_Rule : SpecialEndingSuffixRule {
+        override val wordEnding = VerbEnds.UIR
+        override fun getSuffix(verb: String, regularSuffix: SuffixGroup) =
+            SuffixGroup(regularSuffix.singularFirst, "is", "i", "ímos", "ís", regularSuffix.pluralThird)
+    }
     override val specialEndingSuffixRules: List<SpecialEndingSuffixRule> = listOf(
         UZIR_Suffix_Rule,
-        AIR_Suffix_Rule
+        AIR_Suffix_Rule,
+        UIR_Suffix_Rule
     )
 
     object C_TO_C_Cedilla_Rule : BaseChangingRule {
