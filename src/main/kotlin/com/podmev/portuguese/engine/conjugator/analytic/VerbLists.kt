@@ -20,7 +20,7 @@ object VerbLists {
         Pair(
             "escrever", listOf(
                 "circunscrever", "descrever", "escrever", "inscrever", "prescrever", "proscrever", "redescrever",
-                "reescrever", "subscrever", "transcrever", "prescrever", "redescrever", "reescrever"
+                "reescrever", "subscrever", "transcrever"
             )
         ),
         Pair(
