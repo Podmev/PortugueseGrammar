@@ -47,6 +47,7 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator {
             val preparedEGU = replaceIfNecessaryEGU_FragmentForEG_FragmentOrNull(infinitive)
             if (preparedEGU != null) return preparedEGU
             //e-i
+            //makes more wrong 2202 to 2234
 //            val preparedEI = replaceIfNecessaryE_LetterForI_LetterOrNull(infinitive)
 //            if (preparedEI != null) return preparedEI
         }
@@ -66,8 +67,8 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator {
     private fun getRegularSuffixGroup(verb: String): SuffixGroup? =
         when {
             verb.endsWith(VerbEnds.AR) -> SuffixGroup("o", "as", "a", "amos", "ais", "am")
-            verb.endsWith(VerbEnds.ER) -> SuffixGroup("o", "es", "a", "emos", "eis", "em")
-            verb.endsWith(VerbEnds.IR) -> SuffixGroup("o", "es", "a", "imos", "is", "em")
+            verb.endsWith(VerbEnds.ER) -> SuffixGroup("o", "es", "e", "emos", "eis", "em")
+            verb.endsWith(VerbEnds.IR) -> SuffixGroup("o", "es", "e", "imos", "is", "em")
             else -> null
         }
 
