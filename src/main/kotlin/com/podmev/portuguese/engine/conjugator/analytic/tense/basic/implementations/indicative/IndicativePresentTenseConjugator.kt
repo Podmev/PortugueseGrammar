@@ -5,6 +5,7 @@ import com.podmev.portuguese.data.grammar.term.tense.GrammaticalTense
 import com.podmev.portuguese.data.grammar.term.verb.VerbArguments
 import com.podmev.portuguese.data.grammar.term.verb.isFirstSingular
 import com.podmev.portuguese.engine.conjugator.analytic.FiniteTenseConjugator
+import com.podmev.portuguese.engine.conjugator.analytic.SpecialEndingSuffixRule
 import com.podmev.portuguese.engine.conjugator.analytic.VerbHelper
 import com.podmev.portuguese.engine.conjugator.analytic.VerbHelper.replaceIfNecessaryC_LetterForC_Cedilla_LetterOrNull
 import com.podmev.portuguese.engine.conjugator.analytic.VerbHelper.replaceIfNecessaryEGU_FragmentForEG_FragmentOrNull
@@ -15,6 +16,18 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteT
     override val arSuffix = SuffixGroup("o", "as", "a", "amos", "ais", "am")
     override val erSuffix = SuffixGroup("o", "es", "e", "emos", "eis", "em")
     override val irSuffix = SuffixGroup("o", "es", "e", "imos", "is", "em")
+
+    val UZIR_Suffix_Rule = object : SpecialEndingSuffixRule {
+        override val wordEnding = VerbEnds.UZIR
+
+        override fun getSuffix(verb: String, regularSuffix: SuffixGroup) =
+            regularSuffix.copy(singularThird = "") //finishes with -z
+
+    }
+
+    override val specialEndingSuffixRules: List<SpecialEndingSuffixRule> = listOf(
+        UZIR_Suffix_Rule
+    )
 
     override fun conjugateVerb(
         verbInInfinitive: String,
@@ -57,14 +70,6 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteT
         }
         //TODO add rules
         return infinitive
-    }
-
-    private fun getSuffixGroup(verb: String): SuffixGroup? {
-        val regularSuffix = getRegularSuffixGroup(verb) ?: return null
-        return when {
-            verb.endsWith(VerbEnds.UZIR) -> regularSuffix.copy(singularThird = "") //finishes with -z
-            else -> regularSuffix
-        }
     }
 
     override fun toString(): String {
