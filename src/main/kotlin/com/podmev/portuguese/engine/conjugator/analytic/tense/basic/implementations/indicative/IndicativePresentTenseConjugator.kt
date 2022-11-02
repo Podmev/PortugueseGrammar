@@ -6,6 +6,7 @@ import com.podmev.portuguese.data.grammar.term.orthography.letters.O_Letter
 import com.podmev.portuguese.data.grammar.term.orthography.letters.U_Letter
 import com.podmev.portuguese.data.grammar.term.verb.*
 import com.podmev.portuguese.data.engine.conjugator.BaseChangingRule
+import com.podmev.portuguese.data.engine.conjugator.IrregularForm
 import com.podmev.portuguese.engine.conjugator.analytic.FiniteTenseConjugator
 import com.podmev.portuguese.data.engine.conjugator.SpecialEndingSuffixRule
 import com.podmev.portuguese.engine.conjugator.analytic.VerbHelper.replaceIfNecessaryC_LetterForC_Cedilla_LetterOrNull
@@ -19,6 +20,8 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteT
     override val arSuffix = SuffixGroup("o", "as", "a", "amos", "ais", "am")
     override val erSuffix = SuffixGroup("o", "es", "e", "emos", "eis", "em")
     override val irSuffix = SuffixGroup("o", "es", "e", "imos", "is", "em")
+
+    override val irregularForms: Map<String, IrregularForm> = emptyMap()
 
     object UZIR_Suffix_Rule : SpecialEndingSuffixRule {
         override val wordEnding = VerbEnds.UZIR
