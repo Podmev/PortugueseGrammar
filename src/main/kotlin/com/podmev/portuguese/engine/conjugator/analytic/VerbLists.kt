@@ -29,6 +29,7 @@ object VerbLists {
                 "refazer", "satisfazer", "tumefazer"
             )
         ),
+        Pair("pedir", listOf("impedir", "desimpedir", "despedir", "espedir", "expedir")),
         Pair(
             "pôr", listOf(
                 "apor", "antepor", "compor", "contrapor", "decompor", "decompôr", "descompor", "depor",
