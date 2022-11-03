@@ -101,7 +101,7 @@
       "group": "indicative/present",
       "group_sort": 5,
       "sort": 2,
-      "value": "aguentaObsolete:aguenta"
+      "value": "aguenta"
     },
     {
       "form": "p1",
@@ -115,7 +115,7 @@
       "group": "indicative/present",
       "group_sort": 5,
       "sort": 4,
-      "value": "aguentaisObsolete:aguentais"
+      "value": "aguentais"
     },
     {
       "form": "p3",
@@ -171,7 +171,7 @@
       "group": "indicative/preterite",
       "group_sort": 7,
       "sort": 0,
-      "value": "aguenteiObsolete:aguentei"
+      "value": "aguentei"
     },
     {
       "form": "s2",
@@ -206,7 +206,7 @@
       "group": "indicative/preterite",
       "group_sort": 7,
       "sort": 5,
-      "value": "aguentaramObsolete:aguentaram"
+      "value": "aguentaram"
     },
     {
       "form": "s1",

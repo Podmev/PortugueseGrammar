@@ -171,7 +171,7 @@
       "group": "indicative/preterite",
       "group_sort": 7,
       "sort": 0,
-      "value": "mingueiObsolete:mingüei"
+      "value": "minguei"
     },
     {
       "form": "s2",
@@ -339,42 +339,42 @@
       "group": "subjunctive/present",
       "group_sort": 11,
       "sort": 0,
-      "value": "míngueObsolete:míngüe"
+      "value": "míngue"
     },
     {
       "form": "s2",
       "group": "subjunctive/present",
       "group_sort": 11,
       "sort": 1,
-      "value": "mínguesObsolete:míngües"
+      "value": "míngues"
     },
     {
       "form": "s3",
       "group": "subjunctive/present",
       "group_sort": 11,
       "sort": 2,
-      "value": "míngueObsolete:míngüe"
+      "value": "míngue"
     },
     {
       "form": "p1",
       "group": "subjunctive/present",
       "group_sort": 11,
       "sort": 3,
-      "value": "minguemosObsolete:mingüemos"
+      "value": "minguemos"
     },
     {
       "form": "p2",
       "group": "subjunctive/present",
       "group_sort": 11,
       "sort": 4,
-      "value": "mingueisObsolete:mingüeis"
+      "value": "mingueis"
     },
     {
       "form": "p3",
       "group": "subjunctive/present",
       "group_sort": 11,
       "sort": 5,
-      "value": "mínguemObsolete:míngüem"
+      "value": "mínguem"
     },
     {
       "form": "s1",
@@ -479,14 +479,14 @@
       "group": "imperative/affirmative",
       "group_sort": 14,
       "sort": 2,
-      "value": "míngueObsolete:míngüe"
+      "value": "míngue"
     },
     {
       "form": "p1",
       "group": "imperative/affirmative",
       "group_sort": 14,
       "sort": 3,
-      "value": "minguemosObsolete:mingüemos"
+      "value": "minguemos"
     },
     {
       "form": "p2",
@@ -500,7 +500,7 @@
       "group": "imperative/affirmative",
       "group_sort": 14,
       "sort": 5,
-      "value": "mínguemObsolete:míngüem"
+      "value": "mínguem"
     },
     {
       "form": "s1",
@@ -514,35 +514,35 @@
       "group": "imperative/negative",
       "group_sort": 15,
       "sort": 1,
-      "value": "mínguesObsolete:míngües"
+      "value": "míngues"
     },
     {
       "form": "s3",
       "group": "imperative/negative",
       "group_sort": 15,
       "sort": 2,
-      "value": "míngueObsolete:míngüe"
+      "value": "míngue"
     },
     {
       "form": "p1",
       "group": "imperative/negative",
       "group_sort": 15,
       "sort": 3,
-      "value": "minguemosObsolete:mingüemos"
+      "value": "minguemos"
     },
     {
       "form": "p2",
       "group": "imperative/negative",
       "group_sort": 15,
       "sort": 4,
-      "value": "mingueisObsolete:mingüeis"
+      "value": "mingueis"
     },
     {
       "form": "p3",
       "group": "imperative/negative",
       "group_sort": 15,
       "sort": 5,
-      "value": "mínguemObsolete:míngüem"
+      "value": "mínguem"
     }
   ],
   "definitions": [

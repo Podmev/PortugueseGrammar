@@ -87,21 +87,21 @@
       "group": "indicative/present",
       "group_sort": 5,
       "sort": 0,
-      "value": "-Normally defective:redimoObsolete:rimo"
+      "value": "-Normally defective:redimo"
     },
     {
       "form": "s2",
       "group": "indicative/present",
       "group_sort": 5,
       "sort": 1,
-      "value": "-Normally defective:redimesObsolete:rimes"
+      "value": "-Normally defective:redimes"
     },
     {
       "form": "s3",
       "group": "indicative/present",
       "group_sort": 5,
       "sort": 2,
-      "value": "-Normally defective:redimeObsolete:rime"
+      "value": "-Normally defective:redime"
     },
     {
       "form": "p1",
@@ -122,7 +122,7 @@
       "group": "indicative/present",
       "group_sort": 5,
       "sort": 5,
-      "value": "-Normally defective:redimemObsolete:rimem"
+      "value": "-Normally defective:redimem"
     },
     {
       "form": "s1",
@@ -339,42 +339,42 @@
       "group": "subjunctive/present",
       "group_sort": 11,
       "sort": 0,
-      "value": "-Normally defective:redimaObsolete:rima"
+      "value": "-Normally defective:redima"
     },
     {
       "form": "s2",
       "group": "subjunctive/present",
       "group_sort": 11,
       "sort": 1,
-      "value": "-Normally defective:redimasObsolete:rimas"
+      "value": "-Normally defective:redimas"
     },
     {
       "form": "s3",
       "group": "subjunctive/present",
       "group_sort": 11,
       "sort": 2,
-      "value": "-Normally defective:redimaObsolete:rima"
+      "value": "-Normally defective:redima"
     },
     {
       "form": "p1",
       "group": "subjunctive/present",
       "group_sort": 11,
       "sort": 3,
-      "value": "-Normally defective:redimamosObsolete:rimamos"
+      "value": "-Normally defective:redimamos"
     },
     {
       "form": "p2",
       "group": "subjunctive/present",
       "group_sort": 11,
       "sort": 4,
-      "value": "-Normally defective:redimaisObsolete:rimais"
+      "value": "-Normally defective:redimais"
     },
     {
       "form": "p3",
       "group": "subjunctive/present",
       "group_sort": 11,
       "sort": 5,
-      "value": "-Normally defective:redimamObsolete:rimam"
+      "value": "-Normally defective:redimam"
     },
     {
       "form": "s1",
@@ -472,21 +472,21 @@
       "group": "imperative/affirmative",
       "group_sort": 14,
       "sort": 1,
-      "value": "-Normally defective:redimasObsolete:rime"
+      "value": "-Normally defective:redimas"
     },
     {
       "form": "s3",
       "group": "imperative/affirmative",
       "group_sort": 14,
       "sort": 2,
-      "value": "-Normally defective:redimaObsolete:rima"
+      "value": "-Normally defective:redima"
     },
     {
       "form": "p1",
       "group": "imperative/affirmative",
       "group_sort": 14,
       "sort": 3,
-      "value": "-Normally defective:redimamosObsolete:rimamos"
+      "value": "-Normally defective:redimamos"
     },
     {
       "form": "p2",
@@ -500,7 +500,7 @@
       "group": "imperative/affirmative",
       "group_sort": 14,
       "sort": 5,
-      "value": "-Normally defective:redimamObsolete:rimam"
+      "value": "-Normally defective:redimam"
     },
     {
       "form": "s1",
@@ -514,35 +514,35 @@
       "group": "imperative/negative",
       "group_sort": 15,
       "sort": 1,
-      "value": "-Normally defective:redimasObsolete:rimas"
+      "value": "-Normally defective:redimas"
     },
     {
       "form": "s3",
       "group": "imperative/negative",
       "group_sort": 15,
       "sort": 2,
-      "value": "-Normally defective:redimaObsolete:rima"
+      "value": "-Normally defective:redima"
     },
     {
       "form": "p1",
       "group": "imperative/negative",
       "group_sort": 15,
       "sort": 3,
-      "value": "-Normally defective:redimamosObsolete:rimamos"
+      "value": "-Normally defective:redimamos"
     },
     {
       "form": "p2",
       "group": "imperative/negative",
       "group_sort": 15,
       "sort": 4,
-      "value": "-Normally defective:redimaisObsolete:rimais"
+      "value": "-Normally defective:redimais"
     },
     {
       "form": "p3",
       "group": "imperative/negative",
       "group_sort": 15,
       "sort": 5,
-      "value": "-Normally defective:redimamObsolete:rimam"
+      "value": "-Normally defective:redimam"
     }
   ],
   "definitions": [

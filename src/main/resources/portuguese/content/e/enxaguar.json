@@ -171,7 +171,7 @@
       "group": "indicative/preterite",
       "group_sort": 7,
       "sort": 0,
-      "value": "enxagueiObsolete:enxagüei"
+      "value": "enxaguei"
     },
     {
       "form": "s2",
@@ -339,42 +339,42 @@
       "group": "subjunctive/present",
       "group_sort": 11,
       "sort": 0,
-      "value": "enxágueObsolete:enxágüe"
+      "value": "enxágue"
     },
     {
       "form": "s2",
       "group": "subjunctive/present",
       "group_sort": 11,
       "sort": 1,
-      "value": "enxáguesObsolete:enxágües"
+      "value": "enxágues"
     },
     {
       "form": "s3",
       "group": "subjunctive/present",
       "group_sort": 11,
       "sort": 2,
-      "value": "enxágueObsolete:enxágüe"
+      "value": "enxágue"
     },
     {
       "form": "p1",
       "group": "subjunctive/present",
       "group_sort": 11,
       "sort": 3,
-      "value": "enxaguemosObsolete:enxagüemos"
+      "value": "enxaguemos"
     },
     {
       "form": "p2",
       "group": "subjunctive/present",
       "group_sort": 11,
       "sort": 4,
-      "value": "enxagueisObsolete:enxagüeis"
+      "value": "enxagueis"
     },
     {
       "form": "p3",
       "group": "subjunctive/present",
       "group_sort": 11,
       "sort": 5,
-      "value": "enxáguemObsolete:enxágüem"
+      "value": "enxáguem"
     },
     {
       "form": "s1",
@@ -479,14 +479,14 @@
       "group": "imperative/affirmative",
       "group_sort": 14,
       "sort": 2,
-      "value": "enxágueObsolete:enxágüe"
+      "value": "enxágue"
     },
     {
       "form": "p1",
       "group": "imperative/affirmative",
       "group_sort": 14,
       "sort": 3,
-      "value": "enxaguemosObsolete:enxagüemos"
+      "value": "enxaguemos"
     },
     {
       "form": "p2",
@@ -500,7 +500,7 @@
       "group": "imperative/affirmative",
       "group_sort": 14,
       "sort": 5,
-      "value": "enxáguemObsolete:enxágüem"
+      "value": "enxáguem"
     },
     {
       "form": "s1",
@@ -514,35 +514,35 @@
       "group": "imperative/negative",
       "group_sort": 15,
       "sort": 1,
-      "value": "enxáguesObsolete:enxágües"
+      "value": "enxágues"
     },
     {
       "form": "s3",
       "group": "imperative/negative",
       "group_sort": 15,
       "sort": 2,
-      "value": "enxágueObsolete:enxágüe"
+      "value": "enxágue"
     },
     {
       "form": "p1",
       "group": "imperative/negative",
       "group_sort": 15,
       "sort": 3,
-      "value": "enxaguemosObsolete:enxagüemos"
+      "value": "enxaguemos"
     },
     {
       "form": "p2",
       "group": "imperative/negative",
       "group_sort": 15,
       "sort": 4,
-      "value": "enxagueisObsolete:enxagüeis"
+      "value": "enxagueis"
     },
     {
       "form": "p3",
       "group": "imperative/negative",
       "group_sort": 15,
       "sort": 5,
-      "value": "enxáguemObsolete:enxágüem"
+      "value": "enxáguem"
     }
   ],
   "definitions": [
