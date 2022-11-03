@@ -9,10 +9,13 @@ import com.podmev.portuguese.engine.utils.word.Wordifier
 
 object VerbHelper {
     /*drop the last letter 'r' of infinitive*/
-    fun dropInfinitiveSuffixR(infinitive: String): String = infinitive.dropLast(1)
+    fun dropInfinitiveSuffixR(infinitive: String): String = dropInfinitiveSuffixByLength(infinitive, 1)
 
     /*drop the last 2 letters of infinitive: ar, er, ir*/
-    fun dropInfinitiveSuffixXR(infinitive: String): String = infinitive.dropLast(2)
+    fun dropInfinitiveSuffixXR(infinitive: String): String = dropInfinitiveSuffixByLength(infinitive, 2)
+
+    /*drop the last several letters of infinitive: usually 2, but in some cases 3 (iar)*/
+    fun dropInfinitiveSuffixByLength(infinitive: String, lengthToDrop: Int): String = infinitive.dropLast(lengthToDrop)
 
     /*drop the last letter 'o' of */
     fun dropSuffixO(infinitive: String): String = infinitive.dropLast(1)

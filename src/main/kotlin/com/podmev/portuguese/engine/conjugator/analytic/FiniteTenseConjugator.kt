@@ -80,7 +80,7 @@ interface FiniteTenseConjugator : Conjugator {
     private fun regularChanging(verb: String, verbArgs: VerbArguments): RegularTransformation? {
         val suffixGroup = getSuffixGroup(verb) ?: return null //in case of -or
         val suffix = suffixGroup.getSuffix(verbArgs)
-        val preparedBase = prepareBase(verb, suffix, verbArgs)
+        val preparedBase = prepareBase(verb, suffix, suffixGroup, verbArgs)
         val regularTransformation = RegularTransformation(preparedBase + suffix, preparedBase, suffix, suffixGroup)
         return regularTransformation
     }
@@ -91,8 +91,13 @@ interface FiniteTenseConjugator : Conjugator {
         return specialEndingSuffix ?: regularSuffix
     }
 
-    private fun prepareBase(verb: String, suffix: String, verbArgs: VerbArguments): String =
-        VerbHelper.dropInfinitiveSuffixXR(prepareInfinitive(verb, suffix, verbArgs))
+    private fun prepareBase(verb: String, suffix: String, suffixGroup: SuffixGroup, verbArgs: VerbArguments): String {
+        val preparedInfinitive = prepareInfinitive(verb, suffix, verbArgs)
+        return VerbHelper.dropInfinitiveSuffixByLength(
+            infinitive = preparedInfinitive,
+            lengthToDrop = suffixGroup.droppingSuffixLength
+        )
+    }
 
     private fun getRegularSuffixGroup(verb: String): SuffixGroup? =
         when {
@@ -104,7 +109,7 @@ interface FiniteTenseConjugator : Conjugator {
 
     private fun getSpecialSuffixGroup(verb: String, regularSuffix: SuffixGroup): SuffixGroup? {
         for (rule in specialEndingSuffixRules) {
-            if (verb.endsWith(rule.wordEnding)) {
+            if (rule.fitsVerb(verb)) {
                 return rule.getSuffix(verb, regularSuffix)
             }
         }

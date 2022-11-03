@@ -69,11 +69,23 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteT
             SuffixGroup("io", "ias", "ia", regularSuffix.pluralFirst, regularSuffix.pluralSecond, "iam")
     }
 
+    //we need to take three letters
+    //works only for fixed list of verbs MARIO - first letters of verbs
+    object IAR_Suffix_MARIO_Rule : SpecialEndingSuffixRule {
+        override val wordEnding = VerbEnds.IAR
+        override val fixedVerbList = listOf("mediar", "ansiar", "remediar", "incendiar", "odiar")
+        override fun getSuffix(verb: String, regularSuffix: SuffixGroup) =
+            SuffixGroup("eio", "eias", "eia", "iamos", "iais", "eiam",
+                droppingSuffixLength = 3
+            )
+    }
+
     override val specialEndingSuffixRules: List<SpecialEndingSuffixRule> = listOf(
         UZIR_Suffix_Rule,
         AIR_Suffix_Rule,
         UIR_Suffix_Rule,
-        EAR_Suffix_Rule
+        EAR_Suffix_Rule,
+        IAR_Suffix_MARIO_Rule
     )
 
     object C_TO_C_Cedilla_Rule : BaseChangingRule {

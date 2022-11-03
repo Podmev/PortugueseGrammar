@@ -15,6 +15,7 @@ object VerbEnds {
     const val UIR = "uir"
 
     const val EAR = "ear"
+    const val IAR = "iar"
 
 
     const val GUIR = "guir"
