@@ -12,10 +12,6 @@ object VerbLists {
     )
     //TODO add necessary verbs
     val irregularVerbDerivativeMap: Map<String, List<String>> = mapOf(
-
-//        Pair("abrir", listOf("")),
-//        Pair("cobrir", listOf("descobrir", "encobrir", "recobrir", "redescobrir")),
-//        Pair("descobrir", listOf("redescobrir")),
         Pair("dizer", listOf("bendizer", "condizer", "contradizer", "desdizer", "maldizer", "predizer")),
         Pair(
             "escrever", listOf(
@@ -37,10 +33,7 @@ object VerbLists {
                 "sobrepor", "supor", "transpor"
             )
         ),
-//        Pair("prender", listOf("")),
-//        Pair("prostituir", listOf("")),
-//        Pair("roer", listOf("corroer")),
-//        Pair("soer", listOf("")),
+        Pair("querer", listOf("requerer", "bem-querer", "benquerer", "desquerer", "entrequerer", "malquerer")),
         Pair("vir", listOf("advir", "avir", "convir", "devir", "intervir", "provir", "sobrevir")),
         Pair("ver", listOf("prever", "rever")),
     )
