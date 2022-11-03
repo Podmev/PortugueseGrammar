@@ -19,6 +19,9 @@ interface FiniteTenseConjugator : Conjugator {
         tense: GrammaticalTense,
         verbArgs: VerbArguments
     ): List<String> {
+        if(VerbHelper.forbiddenOnNotThirdSingularForm(verbInInfinitive, verbArgs)){
+            return emptyList()
+        }
         val regularTransformation = regularChanging(verbInInfinitive, verbArgs)
         val irregularForm = irregularChanging(verbInInfinitive, verbArgs, regularTransformation)
         if (irregularForm != null) {

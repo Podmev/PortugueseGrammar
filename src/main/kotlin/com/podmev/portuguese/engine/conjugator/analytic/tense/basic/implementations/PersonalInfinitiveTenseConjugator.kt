@@ -30,7 +30,7 @@ object PersonalInfinitiveTenseConjugator : BasicTenseConjugator {
         tense: GrammaticalTense,
         verbArgs: VerbArguments
     ): List<String> {
-        if(forbiddenOnNotThirdSingularForm(verbInInfinitive, verbArgs)){
+        if(VerbHelper.forbiddenOnNotThirdSingularForm(verbInInfinitive, verbArgs)){
             return emptyList()
         }
         val ending = getAdditionalSuffix(verbArgs.person, verbArgs.number)
@@ -42,10 +42,6 @@ object PersonalInfinitiveTenseConjugator : BasicTenseConjugator {
         val form = "$newBase$ending"
         return listOf(form)
     }
-
-    private fun forbiddenOnNotThirdSingularForm(verbInInfinitive: String, verbArgs: VerbArguments) =
-        verbInInfinitive in VerbLists.onlyThirdSingularFormVerbs &&
-        !(verbArgs.person==THIRD && verbArgs.number==SINGULAR)
 
     private fun endingStartsWithVowel(ending: String): Boolean = Alphabet.isVowelChar(ending.first())
 

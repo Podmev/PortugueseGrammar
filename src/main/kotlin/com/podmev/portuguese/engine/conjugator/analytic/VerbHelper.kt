@@ -1,9 +1,13 @@
 package com.podmev.portuguese.engine.conjugator.analytic
 
+import com.podmev.portuguese.data.grammar.term.general.GrammaticalNumber
+import com.podmev.portuguese.data.grammar.term.general.GrammaticalPerson
 import com.podmev.portuguese.data.grammar.term.orthography.Alphabet
 import com.podmev.portuguese.data.grammar.term.orthography.diacriticMarks.AcuteDiacriticMark
 import com.podmev.portuguese.data.grammar.term.orthography.diacriticMarks.CedillaDiacriticMark
 import com.podmev.portuguese.data.grammar.term.orthography.letters.*
+import com.podmev.portuguese.data.grammar.term.verb.VerbArguments
+import com.podmev.portuguese.data.grammar.term.verb.isThirdSingular
 import com.podmev.portuguese.engine.utils.verb.VerbEnds
 import com.podmev.portuguese.engine.utils.word.Wordifier
 
@@ -86,4 +90,7 @@ object VerbHelper {
         }
         throw Exception("Unreachable code")
     }
+
+    fun forbiddenOnNotThirdSingularForm(verbInInfinitive: String, verbArgs: VerbArguments) =
+        verbInInfinitive in VerbLists.onlyThirdSingularFormVerbs && !verbArgs.isThirdSingular()
 }
