@@ -20,29 +20,32 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteT
     override val irSuffix = SuffixGroup("o", "es", "e", "imos", "is", "em")
 
     override val irregularForms: Map<String, IrregularForm> = mapOf(
-        Pair(IrregularVerbs.SER, IrregularForm(FormGroup("sou", "és", "é", "somos", "sois", "são"))),
-        Pair(IrregularVerbs.ESTAR, IrregularForm(FormGroup("estou", "estás", "está", null, null, "estão"))),
-        Pair(IrregularVerbs.TER, IrregularForm(FormGroup("tenho", "tens", "tem", "temos", "tendes", "têm"))),
-        Pair(IrregularVerbs.HAVER, IrregularForm(FormGroup("hei", "hás", "há", null, null, "hão"))),
-        Pair(IrregularVerbs.POR, IrregularForm(FormGroup("ponho", "pões", "põe", "pomos", "pondes", "põem"))),
-        Pair(IrregularVerbs.IR, IrregularForm(FormGroup("vou", "vais", "vai", "vamos", "ides", "vão"))),
-        Pair(IrregularVerbs.FAZER, IrregularForm(FormGroup("faço", null, "faz", null, null, null))),
-        Pair(IrregularVerbs.DIZER, IrregularForm(FormGroup("digo", null, "diz", null, null, null))),
-        Pair(IrregularVerbs.PODER, IrregularForm(FormGroup("posso", null, null, null, null, null))),
-        Pair(IrregularVerbs.VER, IrregularForm(FormGroup("vejo", "vês", "vê", null, "vedes", "veem"))),
-        Pair(IrregularVerbs.DAR, IrregularForm(FormGroup("dou", "dás", "dá", null, null, "dão"))),
-        Pair(IrregularVerbs.SABER, IrregularForm(FormGroup("sei", null, null, null, null, null))),
-        Pair(IrregularVerbs.VIR, IrregularForm(FormGroup("venho", "vens", "vem", null, "vindes", "vêm"))),
-        Pair(IrregularVerbs.QUERER, IrregularForm(FormGroup("venho", "vens", "vem", null, "vindes", "vêm"))),
-        Pair(IrregularVerbs.OUVIR, IrregularForm(FormGroup("ouço", null, null, null, null, null))), //ouço ≈ oiço
-        Pair(IrregularVerbs.PEDIR, IrregularForm(FormGroup("peço", null, null, null, null, null))),
-        Pair(IrregularVerbs.LER, IrregularForm(FormGroup("leio", "lês", "lê", null, "ledes", "leem"))),
-        Pair(IrregularVerbs.TRAZER, IrregularForm(FormGroup("trago", null, "traz", null, null, null))),
-        Pair(IrregularVerbs.PERDER, IrregularForm(FormGroup("perco", null, null, null, null, null))),
-        Pair(IrregularVerbs.DORMIR, IrregularForm(FormGroup("durmo", null, null, null, null, null))),
-        Pair(IrregularVerbs.SUBIR, IrregularForm(FormGroup(null, "sobes", "sobe", null, null, "sobem"))), //Think how to make
-        Pair(IrregularVerbs.FUGIR, IrregularForm(FormGroup(null, "fobes", "foge", null, null, "fogem"))),//Think how to make
-        Pair(IrregularVerbs.RIR, IrregularForm(FormGroup("rio", "ris", "ri", null, "rides", "riem"))),
+        Pair(IrregularVerbs.or.POR, IrregularForm(FormGroup("ponho", "pões", "põe", "pomos", "pondes", "põem"))),
+
+        Pair(IrregularVerbs.ar.ESTAR, IrregularForm(FormGroup("estou", "estás", "está", null, null, "estão"))),
+        Pair(IrregularVerbs.ar.DAR, IrregularForm(FormGroup("dou", "dás", "dá", null, null, "dão"))),
+
+        Pair(IrregularVerbs.er.SER, IrregularForm(FormGroup("sou", "és", "é", "somos", "sois", "são"))),
+        Pair(IrregularVerbs.er.TER, IrregularForm(FormGroup("tenho", "tens", "tem", "temos", "tendes", "têm"))),
+        Pair(IrregularVerbs.er.HAVER, IrregularForm(FormGroup("hei", "hás", "há", null, null, "hão"))),
+        Pair(IrregularVerbs.er.FAZER, IrregularForm(FormGroup("faço", null, "faz", null, null, null))),
+        Pair(IrregularVerbs.er.DIZER, IrregularForm(FormGroup("digo", null, "diz", null, null, null))),
+        Pair(IrregularVerbs.er.PODER, IrregularForm(FormGroup("posso", null, null, null, null, null))),
+        Pair(IrregularVerbs.er.VER, IrregularForm(FormGroup("vejo", "vês", "vê", null, "vedes", "veem"))),
+        Pair(IrregularVerbs.er.SABER, IrregularForm(FormGroup("sei", null, null, null, null, null))),
+        Pair(IrregularVerbs.er.QUERER, IrregularForm(FormGroup("venho", "vens", "vem", null, "vindes", "vêm"))),
+        Pair(IrregularVerbs.er.LER, IrregularForm(FormGroup("leio", "lês", "lê", null, "ledes", "leem"))),
+        Pair(IrregularVerbs.er.TRAZER, IrregularForm(FormGroup("trago", null, "traz", null, null, null))),
+        Pair(IrregularVerbs.er.PERDER, IrregularForm(FormGroup("perco", null, null, null, null, null))),
+
+        Pair(IrregularVerbs.ir.VIR, IrregularForm(FormGroup("venho", "vens", "vem", null, "vindes", "vêm"))),
+        Pair(IrregularVerbs.ir.OUVIR, IrregularForm(FormGroup("ouço", null, null, null, null, null))), //ouço ≈ oiço
+        Pair(IrregularVerbs.ir.PEDIR, IrregularForm(FormGroup("peço", null, null, null, null, null))),
+        Pair(IrregularVerbs.ir.IR, IrregularForm(FormGroup("vou", "vais", "vai", "vamos", "ides", "vão"))),
+        Pair(IrregularVerbs.ir.DORMIR, IrregularForm(FormGroup("durmo", null, null, null, null, null))),
+        Pair(IrregularVerbs.ir.SUBIR, IrregularForm(FormGroup(null, "sobes", "sobe", null, null, "sobem"))), //Think how to make
+        Pair(IrregularVerbs.ir.FUGIR, IrregularForm(FormGroup(null, "fobes", "foge", null, null, "fogem"))),//Think how to make
+        Pair(IrregularVerbs.ir.RIR, IrregularForm(FormGroup("rio", "ris", "ri", null, "rides", "riem"))),
     )
 
     object UZIR_Suffix_Rule : SpecialEndingSuffixRule {
