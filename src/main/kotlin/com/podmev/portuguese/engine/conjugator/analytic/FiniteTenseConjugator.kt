@@ -82,7 +82,7 @@ interface FiniteTenseConjugator : Conjugator {
 
     private fun regularChanging(verb: String, verbArgs: VerbArguments): RegularTransformation? {
         val suffixGroup = getSuffixGroup(verb) ?: return null //in case of -or
-        val suffix = suffixGroup.getSuffix(verbArgs)
+        val suffix = suffixGroup.getSuffix(verbArgs)!! //for regular should not apear
         val preparedBase = prepareBase(verb, suffix, suffixGroup, verbArgs)
         val regularTransformation = RegularTransformation(preparedBase + suffix, preparedBase, suffix, suffixGroup)
         return regularTransformation

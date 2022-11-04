@@ -6,18 +6,18 @@ import com.podmev.portuguese.data.grammar.term.verb.VerbArguments
 import com.podmev.portuguese.engine.utils.verb.VerbEnds
 
 data class SuffixGroup(
-    val singularFirst: String,
-    val singularSecond: String,
-    val singularThird: String,
-    val pluralFirst: String,
-    val pluralSecond: String,
-    val pluralThird: String,
+    val singularFirst: String?,
+    val singularSecond: String?,
+    val singularThird: String?,
+    val pluralFirst: String?,
+    val pluralSecond: String?,
+    val pluralThird: String?,
     //usually it is not needed to fill, because default suffix has 2 letters
     val droppingSuffixLength:Int = VerbEnds.typicalSize
 ){
 
-    fun getSuffix(verbArgs: VerbArguments): String = getSuffix(verbArgs.person, verbArgs.number)
-    fun getSuffix(person: GrammaticalPerson, number: GrammaticalNumber): String =
+    fun getSuffix(verbArgs: VerbArguments): String? = getSuffix(verbArgs.person, verbArgs.number)
+    fun getSuffix(person: GrammaticalPerson, number: GrammaticalNumber): String? =
         when (number) {
             GrammaticalNumber.UNDEFINED -> ""
             GrammaticalNumber.SINGULAR ->

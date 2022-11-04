@@ -34,9 +34,16 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteT
         Pair(IrregularVerbs.er.VER, IrregularForm(FormGroup("vejo", "vês", "vê", null, "vedes", "veem"))),
         Pair(IrregularVerbs.er.SABER, IrregularForm(FormGroup("sei", null, null, null, null, null))),
         Pair(IrregularVerbs.er.QUERER, IrregularForm(FormGroup("venho", "vens", "vem", null, "vindes", "vêm"))),
-        Pair(IrregularVerbs.er.LER, IrregularForm(FormGroup("leio", "lês", "lê", null, "ledes", "leem"))),
+        Pair(IrregularVerbs.er.LER, IrregularForm(FormGroup("leio", "lês", "lê", null, "ledes", "leem"))), //TODO change to suffix
         Pair(IrregularVerbs.er.TRAZER, IrregularForm(FormGroup("trago", null, "traz", null, null, null))),
         Pair(IrregularVerbs.er.PERDER, IrregularForm(FormGroup("perco", null, null, null, null, null))),
+
+        Pair(IrregularVerbs.er.CABER, IrregularForm(FormGroup("caibo", null, null, null, null, null))),
+        Pair(IrregularVerbs.er.PROVER, IrregularForm(null, SuffixGroup("ejo", "ês", "ê", null, "edes", "eem"))),
+        Pair(IrregularVerbs.er.CRER, IrregularForm(null, SuffixGroup("eio", "ês", "ê", null, "edes", "eem"))),
+        Pair(IrregularVerbs.er.REQUERER, IrregularForm(FormGroup("requeiro", null, "requer", null, null, null))),
+        Pair(IrregularVerbs.er.VALER, IrregularForm(FormGroup("valho", null, null, null, null, null))),
+        Pair(IrregularVerbs.er.ERGUER, IrregularForm(FormGroup("ergo", null, null, null, null, null))),
 
         Pair(IrregularVerbs.ir.VIR, IrregularForm(FormGroup("venho", "vens", "vem", null, "vindes", "vêm"))),
         Pair(IrregularVerbs.ir.OUVIR, IrregularForm(FormGroup("ouço", null, null, null, null, null))), //ouço ≈ oiço
