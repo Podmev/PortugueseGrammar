@@ -57,6 +57,17 @@ object VerbFormGenerator {
         }
     }
 
+    fun uncoveredDefectivePresentHelper() {
+        val tense = IndicativePresentTense
+        val conjugator = OnlyDataSetConjugator
+        val coveredVerbs = conjugator.getCoveredVerbs()
+        val unCoveredDefectivesVerbs = getAllDefectiveVerbs().filter { !coveredVerbs.contains(it) }
+
+        for (defectiveVerb in unCoveredDefectivesVerbs){
+            println(defectiveVerb)
+        }
+    }
+
     fun getWrongMatches(
         etalonConjugator: Conjugator,
         checkingConjugator: Conjugator,

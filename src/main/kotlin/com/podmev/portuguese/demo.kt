@@ -53,5 +53,5 @@ fun main() {
 //        )
 //    ))
 
-    VerbFormGenerator.defectivePresentHelper()
+    VerbFormGenerator.uncoveredDefectivePresentHelper()
 }
