@@ -25,6 +25,24 @@ object VerbFormGenerator {
 //        }
     }
 
+    fun defectivePresentHelper(){
+//        val wrongMatches = getWrongMatches(
+//            etalonConjugator = OnlyDataSetConjugator,
+//            checkingConjugator = AnalyticConjugator,
+//            verbForms = OnlyDataSetConjugator.getConjugatorCoveringDataWithFixedTense(PastParticipleTense).getAllVerbFormInfos()
+//        )
+//        //TODO add sort by ends
+//        for (match in wrongMatches.distinct()){
+//            println("\"${match.form.infinitive}\", \"${match.correctForm.first()}\", \"${match.wrongForm.first()}\"")
+//        }
+        Wordifier.groupByEndOfWords(PastParticipleTenseConjugator.fullIrregularFormMap.keys.toList()).forEach {
+            println(it)
+        }
+//        for (match in wrongMatches.distinct()){
+//            println("Pair(\"${match.form.infinitive}\", \"${match.correctForm.first()}\"),")
+//        }
+    }
+
     fun getWrongMatches(
         etalonConjugator: Conjugator,
         checkingConjugator: Conjugator,

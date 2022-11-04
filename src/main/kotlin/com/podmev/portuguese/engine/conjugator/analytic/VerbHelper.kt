@@ -10,6 +10,7 @@ import com.podmev.portuguese.data.grammar.term.verb.VerbArguments
 import com.podmev.portuguese.data.grammar.term.verb.isThirdSingular
 import com.podmev.portuguese.engine.utils.verb.VerbEnds
 import com.podmev.portuguese.engine.utils.word.Wordifier
+import com.podmev.portuguese.utils.lang.getFromEnd
 
 object VerbHelper {
     /*drop the last letter 'r' of infinitive*/
@@ -92,6 +93,18 @@ object VerbHelper {
         }
         throw Exception("Unreachable code")
     }
+
+    //bad rule - didn;t work
+//    fun replaceIfNecessaryU_LetterForO_LetterOrNull(infinitive: String): String? {
+//        val dropInfinitiveSuffixXR = dropInfinitiveSuffixXR(infinitive)
+//        if (infinitive.endsWith(VerbEnds.IR) &&
+//            Alphabet.isConsonantChar(dropInfinitiveSuffixXR.getFromEnd(0)) &&
+//            dropInfinitiveSuffixXR.getFromEnd(1) == U_Letter.lowercase
+//        ) {
+//            return Wordifier.replaceLastFoundGenericLetter(infinitive, U_Letter, O_Letter)
+//        }
+//        return null //not this case
+//    }
 
     fun forbiddenOnNotThirdSingularForm(verbInInfinitive: String, verbArgs: VerbArguments) =
         verbInInfinitive in VerbLists.onlyThirdSingularFormVerbs && !verbArgs.isThirdSingular()

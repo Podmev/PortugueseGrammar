@@ -34,10 +34,10 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteT
         Pair(IrregularVerbs.er.VER, IrregularForm(FormGroup("vejo", "vês", "vê", null, "vedes", "veem"))),
         Pair(IrregularVerbs.er.SABER, IrregularForm(FormGroup("sei", null, null, null, null, null))),
         Pair(IrregularVerbs.er.QUERER, IrregularForm(FormGroup("venho", "vens", "vem", null, "vindes", "vêm"))),
-        Pair(IrregularVerbs.er.LER, IrregularForm(FormGroup("leio", "lês", "lê", null, "ledes", "leem"))), //TODO change to suffix
+        //TODO change to suffix
+        Pair(IrregularVerbs.er.LER, IrregularForm(FormGroup("leio", "lês", "lê", null, "ledes", "leem"))),
         Pair(IrregularVerbs.er.TRAZER, IrregularForm(FormGroup("trago", null, "traz", null, null, null))),
         Pair(IrregularVerbs.er.PERDER, IrregularForm(FormGroup("perco", null, null, null, null, null))),
-
         Pair(IrregularVerbs.er.CABER, IrregularForm(FormGroup("caibo", null, null, null, null, null))),
         Pair(IrregularVerbs.er.PROVER, IrregularForm(null, SuffixGroup("ejo", "ês", "ê", null, "edes", "eem"))),
         Pair(IrregularVerbs.er.CRER, IrregularForm(null, SuffixGroup("eio", "ês", "ê", null, "edes", "eem"))),
@@ -50,8 +50,14 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteT
         Pair(IrregularVerbs.ir.PEDIR, IrregularForm(FormGroup("peço", null, null, null, null, null))),
         Pair(IrregularVerbs.ir.IR, IrregularForm(FormGroup("vou", "vais", "vai", "vamos", "ides", "vão"))),
         Pair(IrregularVerbs.ir.DORMIR, IrregularForm(FormGroup("durmo", null, null, null, null, null))),
-        Pair(IrregularVerbs.ir.SUBIR, IrregularForm(FormGroup(null, "sobes", "sobe", null, null, "sobem"))), //Think how to make
-        Pair(IrregularVerbs.ir.FUGIR, IrregularForm(FormGroup(null, "fobes", "foge", null, null, "fogem"))),//Think how to make
+        Pair(
+            IrregularVerbs.ir.SUBIR,
+            IrregularForm(FormGroup(null, "sobes", "sobe", null, null, "sobem"))
+        ), //Think how to make
+        Pair(
+            IrregularVerbs.ir.FUGIR,
+            IrregularForm(FormGroup(null, "fobes", "foge", null, null, "fogem"))
+        ),//Think how to make
         Pair(IrregularVerbs.ir.RIR, IrregularForm(FormGroup("rio", "ris", "ri", null, "rides", "riem"))),
     )
 
@@ -85,7 +91,8 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteT
         override val wordEnding = VerbEnds.IAR
         override val fixedVerbList = listOf("mediar", "ansiar", "remediar", "incendiar", "odiar")
         override fun getSuffix(verb: String, regularSuffix: SuffixGroup) =
-            SuffixGroup("eio", "eias", "eia", "iamos", "iais", "eiam",
+            SuffixGroup(
+                "eio", "eias", "eia", "iamos", "iais", "eiam",
                 droppingSuffixLength = 3
             )
     }
@@ -136,13 +143,20 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteT
                 )
             else null
     }
+//bad rule - didn't work
+//    object U_TO_O_Rule : BaseChangingRule {
+//        override fun isCorrectForm(verbArgs: VerbArguments): Boolean = verbArgs.isSecondSingular() || verbArgs.isThird()
+//        override fun changeBaseIfPossible(verb: String, exactSuffix: String, verbArgs: VerbArguments): String? =
+//            replaceIfNecessaryU_LetterForO_LetterOrNull(verb)
+//    }
 
     override val baseChangingRules = listOf(
         C_TO_C_Cedilla_Rule,
         G_TO_J_Rule,
         EGU_TO_IG_Rule,
         E_TO_I_Rule,// - excluded for now
-        Construir_Destruir_U_TO_O_Rule
+        Construir_Destruir_U_TO_O_Rule,
+//        U_TO_O_Rule
     )
 
     override fun toString(): String {
