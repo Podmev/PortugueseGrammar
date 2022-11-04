@@ -13,6 +13,16 @@ data class FormGroup(
     val pluralThird: String?
 ) {
 
+    fun getDefectiveGroup(): DefectiveGroup =
+        DefectiveGroup(
+            singularFirst = singularFirst != null,
+            singularSecond = singularSecond != null,
+            singularThird = singularThird != null,
+            pluralFirst = pluralFirst != null,
+            pluralSecond = pluralSecond != null,
+            pluralThird = pluralThird != null
+        )
+
     fun getForm(verbArgs: VerbArguments): String? = getForm(verbArgs.person, verbArgs.number)
     fun getForm(person: GrammaticalPerson, number: GrammaticalNumber): String? =
         when (number) {
@@ -34,6 +44,10 @@ data class FormGroup(
                 }
         }
 
+    override fun toString(): String {
+        return "FormGroup($singularFirst, $singularSecond, $singularThird, $pluralFirst, $pluralSecond, $pluralThird)"
     }
+
+}
 
 

@@ -42,14 +42,16 @@ fun main() {
 //        )
 //    ))
 
-    println(IndicativePresentTenseConjugator.conjugateVerb(
-        "erguer",
-        IndicativePresentTense,
-        VerbArguments(
-            GrammaticalPerson.FIRST,
-            GrammaticalNumber.SINGULAR,
-            GrammaticalGender.UNDEFINED,
-            GrammaticalVoice.ACTIVE
-        )
-    ))
+//    println(IndicativePresentTenseConjugator.conjugateVerb(
+//        "consumir",
+//        IndicativePresentTense,
+//        VerbArguments(
+//            GrammaticalPerson.SECOND,
+//            GrammaticalNumber.SINGULAR,
+//            GrammaticalGender.UNDEFINED,
+//            GrammaticalVoice.ACTIVE
+//        )
+//    ))
+
+    VerbFormGenerator.defectivePresentHelper()
 }

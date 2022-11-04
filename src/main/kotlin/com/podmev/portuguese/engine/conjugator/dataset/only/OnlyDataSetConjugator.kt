@@ -79,7 +79,7 @@ object OnlyDataSetConjugator : Conjugator {
         GerundTense
     )
 
-    private fun getCoveredVerbs(): List<String> =
+    fun getCoveredVerbs(): List<String> =
         getAllVerbs().filter { findInputVerbMeta(it)?.conjugations != null }
 
     private fun verbVariantsSplit(maybeVerbForms: String): List<String> {
