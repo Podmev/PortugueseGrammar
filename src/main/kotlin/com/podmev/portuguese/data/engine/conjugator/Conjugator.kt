@@ -1,6 +1,12 @@
 package com.podmev.portuguese.data.engine.conjugator
 
+import com.podmev.portuguese.data.grammar.term.general.GrammaticalGender
+import com.podmev.portuguese.data.grammar.term.general.GrammaticalNumber
+import com.podmev.portuguese.data.grammar.term.general.GrammaticalNumber.*
+import com.podmev.portuguese.data.grammar.term.general.GrammaticalPerson
+import com.podmev.portuguese.data.grammar.term.general.GrammaticalPerson.*
 import com.podmev.portuguese.data.grammar.term.tense.GrammaticalTense
+import com.podmev.portuguese.data.grammar.term.verb.GrammaticalVoice
 import com.podmev.portuguese.data.grammar.term.verb.VerbArguments
 
 interface Conjugator {
@@ -14,4 +20,27 @@ interface Conjugator {
         tense: GrammaticalTense,
         verbArgs: VerbArguments
     ): List<String>
+
+    fun conjugateVerbInFormGroup(
+        verbInInfinitive: String,
+        tense: GrammaticalTense,
+        gender: GrammaticalGender,
+        voice: GrammaticalVoice
+    ): FormGroup {
+        fun byPersonNumber(person: GrammaticalPerson, number: GrammaticalNumber):String? =
+            conjugateVerb(
+                verbInInfinitive = verbInInfinitive,
+                tense = tense,
+                verbArgs = VerbArguments(person, number, gender, voice)
+            ).firstOrNull()
+
+        return FormGroup(
+            singularFirst = byPersonNumber(FIRST, SINGULAR),
+            singularSecond = byPersonNumber(SECOND, SINGULAR),
+            singularThird = byPersonNumber(THIRD, SINGULAR),
+            pluralFirst = byPersonNumber(FIRST, PLURAL),
+            pluralSecond = byPersonNumber(SECOND, PLURAL),
+            pluralThird = byPersonNumber(THIRD, PLURAL)
+        )
+    }
 }
