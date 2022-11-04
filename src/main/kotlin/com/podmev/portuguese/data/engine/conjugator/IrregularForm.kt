@@ -7,7 +7,7 @@ data class IrregularForm(
     val formGroup: FormGroup? = null,
     //immutable
     val suffixGroup: SuffixGroup? = null,
-    val base: String? = null
+    val baseGroup: BaseGroup? = null
 ){
     fun getForm(verbArguments: VerbArguments, regularTransformation: RegularTransformation?): List<String>?{
         //trying formGroup
@@ -16,13 +16,14 @@ data class IrregularForm(
             return listOf(createdByFormGroup)
         }
         val irregularSuffix = suffixGroup?.getSuffix(verbArguments)
+        val irregularBase = baseGroup?.getBase(verbArguments)
         if(irregularSuffix==null){
-            if(base!=null && regularTransformation!=null){
-                return listOf(base + regularTransformation.suffix)
+            if(irregularBase!=null && regularTransformation!=null){
+                return listOf(irregularBase + regularTransformation.suffix)
             }
         } else {
-            if(base!=null){
-                return listOf(base + irregularSuffix)
+            if(irregularBase!=null){
+                return listOf(irregularBase + irregularSuffix)
             } else if(regularTransformation!=null){
                 return listOf(regularTransformation.base + irregularSuffix)
             }

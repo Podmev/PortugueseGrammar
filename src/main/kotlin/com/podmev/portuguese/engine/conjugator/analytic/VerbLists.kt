@@ -1,5 +1,6 @@
 package com.podmev.portuguese.engine.conjugator.analytic
 
+import com.podmev.portuguese.utils.lang.mergeListMaps
 import com.podmev.portuguese.utils.lang.revertListMap
 
 object VerbLists {
@@ -38,5 +39,11 @@ object VerbLists {
         Pair("ver", listOf("prever", "rever")),
     )
 
-    val irregularVerbOriginMap: Map<String, String> = revertListMap(irregularVerbDerivativeMap)
+    val irregularVerbSameRuleMap: Map<String, List<String>> = mapOf(
+        Pair("pedir", listOf("medir")),
+    )
+
+    val irregularVerbOriginMap: Map<String, String> = revertListMap(
+        mergeListMaps(irregularVerbDerivativeMap, irregularVerbSameRuleMap)
+    )
 }

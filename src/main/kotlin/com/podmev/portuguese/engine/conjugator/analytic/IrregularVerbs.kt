@@ -18,6 +18,13 @@ object IrregularVerbs {
         const val LER = "ler"
         const val TRAZER = "trazer"
         const val PERDER = "perder"
+        const val CABER = "caber"
+        const val PROVER = "prover"
+        const val CRER = "crer"
+        const val REQUERER = "requerer"
+        const val VALER = "valer"
+        const val ERGUER = "erguer"
+        const val AQUECER = "aquecer"
 
     }
     object ir{
@@ -29,6 +36,7 @@ object IrregularVerbs {
         const val SUBIR = "subir"
         const val FUGIR = "fugir"
         const val RIR = "rir"
+        const val MEDIR = "medir"
     }
     object or{
         const val POR = "pôr"

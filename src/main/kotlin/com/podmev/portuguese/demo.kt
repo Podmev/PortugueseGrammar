@@ -43,7 +43,7 @@ fun main() {
 //    ))
 
     println(IndicativePresentTenseConjugator.conjugateVerb(
-        "falar",
+        "medir",
         IndicativePresentTense,
         VerbArguments(
             GrammaticalPerson.FIRST,

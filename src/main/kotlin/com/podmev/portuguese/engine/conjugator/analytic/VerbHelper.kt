@@ -47,6 +47,7 @@ object VerbHelper {
 
     /*only in correct form of person and number (first-singular)*/
     fun replaceIfNecessaryC_LetterForC_Cedilla_LetterOrNull(infinitive: String): String? {
+        //        if (Wordifier.endsWithAny(infinitive, listOf(VerbEnds.CER, VerbEnds.EDIR)) ) {
         if (infinitive.endsWith(VerbEnds.CER)) {
             return Wordifier.addDiacriticsToLastFoundLetter(infinitive, C_Letter, CedillaDiacriticMark)
         }
@@ -80,12 +81,13 @@ object VerbHelper {
         return null
     }
 
-    fun diffVerbAndOrigin(verb: String, originIrregularVerb: String): String {
+    /*returns diff and how many chars we need to drop in verb at the start*/
+    fun diffVerbAndOrigin(verb: String, originIrregularVerb: String): Pair<String, Int> {
         val verbWithoutDiacritics = Wordifier.deleteAllDiacriticMarks(verb)
         val originWithoutDiacritics = Wordifier.deleteAllDiacriticMarks(originIrregularVerb)
         for (i in 0..originWithoutDiacritics.length) {
             if (verbWithoutDiacritics.endsWith(originWithoutDiacritics.drop(i))) {
-                return verbWithoutDiacritics.dropLast(originWithoutDiacritics.length - i)
+                return Pair(verbWithoutDiacritics.dropLast(originWithoutDiacritics.length - i), i)
             }
         }
         throw Exception("Unreachable code")

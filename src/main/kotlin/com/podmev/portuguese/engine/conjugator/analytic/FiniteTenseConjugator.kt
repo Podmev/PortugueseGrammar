@@ -76,8 +76,8 @@ interface FiniteTenseConjugator : Conjugator {
         regularTransformation: RegularTransformation?
     ): List<String>? {
         val originForm = originIrregularForm.getForm(verbArgs, regularTransformation) ?: return null
-        val diff: String = VerbHelper.diffVerbAndOrigin(verb, originIrregularVerb)
-        return originForm.map { singleOriginForm -> diff + singleOriginForm }
+        val (diff: String, dropAtStart: Int) = VerbHelper.diffVerbAndOrigin(verb, originIrregularVerb)
+        return originForm.map { singleOriginForm -> diff + singleOriginForm.drop(dropAtStart) }
     }
 
     private fun regularChanging(verb: String, verbArgs: VerbArguments): RegularTransformation? {
