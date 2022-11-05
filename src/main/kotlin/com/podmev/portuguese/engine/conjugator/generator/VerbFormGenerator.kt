@@ -4,7 +4,10 @@ import com.podmev.portuguese.data.engine.conjugator.Conjugator
 import com.podmev.portuguese.data.engine.conjugator.DefectiveGroup
 import com.podmev.portuguese.data.engine.conjugator.VerbWithFormGroup
 import com.podmev.portuguese.data.grammar.term.general.GrammaticalGender.UNDEFINED
+import com.podmev.portuguese.data.grammar.term.tense.GrammaticalTense
+import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.imperative.ImperativeTense
 import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.indicative.IndicativePresentTense
+import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.subjunctive.SubjunctivePresentTense
 import com.podmev.portuguese.data.grammar.term.verb.GrammaticalVoice.ACTIVE
 import com.podmev.portuguese.data.grammar.term.verb.VerbFormInfo
 import com.podmev.portuguese.engine.conjugator.analytic.tense.basic.implementations.PastParticipleTenseConjugator
@@ -32,8 +35,11 @@ object VerbFormGenerator {
 //        }
     }
 
-    fun defectivePresentHelper() {
-        val tense = IndicativePresentTense
+    fun defectivePresentIndicativeHelper() = defectiveHelper(IndicativePresentTense)
+    fun defectivePresentSubjunctiveHelper() = defectiveHelper(SubjunctivePresentTense)
+    fun defectivePresentImperativeHelper() = defectiveHelper(ImperativeTense)
+
+    fun defectiveHelper(tense: GrammaticalTense) {
         val conjugator = OnlyDataSetConjugator
         val coveredVerbs = conjugator.getCoveredVerbs()
         val defectivesVerbs = getAllDefectiveVerbs().filter { coveredVerbs.contains(it) }
@@ -58,7 +64,6 @@ object VerbFormGenerator {
     }
 
     fun uncoveredDefectivePresentHelper() {
-        val tense = IndicativePresentTense
         val conjugator = OnlyDataSetConjugator
         val coveredVerbs = conjugator.getCoveredVerbs()
         val unCoveredDefectivesVerbs = getAllDefectiveVerbs().filter { !coveredVerbs.contains(it) }
