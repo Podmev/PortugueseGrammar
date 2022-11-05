@@ -48,13 +48,15 @@ interface FiniteTenseConjugator : Conjugator {
         //trying to find derivatives
         val originIrregularVerb: String = VerbLists.irregularVerbOriginMap[verb] ?: return null
         val originIrregularForm = irregularForms[originIrregularVerb]
+        val originRegularTransformation = regularChanging(originIrregularVerb, verbArgs)
         if (originIrregularForm != null) {
             return applyDerivativeIrregularChanging(
-                verb,
-                originIrregularVerb,
-                originIrregularForm,
-                verbArgs,
-                regularTransformation
+                verb = verb,
+                verbArgs = verbArgs,
+                //TODO extract class for 3 next params, but cannot create appropriate name
+                originIrregularVerb = originIrregularVerb,
+                originIrregularForm = originIrregularForm,
+                originRegularTransformation = originRegularTransformation
             )
         }
         //verb in irregular list, but no irregular form for it
@@ -70,12 +72,12 @@ interface FiniteTenseConjugator : Conjugator {
 
     private fun applyDerivativeIrregularChanging(
         verb: String,
+        verbArgs: VerbArguments,
         originIrregularVerb: String,
         originIrregularForm: IrregularForm,
-        verbArgs: VerbArguments,
-        regularTransformation: RegularTransformation?
+        originRegularTransformation: RegularTransformation?
     ): List<String>? {
-        val originForm = originIrregularForm.getForm(verbArgs, regularTransformation) ?: return null
+        val originForm = originIrregularForm.getForm(verbArgs, originRegularTransformation) ?: return null
         val (diff: String, dropAtStart: Int) = VerbHelper.diffVerbAndOrigin(verb, originIrregularVerb)
         return originForm.map { singleOriginForm -> diff + singleOriginForm.drop(dropAtStart) }
     }
