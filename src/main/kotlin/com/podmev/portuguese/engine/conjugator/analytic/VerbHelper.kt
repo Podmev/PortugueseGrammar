@@ -57,7 +57,7 @@ object VerbHelper {
 
     /*only in correct form of person and number (first-singular)*/
     fun replaceIfNecessaryG_LetterForJ_LetterOrNull(infinitive: String): String? {
-        if (infinitive.endsWith(VerbEnds.GIR)) {
+        if (Wordifier.endsWithAny(infinitive, listOf(VerbEnds.GIR, VerbEnds.GER))) {
             return Wordifier.replaceLastFoundGenericLetter(infinitive, G_Letter, J_Letter)
         }
         return null //not this case

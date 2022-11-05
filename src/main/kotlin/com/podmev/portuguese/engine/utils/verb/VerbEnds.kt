@@ -12,6 +12,7 @@ object VerbEnds {
     const val CER = "cer"
     const val JIR = "jir"
     const val GIR = "gir"
+    const val GER = "ger"
     const val UIR = "uir"
 
     const val EAR = "ear"
