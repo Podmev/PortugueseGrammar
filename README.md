@@ -88,9 +88,13 @@ Quiz App (next project) - Conjugation test
    - show new words
  - Possible app names
    - ConjugateMaster
-   - Verblingvo
+   - Verblingo
    - VerbQuiz
-   - CongugationQuiz
+   - ConjugationQuiz
+   - VerbMaster (already exists )
+   - Portuguese Verb Master
+ - Logo idea
+   - Hedgehog with glasses
  
    
 
@@ -101,6 +105,11 @@ Quiz App (next project) - Conjugation test
  https://www.conjugacao.com.br/verbos-irregulares/
  https://blog.flaviarita.com/51-verbos-que-vao-cair-na-sua-prova-portugues-para-concurso/#.Y09icHZBwzM
  https://portuguesaletra.com/artigos/verbos-mais-usados-em-portugues/
+
+
+similar projects
+https://www.verbmaster.co/
+https://play.google.com/store/apps/details?id=com.learningfrenchphrases.verbmaster&hl=en&gl=US
 
 
 Gradle
