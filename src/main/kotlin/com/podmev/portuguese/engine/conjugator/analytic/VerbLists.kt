@@ -37,6 +37,7 @@ object VerbLists {
                 "sobrepor", "supor", "transpor"
             )
         ),
+        Pair("rir", listOf("sorrir")),
 //        Pair("querer", listOf("requerer", "bem-querer", "benquerer", "desquerer", "entrequerer", "malquerer")),
         Pair("vir", listOf("advir", "avir", "convir", "devir", "intervir", "provir", "sobrevir")),
         Pair("ver", listOf("prever", "rever")),
