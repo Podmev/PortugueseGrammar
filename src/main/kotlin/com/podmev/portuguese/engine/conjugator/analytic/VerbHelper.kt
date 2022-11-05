@@ -49,7 +49,7 @@ object VerbHelper {
     /*only in correct form of person and number (first-singular)*/
     fun replaceIfNecessaryC_LetterForC_Cedilla_LetterOrNull(infinitive: String): String? {
         //        if (Wordifier.endsWithAny(infinitive, listOf(VerbEnds.CER, VerbEnds.EDIR)) ) {
-        if (infinitive.endsWith(VerbEnds.CER)) {
+        if (Wordifier.endsWithAny(infinitive, listOf(VerbEnds.CER, VerbEnds.CIR))) {
             return Wordifier.addDiacriticsToLastFoundLetter(infinitive, C_Letter, CedillaDiacriticMark)
         }
         return null //not this case
