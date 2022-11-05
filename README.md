@@ -86,6 +86,12 @@ Quiz App (next project) - Conjugation test
    - cross button to start test about it
    - current progress of selected rule or verb
    - show new words
+ - Possible app names
+   - ConjugateMaster
+   - Verblingvo
+   - VerbQuiz
+   - CongugationQuiz
+ 
    
 
  Links
