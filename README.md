@@ -40,7 +40,36 @@ Quiz App (next project) - Conjugation test
  - Test by tenses or by verbs or by pronoun
  - Choose tense in list by verb in form (can be all tenses or just part)
  - Change verb to indirect speech
- - For each tense create separate groups of verb and verbArguments by different rules + irregulars. So in test we can mix well verbs from different rules or practice only one 
+ - For each tense create separate groups of verb and verbArguments by different rules + irregulars. So in test we can mix well verbs from different rules or practice only one
+ - For errors show rules, show how worked congratulation
+ - Test for full 4-6 forms at ones
+   - To fill full 
+   - To swipe left or right for full set of forms, correct or wrong. Can be mixed with forms from wrong tenses or sumilar verbs
+   - Test for subset of forms, for example 2 or 3
+   - Rearrange forms randomly
+ - Choose rules to conjugate from list, can be several
+ - Decide two forms of verb are from the same verb
+ - Verb is regular or no
+ - Verbs are the same tense or no
+ - Verbs are the same person/number
+ - Defective verb, show which forms don't exist
+ - Similar verbs have thу same conjugation or no, after answer can show difference
+ - Compare forms of 2 verbs
+ - Tests for forms with diacritics
+ - Report form for wrong test or information
+ - Tests configurator with filters
+ - Test chapters, like in book. Every can have multiple tests inside
+ - Mode to start from zero or inicial test
+ - In the bottom several sections
+   - Chapters
+   - Test configurator
+   - Wiki
+   - Profile
+ - Progress
+   - Chapters
+   - Tenses
+   - Verbs
+
  Links
  https://github.com/jalvesaq/gconjugue
  https://github.com/ian-hamlin/verb-data
