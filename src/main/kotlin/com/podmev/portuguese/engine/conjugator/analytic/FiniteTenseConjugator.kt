@@ -4,22 +4,29 @@ import com.podmev.portuguese.data.engine.conjugator.*
 import com.podmev.portuguese.data.grammar.term.tense.GrammaticalTense
 import com.podmev.portuguese.data.grammar.term.verb.VerbArguments
 import com.podmev.portuguese.engine.utils.verb.VerbEnds
+import com.podmev.portuguese.utils.lang.mergeListMaps
+import com.podmev.portuguese.utils.lang.revertListMap
 
-interface FiniteTenseConjugator : Conjugator {
-    val arSuffix: SuffixGroup
-    val erSuffix: SuffixGroup
-    val irSuffix: SuffixGroup
+abstract class FiniteTenseConjugator() : Conjugator {
+    abstract val arSuffix: SuffixGroup
+    abstract val erSuffix: SuffixGroup
+    abstract val irSuffix: SuffixGroup
 
-    val specialEndingSuffixRules: List<SpecialEndingSuffixRule>
-    val baseChangingRules: List<BaseChangingRule>
-    val irregularForms: Map<String, IrregularForm>
+    abstract val specialEndingSuffixRules: List<SpecialEndingSuffixRule>
+    abstract val baseChangingRules: List<BaseChangingRule>
+    abstract val irregularForms: Map<String, IrregularForm>
+    abstract val currentDefectiveGroups: Map<DefectiveGroup, List<String>>
+
+    var defectiveGroupByVerbMap: Map<String, DefectiveGroup> = createDefectiveGroupByVerbMap()
 
     override fun conjugateVerb(
         verbInInfinitive: String,
         tense: GrammaticalTense,
         verbArgs: VerbArguments
     ): List<String> {
-        if(VerbHelper.forbiddenOnNotThirdSingularForm(verbInInfinitive, verbArgs)){
+        val defectiveGroup: DefectiveGroup? = getDefectiveGroup(verbInInfinitive)
+        if(defectiveGroup?.hasForm(verbArgs) == false){
+            //form doesn't exist, so it is empty
             return emptyList()
         }
         val regularTransformation = regularChanging(verbInInfinitive, verbArgs)
@@ -132,4 +139,12 @@ interface FiniteTenseConjugator : Conjugator {
         }
         return infinitive
     }
+
+    private fun totalDefectiveGroups():Map<DefectiveGroup, List<String>> =
+        mergeListMaps(currentDefectiveGroups, VerbLists.commonDefectiveVerbGroups)
+
+    private fun createDefectiveGroupByVerbMap():Map<String, DefectiveGroup> =
+        revertListMap(totalDefectiveGroups())
+
+    private fun getDefectiveGroup(verb: String): DefectiveGroup? = defectiveGroupByVerbMap[verb]
 }

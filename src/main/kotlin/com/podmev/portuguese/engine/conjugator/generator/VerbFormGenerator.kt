@@ -7,6 +7,7 @@ import com.podmev.portuguese.data.grammar.term.general.GrammaticalGender.UNDEFIN
 import com.podmev.portuguese.data.grammar.term.tense.GrammaticalTense
 import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.imperative.ImperativeTense
 import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.indicative.IndicativePresentTense
+import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.indicative.IndicativePreteriteTense
 import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.subjunctive.SubjunctivePresentTense
 import com.podmev.portuguese.data.grammar.term.verb.GrammaticalVoice.ACTIVE
 import com.podmev.portuguese.data.grammar.term.verb.VerbFormInfo
@@ -39,6 +40,8 @@ object VerbFormGenerator {
     fun defectivePresentSubjunctiveHelper() = defectiveHelper(SubjunctivePresentTense)
     fun defectivePresentImperativeHelper() = defectiveHelper(ImperativeTense)
 
+    fun defectivePreteriteIndicativeHelper() = defectiveHelper(IndicativePreteriteTense)
+
     fun defectiveHelper(tense: GrammaticalTense) {
         val conjugator = OnlyDataSetConjugator
         val coveredVerbs = conjugator.getCoveredVerbs()
@@ -70,6 +73,12 @@ object VerbFormGenerator {
 
         for (defectiveVerb in unCoveredDefectivesVerbs){
             println(defectiveVerb)
+        }
+    }
+
+    fun defectiveVerbConstsHelper(){
+        for (verb in getAllDefectiveVerbs()){
+            println("const val ${verb.toUpperCase()} = \"$verb\"")
         }
     }
 

@@ -1,7 +1,10 @@
 package com.podmev.portuguese.data.engine.conjugator
 
 import com.podmev.portuguese.data.grammar.term.general.GrammaticalNumber
+import com.podmev.portuguese.data.grammar.term.general.GrammaticalNumber.*
+import com.podmev.portuguese.data.grammar.term.general.GrammaticalNumber.UNDEFINED
 import com.podmev.portuguese.data.grammar.term.general.GrammaticalPerson
+import com.podmev.portuguese.data.grammar.term.general.GrammaticalPerson.*
 import com.podmev.portuguese.data.grammar.term.verb.VerbArguments
 
 data class BaseGroup(
@@ -16,20 +19,20 @@ data class BaseGroup(
     fun getBase(verbArgs: VerbArguments): String? = getBase(verbArgs.person, verbArgs.number)
     fun getBase(person: GrammaticalPerson, number: GrammaticalNumber): String? =
         when (number) {
-            GrammaticalNumber.UNDEFINED -> ""
-            GrammaticalNumber.SINGULAR ->
+            UNDEFINED -> ""
+            SINGULAR ->
                 when (person) {
-                    GrammaticalPerson.FIRST -> singularFirst
-                    GrammaticalPerson.SECOND -> singularSecond
-                    GrammaticalPerson.THIRD -> singularThird
+                    FIRST -> singularFirst
+                    SECOND -> singularSecond
+                    THIRD -> singularThird
                     GrammaticalPerson.UNDEFINED -> ""
                 }
 
-            GrammaticalNumber.PLURAL ->
+            PLURAL ->
                 when (person) {
-                    GrammaticalPerson.FIRST -> pluralFirst
-                    GrammaticalPerson.SECOND -> pluralSecond
-                    GrammaticalPerson.THIRD -> pluralThird
+                    FIRST -> pluralFirst
+                    SECOND -> pluralSecond
+                    THIRD -> pluralThird
                     GrammaticalPerson.UNDEFINED -> ""
                 }
         }

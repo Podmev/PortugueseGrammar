@@ -53,5 +53,5 @@ fun main() {
         )
     ))
 
-    //VerbFormGenerator.defectivePresentImperativeHelper()
+//    VerbFormGenerator.defectiveVerbConstsHelper()
 }

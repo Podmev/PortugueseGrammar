@@ -5,6 +5,7 @@ import com.podmev.portuguese.data.grammar.term.orthography.diacriticLetters.acut
 import com.podmev.portuguese.data.grammar.term.orthography.letters.O_Letter
 import com.podmev.portuguese.data.grammar.term.orthography.letters.U_Letter
 import com.podmev.portuguese.data.grammar.term.verb.*
+import com.podmev.portuguese.engine.conjugator.analytic.DefectiveVerbs
 import com.podmev.portuguese.engine.conjugator.analytic.FiniteTenseConjugator
 import com.podmev.portuguese.engine.conjugator.analytic.IrregularVerbs
 import com.podmev.portuguese.engine.conjugator.analytic.VerbHelper.replaceIfNecessaryC_LetterForC_Cedilla_LetterOrNull
@@ -14,7 +15,7 @@ import com.podmev.portuguese.engine.conjugator.analytic.VerbHelper.replaceIfNece
 import com.podmev.portuguese.engine.utils.verb.VerbEnds
 import com.podmev.portuguese.engine.utils.word.Wordifier
 
-object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteTenseConjugator {
+object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteTenseConjugator() {
     override val arSuffix = SuffixGroup("o", "as", "a", "amos", "ais", "am")
     override val erSuffix = SuffixGroup("o", "es", "e", "emos", "eis", "em")
     override val irSuffix = SuffixGroup("o", "es", "e", "imos", "is", "em")
@@ -60,6 +61,31 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteT
         ),//Think how to make
         Pair(IrregularVerbs.ir.RIR, IrregularForm(FormGroup("rio", "ris", "ri", null, "rides", "riem"))),
     )
+    override val currentDefectiveGroups: Map<DefectiveGroup, List<String>>
+        get() =
+            mapOf(
+                Pair(
+                    DefectiveGroup(false, false, false, true, true, false),
+                    listOf(
+                        DefectiveVerbs.ABOLIR,
+                        DefectiveVerbs.COLORIR,
+                        DefectiveVerbs.DEMOLIR,
+                        DefectiveVerbs.FALIR,
+                        DefectiveVerbs.FLORIR,
+                        DefectiveVerbs.REMIR,
+                    )
+                ),
+                Pair(
+                    DefectiveGroup(false, true, true, true, true, true),
+                    listOf(
+                        DefectiveVerbs.BARRIR,
+                        DefectiveVerbs.DELIR,
+                        DefectiveVerbs.EXPLODIR,
+                        DefectiveVerbs.GANIR,
+                        DefectiveVerbs.RUIR,
+                    )
+                )
+            )
 
     object UZIR_Suffix_Rule : SpecialEndingSuffixRule {
         override val wordEnding = VerbEnds.UZIR
