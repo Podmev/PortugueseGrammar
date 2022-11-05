@@ -1,9 +1,12 @@
 package com.podmev.portuguese.engine.conjugator.analytic
 
 import com.podmev.portuguese.data.engine.conjugator.*
+import com.podmev.portuguese.data.grammar.term.orthography.diacriticLetters.acute.E_Acute_Letter
+import com.podmev.portuguese.data.grammar.term.orthography.letters.E_Letter
 import com.podmev.portuguese.data.grammar.term.tense.GrammaticalTense
 import com.podmev.portuguese.data.grammar.term.verb.VerbArguments
 import com.podmev.portuguese.engine.utils.verb.VerbEnds
+import com.podmev.portuguese.engine.utils.word.Wordifier
 import com.podmev.portuguese.utils.lang.mergeListMaps
 import com.podmev.portuguese.utils.lang.revertListMap
 
@@ -25,7 +28,7 @@ abstract class FiniteTenseConjugator() : Conjugator {
         verbArgs: VerbArguments
     ): List<String> {
         val defectiveGroup: DefectiveGroup? = getDefectiveGroup(verbInInfinitive)
-        if(defectiveGroup?.hasForm(verbArgs) == false){
+        if (defectiveGroup?.hasForm(verbArgs) == false) {
             //form doesn't exist, so it is empty
             return emptyList()
         }
@@ -84,9 +87,26 @@ abstract class FiniteTenseConjugator() : Conjugator {
         originIrregularForm: IrregularForm,
         originRegularTransformation: RegularTransformation?
     ): List<String>? {
-        val originForm = originIrregularForm.getForm(verbArgs, originRegularTransformation) ?: return null
+        val originForm: List<String> = originIrregularForm.getForm(verbArgs, originRegularTransformation) ?: return null
         val (diff: String, dropAtStart: Int) = VerbHelper.diffVerbAndOrigin(verb, originIrregularVerb)
-        return originForm.map { singleOriginForm -> diff + singleOriginForm.drop(dropAtStart) }
+        return originForm.map { singleOriginForm ->
+            diff + addDiacriticsOnOriginFormForDerivative(
+                singleOriginForm,
+                diff
+            ).drop(dropAtStart)
+        }
+    }
+
+    //TODO rewrite with cilaba tonica rules
+    private fun addDiacriticsOnOriginFormForDerivative(originForm: String, diff: String): String {
+        if (Wordifier.countVowels(originForm) == 1 &&
+            Wordifier.countVowels(diff) >= 1 &&
+            Wordifier.findLastVowelExactLetter(originForm)!!.genericLetter == E_Letter
+        ) {
+            return Wordifier.replaceLastFoundGenericLetter(originForm, E_Letter, E_Acute_Letter)
+            //only if there is only single vowel, and it is 'e' in origin form, and diff has vowels
+        }
+        return originForm
     }
 
     private fun regularChanging(verb: String, verbArgs: VerbArguments): RegularTransformation? {
@@ -140,10 +160,10 @@ abstract class FiniteTenseConjugator() : Conjugator {
         return infinitive
     }
 
-    private fun totalDefectiveGroups():Map<DefectiveGroup, List<String>> =
+    private fun totalDefectiveGroups(): Map<DefectiveGroup, List<String>> =
         mergeListMaps(currentDefectiveGroups, VerbLists.commonDefectiveVerbGroups)
 
-    private fun createDefectiveGroupByVerbMap():Map<String, DefectiveGroup> =
+    private fun createDefectiveGroupByVerbMap(): Map<String, DefectiveGroup> =
         revertListMap(totalDefectiveGroups())
 
     private fun getDefectiveGroup(verb: String): DefectiveGroup? = defectiveGroupByVerbMap[verb]

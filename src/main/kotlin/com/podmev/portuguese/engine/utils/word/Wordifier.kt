@@ -87,6 +87,12 @@ object Wordifier {
     //TODO make tests for endsWithAny
     fun endsWithAny(word: String, endings: List<String>): Boolean = endings.any{word.endsWith(it)}
 
+    fun countVowels(word: String) = word.count{ Alphabet.isVowelChar(it) }
+    fun countConsonants(word: String) = word.count{ Alphabet.isConsonantChar(it) }
+
+    fun findLastVowelExactLetter(word: String): ExactLetter? = findLastVowelChar(word)?.let{Alphabet.parseExactLetter(it)}
+    fun findLastVowelChar(word: String): Char? = word.findLast { Alphabet.isVowelChar(it) }
+
     /*checks if word truncated in the end with n-characters finishes with ending
     * endsWithDroppingLast("indicar", "c", 2) == true
     *  */

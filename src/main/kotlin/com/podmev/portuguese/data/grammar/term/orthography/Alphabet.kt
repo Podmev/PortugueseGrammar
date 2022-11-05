@@ -96,6 +96,7 @@ object Alphabet {
     fun isVowelChar(c: Char) = c in vowelChars
     fun isConsonantChar(c: Char) = c in consonantChars
 
+
     private val exactLetterViewMap: Map<Char, ExactLetter> = exactLetters.associateBy { it.view }
     fun parseExactLetter(c: Char): ExactLetter? = exactLetterViewMap[c]
 
