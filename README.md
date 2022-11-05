@@ -60,15 +60,33 @@ Quiz App (next project) - Conjugation test
  - Tests configurator with filters
  - Test chapters, like in book. Every can have multiple tests inside
  - Mode to start from zero or inicial test
+ - Marking verb unknown during tests
  - In the bottom several sections
    - Chapters
    - Test configurator
    - Wiki
+   - Progress
    - Profile
  - Progress
+   - Experience 
+   - General 
    - Chapters
    - Tenses
    - Verbs
+     - global
+     - by each set of verbs by frequency: 5, 10, 20, 50, 100, 200, 500, 1000, 2000, 5000, all
+     - other list of verbs
+   - dates of activities about verbs/tenses/chapters
+ - Wiki
+   - description about tenses, rules, exceptions
+   - search of verb
+   - different list of verbs
+   - randomizer of verbs
+   - randomizer of rules
+   - cross button to start test about it
+   - current progress of selected rule or verb
+   - show new words
+   
 
  Links
  https://github.com/jalvesaq/gconjugue
