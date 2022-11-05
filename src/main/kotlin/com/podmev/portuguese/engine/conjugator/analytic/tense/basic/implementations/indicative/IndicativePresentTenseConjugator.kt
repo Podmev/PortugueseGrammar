@@ -97,12 +97,20 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteT
             )
     }
 
+    //we need to take three letters
+    object OER_Suffix_Rule : SpecialEndingSuffixRule {
+        override val wordEnding = VerbEnds.OER
+        override fun getSuffix(verb: String, regularSuffix: SuffixGroup) =
+            regularSuffix.extendChar('o').copy(singularSecond = "óis", singularThird = "ói")
+    }
+
     override val specialEndingSuffixRules: List<SpecialEndingSuffixRule> = listOf(
         UZIR_Suffix_Rule,
         AIR_Suffix_Rule,
         UIR_Suffix_Rule,
         EAR_Suffix_Rule,
-        IAR_Suffix_MARIO_Rule
+        IAR_Suffix_MARIO_Rule,
+        OER_Suffix_Rule
     )
 
     object C_TO_C_Cedilla_Rule : BaseChangingRule {

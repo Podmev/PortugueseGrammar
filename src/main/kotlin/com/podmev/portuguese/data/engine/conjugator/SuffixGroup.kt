@@ -4,6 +4,7 @@ import com.podmev.portuguese.data.grammar.term.general.GrammaticalNumber
 import com.podmev.portuguese.data.grammar.term.general.GrammaticalPerson
 import com.podmev.portuguese.data.grammar.term.verb.VerbArguments
 import com.podmev.portuguese.engine.utils.verb.VerbEnds
+import com.podmev.portuguese.utils.lang.prepend
 
 data class SuffixGroup(
     val singularFirst: String?,
@@ -13,8 +14,8 @@ data class SuffixGroup(
     val pluralSecond: String?,
     val pluralThird: String?,
     //usually it is not needed to fill, because default suffix has 2 letters
-    val droppingSuffixLength:Int = VerbEnds.typicalSize
-){
+    val droppingSuffixLength: Int = VerbEnds.typicalSize
+) {
 
     fun getSuffix(verbArgs: VerbArguments): String? = getSuffix(verbArgs.person, verbArgs.number)
     fun getSuffix(person: GrammaticalPerson, number: GrammaticalNumber): String? =
@@ -36,5 +37,16 @@ data class SuffixGroup(
                     GrammaticalPerson.UNDEFINED -> ""
                 }
         }
+
+    fun extendChar(char: Char): SuffixGroup =
+        SuffixGroup(
+            singularFirst?.prepend(char),
+            singularSecond?.prepend(char),
+            singularThird?.prepend(char),
+            pluralFirst?.prepend(char),
+            pluralSecond?.prepend(char),
+            pluralThird?.prepend(char),
+            droppingSuffixLength + 1
+        )
 
 }
