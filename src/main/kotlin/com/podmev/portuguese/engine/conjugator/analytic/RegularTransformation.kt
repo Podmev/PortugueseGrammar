@@ -7,4 +7,8 @@ data class RegularTransformation(
     val base: String,
     val suffix: String,
     val suffixGroup: SuffixGroup
-)
+){
+    override fun toString(): String {
+        return "RegularTransformation(regularForm='$regularForm', base='$base', suffix='$suffix', suffixGroup=$suffixGroup)"
+    }
+}
