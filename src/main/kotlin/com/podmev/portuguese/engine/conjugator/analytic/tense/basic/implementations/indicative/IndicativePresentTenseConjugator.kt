@@ -308,7 +308,7 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteT
         Pair(IrregularVerbs.er.PODER, IrregularForm(FormGroup("posso", null, null, null, null, null))),
         Pair(IrregularVerbs.er.VER, IrregularForm(FormGroup("vejo", "vês", "vê", null, "vedes", "veem"))),
         Pair(IrregularVerbs.er.SABER, IrregularForm(FormGroup("sei", null, null, null, null, null))),
-        Pair(IrregularVerbs.er.QUERER, IrregularForm(FormGroup("venho", "vens", "vem", null, "vindes", "vêm"))),
+        Pair(IrregularVerbs.er.QUERER, IrregularForm(FormGroup(null, null, "quer", null, null, null))),
         //TODO change to suffix
         Pair(IrregularVerbs.er.LER, IrregularForm(FormGroup("leio", "lês", "lê", null, "ledes", "leem"))),
         Pair(IrregularVerbs.er.TRAZER, IrregularForm(FormGroup("trago", null, "traz", null, null, null))),
