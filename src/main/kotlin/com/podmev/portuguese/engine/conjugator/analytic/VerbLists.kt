@@ -55,7 +55,7 @@ object VerbLists {
         mapOf(
             Pair(
                 DefectiveGroup(false, false, true, false, false, false),
-                listOf("prazer", "aprazer", "gear", "never")
+                listOf("prazer", "aprazer", "gear", "nevar")
             ),
             Pair(
                 DefectiveGroup(false, false, true, false, false, true),
