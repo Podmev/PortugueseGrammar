@@ -25,6 +25,10 @@ Things to do:
   - enums for tenses and grammatical forms
   - structure for all forms for one verb
 
+Additional engine features
+ - silaba tonica, stress
+ - genders of nouns
+
 
 Quiz App (next project) - Conjugation test
  - For verb make all conjugation for all tenses and pronouns
