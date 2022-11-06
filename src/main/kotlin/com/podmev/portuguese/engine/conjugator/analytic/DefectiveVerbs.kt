@@ -34,6 +34,7 @@ object DefectiveVerbs {
     const val DESABORRIR = "desaborrir"
     const val DESAPRAZER = "desaprazer"
     const val DESASIR = "desasir"
+    const val DESCOLORIR = "descolorir"
     const val DESEMPEDERNIR = "desempedernir"
     const val DESGORNIR = "desgornir"
     const val DESPAVORIR = "despavorir"

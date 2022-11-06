@@ -17,6 +17,9 @@ import com.podmev.portuguese.engine.utils.word.Wordifier
 
 /*
 *
+[root]
+AnalyticConjugatorCheckByDataSetSeparateTenseTest
+indicativePresentTenseTest(VerbFormInfo)
 [1521] VerbFormInfo(infinitive=agredir, tense=IndicativePresentTense, person=SECOND, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE)
 [1523] VerbFormInfo(infinitive=agredir, tense=IndicativePresentTense, person=THIRD, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE)
 [1524] VerbFormInfo(infinitive=agredir, tense=IndicativePresentTense, person=THIRD, number=PLURAL, gender=UNDEFINED, voice=ACTIVE)
@@ -39,7 +42,6 @@ import com.podmev.portuguese.engine.utils.word.Wordifier
 [2955] VerbFormInfo(infinitive=apoiar, tense=IndicativePresentTense, person=SECOND, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE)
 [2957] VerbFormInfo(infinitive=apoiar, tense=IndicativePresentTense, person=THIRD, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE)
 [2958] VerbFormInfo(infinitive=apoiar, tense=IndicativePresentTense, person=THIRD, number=PLURAL, gender=UNDEFINED, voice=ACTIVE)
-[3071] VerbFormInfo(infinitive=aprazer, tense=IndicativePresentTense, person=THIRD, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE)
 [3745] VerbFormInfo(infinitive=assenhorear, tense=IndicativePresentTense, person=FIRST, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE)
 [3747] VerbFormInfo(infinitive=assenhorear, tense=IndicativePresentTense, person=SECOND, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE)
 [3749] VerbFormInfo(infinitive=assenhorear, tense=IndicativePresentTense, person=THIRD, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE)
@@ -171,7 +173,6 @@ import com.podmev.portuguese.engine.utils.word.Wordifier
 [16929] VerbFormInfo(infinitive=intermediar, tense=IndicativePresentTense, person=SECOND, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE)
 [16931] VerbFormInfo(infinitive=intermediar, tense=IndicativePresentTense, person=THIRD, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE)
 [16932] VerbFormInfo(infinitive=intermediar, tense=IndicativePresentTense, person=THIRD, number=PLURAL, gender=UNDEFINED, voice=ACTIVE)
-[17261] VerbFormInfo(infinitive=jazer, tense=IndicativePresentTense, person=THIRD, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE)
 [17539] VerbFormInfo(infinitive=latir, tense=IndicativePresentTense, person=FIRST, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE)
 [17827] VerbFormInfo(infinitive=louquear, tense=IndicativePresentTense, person=FIRST, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE)
 [17829] VerbFormInfo(infinitive=louquear, tense=IndicativePresentTense, person=SECOND, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE)
@@ -207,7 +208,6 @@ import com.podmev.portuguese.engine.utils.word.Wordifier
 [20577] VerbFormInfo(infinitive=polir, tense=IndicativePresentTense, person=SECOND, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE)
 [20579] VerbFormInfo(infinitive=polir, tense=IndicativePresentTense, person=THIRD, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE)
 [20580] VerbFormInfo(infinitive=polir, tense=IndicativePresentTense, person=THIRD, number=PLURAL, gender=UNDEFINED, voice=ACTIVE)
-[20735] VerbFormInfo(infinitive=prazer, tense=IndicativePresentTense, person=THIRD, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE)
 [20851] VerbFormInfo(infinitive=premiar, tense=IndicativePresentTense, person=FIRST, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE)
 [20853] VerbFormInfo(infinitive=premiar, tense=IndicativePresentTense, person=SECOND, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE)
 [20855] VerbFormInfo(infinitive=premiar, tense=IndicativePresentTense, person=THIRD, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE)
@@ -233,11 +233,6 @@ import com.podmev.portuguese.engine.utils.word.Wordifier
 [22091] VerbFormInfo(infinitive=reconstruir, tense=IndicativePresentTense, person=THIRD, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE)
 [22092] VerbFormInfo(infinitive=reconstruir, tense=IndicativePresentTense, person=THIRD, number=PLURAL, gender=UNDEFINED, voice=ACTIVE)
 [22207] VerbFormInfo(infinitive=redescobrir, tense=IndicativePresentTense, person=FIRST, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE)
-[22597] VerbFormInfo(infinitive=reler, tense=IndicativePresentTense, person=FIRST, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE)
-[22599] VerbFormInfo(infinitive=reler, tense=IndicativePresentTense, person=SECOND, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE)
-[22600] VerbFormInfo(infinitive=reler, tense=IndicativePresentTense, person=SECOND, number=PLURAL, gender=UNDEFINED, voice=ACTIVE)
-[22601] VerbFormInfo(infinitive=reler, tense=IndicativePresentTense, person=THIRD, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE)
-[22602] VerbFormInfo(infinitive=reler, tense=IndicativePresentTense, person=THIRD, number=PLURAL, gender=UNDEFINED, voice=ACTIVE)
 [22759] VerbFormInfo(infinitive=renhir, tense=IndicativePresentTense, person=FIRST, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE)
 [22867] VerbFormInfo(infinitive=repolir, tense=IndicativePresentTense, person=FIRST, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE)
 [22869] VerbFormInfo(infinitive=repolir, tense=IndicativePresentTense, person=SECOND, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE)
@@ -283,7 +278,7 @@ import com.podmev.portuguese.engine.utils.word.Wordifier
 [26757] VerbFormInfo(infinitive=voltear, tense=IndicativePresentTense, person=SECOND, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE)
 [26759] VerbFormInfo(infinitive=voltear, tense=IndicativePresentTense, person=THIRD, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE)
 [26760] VerbFormInfo(infinitive=voltear, tense=IndicativePresentTense, person=THIRD, number=PLURAL, gender=UNDEFINED, voice=ACTIVE)
-* * */
+* * * */
 object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteTenseConjugator() {
     override val arSuffix = SuffixGroup("o", "as", "a", "amos", "ais", "am")
     override val erSuffix = SuffixGroup("o", "es", "e", "emos", "eis", "em")
@@ -339,6 +334,7 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteT
                         DefectiveVerbs.ABOLIR,
                         DefectiveVerbs.COLORIR,
                         DefectiveVerbs.DEMOLIR,
+                        DefectiveVerbs.DESCOLORIR,
                         DefectiveVerbs.FALIR,
                         DefectiveVerbs.FLORIR,
                         DefectiveVerbs.REMIR,
