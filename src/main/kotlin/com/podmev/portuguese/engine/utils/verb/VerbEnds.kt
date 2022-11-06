@@ -21,10 +21,12 @@ object VerbEnds {
     const val OER = "oer"
 
 
+
     const val GUIR = "guir"
     const val QUIR = "quir"
 
     const val UZIR = "uzir"
+    const val AZER = "azer"
 
     const val EGUIR = "eguir"
     const val IGIR = "igir"

@@ -362,6 +362,12 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteT
             regularSuffix.copy(singularThird = "") //finishes with -z
     }
 
+    object AZER_Suffix_Rule : SpecialEndingSuffixRule {
+        override val wordEnding = VerbEnds.AZER
+        override fun getSuffix(verb: String, regularSuffix: SuffixGroup) =
+            regularSuffix.copy(singularThird = "") //finishes with -z
+    }
+
     object AIR_Suffix_Rule : SpecialEndingSuffixRule {
         override val wordEnding = VerbEnds.AIR
         override fun getSuffix(verb: String, regularSuffix: SuffixGroup) =
@@ -401,6 +407,7 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteT
 
     override val specialEndingSuffixRules: List<SpecialEndingSuffixRule> = listOf(
         UZIR_Suffix_Rule,
+        AZER_Suffix_Rule,
         AIR_Suffix_Rule,
         UIR_Suffix_Rule,
         EAR_Suffix_Rule,
