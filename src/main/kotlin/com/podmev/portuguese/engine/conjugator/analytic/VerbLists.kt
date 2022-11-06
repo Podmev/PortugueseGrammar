@@ -15,6 +15,7 @@ object VerbLists {
     //TODO add necessary verbs
     val irregularVerbDerivativeMap: Map<String, List<String>> = mapOf(
         Pair("crer", listOf("descrer")),
+        Pair("dar", listOf("desdar")),
         Pair("dizer", listOf("bendizer", "condizer", "contradizer", "desdizer", "maldizer", "predizer")),
         Pair(
             "escrever", listOf(
