@@ -87,21 +87,21 @@
       "group": "indicative/present",
       "group_sort": 5,
       "sort": 0,
-      "value": "banqueteo"
+      "value": "banqueteio"
     },
     {
       "form": "s2",
       "group": "indicative/present",
       "group_sort": 5,
       "sort": 1,
-      "value": "banqueteas"
+      "value": "banqueteias"
     },
     {
       "form": "s3",
       "group": "indicative/present",
       "group_sort": 5,
       "sort": 2,
-      "value": "banquetea"
+      "value": "banqueteia"
     },
     {
       "form": "p1",
@@ -122,7 +122,7 @@
       "group": "indicative/present",
       "group_sort": 5,
       "sort": 5,
-      "value": "banqueteam"
+      "value": "banqueteiam"
     },
     {
       "form": "s1",
