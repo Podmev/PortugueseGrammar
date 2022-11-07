@@ -78,6 +78,7 @@ object DefectiveVerbs {
     const val JUNGIR = "jungir"
     const val LANGUIR = "languir"
     const val LATER = "later"
+    const val LATIR = "latir"
     const val LENIR = "lenir"
     const val MANUTENIR = "manutenir"
     const val MONIR = "monir"

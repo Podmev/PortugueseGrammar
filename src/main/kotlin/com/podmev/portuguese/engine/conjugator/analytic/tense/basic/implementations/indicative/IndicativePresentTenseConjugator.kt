@@ -343,10 +343,12 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteT
                 Pair(
                     DefectiveGroup(false, true, true, true, true, true),
                     listOf(
+
                         DefectiveVerbs.BARRIR,
                         DefectiveVerbs.DELIR,
                         DefectiveVerbs.EXPLODIR,
                         DefectiveVerbs.GANIR,
+                        DefectiveVerbs.LATIR,
                         DefectiveVerbs.RUIR,
                     )
                 )
