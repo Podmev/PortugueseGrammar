@@ -87,21 +87,21 @@
       "group": "indicative/present",
       "group_sort": 5,
       "sort": 0,
-      "value": "apóio"
+      "value": "apoio"
     },
     {
       "form": "s2",
       "group": "indicative/present",
       "group_sort": 5,
       "sort": 1,
-      "value": "apóias"
+      "value": "apoias"
     },
     {
       "form": "s3",
       "group": "indicative/present",
       "group_sort": 5,
       "sort": 2,
-      "value": "apóia"
+      "value": "apoia"
     },
     {
       "form": "p1",
@@ -122,7 +122,7 @@
       "group": "indicative/present",
       "group_sort": 5,
       "sort": 5,
-      "value": "apóiam"
+      "value": "apoiam"
     },
     {
       "form": "s1",
