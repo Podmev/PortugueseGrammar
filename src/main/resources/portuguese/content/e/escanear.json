@@ -87,21 +87,21 @@
       "group": "indicative/present",
       "group_sort": 5,
       "sort": 0,
-      "value": "escaneo"
+      "value": "escaneio"
     },
     {
       "form": "s2",
       "group": "indicative/present",
       "group_sort": 5,
       "sort": 1,
-      "value": "escaneas"
+      "value": "escaneias"
     },
     {
       "form": "s3",
       "group": "indicative/present",
       "group_sort": 5,
       "sort": 2,
-      "value": "escanea"
+      "value": "escaneia"
     },
     {
       "form": "p1",
@@ -122,7 +122,7 @@
       "group": "indicative/present",
       "group_sort": 5,
       "sort": 5,
-      "value": "escaneam"
+      "value": "escaneiam"
     },
     {
       "form": "s1",
