@@ -87,21 +87,21 @@
       "group": "indicative/present",
       "group_sort": 5,
       "sort": 0,
-      "value": "goleo"
+      "value": "goleio"
     },
     {
       "form": "s2",
       "group": "indicative/present",
       "group_sort": 5,
       "sort": 1,
-      "value": "goleas"
+      "value": "goleias"
     },
     {
       "form": "s3",
       "group": "indicative/present",
       "group_sort": 5,
       "sort": 2,
-      "value": "golea"
+      "value": "goleia"
     },
     {
       "form": "p1",
@@ -122,7 +122,7 @@
       "group": "indicative/present",
       "group_sort": 5,
       "sort": 5,
-      "value": "goleam"
+      "value": "goleiam"
     },
     {
       "form": "s1",
