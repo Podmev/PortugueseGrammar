@@ -50,7 +50,6 @@ import com.podmev.portuguese.engine.utils.word.Wordifier
 [9051] VerbFormInfo(infinitive=desconseguir, tense=IndicativePresentTense, person=SECOND, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE)
 [9052] VerbFormInfo(infinitive=desconseguir, tense=IndicativePresentTense, person=SECOND, number=PLURAL, gender=UNDEFINED, voice=ACTIVE)
 [9053] VerbFormInfo(infinitive=desconseguir, tense=IndicativePresentTense, person=THIRD, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE)
-[9877] VerbFormInfo(infinitive=despir, tense=IndicativePresentTense, person=FIRST, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE)
 [9980] VerbFormInfo(infinitive=desseguir, tense=IndicativePresentTense, person=FIRST, number=PLURAL, gender=UNDEFINED, voice=ACTIVE)
 [9981] VerbFormInfo(infinitive=desseguir, tense=IndicativePresentTense, person=SECOND, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE)
 [9982] VerbFormInfo(infinitive=desseguir, tense=IndicativePresentTense, person=SECOND, number=PLURAL, gender=UNDEFINED, voice=ACTIVE)
