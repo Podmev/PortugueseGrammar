@@ -17,6 +17,7 @@ object VerbLists {
         Pair("crer", listOf("descrer")),
         Pair("dar", listOf("desdar")),
         Pair("dizer", listOf("bendizer", "condizer", "contradizer", "desdizer", "maldizer", "predizer")),
+        Pair("erguer", listOf("soerguer")),
         Pair(
             "escrever", listOf(
                 "circunscrever", "descrever", "escrever", "inscrever", "prescrever", "proscrever", "redescrever",
