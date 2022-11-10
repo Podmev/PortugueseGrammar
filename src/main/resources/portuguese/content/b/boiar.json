@@ -87,21 +87,21 @@
       "group": "indicative/present",
       "group_sort": 5,
       "sort": 0,
-      "value": "bóio"
+      "value": "boio"
     },
     {
       "form": "s2",
       "group": "indicative/present",
       "group_sort": 5,
       "sort": 1,
-      "value": "bóias"
+      "value": "boias"
     },
     {
       "form": "s3",
       "group": "indicative/present",
       "group_sort": 5,
       "sort": 2,
-      "value": "bóia"
+      "value": "boia"
     },
     {
       "form": "p1",
@@ -122,7 +122,7 @@
       "group": "indicative/present",
       "group_sort": 5,
       "sort": 5,
-      "value": "bóiam"
+      "value": "boiam"
     },
     {
       "form": "s1",
@@ -192,7 +192,7 @@
       "group": "indicative/preterite",
       "group_sort": 7,
       "sort": 3,
-      "value": "boiamos - boiámos"
+      "value": "boiamos"
     },
     {
       "form": "p2",
@@ -472,7 +472,7 @@
       "group": "imperative/affirmative",
       "group_sort": 14,
       "sort": 1,
-      "value": "bóia"
+      "value": "boia"
     },
     {
       "form": "s3",
@@ -550,8 +550,8 @@
     "to waft",
     "to drown"
   ],
-  "description": "boiar (first-person singular present indicative bóio, past participle boiado)",
-  "etymology": "From bóia.",
+  "description": "boiar (first-person singular present indicative boio, past participle boiado)",
+  "etymology": "From boia.",
   "page_id": 3519035,
   "pronunciations": [],
   "related": [],
