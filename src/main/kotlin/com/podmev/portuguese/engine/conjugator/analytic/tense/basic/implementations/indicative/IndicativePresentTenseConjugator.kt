@@ -166,7 +166,6 @@ import com.podmev.portuguese.engine.utils.word.Wordifier
 [23979] VerbFormInfo(infinitive=seguir, tense=IndicativePresentTense, person=SECOND, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE)
 [23980] VerbFormInfo(infinitive=seguir, tense=IndicativePresentTense, person=SECOND, number=PLURAL, gender=UNDEFINED, voice=ACTIVE)
 [23981] VerbFormInfo(infinitive=seguir, tense=IndicativePresentTense, person=THIRD, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE)
-[24403] VerbFormInfo(infinitive=soerguer, tense=IndicativePresentTense, person=FIRST, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE)
 [24813] VerbFormInfo(infinitive=sumir, tense=IndicativePresentTense, person=SECOND, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE)
 [24815] VerbFormInfo(infinitive=sumir, tense=IndicativePresentTense, person=THIRD, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE)
 [24816] VerbFormInfo(infinitive=sumir, tense=IndicativePresentTense, person=THIRD, number=PLURAL, gender=UNDEFINED, voice=ACTIVE)
@@ -281,7 +280,9 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteT
     //works only for fixed list of verbs MARIO - first letters of verbs
     object IAR_Suffix_MARIO_Rule : SpecialEndingSuffixRule {
         override val wordEnding = VerbEnds.IAR
-        override val fixedVerbList = listOf("mediar", "ansiar", "remediar", "incendiar", "odiar")
+        override val fixedVerbList = listOf("mediar", "ansiar", "remediar", "incendiar", "odiar",
+            "intermediar" // additional
+        )
         override fun getSuffix(verb: String, regularSuffix: SuffixGroup) =
             SuffixGroup(
                 "eio", "eias", "eia", "iamos", "iais", "eiam",
