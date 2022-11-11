@@ -86,12 +86,7 @@ import com.podmev.portuguese.engine.utils.word.Wordifier
 [14355] VerbFormInfo(infinitive=extinguir, tense=IndicativePresentTense, person=SECOND, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE)
 [14356] VerbFormInfo(infinitive=extinguir, tense=IndicativePresentTense, person=SECOND, number=PLURAL, gender=UNDEFINED, voice=ACTIVE)
 [14357] VerbFormInfo(infinitive=extinguir, tense=IndicativePresentTense, person=THIRD, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE)
-[15237] VerbFormInfo(infinitive=fugir, tense=IndicativePresentTense, person=SECOND, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE)
 [16241] VerbFormInfo(infinitive=impelir, tense=IndicativePresentTense, person=THIRD, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE)
-[16927] VerbFormInfo(infinitive=intermediar, tense=IndicativePresentTense, person=FIRST, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE)
-[16929] VerbFormInfo(infinitive=intermediar, tense=IndicativePresentTense, person=SECOND, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE)
-[16931] VerbFormInfo(infinitive=intermediar, tense=IndicativePresentTense, person=THIRD, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE)
-[16932] VerbFormInfo(infinitive=intermediar, tense=IndicativePresentTense, person=THIRD, number=PLURAL, gender=UNDEFINED, voice=ACTIVE)
 [18005] VerbFormInfo(infinitive=malquerer, tense=IndicativePresentTense, person=THIRD, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE)
 [18115] VerbFormInfo(infinitive=manutenir, tense=IndicativePresentTense, person=FIRST, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE)
 [18553] VerbFormInfo(infinitive=minguar, tense=IndicativePresentTense, person=FIRST, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE)
@@ -207,14 +202,10 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteT
         Pair(IrregularVerbs.ir.PEDIR, IrregularForm(FormGroup("peço", null, null, null, null, null))),
         Pair(IrregularVerbs.ir.IR, IrregularForm(FormGroup("vou", "vais", "vai", "vamos", "ides", "vão"))),
         Pair(IrregularVerbs.ir.DORMIR, IrregularForm(FormGroup("durmo", null, null, null, null, null))),
-        Pair(
-            IrregularVerbs.ir.SUBIR,
-            IrregularForm(FormGroup(null, "sobes", "sobe", null, null, "sobem"))
-        ), //Think how to make
-        Pair(
-            IrregularVerbs.ir.FUGIR,
-            IrregularForm(FormGroup(null, "fobes", "foge", null, null, "fogem"))
-        ),//Think how to make
+        //Think how to make
+        Pair(IrregularVerbs.ir.SUBIR,IrregularForm(FormGroup(null, "sobes", "sobe", null, null, "sobem"))),
+        //Think how to make
+        Pair(IrregularVerbs.ir.FUGIR, IrregularForm(FormGroup(null, "foges", "foge", null, null, "fogem"))),
         Pair(IrregularVerbs.ir.RIR, IrregularForm(FormGroup("rio", "ris", "ri", null, "rides", "riem"))),
     )
     override val currentDefectiveGroups: Map<DefectiveGroup, List<String>>
