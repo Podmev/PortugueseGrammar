@@ -80,7 +80,6 @@ import com.podmev.portuguese.engine.utils.word.Wordifier
 [13917] VerbFormInfo(infinitive=europeizar, tense=IndicativePresentTense, person=SECOND, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE)
 [13919] VerbFormInfo(infinitive=europeizar, tense=IndicativePresentTense, person=THIRD, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE)
 [13920] VerbFormInfo(infinitive=europeizar, tense=IndicativePresentTense, person=THIRD, number=PLURAL, gender=UNDEFINED, voice=ACTIVE)
-[14213] VerbFormInfo(infinitive=expelir, tense=IndicativePresentTense, person=THIRD, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE)
 [14353] VerbFormInfo(infinitive=extinguir, tense=IndicativePresentTense, person=FIRST, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE)
 [14354] VerbFormInfo(infinitive=extinguir, tense=IndicativePresentTense, person=FIRST, number=PLURAL, gender=UNDEFINED, voice=ACTIVE)
 [14355] VerbFormInfo(infinitive=extinguir, tense=IndicativePresentTense, person=SECOND, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE)
