@@ -14,6 +14,11 @@ abstract class SpecialVerbBaseByTense(
 ) {
     fun getForm(verb: String): List<String> = AnalyticConjugator.conjugateVerb(verb, tense, verbArgs)
 
+    fun getBasePlusInfinitiveEnding(verb: String): String? {
+        val base = getBase(verb)?: return null
+        return base + verb.takeLast(2)
+    }
+
     abstract fun getBase(verb: String): String?
 }
 

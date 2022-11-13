@@ -1,9 +1,11 @@
 package com.podmev.portuguese.engine.conjugator.analytic.tense.basic.implementations.subjunctive
 
 import com.podmev.portuguese.data.engine.conjugator.*
+import com.podmev.portuguese.data.grammar.term.verb.VerbArguments
 import com.podmev.portuguese.engine.conjugator.analytic.FiniteTenseConjugator
 import com.podmev.portuguese.engine.conjugator.analytic.FirstSingularIndicativePresentSpecialVerbBase
 import com.podmev.portuguese.engine.conjugator.analytic.IrregularVerbs
+import com.podmev.portuguese.engine.conjugator.analytic.VerbHelper
 
 object SubjunctivePresentTenseConjugator : SubjunctiveMoodTenseConjugator, FiniteTenseConjugator() {
     override val arSuffix = SuffixGroup("e", "es", "e", "emos", "eis", "em")
@@ -13,10 +15,10 @@ object SubjunctivePresentTenseConjugator : SubjunctiveMoodTenseConjugator, Finit
     override val irregularForms: Map<String, IrregularForm> = mapOf(
 //        Pair(IrregularVerbs.or.POR, IrregularForm(base="ponh", suffixGroup = erSuffix)),
 
-        Pair(IrregularVerbs.ar.ESTAR, IrregularForm(base="estej", suffixGroup = erSuffix)),
+        Pair(IrregularVerbs.ar.ESTAR, IrregularForm(base = "estej", suffixGroup = erSuffix)),
         Pair(IrregularVerbs.ar.DAR, IrregularForm(FormGroup("dê", "dês", "dê", "demos", "deis", "deem"))),
 
-        Pair(IrregularVerbs.er.SER, IrregularForm(base="sej")),
+        Pair(IrregularVerbs.er.SER, IrregularForm(base = "sej")),
 //        Pair(IrregularVerbs.er.TER, IrregularForm(base="tenh")),
 //        Pair(IrregularVerbs.er.HAVER, IrregularForm(base="haj")), //but it is defective too
 //        Pair(IrregularVerbs.er.FAZER, IrregularForm(base="faç")),
@@ -45,12 +47,28 @@ object SubjunctivePresentTenseConjugator : SubjunctiveMoodTenseConjugator, Finit
     )
 
     override val specialEndingSuffixRules: List<SpecialEndingSuffixRule> = listOf()
-    override val baseChangingRules: List<BaseChangingRule> = listOf()
     override val currentDefectiveGroups: Map<DefectiveGroup, List<String>>
         get() = mapOf()
 
     override val specialVerbBaseByTense = FirstSingularIndicativePresentSpecialVerbBase
 
+    object C_TO_QU_Rule : BaseChangingRule {
+        override fun isCorrectForm(verbArgs: VerbArguments): Boolean = true
+        override fun changeBaseIfPossible(verb: String, exactSuffix: String, verbArgs: VerbArguments): String? =
+            VerbHelper.replaceIfNecessaryC_LetterForQU_FragmentOrNull(verb)
+    }
+
+    object G_TO_GU_Rule : BaseChangingRule {
+        override fun isCorrectForm(verbArgs: VerbArguments): Boolean = true
+        override fun changeBaseIfPossible(verb: String, exactSuffix: String, verbArgs: VerbArguments): String? =
+            VerbHelper.replaceIfNecessaryG_LetterForGU_FragmentOrNull(verb)
+    }
+
+    //already for changed verbs
+    override val baseChangingRules = listOf(
+        C_TO_QU_Rule,
+        G_TO_GU_Rule,
+    )
 
     override fun toString(): String {
         return "SubjunctivePresentTenseConjugator"

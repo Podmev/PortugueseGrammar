@@ -94,7 +94,21 @@ object VerbHelper {
         throw Exception("Unreachable code")
     }
 
-    //bad rule - didn;t work
+    fun replaceIfNecessaryC_LetterForQU_FragmentOrNull(infinitive: String): String? {
+        if ((infinitive.endsWith(VerbEnds.CAR))) {
+            return Wordifier.replaceEnding(infinitive, VerbEnds.CAR, VerbEnds.QUAR)
+        }
+        return null //not this case
+    }
+
+    fun replaceIfNecessaryG_LetterForGU_FragmentOrNull(infinitive: String): String? {
+        if ((infinitive.endsWith(VerbEnds.GAR))) {
+            return Wordifier.replaceEnding(infinitive, VerbEnds.GAR, VerbEnds.GUAR)
+        }
+        return null //not this case
+    }
+
+    //bad rule - didn't work
 //    fun replaceIfNecessaryU_LetterForO_LetterOrNull(infinitive: String): String? {
 //        val dropInfinitiveSuffixXR = dropInfinitiveSuffixXR(infinitive)
 //        if (infinitive.endsWith(VerbEnds.IR) &&

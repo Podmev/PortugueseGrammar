@@ -9,9 +9,11 @@ object VerbEnds {
 
 
     const val AIR = "air"
+    const val CAR = "car"
     const val CER = "cer"
     const val CIR = "cir"
     const val JIR = "jir"
+    const val GAR = "gar"
     const val GIR = "gir"
     const val GER = "ger"
     const val UIR = "uir"
@@ -20,10 +22,10 @@ object VerbEnds {
     const val IAR = "iar"
     const val OER = "oer"
 
-
-
+    const val GUAR = "guar"
     const val GUIR = "guir"
     const val QUIR = "quir"
+    const val QUAR = "quar"
 
     const val UZIR = "uzir"
     const val AZER = "azer"

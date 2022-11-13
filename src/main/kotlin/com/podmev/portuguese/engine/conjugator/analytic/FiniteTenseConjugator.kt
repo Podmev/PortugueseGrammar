@@ -127,11 +127,9 @@ abstract class FiniteTenseConjugator() : Conjugator {
     }
 
     private fun prepareBase(verb: String, suffix: String, suffixGroup: SuffixGroup, verbArgs: VerbArguments): String {
-        val specialBase = specialVerbBaseByTense?.getBase(verb)
-        if (specialBase!=null){
-            return specialBase
-        }
-        val preparedInfinitive = prepareInfinitive(verb, suffix, verbArgs)
+        val specialBasePlusInfinitiveEnding = specialVerbBaseByTense?.getBasePlusInfinitiveEnding(verb)
+        val usingVerb: String = specialBasePlusInfinitiveEnding ?: verb
+        val preparedInfinitive = prepareInfinitive(usingVerb, suffix, verbArgs)
         return VerbHelper.dropInfinitiveSuffixByLength(
             infinitive = preparedInfinitive,
             lengthToDrop = suffixGroup.droppingSuffixLength
