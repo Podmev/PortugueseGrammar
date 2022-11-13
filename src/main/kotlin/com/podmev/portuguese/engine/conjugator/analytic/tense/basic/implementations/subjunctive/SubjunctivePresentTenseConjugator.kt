@@ -26,7 +26,7 @@ object SubjunctivePresentTenseConjugator : SubjunctiveMoodTenseConjugator, Finit
 //        Pair(IrregularVerbs.er.PODER, IrregularForm(base="poss")),
 //        Pair(IrregularVerbs.er.VER, IrregularForm(base = "vej")),
 //        Pair(IrregularVerbs.er.SABER, IrregularForm(base="saib")),
-//        Pair(IrregularVerbs.er.QUERER, IrregularForm(base="queir")),
+        Pair(IrregularVerbs.er.QUERER, IrregularForm(base="queir")),
 //
 //        Pair(IrregularVerbs.er.LER, IrregularForm(base="lei")),
 //        Pair(IrregularVerbs.er.TRAZER, IrregularForm(base="trag")),
