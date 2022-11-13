@@ -20,12 +20,12 @@ object SubjunctivePresentTenseConjugator : SubjunctiveMoodTenseConjugator, Finit
 
         Pair(IrregularVerbs.er.SER, IrregularForm(base = "sej")),
 //        Pair(IrregularVerbs.er.TER, IrregularForm(base="tenh")),
-//        Pair(IrregularVerbs.er.HAVER, IrregularForm(base="haj")), //but it is defective too
+        Pair(IrregularVerbs.er.HAVER, IrregularForm(base="haj")), //but it is defective too
 //        Pair(IrregularVerbs.er.FAZER, IrregularForm(base="faç")),
 //        Pair(IrregularVerbs.er.DIZER, IrregularForm(base="dig")),
 //        Pair(IrregularVerbs.er.PODER, IrregularForm(base="poss")),
 //        Pair(IrregularVerbs.er.VER, IrregularForm(base = "vej")),
-//        Pair(IrregularVerbs.er.SABER, IrregularForm(base="saib")),
+        Pair(IrregularVerbs.er.SABER, IrregularForm(base="saib")),
         Pair(IrregularVerbs.er.QUERER, IrregularForm(base="queir")),
 //
 //        Pair(IrregularVerbs.er.LER, IrregularForm(base="lei")),
