@@ -20,6 +20,9 @@ abstract class FiniteTenseConjugator() : Conjugator {
     abstract val baseChangingRules: List<BaseChangingRule>
     abstract val currentDefectiveGroups: Map<DefectiveGroup, List<String>>
 
+    //usually not needed
+    open val specialVerbBaseByTense: SpecialVerbBaseByTense? = null
+
     var defectiveGroupByVerbMap: Map<String, DefectiveGroup> = createDefectiveGroupByVerbMap()
 
     override fun conjugateVerb(
@@ -124,6 +127,10 @@ abstract class FiniteTenseConjugator() : Conjugator {
     }
 
     private fun prepareBase(verb: String, suffix: String, suffixGroup: SuffixGroup, verbArgs: VerbArguments): String {
+        val specialBase = specialVerbBaseByTense?.getBase(verb)
+        if (specialBase!=null){
+            return specialBase
+        }
         val preparedInfinitive = prepareInfinitive(verb, suffix, verbArgs)
         return VerbHelper.dropInfinitiveSuffixByLength(
             infinitive = preparedInfinitive,
