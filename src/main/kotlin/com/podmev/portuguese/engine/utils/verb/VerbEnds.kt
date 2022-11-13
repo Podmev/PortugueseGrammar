@@ -36,4 +36,7 @@ object VerbEnds {
     const val O_CIRCUMFLEX_R = "ôr"
     const val OR = "or"
 
+    const val C_CEDILLA_AR = "çar"
+
+
 }

@@ -64,10 +64,17 @@ object SubjunctivePresentTenseConjugator : SubjunctiveMoodTenseConjugator, Finit
             VerbHelper.replaceIfNecessaryG_LetterForGU_FragmentOrNull(verb)
     }
 
+    object C_Cedilla_TO_C_Rule : BaseChangingRule {
+        override fun isCorrectForm(verbArgs: VerbArguments): Boolean = true
+        override fun changeBaseIfPossible(verb: String, exactSuffix: String, verbArgs: VerbArguments): String? =
+            VerbHelper.replaceIfNecessaryC_Cedilla_LetterForC_LetterOrNull(verb)
+    }
+
     //already for changed verbs
     override val baseChangingRules = listOf(
         C_TO_QU_Rule,
         G_TO_GU_Rule,
+        C_Cedilla_TO_C_Rule
     )
 
     override fun toString(): String {

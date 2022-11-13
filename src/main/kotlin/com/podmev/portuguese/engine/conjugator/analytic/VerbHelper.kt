@@ -108,6 +108,13 @@ object VerbHelper {
         return null //not this case
     }
 
+    fun replaceIfNecessaryC_Cedilla_LetterForC_LetterOrNull(infinitive: String): String? {
+        if (infinitive.endsWith(VerbEnds.C_CEDILLA_AR)) {
+            return Wordifier.replaceEnding(infinitive, VerbEnds.C_CEDILLA_AR, VerbEnds.CAR)
+        }
+        return null //not this case
+    }
+
     //bad rule - didn't work
 //    fun replaceIfNecessaryU_LetterForO_LetterOrNull(infinitive: String): String? {
 //        val dropInfinitiveSuffixXR = dropInfinitiveSuffixXR(infinitive)
