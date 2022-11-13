@@ -339,42 +339,42 @@
       "group": "subjunctive/present",
       "group_sort": 11,
       "sort": 0,
-      "value": "place"
+      "value": "plaque"
     },
     {
       "form": "s2",
       "group": "subjunctive/present",
       "group_sort": 11,
       "sort": 1,
-      "value": "places"
+      "value": "plaques"
     },
     {
       "form": "s3",
       "group": "subjunctive/present",
       "group_sort": 11,
       "sort": 2,
-      "value": "place"
+      "value": "plaque"
     },
     {
       "form": "p1",
       "group": "subjunctive/present",
       "group_sort": 11,
       "sort": 3,
-      "value": "placemos"
+      "value": "plaquemos"
     },
     {
       "form": "p2",
       "group": "subjunctive/present",
       "group_sort": 11,
       "sort": 4,
-      "value": "placeis"
+      "value": "plaqueis"
     },
     {
       "form": "p3",
       "group": "subjunctive/present",
       "group_sort": 11,
       "sort": 5,
-      "value": "placem"
+      "value": "plaquem"
     },
     {
       "form": "s1",
