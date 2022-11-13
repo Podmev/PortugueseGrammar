@@ -15,9 +15,9 @@ abstract class FiniteTenseConjugator() : Conjugator {
     abstract val erSuffix: SuffixGroup
     abstract val irSuffix: SuffixGroup
 
+    abstract val irregularForms: Map<String, IrregularForm>
     abstract val specialEndingSuffixRules: List<SpecialEndingSuffixRule>
     abstract val baseChangingRules: List<BaseChangingRule>
-    abstract val irregularForms: Map<String, IrregularForm>
     abstract val currentDefectiveGroups: Map<DefectiveGroup, List<String>>
 
     var defectiveGroupByVerbMap: Map<String, DefectiveGroup> = createDefectiveGroupByVerbMap()
