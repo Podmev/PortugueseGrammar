@@ -141,6 +141,8 @@ abstract class FiniteTenseConjugator() : Conjugator {
             verb.endsWith(VerbEnds.AR) -> arSuffix
             verb.endsWith(VerbEnds.ER) -> erSuffix
             verb.endsWith(VerbEnds.IR) -> irSuffix
+            //pôr and others
+            Wordifier.deleteAllDiacriticMarks(verb).endsWith(VerbEnds.OR) -> erSuffix
             else -> null
         }
 

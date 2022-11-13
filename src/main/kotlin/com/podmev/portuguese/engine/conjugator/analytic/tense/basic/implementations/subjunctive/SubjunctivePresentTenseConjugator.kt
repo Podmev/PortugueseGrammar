@@ -13,7 +13,7 @@ object SubjunctivePresentTenseConjugator : SubjunctiveMoodTenseConjugator, Finit
     override val irSuffix = erSuffix //it is exactly the same
 
     override val irregularForms: Map<String, IrregularForm> = mapOf(
-//        Pair(IrregularVerbs.or.POR, IrregularForm(base="ponh", suffixGroup = erSuffix)),
+//        Pair(IrregularVerbs.or.POR, IrregularForm(suffixGroup = erSuffix)),
 
         Pair(IrregularVerbs.ar.ESTAR, IrregularForm(base = "estej", suffixGroup = erSuffix)),
         Pair(IrregularVerbs.ar.DAR, IrregularForm(FormGroup("dê", "dês", "dê", "demos", "deis", "deem"))),
