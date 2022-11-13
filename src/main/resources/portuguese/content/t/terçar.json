@@ -339,14 +339,14 @@
       "group": "subjunctive/present",
       "group_sort": 11,
       "sort": 0,
-      "value": "terçe"
+      "value": "terce"
     },
     {
       "form": "s2",
       "group": "subjunctive/present",
       "group_sort": 11,
       "sort": 1,
-      "value": "terçes"
+      "value": "terces"
     },
     {
       "form": "s3",
@@ -360,21 +360,21 @@
       "group": "subjunctive/present",
       "group_sort": 11,
       "sort": 3,
-      "value": "terçemos"
+      "value": "tercemos"
     },
     {
       "form": "p2",
       "group": "subjunctive/present",
       "group_sort": 11,
       "sort": 4,
-      "value": "terçeis"
+      "value": "terceis"
     },
     {
       "form": "p3",
       "group": "subjunctive/present",
       "group_sort": 11,
       "sort": 5,
-      "value": "terçem"
+      "value": "tercem"
     },
     {
       "form": "s1",
