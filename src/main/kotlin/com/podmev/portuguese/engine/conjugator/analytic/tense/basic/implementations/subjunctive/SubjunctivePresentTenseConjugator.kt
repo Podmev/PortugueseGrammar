@@ -6,6 +6,8 @@ import com.podmev.portuguese.engine.conjugator.analytic.FiniteTenseConjugator
 import com.podmev.portuguese.engine.conjugator.analytic.FirstSingularIndicativePresentSpecialVerbBase
 import com.podmev.portuguese.engine.conjugator.analytic.IrregularVerbs
 import com.podmev.portuguese.engine.conjugator.analytic.VerbHelper
+import com.podmev.portuguese.engine.utils.verb.VerbEnds
+
 /*[root]
 AnalyticConjugatorCheckByDataSetSeparateTenseTest
 subjunctivePresentTest(VerbFormInfo)
@@ -773,6 +775,9 @@ subjunctivePresentTest(VerbFormInfo)
 [26866] VerbFormInfo(infinitive=zapear, tense=SubjunctivePresentTense, person=SECOND, number=PLURAL, gender=UNDEFINED, voice=ACTIVE)
 [26894] VerbFormInfo(infinitive=ziguezaguear, tense=SubjunctivePresentTense, person=FIRST, number=PLURAL, gender=UNDEFINED, voice=ACTIVE)
 [26896] VerbFormInfo(infinitive=ziguezaguear, tense=SubjunctivePresentTense, person=SECOND, number=PLURAL, gender=UNDEFINED, voice=ACTIVE)
+
+
+different base for resfolegar
 * */
 object SubjunctivePresentTenseConjugator : SubjunctiveMoodTenseConjugator, FiniteTenseConjugator() {
     override val arSuffix = SuffixGroup("e", "es", "e", "emos", "eis", "em")
@@ -787,13 +792,13 @@ object SubjunctivePresentTenseConjugator : SubjunctiveMoodTenseConjugator, Finit
 
         Pair(IrregularVerbs.er.SER, IrregularForm(base = "sej")),
 //        Pair(IrregularVerbs.er.TER, IrregularForm(base="tenh")),
-        Pair(IrregularVerbs.er.HAVER, IrregularForm(base="haj")), //but it is defective too
+        Pair(IrregularVerbs.er.HAVER, IrregularForm(base = "haj")), //but it is defective too
 //        Pair(IrregularVerbs.er.FAZER, IrregularForm(base="faç")),
 //        Pair(IrregularVerbs.er.DIZER, IrregularForm(base="dig")),
 //        Pair(IrregularVerbs.er.PODER, IrregularForm(base="poss")),
 //        Pair(IrregularVerbs.er.VER, IrregularForm(base = "vej")),
-        Pair(IrregularVerbs.er.SABER, IrregularForm(base="saib")),
-        Pair(IrregularVerbs.er.QUERER, IrregularForm(base="queir")),
+        Pair(IrregularVerbs.er.SABER, IrregularForm(base = "saib")),
+        Pair(IrregularVerbs.er.QUERER, IrregularForm(base = "queir")),
 //
 //        Pair(IrregularVerbs.er.LER, IrregularForm(base="lei")),
 //        Pair(IrregularVerbs.er.TRAZER, IrregularForm(base="trag")),
@@ -813,11 +818,74 @@ object SubjunctivePresentTenseConjugator : SubjunctiveMoodTenseConjugator, Finit
 //        Pair(IrregularVerbs.ir.RIR, IrregularForm(base = "ri")),
     )
 
-    override val specialEndingSuffixRules: List<SpecialEndingSuffixRule> = listOf()
     override val currentDefectiveGroups: Map<DefectiveGroup, List<String>>
         get() = mapOf()
 
     override val specialVerbBaseByTense = FirstSingularIndicativePresentSpecialVerbBase
+
+//    object UZIR_Suffix_Rule : SpecialEndingSuffixRule {
+//        override val wordEnding = VerbEnds.UZIR
+//        override fun getSuffix(verb: String, regularSuffix: SuffixGroup) =
+//            regularSuffix.copy(singularThird = "") //finishes with -z
+//    }
+//
+//    object AZER_Suffix_Rule : SpecialEndingSuffixRule {
+//        override val wordEnding = VerbEnds.AZER
+//        override fun getSuffix(verb: String, regularSuffix: SuffixGroup) =
+//            regularSuffix.copy(singularThird = "") //finishes with -z
+//    }
+//
+//    object AIR_Suffix_Rule : SpecialEndingSuffixRule {
+//        override val wordEnding = VerbEnds.AIR
+//        override fun getSuffix(verb: String, regularSuffix: SuffixGroup) =
+//            SuffixGroup("io", "is", "i", "ímos", "ís", regularSuffix.pluralThird)
+//    }
+//
+//    object UIR_Suffix_Rule : SpecialEndingSuffixRule {
+//        override val wordEnding = VerbEnds.UIR
+//        override fun getSuffix(verb: String, regularSuffix: SuffixGroup) =
+//            SuffixGroup(regularSuffix.singularFirst, "is", "i", "ímos", "ís", regularSuffix.pluralThird)
+//    }
+
+    object EAR_Suffix_Rule : SpecialEndingSuffixRule {
+        override val wordEnding = VerbEnds.EAR
+        override fun getSuffix(verb: String, regularSuffix: SuffixGroup) =
+            SuffixGroup(
+                "ie", "ies", "ie", regularSuffix.pluralFirst, regularSuffix.pluralSecond, "iem",
+                droppingSuffixLength = 3 //need to take 3, because of base we take from inticative present
+            )
+    }
+
+//    //we need to take three letters
+//    //works only for fixed list of verbs MARIO - first letters of verbs
+//    object IAR_Suffix_MARIO_Rule : SpecialEndingSuffixRule {
+//        override val wordEnding = VerbEnds.IAR
+//        override val fixedVerbList = listOf("mediar", "ansiar", "remediar", "incendiar", "odiar",
+//            "intermediar" // additional
+//        )
+//        override fun getSuffix(verb: String, regularSuffix: SuffixGroup) =
+//            SuffixGroup(
+//                "eio", "eias", "eia", "iamos", "iais", "eiam",
+//                droppingSuffixLength = 3
+//            )
+//    }
+//
+//    //we need to take three letters
+//    object OER_Suffix_Rule : SpecialEndingSuffixRule {
+//        override val wordEnding = VerbEnds.OER
+//        override fun getSuffix(verb: String, regularSuffix: SuffixGroup) =
+//            regularSuffix.extendChar('o').copy(singularSecond = "óis", singularThird = "ói")
+//    }
+
+    override val specialEndingSuffixRules: List<SpecialEndingSuffixRule> = listOf(
+//        UZIR_Suffix_Rule,
+//        AZER_Suffix_Rule,
+//        AIR_Suffix_Rule,
+//        UIR_Suffix_Rule,
+        EAR_Suffix_Rule,
+//        IAR_Suffix_MARIO_Rule,
+//        OER_Suffix_Rule
+    )
 
     object C_TO_QU_Rule : BaseChangingRule {
         override fun isCorrectForm(verbArgs: VerbArguments): Boolean = true
