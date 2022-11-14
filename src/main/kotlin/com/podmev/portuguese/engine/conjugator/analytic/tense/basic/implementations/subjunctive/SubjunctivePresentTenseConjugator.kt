@@ -453,19 +453,19 @@ object SubjunctivePresentTenseConjugator : SubjunctiveMoodTenseConjugator, Finit
             )
     }
 
-//    //we need to take three letters
-//    //works only for fixed list of verbs MARIO - first letters of verbs
-//    object IAR_Suffix_MARIO_Rule : SpecialEndingSuffixRule {
-//        override val wordEnding = VerbEnds.IAR
-//        override val fixedVerbList = listOf("mediar", "ansiar", "remediar", "incendiar", "odiar",
-//            "intermediar" // additional
-//        )
-//        override fun getSuffix(verb: String, regularSuffix: SuffixGroup) =
-//            SuffixGroup(
-//                "eio", "eias", "eia", "iamos", "iais", "eiam",
-//                droppingSuffixLength = 3
-//            )
-//    }
+    //we need to take four letters
+    //works only for fixed list of verbs MARIO - first letters of verbs
+    object IAR_Suffix_MARIO_Rule : SpecialEndingSuffixRule {
+        override val wordEnding = VerbEnds.IAR
+        override val fixedVerbList = listOf("mediar", "ansiar", "remediar", "incendiar", "odiar",
+            "intermediar" // additional
+        )
+        override fun getSuffix(verb: String, regularSuffix: SuffixGroup) =
+            SuffixGroup(
+                "eie", "eies", "eie", "iemos", "ieis", "eiem",
+                droppingSuffixLength = 4
+            )
+    }
 //
 //    //we need to take three letters
 //    object OER_Suffix_Rule : SpecialEndingSuffixRule {
@@ -480,7 +480,7 @@ object SubjunctivePresentTenseConjugator : SubjunctiveMoodTenseConjugator, Finit
 //        AIR_Suffix_Rule,
 //        UIR_Suffix_Rule,
         EAR_Suffix_Rule,
-//        IAR_Suffix_MARIO_Rule,
+        IAR_Suffix_MARIO_Rule,
 //        OER_Suffix_Rule
     )
 
