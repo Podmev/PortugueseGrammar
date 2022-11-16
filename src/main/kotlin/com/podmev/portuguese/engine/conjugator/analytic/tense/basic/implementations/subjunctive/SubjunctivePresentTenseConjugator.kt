@@ -311,6 +311,8 @@ import com.podmev.portuguese.engine.utils.verb.VerbEnds
 [26759] VerbFormInfo(infinitive=voltear, tense=SubjunctivePresentTense, person=THIRD, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE)
 [26760] VerbFormInfo(infinitive=voltear, tense=SubjunctivePresentTense, person=THIRD, number=PLURAL, gender=UNDEFINED, voice=ACTIVE)
 different base for resfolegar
+
+what to do with gear - doesn't has form
 * */
 object SubjunctivePresentTenseConjugator : SubjunctiveMoodTenseConjugator, FiniteTenseConjugator() {
     override val arSuffix = SuffixGroup("e", "es", "e", "emos", "eis", "em")
