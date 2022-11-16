@@ -207,10 +207,7 @@ subjunctivePresentTest(VerbFormInfo)
 [25492] VerbFormInfo(infinitive=tossir, tense=SubjunctivePresentTense, person=SECOND, number=PLURAL, gender=UNDEFINED, voice=ACTIVE)
 [25493] VerbFormInfo(infinitive=tossir, tense=SubjunctivePresentTense, person=THIRD, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE)
 [25494] VerbFormInfo(infinitive=tossir, tense=SubjunctivePresentTense, person=THIRD, number=PLURAL, gender=UNDEFINED, voice=ACTIVE)
-[26755] VerbFormInfo(infinitive=voltear, tense=SubjunctivePresentTense, person=FIRST, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE)
-[26757] VerbFormInfo(infinitive=voltear, tense=SubjunctivePresentTense, person=SECOND, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE)
-[26759] VerbFormInfo(infinitive=voltear, tense=SubjunctivePresentTense, person=THIRD, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE)
-[26760] VerbFormInfo(infinitive=voltear, tense=SubjunctivePresentTense, person=THIRD, number=PLURAL, gender=UNDEFINED, voice=ACTIVE)
+
 different base for resfolegar
 
 what to do with gear - doesn't has form
