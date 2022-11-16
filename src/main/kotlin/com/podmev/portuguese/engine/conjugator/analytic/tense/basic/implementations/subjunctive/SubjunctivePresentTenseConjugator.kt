@@ -2,10 +2,7 @@ package com.podmev.portuguese.engine.conjugator.analytic.tense.basic.implementat
 
 import com.podmev.portuguese.data.engine.conjugator.*
 import com.podmev.portuguese.data.grammar.term.verb.VerbArguments
-import com.podmev.portuguese.engine.conjugator.analytic.FiniteTenseConjugator
-import com.podmev.portuguese.engine.conjugator.analytic.FirstSingularIndicativePresentSpecialVerbBase
-import com.podmev.portuguese.engine.conjugator.analytic.IrregularVerbs
-import com.podmev.portuguese.engine.conjugator.analytic.VerbHelper
+import com.podmev.portuguese.engine.conjugator.analytic.*
 import com.podmev.portuguese.engine.utils.verb.VerbEnds
 
 /*
@@ -354,7 +351,26 @@ object SubjunctivePresentTenseConjugator : SubjunctiveMoodTenseConjugator, Finit
     )
 
     override val currentDefectiveGroups: Map<DefectiveGroup, List<String>>
-        get() = mapOf()
+        get() = mapOf(
+            Pair(
+                DefectiveGroup(false, false, false, false, false, false),
+                listOf(
+                    DefectiveVerbs.ABOLIR,
+                    DefectiveVerbs.BARRIR,
+                    DefectiveVerbs.COLORIR,
+                    DefectiveVerbs.DELIR,
+                    DefectiveVerbs.DEMOLIR,
+                    DefectiveVerbs.DESCOLORIR,
+                    DefectiveVerbs.EXPLODIR,
+                    DefectiveVerbs.FALIR,
+                    DefectiveVerbs.FLORIR,
+                    DefectiveVerbs.GANIR,
+                    DefectiveVerbs.LATIR,
+                    DefectiveVerbs.REMIR,
+                    DefectiveVerbs.RUIR,
+                )
+            )
+        )
 
     override val specialVerbBaseByTense = FirstSingularIndicativePresentSpecialVerbBase
 
