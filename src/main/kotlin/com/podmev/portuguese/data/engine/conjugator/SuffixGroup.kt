@@ -52,4 +52,13 @@ data class SuffixGroup(
             droppingSuffixLength + 1
         )
 
+    fun prependIndent(string: String): SuffixGroup =
+        SuffixGroup(
+            singularFirst?.prependIndent(string),
+            singularSecond?.prependIndent(string),
+            singularThird?.prependIndent(string),
+            pluralFirst?.prependIndent(string),
+            pluralSecond?.prependIndent(string),
+            pluralThird?.prependIndent(string)
+        )
 }
