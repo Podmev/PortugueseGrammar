@@ -5,15 +5,22 @@ import com.podmev.portuguese.data.grammar.term.orthography.diacriticLetters.acut
 import com.podmev.portuguese.data.grammar.term.orthography.letters.E_Letter
 import com.podmev.portuguese.data.grammar.term.tense.GrammaticalTense
 import com.podmev.portuguese.data.grammar.term.verb.VerbArguments
+import com.podmev.portuguese.data.other.PortugueseLocale
+import com.podmev.portuguese.data.other.PortugueseLocale.*
 import com.podmev.portuguese.engine.utils.verb.VerbEnds
 import com.podmev.portuguese.engine.utils.word.Wordifier
 import com.podmev.portuguese.utils.lang.mergeListMaps
 import com.podmev.portuguese.utils.lang.revertListMap
 
 abstract class FiniteTenseConjugator() : Conjugator {
+    //deafult is brazilian
     abstract val arSuffix: SuffixGroup
     abstract val erSuffix: SuffixGroup
     abstract val irSuffix: SuffixGroup
+
+    open val arSuffixPortugal: SuffixGroup = arSuffix
+    open val erSuffixPortugal: SuffixGroup = erSuffix
+    open val irSuffixPortugal: SuffixGroup = irSuffix
 
     abstract val irregularForms: Map<String, IrregularForm>
     abstract val specialEndingSuffixRules: List<SpecialEndingSuffixRule>
@@ -117,15 +124,15 @@ abstract class FiniteTenseConjugator() : Conjugator {
     }
 
     private fun regularChanging(verb: String, verbArgs: VerbArguments, settings: ConjugateSettings): RegularTransformation? {
-        val suffixGroup = getSuffixGroup(verb) ?: return null //in case of -or
+        val suffixGroup = getSuffixGroup(verb, settings) ?: return null //in case of -or
         val suffix = suffixGroup.getSuffix(verbArgs)!! //for regular should not apear
         val preparedBase = prepareBase(verb, suffix, suffixGroup, verbArgs, settings)
         val regularTransformation = RegularTransformation(preparedBase + suffix, preparedBase, suffix, suffixGroup)
         return regularTransformation
     }
 
-    fun getSuffixGroup(verb: String): SuffixGroup? {
-        val regularSuffix = getRegularSuffixGroup(verb) ?: return null
+    fun getSuffixGroup(verb: String, settings: ConjugateSettings): SuffixGroup? {
+        val regularSuffix = getRegularSuffixGroup(verb, settings.portugueseLocale) ?: return null
         val specialEndingSuffix = getSpecialSuffixGroup(verb, regularSuffix)
         return specialEndingSuffix ?: regularSuffix
     }
@@ -140,13 +147,29 @@ abstract class FiniteTenseConjugator() : Conjugator {
         )
     }
 
-    private fun getRegularSuffixGroup(verb: String): SuffixGroup? =
+    private fun getRegularSuffixGroup(verb: String, portugueseLocale: PortugueseLocale): SuffixGroup? =
+        when(portugueseLocale){
+            BRAZIL -> getRegularSuffixGroupBrazil(verb)
+            PORTUGAL -> getRegularSuffixGroupPortugal(verb)
+        }
+
+    private fun getRegularSuffixGroupBrazil(verb: String): SuffixGroup? =
         when {
             verb.endsWith(VerbEnds.AR) -> arSuffix
             verb.endsWith(VerbEnds.ER) -> erSuffix
             verb.endsWith(VerbEnds.IR) -> irSuffix
             //pôr and others
             Wordifier.deleteAllDiacriticMarks(verb).endsWith(VerbEnds.OR) -> erSuffix
+            else -> null
+        }
+
+    private fun getRegularSuffixGroupPortugal(verb: String): SuffixGroup? =
+        when {
+            verb.endsWith(VerbEnds.AR) -> arSuffixPortugal
+            verb.endsWith(VerbEnds.ER) -> erSuffixPortugal
+            verb.endsWith(VerbEnds.IR) -> irSuffixPortugal
+            //pôr and others
+            Wordifier.deleteAllDiacriticMarks(verb).endsWith(VerbEnds.OR) -> erSuffixPortugal
             else -> null
         }
 

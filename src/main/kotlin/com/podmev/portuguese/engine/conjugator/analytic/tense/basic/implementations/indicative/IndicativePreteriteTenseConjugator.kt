@@ -9,6 +9,8 @@ object IndicativePreteriteTenseConjugator : IndicativeMoodTenseConjugator , Fini
     override val arSuffix = SuffixGroup("ei", "aste", "ou", "amos", "astes", "aram")
     override val erSuffix = SuffixGroup("i", "este", "eu", "emos", "estes", "eram")
     override val irSuffix = SuffixGroup("i", "iste", "iu", "imos", "istes", "iram")
+    //special changes in Portugal for -ar suffix for nós
+    override val arSuffixPortugal = arSuffix.copy(pluralFirst = "ámos")
 
     override val irregularForms: Map<String, IrregularForm>
         get() = TODO("Not yet implemented")
