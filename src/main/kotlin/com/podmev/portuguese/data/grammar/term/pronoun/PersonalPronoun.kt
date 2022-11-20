@@ -19,6 +19,7 @@ fun allPersonalPronouns(): List<PersonalPronoun> =
         PronounEle,
         PronounEla,
         PronounNos,
+        PronounGente,
         PronounSenhor,
         PronounSenhora,
         PronounVoces,
@@ -97,6 +98,17 @@ object PronounNos : PersonalPronoun {
         get() = GrammaticalGender.UNDEFINED
     override val spelling: String
         get() = "nós"
+
+    override fun toString(): String = spelling
+}
+
+object PronounGente : PersonalPronoun {
+    override val pronounGroup: PersonalPronounGroup
+        get() = PersonalPronounGroup(GrammaticalNumber.SINGULAR, GrammaticalPerson.THIRD)
+    override val gender: GrammaticalGender
+        get() = GrammaticalGender.UNDEFINED
+    override val spelling: String
+        get() = "gente"
 
     override fun toString(): String = spelling
 }
