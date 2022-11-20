@@ -1,5 +1,6 @@
 package com.podmev.portuguese.engine.conjugator.analytic
 
+import com.podmev.portuguese.data.engine.conjugator.ConjugateSettings
 import com.podmev.portuguese.data.grammar.term.general.GrammaticalGender
 import com.podmev.portuguese.data.grammar.term.general.GrammaticalNumber.SINGULAR
 import com.podmev.portuguese.data.grammar.term.general.GrammaticalPerson.FIRST
@@ -11,18 +12,17 @@ import com.podmev.portuguese.data.grammar.term.verb.VerbArguments
 
 abstract class SpecialVerbBaseByTense(
     val tense: GrammaticalTense,
-    val verbArgs: VerbArguments,
-    val backupVerbArgs: VerbArguments
+    val verbArgs: VerbArguments
 ) {
-    fun getForm(verb: String): List<String> = AnalyticConjugator.conjugateVerb(verb, tense, verbArgs)
-    fun getBackupForm(verb: String): List<String> = AnalyticConjugator.conjugateVerb(verb, tense, backupVerbArgs)
+    fun getForm(verb: String, settings: ConjugateSettings): List<String> = AnalyticConjugator.conjugateVerb(verb, tense, verbArgs, settings)
 
-    fun getBasePlusInfinitiveEnding(verb: String): String? {
-        val base = getBase(verb)?: return null
+    fun getBasePlusInfinitiveEnding(verb: String, settings: ConjugateSettings): String? {
+        val base = getBase(verb, settings)?: return null
         return base + verb.takeLast(2)
     }
 
-    abstract fun getBase(verb: String): String?
+    abstract fun getBase(verb: String, settings: ConjugateSettings): String?
+    abstract fun changeSettings(settings: ConjugateSettings): ConjugateSettings
 }
 
 object FirstSingularIndicativePresentSpecialVerbBase :
@@ -33,18 +33,15 @@ object FirstSingularIndicativePresentSpecialVerbBase :
             number = SINGULAR,
             gender = GrammaticalGender.UNDEFINED,
             voice = GrammaticalVoice.ACTIVE
-        ),
-        VerbArguments(
-            person = THIRD,
-            number = SINGULAR,
-            gender = GrammaticalGender.UNDEFINED,
-            voice = GrammaticalVoice.ACTIVE
         )
     ) {
 
-    override fun getBase(verb: String) : String?{
-        val form = getForm(verb).firstOrNull() ?: getBackupForm(verb).firstOrNull()?:return null
+    override fun getBase(verb: String, settings: ConjugateSettings) : String?{
+        val form = getForm(verb, settings).firstOrNull() ?:return null
         return form.dropLast(1) //dropping ending 'o'
     }
+
+    override fun changeSettings(settings: ConjugateSettings): ConjugateSettings =
+        settings.copy(ignoreDefective = true)
 
 }

@@ -25,11 +25,13 @@ class AnalyticConjugatorCheckByDataSetTest {
             OnlyDataSetConjugator.conjugateVerb(
                 verbInInfinitive = verbFormInfo.infinitive,
                 tense = verbFormInfo.tense,
-                verbArgs = verbArgs
+                verbArgs = verbArgs,
+                settings = verbFormInfo.settings
             ), AnalyticConjugator.conjugateVerb(
                 verbInInfinitive = verbFormInfo.infinitive,
                 tense = verbFormInfo.tense,
-                verbArgs = verbArgs
+                verbArgs = verbArgs,
+                settings = verbFormInfo.settings
             ), "Combination: $verbFormInfo"
         )
     }

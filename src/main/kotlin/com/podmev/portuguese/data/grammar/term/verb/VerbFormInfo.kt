@@ -1,5 +1,6 @@
 package com.podmev.portuguese.data.grammar.term.verb
 
+import com.podmev.portuguese.data.engine.conjugator.ConjugateSettings
 import com.podmev.portuguese.data.grammar.term.general.GrammaticalGender
 import com.podmev.portuguese.data.grammar.term.general.GrammaticalNumber
 import com.podmev.portuguese.data.grammar.term.general.GrammaticalPerson
@@ -12,6 +13,7 @@ data class VerbFormInfo(
     val number: GrammaticalNumber,
     val gender: GrammaticalGender,
     val voice: GrammaticalVoice,
+    val settings: ConjugateSettings
 ){
     fun getVerbArgs(): VerbArguments =
         VerbArguments(person, number, gender, voice)
@@ -20,7 +22,8 @@ data class VerbFormInfo(
 fun createVerbFormInfoWithVerbArgs(
     infinitive: String,
     tense: GrammaticalTense,
-    verbArgs: VerbArguments
+    verbArgs: VerbArguments,
+    settings: ConjugateSettings
 ): VerbFormInfo =
     VerbFormInfo(
         infinitive = infinitive,
@@ -28,5 +31,6 @@ fun createVerbFormInfoWithVerbArgs(
         person = verbArgs.person,
         number = verbArgs.number,
         gender = verbArgs.gender,
-        voice = verbArgs.voice
+        voice = verbArgs.voice,
+        settings = settings
     )

@@ -1,5 +1,6 @@
 package com.podmev.portuguese
 
+import com.podmev.portuguese.data.engine.conjugator.defaultConjugateSettings
 import com.podmev.portuguese.data.grammar.term.general.GrammaticalGender
 import com.podmev.portuguese.data.grammar.term.general.GrammaticalNumber
 import com.podmev.portuguese.data.grammar.term.general.GrammaticalPerson
@@ -50,7 +51,8 @@ fun main() {
             GrammaticalNumber.SINGULAR,
             GrammaticalGender.UNDEFINED,
             GrammaticalVoice.ACTIVE
-        )
+        ),
+        defaultConjugateSettings
     ))
 
 //    VerbFormGenerator.defectiveVerbConstsHelper()

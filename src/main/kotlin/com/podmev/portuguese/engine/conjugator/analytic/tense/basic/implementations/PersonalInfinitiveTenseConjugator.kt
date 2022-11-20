@@ -1,5 +1,6 @@
 package com.podmev.portuguese.engine.conjugator.analytic.tense.basic.implementations
 
+import com.podmev.portuguese.data.engine.conjugator.ConjugateSettings
 import com.podmev.portuguese.data.grammar.term.general.GrammaticalNumber
 import com.podmev.portuguese.data.grammar.term.general.GrammaticalNumber.PLURAL
 import com.podmev.portuguese.data.grammar.term.general.GrammaticalNumber.SINGULAR
@@ -28,7 +29,8 @@ object PersonalInfinitiveTenseConjugator : BasicTenseConjugator {
     override fun conjugateVerb(
         verbInInfinitive: String,
         tense: GrammaticalTense,
-        verbArgs: VerbArguments
+        verbArgs: VerbArguments,
+        settings: ConjugateSettings
     ): List<String> {
         if(VerbHelper.forbiddenOnNotThirdSingularForm(verbInInfinitive, verbArgs)){
             return emptyList()

@@ -90,11 +90,13 @@ class AnalyticConjugatorCheckByDataSetSeparateTenseTest {
             OnlyDataSetConjugator.conjugateVerb(
                 verbInInfinitive = data.infinitive,
                 tense = data.tense,
-                verbArgs = verbArgs
+                verbArgs = verbArgs,
+                settings = data.settings
             ), AnalyticConjugator.conjugateVerb(
                 verbInInfinitive = data.infinitive,
                 tense = data.tense,
-                verbArgs = verbArgs
+                verbArgs = verbArgs,
+                settings = data.settings
             ), "Combination: $data"
         )
     }

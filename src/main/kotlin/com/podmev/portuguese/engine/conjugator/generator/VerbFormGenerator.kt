@@ -3,6 +3,7 @@ package com.podmev.portuguese.engine.conjugator.generator
 import com.podmev.portuguese.data.engine.conjugator.Conjugator
 import com.podmev.portuguese.data.engine.conjugator.DefectiveGroup
 import com.podmev.portuguese.data.engine.conjugator.VerbWithFormGroup
+import com.podmev.portuguese.data.engine.conjugator.defaultConjugateSettings
 import com.podmev.portuguese.data.grammar.term.general.GrammaticalGender.UNDEFINED
 import com.podmev.portuguese.data.grammar.term.tense.GrammaticalTense
 import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.imperative.ImperativeTense
@@ -52,8 +53,10 @@ object VerbFormGenerator {
                     verbInInfinitive = it,
                     tense = tense,
                     gender = UNDEFINED,
-                    voice = ACTIVE
+                    voice = ACTIVE,
+                    settings = defaultConjugateSettings
                 )
+
             ) }
         val defectiveGroups: Map<DefectiveGroup, List<VerbWithFormGroup>> =
             verbWithFormGroups.groupBy { it.formGroup.getDefectiveGroup() }
@@ -89,9 +92,9 @@ object VerbFormGenerator {
     ): List<WrongMatch> {
         val wrongMatches = ArrayList<WrongMatch>()
         for (verbForm in verbForms) {
-            val etalonForm = etalonConjugator.conjugateVerb(verbForm.infinitive, verbForm.tense, verbForm.getVerbArgs())
+            val etalonForm = etalonConjugator.conjugateVerb(verbForm.infinitive, verbForm.tense, verbForm.getVerbArgs(), defaultConjugateSettings)
             val checkingForm =
-                checkingConjugator.conjugateVerb(verbForm.infinitive, verbForm.tense, verbForm.getVerbArgs())
+                checkingConjugator.conjugateVerb(verbForm.infinitive, verbForm.tense, verbForm.getVerbArgs(), defaultConjugateSettings)
             if (etalonForm != checkingForm) {
                 wrongMatches.add(WrongMatch(verbForm, etalonForm, checkingForm))
             }

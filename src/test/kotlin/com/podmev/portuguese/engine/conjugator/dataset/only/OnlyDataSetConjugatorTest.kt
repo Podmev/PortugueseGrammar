@@ -1,5 +1,6 @@
 package com.podmev.portuguese.engine.conjugator.dataset.only
 
+import com.podmev.portuguese.data.engine.conjugator.defaultConjugateSettings
 import com.podmev.portuguese.data.grammar.term.general.GrammaticalGender
 import com.podmev.portuguese.data.grammar.term.general.GrammaticalNumber
 import com.podmev.portuguese.data.grammar.term.general.GrammaticalPerson
@@ -27,7 +28,8 @@ class OnlyDataSetConjugatorTest {
                 number = GrammaticalNumber.SINGULAR,
                 gender = GrammaticalGender.MASCULINE,
                 voice = GrammaticalVoice.ACTIVE
-            )
+            ),
+            settings = defaultConjugateSettings
         )
         Assertions.assertEquals(
             /* expected = */ listOf("estava"),
@@ -46,7 +48,8 @@ class OnlyDataSetConjugatorTest {
                 number = GrammaticalNumber.UNDEFINED,
                 gender = GrammaticalGender.UNDEFINED,
                 voice = GrammaticalVoice.ACTIVE
-            )
+            ),
+            settings = defaultConjugateSettings
         )
         Assertions.assertEquals(
             /* expected = */ listOf("estar"),
@@ -65,7 +68,8 @@ class OnlyDataSetConjugatorTest {
                 number = GrammaticalNumber.UNDEFINED,
                 gender = GrammaticalGender.UNDEFINED,
                 voice = GrammaticalVoice.ACTIVE
-            )
+            ),
+            settings = defaultConjugateSettings
         )
         Assertions.assertEquals(
             /* expected = */ listOf("fazendo"),
@@ -86,7 +90,8 @@ class OnlyDataSetConjugatorTest {
                     number = GrammaticalNumber.SINGULAR,
                     gender = GrammaticalGender.MASCULINE,
                     voice = GrammaticalVoice.ACTIVE
-                )
+                ),
+                settings = defaultConjugateSettings
             )
             Assertions.assertEquals(
                 /* expected = */ listOf("falado"),
@@ -105,7 +110,8 @@ class OnlyDataSetConjugatorTest {
                     number = GrammaticalNumber.SINGULAR,
                     gender = GrammaticalGender.FEMININE,
                     voice = GrammaticalVoice.ACTIVE
-                )
+                ),
+                settings = defaultConjugateSettings
             )
             Assertions.assertEquals(
                 /* expected = */ listOf("falada"),
@@ -124,7 +130,8 @@ class OnlyDataSetConjugatorTest {
                     number = GrammaticalNumber.PLURAL,
                     gender = GrammaticalGender.MASCULINE,
                     voice = GrammaticalVoice.ACTIVE
-                )
+                ),
+                settings = defaultConjugateSettings
             )
             Assertions.assertEquals(
                 /* expected = */ listOf("falados"),
@@ -143,7 +150,8 @@ class OnlyDataSetConjugatorTest {
                     number = GrammaticalNumber.PLURAL,
                     gender = GrammaticalGender.FEMININE,
                     voice = GrammaticalVoice.ACTIVE
-                )
+                ),
+                settings = defaultConjugateSettings
             )
             Assertions.assertEquals(
                 /* expected = */ listOf("faladas"),
@@ -162,7 +170,8 @@ class OnlyDataSetConjugatorTest {
                     number = GrammaticalNumber.SINGULAR,
                     gender = GrammaticalGender.MASCULINE,
                     voice = GrammaticalVoice.ACTIVE
-                )
+                ),
+                settings = defaultConjugateSettings
             )
             Assertions.assertEquals(
                 /* expected = */ listOf("pagado"),
@@ -181,7 +190,8 @@ class OnlyDataSetConjugatorTest {
                     number = GrammaticalNumber.SINGULAR,
                     gender = GrammaticalGender.FEMININE,
                     voice = GrammaticalVoice.ACTIVE
-                )
+                ),
+                settings = defaultConjugateSettings
             )
             Assertions.assertEquals(
                 /* expected = */ listOf("pagada"),
@@ -200,7 +210,8 @@ class OnlyDataSetConjugatorTest {
                     number = GrammaticalNumber.PLURAL,
                     gender = GrammaticalGender.MASCULINE,
                     voice = GrammaticalVoice.ACTIVE
-                )
+                ),
+                settings = defaultConjugateSettings
             )
             Assertions.assertEquals(
                 /* expected = */ listOf("pagados"),
@@ -219,7 +230,8 @@ class OnlyDataSetConjugatorTest {
                     number = GrammaticalNumber.PLURAL,
                     gender = GrammaticalGender.FEMININE,
                     voice = GrammaticalVoice.ACTIVE
-                )
+                ),
+                settings = defaultConjugateSettings
             )
             Assertions.assertEquals(
                 /* expected = */ listOf("pagadas"),
@@ -241,7 +253,8 @@ class OnlyDataSetConjugatorTest {
                     number = GrammaticalNumber.SINGULAR,
                     gender = GrammaticalGender.MASCULINE,
                     voice = GrammaticalVoice.ACTIVE
-                )
+                ),
+                settings = defaultConjugateSettings
             )
             Assertions.assertEquals(
                 /* expected = */ listOf("falado"),
@@ -260,7 +273,8 @@ class OnlyDataSetConjugatorTest {
                     number = GrammaticalNumber.SINGULAR,
                     gender = GrammaticalGender.FEMININE,
                     voice = GrammaticalVoice.ACTIVE
-                )
+                ),
+                settings = defaultConjugateSettings
             )
             Assertions.assertEquals(
                 /* expected = */ listOf("falada"),
@@ -279,7 +293,8 @@ class OnlyDataSetConjugatorTest {
                     number = GrammaticalNumber.PLURAL,
                     gender = GrammaticalGender.MASCULINE,
                     voice = GrammaticalVoice.ACTIVE
-                )
+                ),
+                settings = defaultConjugateSettings
             )
             Assertions.assertEquals(
                 /* expected = */ listOf("falados"),
@@ -298,7 +313,8 @@ class OnlyDataSetConjugatorTest {
                     number = GrammaticalNumber.PLURAL,
                     gender = GrammaticalGender.FEMININE,
                     voice = GrammaticalVoice.ACTIVE
-                )
+                ),
+                settings = defaultConjugateSettings
             )
             Assertions.assertEquals(
                 /* expected = */ listOf("faladas"),
@@ -317,7 +333,8 @@ class OnlyDataSetConjugatorTest {
                     number = GrammaticalNumber.SINGULAR,
                     gender = GrammaticalGender.MASCULINE,
                     voice = GrammaticalVoice.ACTIVE
-                )
+                ),
+                settings = defaultConjugateSettings
             )
             Assertions.assertEquals(
                 /* expected = */ listOf("pago"),
@@ -336,7 +353,8 @@ class OnlyDataSetConjugatorTest {
                     number = GrammaticalNumber.SINGULAR,
                     gender = GrammaticalGender.FEMININE,
                     voice = GrammaticalVoice.ACTIVE
-                )
+                ),
+                settings = defaultConjugateSettings
             )
             Assertions.assertEquals(
                 /* expected = */ listOf("paga"),
@@ -355,7 +373,8 @@ class OnlyDataSetConjugatorTest {
                     number = GrammaticalNumber.PLURAL,
                     gender = GrammaticalGender.MASCULINE,
                     voice = GrammaticalVoice.ACTIVE
-                )
+                ),
+                settings = defaultConjugateSettings
             )
             Assertions.assertEquals(
                 /* expected = */ listOf("pagos"),
@@ -374,7 +393,8 @@ class OnlyDataSetConjugatorTest {
                     number = GrammaticalNumber.PLURAL,
                     gender = GrammaticalGender.FEMININE,
                     voice = GrammaticalVoice.ACTIVE
-                )
+                ),
+                settings = defaultConjugateSettings
             )
             Assertions.assertEquals(
                 /* expected = */ listOf("pagas"),

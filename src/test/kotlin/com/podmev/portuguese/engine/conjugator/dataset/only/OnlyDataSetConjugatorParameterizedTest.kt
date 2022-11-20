@@ -23,7 +23,8 @@ class OnlyDataSetConjugatorParameterizedTest {
                     number = data.number,
                     gender = data.gender,
                     voice = data.voice
-                )
+                ),
+                settings = data.settings
             )
         }
     }

@@ -14,7 +14,8 @@ import com.podmev.portuguese.data.grammar.term.verb.VerbFormInfo
 data class ConjugatorCoveringData(
     val verbInfinitives: Sequence<String>,
     val tenses: Sequence<GrammaticalTense>,
-    val voices: Sequence<GrammaticalVoice>
+    val voices: Sequence<GrammaticalVoice>,
+    val settingsCombinations: Sequence<ConjugateSettings>
 ) {
 
 
@@ -38,15 +39,18 @@ data class ConjugatorCoveringData(
             tenses.flatMap { tense ->
                 tense.possiblePronounGroups().flatMap { pronounGroup: PersonalPronounGroup ->
                     tense.possibleGenders().flatMap { gender ->
-                        voices.map { voice ->
-                            VerbFormInfo(
-                                verb,
-                                tense,
-                                pronounGroup.grammaticalPerson,
-                                pronounGroup.grammaticalNumber,
-                                gender,
-                                voice
-                            )
+                        voices.flatMap { voice ->
+                            settingsCombinations.map { settings ->
+                                VerbFormInfo(
+                                    verb,
+                                    tense,
+                                    pronounGroup.grammaticalPerson,
+                                    pronounGroup.grammaticalNumber,
+                                    gender,
+                                    voice,
+                                    settings
+                                )
+                            }
                         }
                     }
                 }
@@ -57,15 +61,18 @@ data class ConjugatorCoveringData(
     fun getVerbFormSingularMasculineNoPersonInfos(): Iterable<VerbFormInfo> =
         verbInfinitives.flatMap { verb ->
             tenses.flatMap { tense ->
-                        voices.map { voice ->
-                            VerbFormInfo(
-                                verb,
-                                tense,
-                                GrammaticalPerson.UNDEFINED,
-                                GrammaticalNumber.SINGULAR,
-                                GrammaticalGender.MASCULINE,
-                                voice
-                            )
+                voices.flatMap { voice ->
+                    settingsCombinations.map { settings ->
+                        VerbFormInfo(
+                            verb,
+                            tense,
+                            GrammaticalPerson.UNDEFINED,
+                            GrammaticalNumber.SINGULAR,
+                            GrammaticalGender.MASCULINE,
+                            voice,
+                            settings
+                        )
+                    }
                 }
             }
         }.asIterable()

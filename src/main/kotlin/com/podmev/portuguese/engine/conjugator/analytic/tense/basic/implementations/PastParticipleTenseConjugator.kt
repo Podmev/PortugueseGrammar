@@ -1,5 +1,6 @@
 package com.podmev.portuguese.engine.conjugator.analytic.tense.basic.implementations
 
+import com.podmev.portuguese.data.engine.conjugator.ConjugateSettings
 import com.podmev.portuguese.data.grammar.term.general.GrammaticalGender
 import com.podmev.portuguese.data.grammar.term.general.GrammaticalGender.*
 import com.podmev.portuguese.data.grammar.term.general.GrammaticalNumber
@@ -193,7 +194,8 @@ object PastParticipleTenseConjugator : BasicTenseConjugator {
     override fun conjugateVerb(
         verbInInfinitive: String,
         tense: GrammaticalTense,
-        verbArgs: VerbArguments
+        verbArgs: VerbArguments,
+        settings: ConjugateSettings
     ): List<String> {
         if (isRegular(verbInInfinitive)) {
             return regularConjugate(verbInInfinitive, verbArgs)

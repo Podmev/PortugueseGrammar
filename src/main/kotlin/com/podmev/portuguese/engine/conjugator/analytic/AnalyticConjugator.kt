@@ -1,5 +1,6 @@
 package com.podmev.portuguese.engine.conjugator.analytic
 
+import com.podmev.portuguese.data.engine.conjugator.ConjugateSettings
 import com.podmev.portuguese.data.engine.conjugator.Conjugator
 import com.podmev.portuguese.data.grammar.term.tense.GrammaticalTense
 import com.podmev.portuguese.data.grammar.term.tense.basic.BasicTense
@@ -15,8 +16,9 @@ object AnalyticConjugator : Conjugator, ConjugatorLocalizer<GrammaticalTense> {
     override fun conjugateVerb(
         verbInInfinitive: String,
         tense: GrammaticalTense,
-        verbArgs: VerbArguments
-    ): List<String> = conjugatorLocalize(tense).conjugateVerb(verbInInfinitive, tense, verbArgs)
+        verbArgs: VerbArguments,
+        settings: ConjugateSettings
+    ): List<String> = conjugatorLocalize(tense).conjugateVerb(verbInInfinitive, tense, verbArgs, settings)
 
     override fun conjugatorLocalize(tense: GrammaticalTense): Conjugator =
         when (tense) {

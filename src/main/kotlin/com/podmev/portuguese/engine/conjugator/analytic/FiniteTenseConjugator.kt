@@ -28,15 +28,18 @@ abstract class FiniteTenseConjugator() : Conjugator {
     override fun conjugateVerb(
         verbInInfinitive: String,
         tense: GrammaticalTense,
-        verbArgs: VerbArguments
+        verbArgs: VerbArguments,
+        settings: ConjugateSettings
     ): List<String> {
-        val defectiveGroup: DefectiveGroup? = getDefectiveGroup(verbInInfinitive)
-        if (defectiveGroup?.hasForm(verbArgs) == false) {
-            //form doesn't exist, so it is empty
-            return emptyList()
+        if (!settings.ignoreDefective) {
+            val defectiveGroup: DefectiveGroup? = getDefectiveGroup(verbInInfinitive)
+            if (defectiveGroup?.hasForm(verbArgs) == false) {
+                //form doesn't exist, so it is empty
+                return emptyList()
+            }
         }
-        val regularTransformation = regularChanging(verbInInfinitive, verbArgs)
-        val irregularForm = irregularChanging(verbInInfinitive, verbArgs, regularTransformation)
+        val regularTransformation = regularChanging(verbInInfinitive, verbArgs, settings)
+        val irregularForm = irregularChanging(verbInInfinitive, verbArgs, regularTransformation, settings)
         if (irregularForm != null) {
             return irregularForm //can be list
         }
@@ -52,7 +55,8 @@ abstract class FiniteTenseConjugator() : Conjugator {
     private fun irregularChanging(
         verb: String,
         verbArgs: VerbArguments,
-        regularTransformation: RegularTransformation?
+        regularTransformation: RegularTransformation?,
+        settings: ConjugateSettings
     ): List<String>? {
         val irregularForm: IrregularForm? = irregularForms[verb]
         if (irregularForm != null) {
@@ -61,7 +65,7 @@ abstract class FiniteTenseConjugator() : Conjugator {
         //trying to find derivatives
         val originIrregularVerb: String = VerbLists.irregularVerbOriginMap[verb] ?: return null
         val originIrregularForm = irregularForms[originIrregularVerb]
-        val originRegularTransformation = regularChanging(originIrregularVerb, verbArgs)
+        val originRegularTransformation = regularChanging(originIrregularVerb, verbArgs, settings)
         if (originIrregularForm != null) {
             return applyDerivativeIrregularChanging(
                 verb = verb,
@@ -112,10 +116,10 @@ abstract class FiniteTenseConjugator() : Conjugator {
         return originForm
     }
 
-    private fun regularChanging(verb: String, verbArgs: VerbArguments): RegularTransformation? {
+    private fun regularChanging(verb: String, verbArgs: VerbArguments, settings: ConjugateSettings): RegularTransformation? {
         val suffixGroup = getSuffixGroup(verb) ?: return null //in case of -or
         val suffix = suffixGroup.getSuffix(verbArgs)!! //for regular should not apear
-        val preparedBase = prepareBase(verb, suffix, suffixGroup, verbArgs)
+        val preparedBase = prepareBase(verb, suffix, suffixGroup, verbArgs, settings)
         val regularTransformation = RegularTransformation(preparedBase + suffix, preparedBase, suffix, suffixGroup)
         return regularTransformation
     }
@@ -126,8 +130,8 @@ abstract class FiniteTenseConjugator() : Conjugator {
         return specialEndingSuffix ?: regularSuffix
     }
 
-    private fun prepareBase(verb: String, suffix: String, suffixGroup: SuffixGroup, verbArgs: VerbArguments): String {
-        val specialBasePlusInfinitiveEnding = specialVerbBaseByTense?.getBasePlusInfinitiveEnding(verb)
+    private fun prepareBase(verb: String, suffix: String, suffixGroup: SuffixGroup, verbArgs: VerbArguments, settings: ConjugateSettings): String {
+        val specialBasePlusInfinitiveEnding = specialVerbBaseByTense?.getBasePlusInfinitiveEnding(verb, settings)
         val usingVerb: String = specialBasePlusInfinitiveEnding ?: verb
         val preparedInfinitive = prepareInfinitive(usingVerb, suffix, verbArgs)
         return VerbHelper.dropInfinitiveSuffixByLength(

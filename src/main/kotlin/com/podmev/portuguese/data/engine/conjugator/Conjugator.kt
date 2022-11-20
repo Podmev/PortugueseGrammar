@@ -18,20 +18,23 @@ interface Conjugator {
     fun conjugateVerb(
         verbInInfinitive: String,
         tense: GrammaticalTense,
-        verbArgs: VerbArguments
+        verbArgs: VerbArguments,
+        settings: ConjugateSettings
     ): List<String>
 
     fun conjugateVerbInFormGroup(
         verbInInfinitive: String,
         tense: GrammaticalTense,
         gender: GrammaticalGender,
-        voice: GrammaticalVoice
+        voice: GrammaticalVoice,
+        settings: ConjugateSettings
     ): FormGroup {
         fun byPersonNumber(person: GrammaticalPerson, number: GrammaticalNumber):String? =
             conjugateVerb(
                 verbInInfinitive = verbInInfinitive,
                 tense = tense,
-                verbArgs = VerbArguments(person, number, gender, voice)
+                verbArgs = VerbArguments(person, number, gender, voice),
+                settings = settings
             ).firstOrNull()
 
         return FormGroup(
