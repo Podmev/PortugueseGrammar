@@ -3,6 +3,7 @@ package com.podmev.portuguese.engine.conjugator.dataset.only
 import com.podmev.portuguese.data.engine.conjugator.ConjugateSettings
 import com.podmev.portuguese.data.engine.conjugator.Conjugator
 import com.podmev.portuguese.data.engine.conjugator.ConjugatorCoveringData
+import com.podmev.portuguese.data.engine.conjugator.allConjugationSettingsCombinations
 import com.podmev.portuguese.data.grammar.term.general.GrammaticalGender
 import com.podmev.portuguese.data.grammar.term.tense.GrammaticalTense
 import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.*
@@ -12,10 +13,8 @@ import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.indic
 import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.subjunctive.SubjunctiveImperfectTense
 import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.subjunctive.SubjunctivePresentTense
 import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.subjunctive.SubjunctivePreteriteTense
-import com.podmev.portuguese.data.grammar.term.verb.GrammaticalVoice
-import com.podmev.portuguese.data.grammar.term.verb.VerbArguments
-import com.podmev.portuguese.data.grammar.term.verb.VerbFormInfo
-import com.podmev.portuguese.data.grammar.term.verb.createVerbFormInfoWithVerbArgs
+import com.podmev.portuguese.data.grammar.term.verb.*
+import com.podmev.portuguese.data.other.PortugueseLocale
 import com.podmev.portuguese.engine.dataset.verb.findInputVerbMeta
 import com.podmev.portuguese.engine.dataset.verb.getAllVerbs
 import com.podmev.portuguese.reader.convertInputVerbMetaToVerbFormInfoMap
@@ -49,7 +48,15 @@ object OnlyDataSetConjugator : Conjugator {
             //form doesn't exists for verb
             return emptyList()
         }
-        return verbVariantsSplit(verbInForm)
+        val forms = verbVariantsSplit(verbInForm)
+        //special case of difference in locales
+        if(tense==IndicativePreteriteTense && verbArgs.isFirstPlural() ){
+            return when(settings.portugueseLocale){
+                PortugueseLocale.BRAZIL -> forms.take(1)
+                PortugueseLocale.PORTUGAL -> forms.drop(1)
+            }
+        }
+        return forms
     }
 
     fun getConjugatorCoveringData() =
@@ -88,10 +95,7 @@ object OnlyDataSetConjugator : Conjugator {
         GerundTense
     )
 
-    private fun getCoveredSettings(): List<ConjugateSettings> = listOf(
-        ConjugateSettings(true),
-        ConjugateSettings(false),
-    )
+    private fun getCoveredSettings(): List<ConjugateSettings> = allConjugationSettingsCombinations()
 
     fun getCoveredVerbs(): List<String> =
         getAllVerbs().filter { findInputVerbMeta(it)?.conjugations != null }
