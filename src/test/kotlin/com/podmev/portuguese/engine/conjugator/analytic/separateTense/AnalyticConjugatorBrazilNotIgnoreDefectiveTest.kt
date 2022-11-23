@@ -1,5 +1,6 @@
-package com.podmev.portuguese.engine.conjugator.analytic
+package com.podmev.portuguese.engine.conjugator.analytic.separateTense
 
+import com.podmev.portuguese.data.engine.conjugator.ConjugateSettings
 import com.podmev.portuguese.data.grammar.term.tense.GrammaticalTense
 import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.*
 import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.condicional.ConditionalTense
@@ -10,6 +11,8 @@ import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.subju
 import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.subjunctive.SubjunctivePreteriteTense
 import com.podmev.portuguese.data.grammar.term.verb.VerbArguments
 import com.podmev.portuguese.data.grammar.term.verb.VerbFormInfo
+import com.podmev.portuguese.data.other.PortugueseLocale
+import com.podmev.portuguese.engine.conjugator.analytic.AnalyticConjugator
 import com.podmev.portuguese.engine.conjugator.dataset.only.OnlyDataSetConjugator
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.params.ParameterizedTest
@@ -18,7 +21,7 @@ import org.junit.jupiter.params.provider.MethodSource
 
 /* same tests as in AnalyticConjugatorCheckByDataSetTest, but separated by unit for each possible grammatical tense
 * */
-class AnalyticConjugatorCheckByDataSetSeparateTenseTest {
+class AnalyticConjugatorBrazilNotIgnoreDefectiveTest {
     @ParameterizedTest
     @MethodSource("allVerbFormsIndicativePresentTense")
     fun indicativePresentTenseTest(verbFormInfo: VerbFormInfo) = checkVerbFormInfo(verbFormInfo)
@@ -102,6 +105,9 @@ class AnalyticConjugatorCheckByDataSetSeparateTenseTest {
     }
 
     companion object {
+        /*unique difference*/
+        private val settings = ConjugateSettings(false, PortugueseLocale.BRAZIL)
+
         @JvmStatic
         fun allVerbFormsIndicativePresentTense() = verbFormInfosByTense(IndicativePresentTense)
 
@@ -148,6 +154,6 @@ class AnalyticConjugatorCheckByDataSetSeparateTenseTest {
         fun allVerbFormsGerundTense() = verbFormInfosByTense(GerundTense)
 
         private fun verbFormInfosByTense(tense: GrammaticalTense) =
-            OnlyDataSetConjugator.getConjugatorCoveringDataWithFixedTense(tense).getAllVerbFormInfos()
+            OnlyDataSetConjugator.getConjugatorCoveringDataWithFixedTenseAndSettings(tense, settings).getAllVerbFormInfos()
     }
 }

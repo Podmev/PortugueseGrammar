@@ -75,6 +75,14 @@ object OnlyDataSetConjugator : Conjugator {
             getCoveredSettings().asSequence()
         )
 
+    fun getConjugatorCoveringDataWithFixedTenseAndSettings(tense: GrammaticalTense, settings: ConjugateSettings) =
+        ConjugatorCoveringData(
+            getCoveredVerbs().asSequence(),
+            sequenceOf(tense),
+            listOf(GrammaticalVoice.ACTIVE).asSequence(), //passive is not supported here
+            sequenceOf(settings)
+        )
+
     private fun getCoveredTenses(): List<GrammaticalTense> = listOf(
         IndicativePresentTense,
         IndicativeImperfectTense,
