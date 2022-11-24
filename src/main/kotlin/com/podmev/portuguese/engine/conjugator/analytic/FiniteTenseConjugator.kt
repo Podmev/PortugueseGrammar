@@ -11,16 +11,19 @@ import com.podmev.portuguese.engine.utils.verb.VerbEnds
 import com.podmev.portuguese.engine.utils.word.Wordifier
 import com.podmev.portuguese.utils.lang.mergeListMaps
 import com.podmev.portuguese.utils.lang.revertListMap
+import java.util.logging.Logger
 
 abstract class FiniteTenseConjugator() : Conjugator {
-    //deafult is brazilian
+    private val logger: Logger = Logger.getLogger("FiniteTenseConjugator")
+
+    //default is brazilian
     abstract val arSuffix: SuffixGroup
     abstract val erSuffix: SuffixGroup
     abstract val irSuffix: SuffixGroup
 
-    open val arSuffixPortugal: SuffixGroup = arSuffix
-    open val erSuffixPortugal: SuffixGroup = erSuffix
-    open val irSuffixPortugal: SuffixGroup = irSuffix
+    open val arSuffixPortugal: SuffixGroup by lazy { arSuffix }
+    open val erSuffixPortugal: SuffixGroup by lazy { erSuffix }
+    open val irSuffixPortugal: SuffixGroup by lazy { irSuffix }
 
     abstract val irregularForms: Map<String, IrregularForm>
     abstract val specialEndingSuffixRules: List<SpecialEndingSuffixRule>
@@ -38,6 +41,7 @@ abstract class FiniteTenseConjugator() : Conjugator {
         verbArgs: VerbArguments,
         settings: ConjugateSettings
     ): List<String> {
+        logger.fine("conjugateVerb $verbInInfinitive started for $tense $verbArgs $settings")
         if (!settings.ignoreDefective) {
             val defectiveGroup: DefectiveGroup? = getDefectiveGroup(verbInInfinitive)
             if (defectiveGroup?.hasForm(verbArgs) == false) {
