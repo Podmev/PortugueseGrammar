@@ -61,4 +61,14 @@ data class SuffixGroup(
             pluralSecond?.prependIndent(string),
             pluralThird?.prependIndent(string)
         )
+
+    fun toFormGroupWithIndent(string: String) =
+        FormGroup(
+            singularFirst?.prependIndent(string),
+            singularSecond?.prependIndent(string),
+            singularThird?.prependIndent(string),
+            pluralFirst?.prependIndent(string),
+            pluralSecond?.prependIndent(string),
+            pluralThird?.prependIndent(string)
+        )
 }
