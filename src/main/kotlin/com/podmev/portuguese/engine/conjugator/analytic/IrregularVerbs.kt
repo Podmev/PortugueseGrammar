@@ -37,6 +37,7 @@ object IrregularVerbs {
         const val FUGIR = "fugir"
         const val RIR = "rir"
         const val MEDIR = "medir"
+        const val SEGUIR = "seguir"
     }
     object or{
         const val POR = "pôr"

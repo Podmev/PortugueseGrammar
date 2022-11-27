@@ -40,6 +40,7 @@ object VerbLists {
             )
         ),
         Pair("rir", listOf("sorrir")),
+        Pair("seguir", listOf("conseguir", "desconseguir", "desseguir", "perseguir", "prosseguir")),
         Pair("ter", listOf("abster", "ater", "conter", "deter", "entreter", "manter", "obter", "reter", "suster")),
 //        Pair("querer", listOf("requerer", "bem-querer", "benquerer", "desquerer", "entrequerer", "malquerer")),
         Pair("vir", listOf("advir", "avir", "convir", "devir", "intervir", "provir", "sobrevir")),

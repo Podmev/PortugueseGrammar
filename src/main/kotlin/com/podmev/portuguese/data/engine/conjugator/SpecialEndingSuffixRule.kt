@@ -1,5 +1,7 @@
 package com.podmev.portuguese.data.engine.conjugator
 
+import com.podmev.portuguese.engine.conjugator.analytic.VerbLists
+
 interface SpecialEndingSuffixRule {
     val wordEnding: String
     fun getSuffix(verb: String, regularSuffix: SuffixGroup): SuffixGroup
@@ -8,13 +10,20 @@ interface SpecialEndingSuffixRule {
     val fixedVerbList: List<String>
         get() = emptyList()
 
+    val exceptions: List<String>
+        get() = emptyList()
+
     fun fitsVerb(verb: String): Boolean {
         if(!verb.endsWith(wordEnding)){
             return false
         }
-        if(fixedVerbList.isEmpty()){
-            return true
+        if(fixedVerbList.isNotEmpty()){
+            return verb in fixedVerbList
         }
-        return verb in fixedVerbList
+        val originOrVerb: String = VerbLists.irregularVerbOriginMap[verb] ?: verb
+        if(originOrVerb in exceptions){
+            return false
+        }
+        return true
     }
 }
