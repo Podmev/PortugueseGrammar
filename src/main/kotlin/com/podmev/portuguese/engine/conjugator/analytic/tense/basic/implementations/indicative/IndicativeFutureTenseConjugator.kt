@@ -19,7 +19,8 @@ object IndicativeFutureTenseConjugator : IndicativeMoodTenseConjugator, FiniteTe
     )
     override val specialEndingSuffixRules: List<SpecialEndingSuffixRule> = emptyList()
     override val baseChangingRules: List<BaseChangingRule> = emptyList()
-    override val currentDefectiveGroups: Map<DefectiveGroup, List<String>> = emptyMap()
+    override val currentDefectiveGroups: Map<DefectiveGroup, List<String>>
+        get() = emptyMap()
 
     override fun toString(): String {
         return "IndicativeFutureTenseConjugator"
