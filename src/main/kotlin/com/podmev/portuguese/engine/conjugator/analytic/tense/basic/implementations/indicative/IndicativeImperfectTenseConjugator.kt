@@ -9,7 +9,6 @@ import com.podmev.portuguese.engine.utils.verb.VerbEnds
 [6987] VerbFormInfo(infinitive=conseguir, tense=IndicativeImperfectTense, person=SECOND, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE, settings=ConjugateSettings(ignoreDefective=false, portugueseLocale=BRAZIL))
 [6989] VerbFormInfo(infinitive=conseguir, tense=IndicativeImperfectTense, person=THIRD, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE, settings=ConjugateSettings(ignoreDefective=false, portugueseLocale=BRAZIL))
 [6990] VerbFormInfo(infinitive=conseguir, tense=IndicativeImperfectTense, person=THIRD, number=PLURAL, gender=UNDEFINED, voice=ACTIVE, settings=ConjugateSettings(ignoreDefective=false, portugueseLocale=BRAZIL))
-[7083] VerbFormInfo(infinitive=construir, tense=IndicativeImperfectTense, person=SECOND, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE, settings=ConjugateSettings(ignoreDefective=false, portugueseLocale=BRAZIL))
 [9049] VerbFormInfo(infinitive=desconseguir, tense=IndicativeImperfectTense, person=FIRST, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE, settings=ConjugateSettings(ignoreDefective=false, portugueseLocale=BRAZIL))
 [9051] VerbFormInfo(infinitive=desconseguir, tense=IndicativeImperfectTense, person=SECOND, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE, settings=ConjugateSettings(ignoreDefective=false, portugueseLocale=BRAZIL))
 [9053] VerbFormInfo(infinitive=desconseguir, tense=IndicativeImperfectTense, person=THIRD, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE, settings=ConjugateSettings(ignoreDefective=false, portugueseLocale=BRAZIL))
