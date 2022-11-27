@@ -18,7 +18,6 @@ import com.podmev.portuguese.engine.utils.verb.VerbEnds
 [9981] VerbFormInfo(infinitive=desseguir, tense=IndicativeImperfectTense, person=SECOND, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE, settings=ConjugateSettings(ignoreDefective=false, portugueseLocale=BRAZIL))
 [9983] VerbFormInfo(infinitive=desseguir, tense=IndicativeImperfectTense, person=THIRD, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE, settings=ConjugateSettings(ignoreDefective=false, portugueseLocale=BRAZIL))
 [9984] VerbFormInfo(infinitive=desseguir, tense=IndicativeImperfectTense, person=THIRD, number=PLURAL, gender=UNDEFINED, voice=ACTIVE, settings=ConjugateSettings(ignoreDefective=false, portugueseLocale=BRAZIL))
-[10077] VerbFormInfo(infinitive=destruir, tense=IndicativeImperfectTense, person=SECOND, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE, settings=ConjugateSettings(ignoreDefective=false, portugueseLocale=BRAZIL))
 [10561] VerbFormInfo(infinitive=distinguir, tense=IndicativeImperfectTense, person=FIRST, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE, settings=ConjugateSettings(ignoreDefective=false, portugueseLocale=BRAZIL))
 [10563] VerbFormInfo(infinitive=distinguir, tense=IndicativeImperfectTense, person=SECOND, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE, settings=ConjugateSettings(ignoreDefective=false, portugueseLocale=BRAZIL))
 [10565] VerbFormInfo(infinitive=distinguir, tense=IndicativeImperfectTense, person=THIRD, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE, settings=ConjugateSettings(ignoreDefective=false, portugueseLocale=BRAZIL))
