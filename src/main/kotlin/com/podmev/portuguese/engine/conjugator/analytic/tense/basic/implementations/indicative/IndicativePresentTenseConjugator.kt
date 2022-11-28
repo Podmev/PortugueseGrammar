@@ -252,6 +252,7 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteT
 
     object UIR_Suffix_Rule : SpecialEndingSuffixRule {
         override val wordEnding = VerbEnds.UIR
+        override val exceptions: List<String> = listOf("seguir")
         override fun getSuffix(verb: String, regularSuffix: SuffixGroup) =
             SuffixGroup(regularSuffix.singularFirst, "is", "i", "ímos", "ís", regularSuffix.pluralThird)
     }
