@@ -297,14 +297,14 @@
       "group": "conditional",
       "group_sort": 10,
       "sort": 0,
-      "value": "-"
+      "value": "-Normally defective:nevaria"
     },
     {
       "form": "s2",
       "group": "conditional",
       "group_sort": 10,
       "sort": 1,
-      "value": "-"
+      "value": "-Normally defective:nevarias"
     },
     {
       "form": "s3",
@@ -318,21 +318,21 @@
       "group": "conditional",
       "group_sort": 10,
       "sort": 3,
-      "value": "-"
+      "value": "-Normally defective:nevaríamos"
     },
     {
       "form": "p2",
       "group": "conditional",
       "group_sort": 10,
       "sort": 4,
-      "value": "-"
+      "value": "-Normally defective:nevaríeis"
     },
     {
       "form": "p3",
       "group": "conditional",
       "group_sort": 10,
       "sort": 5,
-      "value": "-"
+      "value": "-Normally defective:nevariam"
     },
     {
       "form": "s1",

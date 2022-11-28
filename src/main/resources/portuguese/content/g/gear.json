@@ -297,14 +297,14 @@
       "group": "conditional",
       "group_sort": 10,
       "sort": 0,
-      "value": "-"
+      "value": "-Normally defective:gearia"
     },
     {
       "form": "s2",
       "group": "conditional",
       "group_sort": 10,
       "sort": 1,
-      "value": "-"
+      "value": "-Normally defective:gearias"
     },
     {
       "form": "s3",
@@ -318,21 +318,21 @@
       "group": "conditional",
       "group_sort": 10,
       "sort": 3,
-      "value": "-"
+      "value": "-Normally defective:gearíamos"
     },
     {
       "form": "p2",
       "group": "conditional",
       "group_sort": 10,
       "sort": 4,
-      "value": "-"
+      "value": "-Normally defective:gearíeis"
     },
     {
       "form": "p3",
       "group": "conditional",
       "group_sort": 10,
       "sort": 5,
-      "value": "-"
+      "value": "-Normally defective:geariam"
     },
     {
       "form": "s1",
@@ -346,7 +346,7 @@
       "group": "subjunctive/present",
       "group_sort": 11,
       "sort": 1,
-      "value": "-"
+      "value": "-Normally defective:"
     },
     {
       "form": "s3",

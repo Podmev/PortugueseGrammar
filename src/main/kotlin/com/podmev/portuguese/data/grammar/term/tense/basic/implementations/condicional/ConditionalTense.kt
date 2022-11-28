@@ -11,7 +11,7 @@ object ConditionalTense : BasicTense {
     override val canHaveNumber: Boolean
         get() = true
     override val canHaveGender: Boolean
-        get() = true
+        get() = false
 
     override fun toString(): String {
         return "ConditionalTense"
