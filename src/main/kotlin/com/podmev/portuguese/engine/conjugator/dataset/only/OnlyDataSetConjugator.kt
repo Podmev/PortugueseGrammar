@@ -8,7 +8,8 @@ import com.podmev.portuguese.data.grammar.term.general.GrammaticalGender
 import com.podmev.portuguese.data.grammar.term.tense.GrammaticalTense
 import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.*
 import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.condicional.ConditionalTense
-import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.imperative.ImperativeTense
+import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.imperative.AffirmativeImperativeTense
+import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.imperative.NegativeImperativeTense
 import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.indicative.*
 import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.subjunctive.SubjunctiveImperfectTense
 import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.subjunctive.SubjunctivePresentTense
@@ -95,7 +96,8 @@ object OnlyDataSetConjugator : Conjugator {
         SubjunctiveImperfectTense,
 
         ConditionalTense,
-        ImperativeTense,
+        AffirmativeImperativeTense,
+        NegativeImperativeTense,
         InfinitiveTense,
         PersonalInfinitiveTense,
         PastParticipleForSerEstarTense,

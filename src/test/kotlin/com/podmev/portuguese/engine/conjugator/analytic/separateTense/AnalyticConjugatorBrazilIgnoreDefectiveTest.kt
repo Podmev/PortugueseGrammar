@@ -4,7 +4,8 @@ import com.podmev.portuguese.data.engine.conjugator.ConjugateSettings
 import com.podmev.portuguese.data.grammar.term.tense.GrammaticalTense
 import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.*
 import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.condicional.ConditionalTense
-import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.imperative.ImperativeTense
+import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.imperative.AffirmativeImperativeTense
+import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.imperative.NegativeImperativeTense
 import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.indicative.*
 import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.subjunctive.SubjunctiveImperfectTense
 import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.subjunctive.SubjunctivePresentTense
@@ -59,8 +60,12 @@ class AnalyticConjugatorBrazilIgnoreDefectiveTest {
     fun conditionalTest(verbFormInfo: VerbFormInfo) = checkVerbFormInfo(verbFormInfo)
 
     @ParameterizedTest
-    @MethodSource("allVerbFormsImperativeTense")
-    fun imperativeTest(verbFormInfo: VerbFormInfo) = checkVerbFormInfo(verbFormInfo)
+    @MethodSource("allVerbFormsAffirmativeImperativeTense")
+    fun affirmativeImperativeTest(verbFormInfo: VerbFormInfo) = checkVerbFormInfo(verbFormInfo)
+
+    @ParameterizedTest
+    @MethodSource("allVerbFormsNegativeImperativeTense")
+    fun negativeImperativeTest(verbFormInfo: VerbFormInfo) = checkVerbFormInfo(verbFormInfo)
 
     @ParameterizedTest
     @MethodSource("allVerbFormsInfinitiveTense")
@@ -136,7 +141,10 @@ class AnalyticConjugatorBrazilIgnoreDefectiveTest {
         fun allVerbFormsConditionalTense() = verbFormInfosByTense(ConditionalTense)
 
         @JvmStatic
-        fun allVerbFormsImperativeTense() = verbFormInfosByTense(ImperativeTense)
+        fun allVerbFormsAffirmativeImperativeTense() = verbFormInfosByTense(AffirmativeImperativeTense)
+
+        @JvmStatic
+        fun allVerbFormsNegativeImperativeTense() = verbFormInfosByTense(NegativeImperativeTense)
 
         @JvmStatic
         fun allVerbFormsInfinitiveTense() = verbFormInfosByTense(InfinitiveTense)
@@ -154,6 +162,7 @@ class AnalyticConjugatorBrazilIgnoreDefectiveTest {
         fun allVerbFormsGerundTense() = verbFormInfosByTense(GerundTense)
 
         private fun verbFormInfosByTense(tense: GrammaticalTense) =
-            OnlyDataSetConjugator.getConjugatorCoveringDataWithFixedTenseAndSettings(tense, settings).getAllVerbFormInfos()
+            OnlyDataSetConjugator.getConjugatorCoveringDataWithFixedTenseAndSettings(tense, settings)
+                .getAllVerbFormInfos()
     }
 }

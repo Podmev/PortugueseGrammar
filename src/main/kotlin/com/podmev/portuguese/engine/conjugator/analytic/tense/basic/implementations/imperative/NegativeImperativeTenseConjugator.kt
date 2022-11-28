@@ -5,7 +5,7 @@ import com.podmev.portuguese.data.grammar.term.tense.GrammaticalTense
 import com.podmev.portuguese.data.grammar.term.verb.VerbArguments
 import com.podmev.portuguese.engine.conjugator.analytic.tense.basic.BasicTenseConjugator
 
-object ImperativeTenseConjugator : BasicTenseConjugator {
+object NegativeImperativeTenseConjugator : BasicTenseConjugator {
     override fun conjugateVerb(
         verbInInfinitive: String,
         tense: GrammaticalTense,
@@ -16,6 +16,6 @@ object ImperativeTenseConjugator : BasicTenseConjugator {
     }
 
     override fun toString(): String {
-        return "ImperativeTenseConjugator"
+        return "NegativeImperativeTenseConjugator"
     }
 }

@@ -6,7 +6,7 @@ import com.podmev.portuguese.data.engine.conjugator.VerbWithFormGroup
 import com.podmev.portuguese.data.engine.conjugator.defaultConjugateSettings
 import com.podmev.portuguese.data.grammar.term.general.GrammaticalGender.UNDEFINED
 import com.podmev.portuguese.data.grammar.term.tense.GrammaticalTense
-import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.imperative.ImperativeTense
+import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.imperative.AffirmativeImperativeTense
 import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.indicative.IndicativePresentTense
 import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.indicative.IndicativePreteriteTense
 import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.subjunctive.SubjunctivePresentTense
@@ -39,7 +39,7 @@ object VerbFormGenerator {
 
     fun defectivePresentIndicativeHelper() = defectiveHelper(IndicativePresentTense)
     fun defectivePresentSubjunctiveHelper() = defectiveHelper(SubjunctivePresentTense)
-    fun defectivePresentImperativeHelper() = defectiveHelper(ImperativeTense)
+    fun defectivePresentImperativeHelper() = defectiveHelper(AffirmativeImperativeTense)
 
     fun defectivePreteriteIndicativeHelper() = defectiveHelper(IndicativePreteriteTense)
 

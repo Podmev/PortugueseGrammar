@@ -3,7 +3,8 @@ package com.podmev.portuguese.reader
 import com.podmev.portuguese.data.grammar.term.tense.GrammaticalTense
 import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.*
 import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.condicional.ConditionalTense
-import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.imperative.ImperativeTense
+import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.imperative.AffirmativeImperativeTense
+import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.imperative.NegativeImperativeTense
 import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.indicative.*
 import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.subjunctive.SubjunctiveImperfectTense
 import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.subjunctive.SubjunctivePresentTense
@@ -50,9 +51,8 @@ fun parseTenseByShortName(tenseName: String): List<GrammaticalTense> =
 
         "conditional" -> listOf(ConditionalTense)
 
-        // let's not use imperative/negative - it is mostly incorrect in dataset. Anyway negative is not used in model
-        "imperative/negative" -> emptyList()
-        "imperative/affirmative" -> listOf(ImperativeTense)
+        "imperative/negative" -> listOf(NegativeImperativeTense)
+        "imperative/affirmative" -> listOf(AffirmativeImperativeTense)
 
         "infinitive/impersonal" -> listOf(InfinitiveTense)
         "infinitive/personal" -> listOf(PersonalInfinitiveTense)
