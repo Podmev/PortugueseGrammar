@@ -82,6 +82,14 @@ object VerbHelper {
         return null
     }
 
+    /*only in correct form of person and number (first-singular)*/
+    fun replaceIfNecessaryGU_FragmentForG_FragmentOrNull(infinitive: String): String? {
+        if (infinitive.endsWith(VerbEnds.GUIR)) {
+            return Wordifier.replaceEnding(infinitive, VerbEnds.GUIR, VerbEnds.GIR)
+        }
+        return null
+    }
+
     /*returns diff and how many chars we need to drop in verb at the start*/
     fun diffVerbAndOrigin(verb: String, originIrregularVerb: String): Pair<String, Int> {
         val verbWithoutDiacritics = Wordifier.deleteAllDiacriticMarks(verb)
