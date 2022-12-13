@@ -59,7 +59,6 @@ import com.podmev.portuguese.engine.utils.word.Wordifier
 [13917] VerbFormInfo(infinitive=europeizar, tense=IndicativePresentTense, person=SECOND, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE, settings=ConjugateSettings(ignoreDefective=false, portugueseLocale=BRAZIL))
 [13919] VerbFormInfo(infinitive=europeizar, tense=IndicativePresentTense, person=THIRD, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE, settings=ConjugateSettings(ignoreDefective=false, portugueseLocale=BRAZIL))
 [13920] VerbFormInfo(infinitive=europeizar, tense=IndicativePresentTense, person=THIRD, number=PLURAL, gender=UNDEFINED, voice=ACTIVE, settings=ConjugateSettings(ignoreDefective=false, portugueseLocale=BRAZIL))
-[16241] VerbFormInfo(infinitive=impelir, tense=IndicativePresentTense, person=THIRD, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE, settings=ConjugateSettings(ignoreDefective=false, portugueseLocale=BRAZIL))
 [18005] VerbFormInfo(infinitive=malquerer, tense=IndicativePresentTense, person=THIRD, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE, settings=ConjugateSettings(ignoreDefective=false, portugueseLocale=BRAZIL))
 [18637] VerbFormInfo(infinitive=mobiliar, tense=IndicativePresentTense, person=FIRST, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE, settings=ConjugateSettings(ignoreDefective=false, portugueseLocale=BRAZIL))
 [18639] VerbFormInfo(infinitive=mobiliar, tense=IndicativePresentTense, person=SECOND, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE, settings=ConjugateSettings(ignoreDefective=false, portugueseLocale=BRAZIL))
@@ -267,7 +266,7 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteT
     object E_TO_I_Rule : BaseChangingRule {
         override fun isCorrectForm(verbArgs: VerbArguments): Boolean = verbArgs.isFirstSingular()
         override val exceptions: List<String>
-            get() = listOf("manutenir")
+            get() = listOf("manutenir", "impelir")
         override fun changeBaseIfPossible(verb: String, exactSuffix: String, verbArgs: VerbArguments): String? =
             replaceIfNecessaryE_LetterForI_LetterOrNull(verb)
     }
