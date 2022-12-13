@@ -71,7 +71,6 @@ import com.podmev.portuguese.engine.utils.word.Wordifier
 [20577] VerbFormInfo(infinitive=polir, tense=IndicativePresentTense, person=SECOND, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE, settings=ConjugateSettings(ignoreDefective=false, portugueseLocale=BRAZIL))
 [20579] VerbFormInfo(infinitive=polir, tense=IndicativePresentTense, person=THIRD, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE, settings=ConjugateSettings(ignoreDefective=false, portugueseLocale=BRAZIL))
 [20580] VerbFormInfo(infinitive=polir, tense=IndicativePresentTense, person=THIRD, number=PLURAL, gender=UNDEFINED, voice=ACTIVE, settings=ConjugateSettings(ignoreDefective=false, portugueseLocale=BRAZIL))
-[20857] VerbFormInfo(infinitive=premir, tense=IndicativePresentTense, person=FIRST, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE, settings=ConjugateSettings(ignoreDefective=false, portugueseLocale=BRAZIL))
 [21129] VerbFormInfo(infinitive=progredir, tense=IndicativePresentTense, person=SECOND, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE, settings=ConjugateSettings(ignoreDefective=false, portugueseLocale=BRAZIL))
 [21131] VerbFormInfo(infinitive=progredir, tense=IndicativePresentTense, person=THIRD, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE, settings=ConjugateSettings(ignoreDefective=false, portugueseLocale=BRAZIL))
 [21132] VerbFormInfo(infinitive=progredir, tense=IndicativePresentTense, person=THIRD, number=PLURAL, gender=UNDEFINED, voice=ACTIVE, settings=ConjugateSettings(ignoreDefective=false, portugueseLocale=BRAZIL))
@@ -88,7 +87,6 @@ import com.podmev.portuguese.engine.utils.word.Wordifier
 [22091] VerbFormInfo(infinitive=reconstruir, tense=IndicativePresentTense, person=THIRD, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE, settings=ConjugateSettings(ignoreDefective=false, portugueseLocale=BRAZIL))
 [22092] VerbFormInfo(infinitive=reconstruir, tense=IndicativePresentTense, person=THIRD, number=PLURAL, gender=UNDEFINED, voice=ACTIVE, settings=ConjugateSettings(ignoreDefective=false, portugueseLocale=BRAZIL))
 [22207] VerbFormInfo(infinitive=redescobrir, tense=IndicativePresentTense, person=FIRST, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE, settings=ConjugateSettings(ignoreDefective=false, portugueseLocale=BRAZIL))
-[22759] VerbFormInfo(infinitive=renhir, tense=IndicativePresentTense, person=FIRST, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE, settings=ConjugateSettings(ignoreDefective=false, portugueseLocale=BRAZIL))
 [23029] VerbFormInfo(infinitive=resfolegar, tense=IndicativePresentTense, person=FIRST, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE, settings=ConjugateSettings(ignoreDefective=false, portugueseLocale=BRAZIL))
 [23031] VerbFormInfo(infinitive=resfolegar, tense=IndicativePresentTense, person=SECOND, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE, settings=ConjugateSettings(ignoreDefective=false, portugueseLocale=BRAZIL))
 [23033] VerbFormInfo(infinitive=resfolegar, tense=IndicativePresentTense, person=THIRD, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE, settings=ConjugateSettings(ignoreDefective=false, portugueseLocale=BRAZIL))
@@ -266,7 +264,7 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteT
     object E_TO_I_Rule : BaseChangingRule {
         override fun isCorrectForm(verbArgs: VerbArguments): Boolean = verbArgs.isFirstSingular()
         override val exceptions: List<String>
-            get() = listOf("manutenir", "impelir")
+            get() = listOf("manutenir", "impelir", "premir", "renhir")
         override fun changeBaseIfPossible(verb: String, exactSuffix: String, verbArgs: VerbArguments): String? =
             replaceIfNecessaryE_LetterForI_LetterOrNull(verb)
     }
