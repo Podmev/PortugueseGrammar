@@ -188,7 +188,7 @@ abstract class FiniteTenseConjugator() : Conjugator {
 
     private fun prepareInfinitive(infinitive: String, suffix: String, verbArgs: VerbArguments): String {
         for (rule in baseChangingRules) {
-            if (rule.isCorrectForm(verbArgs)) {
+            if (rule.isCorrectForm(verbArgs) && rule.fitsVerb(infinitive)) {
                 val changeBaseIfPossible: String? = rule.changeBaseIfPossible(infinitive, suffix, verbArgs)
                 if (changeBaseIfPossible != null) {
                     return changeBaseIfPossible

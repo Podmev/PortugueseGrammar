@@ -1,13 +1,16 @@
 package com.podmev.portuguese.engine.conjugator.analytic.tense.basic.implementations.indicative
 
 import com.podmev.portuguese.data.engine.conjugator.*
+import com.podmev.portuguese.data.grammar.term.orthography.diacriticLetters.acute.I_Acute_Letter
 import com.podmev.portuguese.data.grammar.term.orthography.diacriticLetters.acute.O_Acute_Letter
+import com.podmev.portuguese.data.grammar.term.orthography.letters.I_Letter
 import com.podmev.portuguese.data.grammar.term.orthography.letters.O_Letter
 import com.podmev.portuguese.data.grammar.term.orthography.letters.U_Letter
 import com.podmev.portuguese.data.grammar.term.verb.*
 import com.podmev.portuguese.engine.conjugator.analytic.DefectiveVerbs
 import com.podmev.portuguese.engine.conjugator.analytic.FiniteTenseConjugator
 import com.podmev.portuguese.engine.conjugator.analytic.IrregularVerbs
+import com.podmev.portuguese.engine.conjugator.analytic.VerbHelper
 import com.podmev.portuguese.engine.conjugator.analytic.VerbHelper.replaceIfNecessaryC_LetterForC_Cedilla_LetterOrNull
 import com.podmev.portuguese.engine.conjugator.analytic.VerbHelper.replaceIfNecessaryEGU_FragmentForIG_FragmentOrNull
 import com.podmev.portuguese.engine.conjugator.analytic.VerbHelper.replaceIfNecessaryE_LetterForI_LetterOrNull
@@ -140,7 +143,7 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteT
         Pair(IrregularVerbs.ir.IR, IrregularForm(FormGroup("vou", "vais", "vai", "vamos", "ides", "vão"))),
         Pair(IrregularVerbs.ir.DORMIR, IrregularForm(FormGroup("durmo", null, null, null, null, null))),
         //Think how to make
-        Pair(IrregularVerbs.ir.SUBIR,IrregularForm(FormGroup(null, "sobes", "sobe", null, null, "sobem"))),
+        Pair(IrregularVerbs.ir.SUBIR, IrregularForm(FormGroup(null, "sobes", "sobe", null, null, "sobem"))),
         //Think how to make
         Pair(IrregularVerbs.ir.FUGIR, IrregularForm(FormGroup(null, "foges", "foge", null, null, "fogem"))),
         Pair(IrregularVerbs.ir.RIR, IrregularForm(FormGroup("rio", "ris", "ri", null, "rides", "riem"))),
@@ -209,9 +212,11 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteT
     //works only for fixed list of verbs MARIO - first letters of verbs
     object IAR_Suffix_MARIO_Rule : SpecialEndingSuffixRule {
         override val wordEnding = VerbEnds.IAR
-        override val fixedVerbList = listOf("mediar", "ansiar", "remediar", "incendiar", "odiar",
+        override val fixedVerbList = listOf(
+            "mediar", "ansiar", "remediar", "incendiar", "odiar",
             "intermediar" // additional
         )
+
         override fun getSuffix(verb: String, regularSuffix: SuffixGroup) =
             SuffixGroup(
                 "eio", "eias", "eia", "iamos", "iais", "eiam",
@@ -265,6 +270,7 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteT
         override fun isCorrectForm(verbArgs: VerbArguments): Boolean = verbArgs.isFirstSingular()
         override val exceptions: List<String>
             get() = listOf("manutenir", "impelir", "premir", "renhir")
+
         override fun changeBaseIfPossible(verb: String, exactSuffix: String, verbArgs: VerbArguments): String? =
             replaceIfNecessaryE_LetterForI_LetterOrNull(verb)
     }
@@ -283,6 +289,19 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteT
                 )
             else null
     }
+
+    object OIBIR_I_TO_I_Acute_Rule : BaseChangingRule {
+        override fun isCorrectForm(verbArgs: VerbArguments): Boolean = !verbArgs.isFirstOrSecondPlural()
+        override val wordEnding: String = "oibir"
+        override fun changeBaseIfPossible(verb: String, exactSuffix: String, verbArgs: VerbArguments): String =
+            Wordifier.replaceLastFoundGenericLetterInPrefix(
+                word = verb,
+                prefix = VerbHelper.dropInfinitiveSuffixXR(verb),
+                fromGenericLetter = I_Letter,
+                toGenericLetter = I_Acute_Letter
+            )
+    }
+
 //bad rule - didn't work
 //    object U_TO_O_Rule : BaseChangingRule {
 //        override fun isCorrectForm(verbArgs: VerbArguments): Boolean = verbArgs.isSecondSingular() || verbArgs.isThird()
@@ -297,6 +316,7 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteT
         E_TO_I_Rule,// - excluded for now
         Construir_Destruir_U_TO_O_Rule,
         GU_TO_G_Rule,
+        OIBIR_I_TO_I_Acute_Rule
 //        U_TO_O_Rule
     )
 

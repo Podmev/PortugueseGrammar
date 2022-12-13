@@ -47,3 +47,6 @@ fun VerbArguments.isSingular(): Boolean =
 
 fun VerbArguments.isPlural(): Boolean =
     number == GrammaticalNumber.PLURAL
+
+fun VerbArguments.isFirstOrSecondPlural(): Boolean =
+    isFirstPlural() || isSecondPlural()

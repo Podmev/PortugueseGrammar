@@ -56,12 +56,24 @@ object Wordifier {
         return exactLetters2Word(updatedExactLetters)
     }
 
-    fun groupByEndOfWords(words: List<String>) : Map<String, List<String>>{
+    fun replaceLastFoundGenericLetterInPrefix(
+        word: String,
+        prefix: String,
+        fromGenericLetter: GenericLetter,
+        toGenericLetter: GenericLetter
+    ): String {
+        assert(word.startsWith(prefix))
+        val suffix = word.drop(prefix.length)
+        val changedPrefix = replaceLastFoundGenericLetter(prefix, fromGenericLetter, toGenericLetter)
+        return changedPrefix + suffix
+    }
+
+    fun groupByEndOfWords(words: List<String>): Map<String, List<String>> {
         val map: Map<String, MutableList<String>> = words.associateWith { mutableListOf<String>() }
         val usedSet: MutableSet<String> = mutableSetOf<String>()
-        for(word in words){
-            for((key, list) in map){
-                if(key!=word  && word.endsWith(key)){
+        for (word in words) {
+            for ((key, list) in map) {
+                if (key != word && word.endsWith(key)) {
                     list.add(word)
                     usedSet.add(word)
                 }
@@ -81,16 +93,18 @@ object Wordifier {
                 ?: throw Exception("Char $it is cannot be parsed by Alphabet.parseExactLetter")
         }
 
-    fun exactLetters2Word(exactLetters :List<ExactLetter>): String =
-        exactLetters.map {it.view}.joinToString ("")
+    fun exactLetters2Word(exactLetters: List<ExactLetter>): String =
+        exactLetters.map { it.view }.joinToString("")
 
     //TODO make tests for endsWithAny
-    fun endsWithAny(word: String, endings: List<String>): Boolean = endings.any{word.endsWith(it)}
+    fun endsWithAny(word: String, endings: List<String>): Boolean = endings.any { word.endsWith(it) }
 
-    fun countVowels(word: String) = word.count{ Alphabet.isVowelChar(it) }
-    fun countConsonants(word: String) = word.count{ Alphabet.isConsonantChar(it) }
+    fun countVowels(word: String) = word.count { Alphabet.isVowelChar(it) }
+    fun countConsonants(word: String) = word.count { Alphabet.isConsonantChar(it) }
 
-    fun findLastVowelExactLetter(word: String): ExactLetter? = findLastVowelChar(word)?.let{Alphabet.parseExactLetter(it)}
+    fun findLastVowelExactLetter(word: String): ExactLetter? =
+        findLastVowelChar(word)?.let { Alphabet.parseExactLetter(it) }
+
     fun findLastVowelChar(word: String): Char? = word.findLast { Alphabet.isVowelChar(it) }
 
     /*checks if word truncated in the end with n-characters finishes with ending
@@ -99,7 +113,7 @@ object Wordifier {
     fun endsWithDroppingLast(word: String, ending: String, n: Int): Boolean = word.dropLast(n).endsWith(ending)
 
     //TODO rewrite better
-    fun <E> replaceElementByIndex(list: List<E>, index: Int, newValue: E): List<E>{
-        return list.mapIndexed{i: Int, value: E -> if(i==index) newValue else value}
+    fun <E> replaceElementByIndex(list: List<E>, index: Int, newValue: E): List<E> {
+        return list.mapIndexed { i: Int, value: E -> if (i == index) newValue else value }
     }
 }

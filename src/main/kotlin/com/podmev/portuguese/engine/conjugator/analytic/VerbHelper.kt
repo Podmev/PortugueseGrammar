@@ -1,7 +1,5 @@
 package com.podmev.portuguese.engine.conjugator.analytic
 
-import com.podmev.portuguese.data.grammar.term.general.GrammaticalNumber
-import com.podmev.portuguese.data.grammar.term.general.GrammaticalPerson
 import com.podmev.portuguese.data.grammar.term.orthography.Alphabet
 import com.podmev.portuguese.data.grammar.term.orthography.diacriticMarks.AcuteDiacriticMark
 import com.podmev.portuguese.data.grammar.term.orthography.diacriticMarks.CedillaDiacriticMark
@@ -10,7 +8,6 @@ import com.podmev.portuguese.data.grammar.term.verb.VerbArguments
 import com.podmev.portuguese.data.grammar.term.verb.isThirdSingular
 import com.podmev.portuguese.engine.utils.verb.VerbEnds
 import com.podmev.portuguese.engine.utils.word.Wordifier
-import com.podmev.portuguese.utils.lang.getFromEnd
 
 object VerbHelper {
     /*drop the last letter 'r' of infinitive*/
