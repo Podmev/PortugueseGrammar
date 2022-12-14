@@ -85,6 +85,7 @@ object DefectiveVerbs {
     const val MOQUIR = "moquir"
     const val MOSQUIR = "mosquir"
     const val PERTRANSIR = "pertransir"
+    const val PARIR = "parir"
     const val PRAZER = "prazer"
     const val PRECAVER = "precaver"
     const val PRECLUIR = "precluir"

@@ -136,6 +136,7 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteT
         //Think how to make
         Pair(IrregularVerbs.ir.FUGIR, IrregularForm(FormGroup(null, "foges", "foge", null, null, "fogem"))),
         Pair(IrregularVerbs.ir.RIR, IrregularForm(FormGroup("rio", "ris", "ri", null, "rides", "riem"))),
+        Pair(IrregularVerbs.ir.PARIR, IrregularForm(FormGroup("pairo", null, null, null, null, null))),
     )
     override val currentDefectiveGroups: Map<DefectiveGroup, List<String>>
         get() =
@@ -149,6 +150,7 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteT
                         DefectiveVerbs.DESCOLORIR,
                         DefectiveVerbs.FALIR,
                         DefectiveVerbs.FLORIR,
+                        DefectiveVerbs.PARIR,
                         DefectiveVerbs.REMIR,
                     )
                 ),
