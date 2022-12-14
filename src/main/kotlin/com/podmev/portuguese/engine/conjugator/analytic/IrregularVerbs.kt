@@ -40,6 +40,8 @@ object IrregularVerbs {
         const val SEGUIR = "seguir"
         const val PARIR = "parir"
         const val COBRIR = "cobrir"
+        const val ENGOLIR = "engolir"
+        const val POLIR = "polir"
     }
     object or{
         const val POR = "pôr"

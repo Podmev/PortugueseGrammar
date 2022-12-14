@@ -8,6 +8,7 @@ import com.podmev.portuguese.data.grammar.term.verb.VerbArguments
 import com.podmev.portuguese.data.grammar.term.verb.isThirdSingular
 import com.podmev.portuguese.engine.utils.verb.VerbEnds
 import com.podmev.portuguese.engine.utils.word.Wordifier
+import com.podmev.portuguese.utils.lang.getFromEnd
 
 object VerbHelper {
     /*drop the last letter 'r' of infinitive*/
@@ -131,6 +132,7 @@ object VerbHelper {
 //        }
 //        return null //not this case
 //    }
+
 
     fun forbiddenOnNotThirdSingularForm(verbInInfinitive: String, verbArgs: VerbArguments) =
         verbInInfinitive in VerbLists.onlyThirdSingularFormVerbs && !verbArgs.isThirdSingular()
