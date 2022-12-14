@@ -17,10 +17,10 @@ interface SpecialEndingSuffixRule {
         if(!verb.endsWith(wordEnding)){
             return false
         }
-        if(fixedVerbList.isNotEmpty()){
-            return verb in fixedVerbList
-        }
         val originOrVerb: String = VerbLists.irregularVerbOriginMap[verb] ?: verb
+        if(fixedVerbList.isNotEmpty()){
+            return originOrVerb in fixedVerbList
+        }
         if(originOrVerb in exceptions){
             return false
         }
