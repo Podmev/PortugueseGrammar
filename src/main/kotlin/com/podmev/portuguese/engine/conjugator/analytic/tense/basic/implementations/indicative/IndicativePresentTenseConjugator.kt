@@ -279,7 +279,7 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteT
 
     object Second_Vowel_From_End_Acute_Rule : BaseChangingRule {
         override fun isCorrectForm(verbArgs: VerbArguments): Boolean = !verbArgs.isFirstOrSecondPlural()
-        override val fixedVerbList = listOf("aguar")
+        override val fixedVerbList = listOf("aguar", "europeizar", "mobiliar", "reunir", "saudar")
         override fun changeBaseIfPossible(verb: String, exactSuffix: String, verbArgs: VerbArguments): String =
             Wordifier.putDiacriticMarkOnLastVowelInPrefix(
                 word = verb,
