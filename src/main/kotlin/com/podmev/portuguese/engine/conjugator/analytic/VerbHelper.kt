@@ -21,6 +21,12 @@ object VerbHelper {
         dropInfinitiveSuffixByLength(infinitive, 1)
         .dropLastWhile { Alphabet.isVowelChar(it) }
 
+    fun dropInfinitiveSuffix2SetOfVowelsAndR(infinitive: String): String =
+        dropInfinitiveSuffixByLength(infinitive, 1)
+            .dropLastWhile { Alphabet.isVowelChar(it) }
+            .dropLastWhile { Alphabet.isConsonantChar(it) }
+            .dropLastWhile { Alphabet.isVowelChar(it) }
+
     /*drop the last several letters of infinitive: usually 2, but in some cases 3 (iar)*/
     fun dropInfinitiveSuffixByLength(infinitive: String, lengthToDrop: Int): String = infinitive.dropLast(lengthToDrop)
 

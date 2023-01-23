@@ -288,6 +288,17 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteT
             )
     }
 
+    object Third_Vowel_From_End_Acute_Rule : BaseChangingRule {
+        override fun isCorrectForm(verbArgs: VerbArguments): Boolean = !verbArgs.isFirstOrSecondPlural()
+        override val fixedVerbList = listOf("resfolegar")
+        override fun changeBaseIfPossible(verb: String, exactSuffix: String, verbArgs: VerbArguments): String =
+            Wordifier.putDiacriticMarkOnLastVowelInPrefix(
+                word = verb,
+                prefix = VerbHelper.dropInfinitiveSuffix2SetOfVowelsAndR(verb),
+                diacriticMark = AcuteDiacriticMark
+            )
+    }
+
 
 //bad rule - didn't work
 //    object U_TO_O_Rule : BaseChangingRule {
@@ -306,7 +317,8 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteT
         Construir_Destruir_U_TO_O_Rule,
         GU_TO_G_Rule,
         OIBIR_I_TO_I_Acute_Rule,
-        Second_Vowel_From_End_Acute_Rule
+        Second_Vowel_From_End_Acute_Rule,
+        Third_Vowel_From_End_Acute_Rule
     )
 
     override fun toString(): String {
