@@ -74,7 +74,9 @@ import com.podmev.portuguese.engine.utils.word.Wordifier
 [24815] VerbFormInfo(infinitive=sumir, tense=IndicativePresentTense, person=THIRD, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE, settings=ConjugateSettings(ignoreDefective=false, portugueseLocale=BRAZIL))
 [24816] VerbFormInfo(infinitive=sumir, tense=IndicativePresentTense, person=THIRD, number=PLURAL, gender=UNDEFINED, voice=ACTIVE, settings=ConjugateSettings(ignoreDefective=false, portugueseLocale=BRAZIL))
 [25489] VerbFormInfo(infinitive=tossir, tense=IndicativePresentTense, person=FIRST, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE, settings=ConjugateSettings(ignoreDefective=false, portugueseLocale=BRAZIL))
-* * * */
+
+* empedernir: firstSingular is missing in brazil, portugal - empedirno
+* * * * */
 @Suppress("BooleanLiteralArgument", "ClassName")
 object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteTenseConjugator() {
     override val arSuffix = SuffixGroup("o", "as", "a", "amos", "ais", "am")
@@ -136,6 +138,7 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteT
                         DefectiveVerbs.FLORIR,
                         DefectiveVerbs.PARIR,
                         DefectiveVerbs.REMIR,
+                        DefectiveVerbs.EMPEDERNIR,
                     )
                 ),
                 Pair(
@@ -244,7 +247,7 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteT
     object E_TO_I_Rule : BaseChangingRule {
         override fun isCorrectForm(verbArgs: VerbArguments): Boolean = verbArgs.isFirstSingular()
         override val exceptions: List<String>
-            get() = listOf("manutenir", "impelir", "premir", "renhir")
+            get() = listOf("manutenir", "premir", "renhir")
 
         override fun changeBaseIfPossible(verb: String, exactSuffix: String, verbArgs: VerbArguments): String? =
             replaceIfNecessaryE_LetterForI_LetterOrNull(verb)
@@ -322,14 +325,6 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteT
                 toGenericLetter = U_Letter
             )
     }
-
-
-//bad rule - didn't work
-//    object U_TO_O_Rule : BaseChangingRule {
-//        override fun isCorrectForm(verbArgs: VerbArguments): Boolean = verbArgs.isSecondSingular() || verbArgs.isThird()
-//        override fun changeBaseIfPossible(verb: String, exactSuffix: String, verbArgs: VerbArguments): String? =
-//            replaceIfNecessaryU_LetterForO_LetterOrNull(verb)
-//    }
 
 
 

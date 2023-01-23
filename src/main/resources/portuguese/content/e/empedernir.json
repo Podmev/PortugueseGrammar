@@ -87,21 +87,21 @@
       "group": "indicative/present",
       "group_sort": 5,
       "sort": 0,
-      "value": "empederno"
+      "value": "-Normally defective:empedirno"
     },
     {
       "form": "s2",
       "group": "indicative/present",
       "group_sort": 5,
       "sort": 1,
-      "value": "empedernes"
+      "value": "-Normally defective:empedernes"
     },
     {
       "form": "s3",
       "group": "indicative/present",
       "group_sort": 5,
       "sort": 2,
-      "value": "empederne"
+      "value": "-Normally defective:empederne"
     },
     {
       "form": "p1",
@@ -122,7 +122,7 @@
       "group": "indicative/present",
       "group_sort": 5,
       "sort": 5,
-      "value": "empedernem"
+      "value": "-Normally defective:empedernem"
     },
     {
       "form": "s1",
