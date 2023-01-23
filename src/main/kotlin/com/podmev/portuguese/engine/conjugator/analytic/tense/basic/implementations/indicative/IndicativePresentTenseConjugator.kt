@@ -298,6 +298,18 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteT
                 diacriticMark = AcuteDiacriticMark
             )
     }
+    object U_TO_O_Rule : BaseChangingRule {
+        val form = PronounNumberGroup(false, true, true, false, false, true)
+        override fun isCorrectForm(verbArgs: VerbArguments): Boolean = form.hasForm(verbArgs)
+        override val fixedVerbList = listOf("sumir")
+        override fun changeBaseIfPossible(verb: String, exactSuffix: String, verbArgs: VerbArguments): String =
+            Wordifier.replaceLastFoundGenericLetterInPrefix(
+                word = verb,
+                prefix = VerbHelper.dropInfinitiveSuffixXR(verb),
+                fromGenericLetter = U_Letter,
+                toGenericLetter = O_Letter
+            )
+    }
 
 
 //bad rule - didn't work
@@ -318,7 +330,8 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteT
         GU_TO_G_Rule,
         OIBIR_I_TO_I_Acute_Rule,
         Second_Vowel_From_End_Acute_Rule,
-        Third_Vowel_From_End_Acute_Rule
+        Third_Vowel_From_End_Acute_Rule,
+        U_TO_O_Rule
     )
 
     override fun toString(): String {
