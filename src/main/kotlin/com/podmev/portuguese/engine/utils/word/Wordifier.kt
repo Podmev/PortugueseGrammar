@@ -68,6 +68,23 @@ object Wordifier {
         return changedPrefix + suffix
     }
 
+    fun putDiacriticMarkOnLastVowelInPrefix(
+        word: String,
+        prefix: String,
+        diacriticMark: DiacriticMark
+    ): String {
+        assert(word.startsWith(prefix))
+        val suffix = word.drop(prefix.length)
+        val vowelChar = prefix.findLast { Alphabet.isVowelChar(it) }!!
+        val vowel = Alphabet.parseExactLetter(vowelChar)!!.genericLetter.baseLetter()
+        val changedPrefix = addDiacriticsToLastFoundLetter(
+            word = prefix,
+            letter = vowel,
+            diacriticMark = diacriticMark
+        )
+        return changedPrefix + suffix
+    }
+
     fun groupByEndOfWords(words: List<String>): Map<String, List<String>> {
         val map: Map<String, MutableList<String>> = words.associateWith { mutableListOf<String>() }
         val usedSet: MutableSet<String> = mutableSetOf<String>()

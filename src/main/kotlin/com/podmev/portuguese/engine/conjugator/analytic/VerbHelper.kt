@@ -17,6 +17,10 @@ object VerbHelper {
     /*drop the last 2 letters of infinitive: ar, er, ir*/
     fun dropInfinitiveSuffixXR(infinitive: String): String = dropInfinitiveSuffixByLength(infinitive, 2)
 
+    fun dropInfinitiveSuffixAllVowelsAndR(infinitive: String): String =
+        dropInfinitiveSuffixByLength(infinitive, 1)
+        .dropLastWhile { Alphabet.isVowelChar(it) }
+
     /*drop the last several letters of infinitive: usually 2, but in some cases 3 (iar)*/
     fun dropInfinitiveSuffixByLength(infinitive: String, lengthToDrop: Int): String = infinitive.dropLast(lengthToDrop)
 

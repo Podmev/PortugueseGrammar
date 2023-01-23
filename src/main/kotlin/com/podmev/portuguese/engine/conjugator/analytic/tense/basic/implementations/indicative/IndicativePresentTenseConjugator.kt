@@ -3,6 +3,7 @@ package com.podmev.portuguese.engine.conjugator.analytic.tense.basic.implementat
 import com.podmev.portuguese.data.engine.conjugator.*
 import com.podmev.portuguese.data.grammar.term.orthography.diacriticLetters.acute.I_Acute_Letter
 import com.podmev.portuguese.data.grammar.term.orthography.diacriticLetters.acute.O_Acute_Letter
+import com.podmev.portuguese.data.grammar.term.orthography.diacriticMarks.AcuteDiacriticMark
 import com.podmev.portuguese.data.grammar.term.orthography.letters.I_Letter
 import com.podmev.portuguese.data.grammar.term.orthography.letters.O_Letter
 import com.podmev.portuguese.data.grammar.term.orthography.letters.U_Letter
@@ -275,6 +276,19 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteT
             )
     }
 
+
+    object Second_Vowel_From_End_Acute_Rule : BaseChangingRule {
+        override fun isCorrectForm(verbArgs: VerbArguments): Boolean = !verbArgs.isFirstOrSecondPlural()
+        override val fixedVerbList = listOf("aguar")
+        override fun changeBaseIfPossible(verb: String, exactSuffix: String, verbArgs: VerbArguments): String =
+            Wordifier.putDiacriticMarkOnLastVowelInPrefix(
+                word = verb,
+                prefix = VerbHelper.dropInfinitiveSuffixAllVowelsAndR(verb),
+                diacriticMark = AcuteDiacriticMark
+            )
+    }
+
+
 //bad rule - didn't work
 //    object U_TO_O_Rule : BaseChangingRule {
 //        override fun isCorrectForm(verbArgs: VerbArguments): Boolean = verbArgs.isSecondSingular() || verbArgs.isThird()
@@ -292,6 +306,7 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteT
         Construir_Destruir_U_TO_O_Rule,
         GU_TO_G_Rule,
         OIBIR_I_TO_I_Acute_Rule,
+        Second_Vowel_From_End_Acute_Rule
     )
 
     override fun toString(): String {
