@@ -311,6 +311,18 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteT
             )
     }
 
+    object O_TO_U_Rule : BaseChangingRule {
+        override fun isCorrectForm(verbArgs: VerbArguments): Boolean = verbArgs.isFirstSingular()
+        override val fixedVerbList = listOf("tossir")
+        override fun changeBaseIfPossible(verb: String, exactSuffix: String, verbArgs: VerbArguments): String =
+            Wordifier.replaceLastFoundGenericLetterInPrefix(
+                word = verb,
+                prefix = VerbHelper.dropInfinitiveSuffixXR(verb),
+                fromGenericLetter = O_Letter,
+                toGenericLetter = U_Letter
+            )
+    }
+
 
 //bad rule - didn't work
 //    object U_TO_O_Rule : BaseChangingRule {
@@ -331,7 +343,8 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteT
         OIBIR_I_TO_I_Acute_Rule,
         Second_Vowel_From_End_Acute_Rule,
         Third_Vowel_From_End_Acute_Rule,
-        U_TO_O_Rule
+        U_TO_O_Rule,
+        O_TO_U_Rule
     )
 
     override fun toString(): String {
