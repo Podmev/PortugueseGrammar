@@ -253,6 +253,14 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteT
             replaceIfNecessaryE_LetterForI_LetterOrNull(verb)
     }
 
+    object E_TO_I_Full_Rule : BaseChangingRule {
+        override fun isCorrectForm(verbArgs: VerbArguments): Boolean = !verbArgs.isFirstOrSecondPlural()
+        override val fixedVerbList: List<String>
+            get() = listOf("agredir")
+        override fun changeBaseIfPossible(verb: String, exactSuffix: String, verbArgs: VerbArguments): String? =
+            replaceIfNecessaryE_LetterForI_LetterOrNull(verb)
+    }
+
     object Construir_Destruir_U_TO_O_Rule : BaseChangingRule {
         override fun isCorrectForm(verbArgs: VerbArguments): Boolean = verbArgs.isSecondSingular() || verbArgs.isThird()
         override val fixedVerbList: List<String> = listOf("construir", "destruir")
@@ -332,7 +340,8 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteT
         C_TO_C_Cedilla_Rule,
         G_TO_J_Rule,
         EGU_TO_IG_Rule,
-        E_TO_I_Rule,// - excluded for now
+        E_TO_I_Rule,
+        E_TO_I_Full_Rule,
         Construir_Destruir_U_TO_O_Rule,
         GU_TO_G_Rule,
         OIBIR_I_TO_I_Acute_Rule,
