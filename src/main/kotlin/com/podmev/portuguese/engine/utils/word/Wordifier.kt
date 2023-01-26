@@ -40,6 +40,23 @@ object Wordifier {
         return exactLetters2Word(exactLettersWithoutDiacritics)
     }
 
+    fun deleteAllDiacriticMarksFromList(
+        word: String,
+        diacriticsMarksToDelete: List<DiacriticMark>
+    ): String {
+        val exactLetters: List<ExactLetter> = word2ExactLetters(word)
+        val exactLettersWithoutDiacritics = exactLetters.map {
+            val genericLetter = it.genericLetter
+            val diacriticMark = genericLetter.diacriticMark
+            if (diacriticMark != null && diacriticMark in diacriticsMarksToDelete) {
+                genericLetter.baseLetter().exactLetterBySize(it.size)
+            } else {
+                it
+            }
+        }
+        return exactLetters2Word(exactLettersWithoutDiacritics)
+    }
+
     fun replaceLastFoundGenericLetter(
         word: String,
         fromGenericLetter: GenericLetter,

@@ -4,7 +4,6 @@ import com.podmev.portuguese.data.engine.conjugator.ConjugateSettings
 import com.podmev.portuguese.data.grammar.term.general.GrammaticalGender
 import com.podmev.portuguese.data.grammar.term.general.GrammaticalNumber.SINGULAR
 import com.podmev.portuguese.data.grammar.term.general.GrammaticalPerson.FIRST
-import com.podmev.portuguese.data.grammar.term.general.GrammaticalPerson.THIRD
 import com.podmev.portuguese.data.grammar.term.tense.GrammaticalTense
 import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.indicative.IndicativePresentTense
 import com.podmev.portuguese.data.grammar.term.verb.GrammaticalVoice
@@ -14,10 +13,11 @@ abstract class SpecialVerbBaseByTense(
     val tense: GrammaticalTense,
     val verbArgs: VerbArguments
 ) {
-    fun getForm(verb: String, settings: ConjugateSettings): List<String> = AnalyticConjugator.conjugateVerb(verb, tense, verbArgs, settings)
+    fun getForm(verb: String, settings: ConjugateSettings): List<String> =
+        AnalyticConjugator.conjugateVerb(verb, tense, verbArgs, settings)
 
     fun getBasePlusInfinitiveEnding(verb: String, settings: ConjugateSettings): String? {
-        val base = getBase(verb, settings)?: return null
+        val base = getBase(verb, settings) ?: return null
         return base + verb.takeLast(2)
     }
 
@@ -36,8 +36,8 @@ object FirstSingularIndicativePresentSpecialVerbBase :
         )
     ) {
 
-    override fun getBase(verb: String, settings: ConjugateSettings) : String?{
-        val form = getForm(verb, settings).firstOrNull() ?:return null
+    override fun getBase(verb: String, settings: ConjugateSettings): String? {
+        val form = getForm(verb, settings).firstOrNull() ?: return null
         return form.dropLast(1) //dropping ending 'o'
     }
 
