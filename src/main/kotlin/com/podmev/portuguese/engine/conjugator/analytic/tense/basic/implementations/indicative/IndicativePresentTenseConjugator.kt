@@ -23,6 +23,7 @@ import com.podmev.portuguese.engine.utils.word.Wordifier
 /*
 * empedernir: firstSingular is missing in brazil, portugal - empedirno
 * submergir/emergir: firstSingular is submerjo/emerjo in brazil, portugal - submerjo/emerjo or submirjo/emirjo
+* malquerer: malquere - brasil, malquer - pt
 * * * * */
 @Suppress("BooleanLiteralArgument", "ClassName")
 object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteTenseConjugator() {

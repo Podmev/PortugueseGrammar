@@ -199,6 +199,7 @@ subjunctivePresentTest(VerbFormInfo)
 what to do with gear - doesn't has form
 
 desdar, tense=SubjunctivePresentTense, person=FIRST, number=PLURAL: desdemos, desdêmos
+malquerer - brasil malquera, pt - malqueira
 * */
 object SubjunctivePresentTenseConjugator : SubjunctiveMoodTenseConjugator, FiniteTenseConjugator() {
     override val arSuffix = SuffixGroup("e", "es", "e", "emos", "eis", "em")
