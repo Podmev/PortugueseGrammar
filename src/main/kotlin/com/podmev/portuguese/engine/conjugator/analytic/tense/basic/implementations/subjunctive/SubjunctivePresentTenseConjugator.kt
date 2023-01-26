@@ -1,9 +1,13 @@
+@file:Suppress("ClassName")
+
 package com.podmev.portuguese.engine.conjugator.analytic.tense.basic.implementations.subjunctive
 
 import com.podmev.portuguese.data.engine.conjugator.*
 import com.podmev.portuguese.data.grammar.term.verb.VerbArguments
+import com.podmev.portuguese.data.grammar.term.verb.isFirstOrSecondPlural
 import com.podmev.portuguese.engine.conjugator.analytic.*
 import com.podmev.portuguese.engine.utils.verb.VerbEnds
+import com.podmev.portuguese.engine.utils.word.Wordifier
 
 /*
 [root]
@@ -341,11 +345,20 @@ object SubjunctivePresentTenseConjugator : SubjunctiveMoodTenseConjugator, Finit
             VerbHelper.replaceIfNecessaryC_Cedilla_LetterForC_LetterOrNull(verb)
     }
 
+    object Remove_Diacritics_Rule : BaseChangingRule {
+        override fun isCorrectForm(verbArgs: VerbArguments): Boolean = verbArgs.isFirstOrSecondPlural()
+        override val fixedVerbList: List<String>
+            get() = listOf("aguar","enxaugar", "europeizar", "mobiliar", "resfolegar", "saudar")
+        override fun changeBaseIfPossible(verb: String, exactSuffix: String, verbArgs: VerbArguments): String =
+            Wordifier.deleteAllDiacriticMarks(verb)
+    }
+
     //already for changed verbs
     override val baseChangingRules = listOf(
         C_TO_QU_Rule,
         G_TO_GU_Rule,
-        C_Cedilla_TO_C_Rule
+        C_Cedilla_TO_C_Rule,
+        Remove_Diacritics_Rule
     )
 
     override fun toString(): String {

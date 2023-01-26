@@ -144,7 +144,12 @@ abstract class FiniteTenseConjugator() : Conjugator {
     private fun prepareBase(verb: String, suffix: String, suffixGroup: SuffixGroup, verbArgs: VerbArguments, settings: ConjugateSettings): String {
         val specialBasePlusInfinitiveEnding = specialVerbBaseByTense?.getBasePlusInfinitiveEnding(verb, settings)
         val usingVerb: String = specialBasePlusInfinitiveEnding ?: verb
-        val preparedInfinitive = prepareInfinitive(usingVerb, suffix, verbArgs)
+        val preparedInfinitive = prepareInfinitive(
+            originalInfinitive = verb,
+            usingInfinitive = usingVerb,
+            suffix = suffix,
+            verbArgs = verbArgs
+        )
         return VerbHelper.dropInfinitiveSuffixByLength(
             infinitive = preparedInfinitive,
             lengthToDrop = suffixGroup.droppingSuffixLength
@@ -186,16 +191,17 @@ abstract class FiniteTenseConjugator() : Conjugator {
         return null
     }
 
-    private fun prepareInfinitive(infinitive: String, suffix: String, verbArgs: VerbArguments): String {
+    private fun prepareInfinitive(originalInfinitive: String,
+                                  usingInfinitive: String, suffix: String, verbArgs: VerbArguments): String {
         for (rule in baseChangingRules) {
-            if (rule.isCorrectForm(verbArgs) && rule.fitsVerb(infinitive)) {
-                val changeBaseIfPossible: String? = rule.changeBaseIfPossible(infinitive, suffix, verbArgs)
+            if (rule.isCorrectForm(verbArgs) && rule.fitsVerb(originalInfinitive)) {
+                val changeBaseIfPossible: String? = rule.changeBaseIfPossible(usingInfinitive, suffix, verbArgs)
                 if (changeBaseIfPossible != null) {
                     return changeBaseIfPossible
                 }
             }
         }
-        return infinitive
+        return usingInfinitive
     }
 
     private fun totalDefectiveGroups(): Map<DefectiveGroup, List<String>> =
