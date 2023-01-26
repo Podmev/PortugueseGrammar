@@ -250,13 +250,14 @@ object SubjunctivePresentTenseConjugator : SubjunctiveMoodTenseConjugator, Finit
                     DefectiveVerbs.DELIR,
                     DefectiveVerbs.DEMOLIR,
                     DefectiveVerbs.DESCOLORIR,
+                    DefectiveVerbs.EMPEDERNIR,
                     DefectiveVerbs.EXPLODIR,
                     DefectiveVerbs.FALIR,
                     DefectiveVerbs.FLORIR,
                     DefectiveVerbs.GANIR,
                     DefectiveVerbs.LATIR,
                     DefectiveVerbs.REMIR,
-                    DefectiveVerbs.RUIR,
+                    DefectiveVerbs.RUIR
                 )
             )
         )

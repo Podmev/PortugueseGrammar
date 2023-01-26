@@ -17,7 +17,7 @@ abstract class SpecialVerbBaseByTense(
         AnalyticConjugator.conjugateVerb(verb, tense, verbArgs, settings)
 
     fun getBasePlusInfinitiveEnding(verb: String, settings: ConjugateSettings): String? {
-        val base = getBase(verb, settings) ?: return null
+        val base = getBase(verb, changeSettings(settings)) ?: return null
         return base + verb.takeLast(2)
     }
 
