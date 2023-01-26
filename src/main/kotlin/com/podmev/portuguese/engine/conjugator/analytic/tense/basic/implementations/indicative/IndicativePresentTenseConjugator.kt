@@ -22,6 +22,7 @@ import com.podmev.portuguese.engine.utils.word.Wordifier
 
 /*
 * empedernir: firstSingular is missing in brazil, portugal - empedirno
+* submergir/emergir: firstSingular is submerjo/emerjo in brazil, portugal - submerjo/emerjo or submirjo/emirjo
 * * * * */
 @Suppress("BooleanLiteralArgument", "ClassName")
 object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteTenseConjugator() {
@@ -193,7 +194,7 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteT
     object E_TO_I_Rule : BaseChangingRule {
         override fun isCorrectForm(verbArgs: VerbArguments): Boolean = verbArgs.isFirstSingular()
         override val exceptions: List<String>
-            get() = listOf("manutenir", "premir", "renhir", "convelir", "discernir")
+            get() = listOf("manutenir", "premir", "renhir", "convelir", "discernir", "emergir")
 
         override fun changeBaseIfPossible(verb: String, exactSuffix: String, verbArgs: VerbArguments): String? =
             replaceIfNecessaryE_LetterForI_LetterOrNull(verb)

@@ -193,15 +193,16 @@ abstract class FiniteTenseConjugator() : Conjugator {
 
     private fun prepareInfinitive(originalInfinitive: String,
                                   usingInfinitive: String, suffix: String, verbArgs: VerbArguments): String {
+        var currentResult = usingInfinitive
         for (rule in baseChangingRules) {
             if (rule.isCorrectForm(verbArgs) && rule.fitsVerb(originalInfinitive)) {
-                val changeBaseIfPossible: String? = rule.changeBaseIfPossible(usingInfinitive, suffix, verbArgs)
+                val changeBaseIfPossible: String? = rule.changeBaseIfPossible(currentResult, suffix, verbArgs)
                 if (changeBaseIfPossible != null) {
-                    return changeBaseIfPossible
+                    currentResult = changeBaseIfPossible
                 }
             }
         }
-        return usingInfinitive
+        return currentResult
     }
 
     private fun totalDefectiveGroups(): Map<DefectiveGroup, List<String>> =
