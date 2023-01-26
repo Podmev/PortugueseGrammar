@@ -97,9 +97,16 @@ object IndicativePreteriteTenseConjugator : IndicativeMoodTenseConjugator, Finit
             VerbHelper.replaceIfNecessaryG_LetterForGU_FragmentOrNull(verb)
     }
 
+    object C_Cedilla_TO_C_Rule : BaseChangingRule {
+        override fun isCorrectForm(verbArgs: VerbArguments): Boolean = verbArgs.isFirstSingular()
+        override fun changeBaseIfPossible(verb: String, exactSuffix: String, verbArgs: VerbArguments): String? =
+            VerbHelper.replaceIfNecessaryC_Cedilla_LetterForC_LetterOrNull(verb)
+    }
+
     override val baseChangingRules: List<BaseChangingRule> = listOf(
         C_TO_QU_Rule,
-        G_TO_GU_Rule
+        G_TO_GU_Rule,
+        C_Cedilla_TO_C_Rule
     )
 
     override val currentDefectiveGroups: Map<DefectiveGroup, List<String>>
