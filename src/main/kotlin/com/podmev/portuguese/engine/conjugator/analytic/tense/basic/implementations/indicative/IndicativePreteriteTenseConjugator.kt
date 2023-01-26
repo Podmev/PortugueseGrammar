@@ -1,8 +1,11 @@
 package com.podmev.portuguese.engine.conjugator.analytic.tense.basic.implementations.indicative
 
 import com.podmev.portuguese.data.engine.conjugator.*
+import com.podmev.portuguese.data.grammar.term.verb.VerbArguments
+import com.podmev.portuguese.data.grammar.term.verb.isFirstSingular
 import com.podmev.portuguese.engine.conjugator.analytic.FiniteTenseConjugator
 import com.podmev.portuguese.engine.conjugator.analytic.IrregularVerbs
+import com.podmev.portuguese.engine.conjugator.analytic.VerbHelper
 
 object IndicativePreteriteTenseConjugator : IndicativeMoodTenseConjugator, FiniteTenseConjugator() {
     override val arSuffix = SuffixGroup("ei", "aste", "ou", "amos", "astes", "aram")
@@ -80,8 +83,25 @@ object IndicativePreteriteTenseConjugator : IndicativeMoodTenseConjugator, Finit
 
     override val specialEndingSuffixRules: List<SpecialEndingSuffixRule>
         get() = emptyList()
-    override val baseChangingRules: List<BaseChangingRule>
-        get() = emptyList()
+
+
+    object C_TO_QU_Rule : BaseChangingRule {
+        override fun isCorrectForm(verbArgs: VerbArguments): Boolean = verbArgs.isFirstSingular()
+        override fun changeBaseIfPossible(verb: String, exactSuffix: String, verbArgs: VerbArguments): String? =
+            VerbHelper.replaceIfNecessaryC_LetterForQU_FragmentOrNull(verb)
+    }
+
+    object G_TO_GU_Rule : BaseChangingRule {
+        override fun isCorrectForm(verbArgs: VerbArguments): Boolean = verbArgs.isFirstSingular()
+        override fun changeBaseIfPossible(verb: String, exactSuffix: String, verbArgs: VerbArguments): String? =
+            VerbHelper.replaceIfNecessaryG_LetterForGU_FragmentOrNull(verb)
+    }
+
+    override val baseChangingRules: List<BaseChangingRule> = listOf(
+        C_TO_QU_Rule,
+        G_TO_GU_Rule
+    )
+
     override val currentDefectiveGroups: Map<DefectiveGroup, List<String>>
         get() = mapOf()
 

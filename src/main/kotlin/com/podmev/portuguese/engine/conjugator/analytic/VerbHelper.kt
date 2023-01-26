@@ -131,18 +131,6 @@ object VerbHelper {
         return null //not this case
     }
 
-    //bad rule - didn't work
-//    fun replaceIfNecessaryU_LetterForO_LetterOrNull(infinitive: String): String? {
-//        val dropInfinitiveSuffixXR = dropInfinitiveSuffixXR(infinitive)
-//        if (infinitive.endsWith(VerbEnds.IR) &&
-//            Alphabet.isConsonantChar(dropInfinitiveSuffixXR.getFromEnd(0)) &&
-//            dropInfinitiveSuffixXR.getFromEnd(1) == U_Letter.lowercase
-//        ) {
-//            return Wordifier.replaceLastFoundGenericLetter(infinitive, U_Letter, O_Letter)
-//        }
-//        return null //not this case
-//    }
-
 
     fun forbiddenOnNotThirdSingularForm(verbInInfinitive: String, verbArgs: VerbArguments) =
         verbInInfinitive in VerbLists.onlyThirdSingularFormVerbs && !verbArgs.isThirdSingular()
