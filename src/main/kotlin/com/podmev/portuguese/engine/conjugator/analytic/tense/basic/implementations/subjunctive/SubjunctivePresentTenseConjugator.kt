@@ -196,9 +196,9 @@ subjunctivePresentTest(VerbFormInfo)
 [25493] VerbFormInfo(infinitive=tossir, tense=SubjunctivePresentTense, person=THIRD, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE)
 [25494] VerbFormInfo(infinitive=tossir, tense=SubjunctivePresentTense, person=THIRD, number=PLURAL, gender=UNDEFINED, voice=ACTIVE)
 
-different base for resfolegar
-
 what to do with gear - doesn't has form
+
+desdar, tense=SubjunctivePresentTense, person=FIRST, number=PLURAL: desdemos, desdêmos
 * */
 object SubjunctivePresentTenseConjugator : SubjunctiveMoodTenseConjugator, FiniteTenseConjugator() {
     override val arSuffix = SuffixGroup("e", "es", "e", "emos", "eis", "em")
