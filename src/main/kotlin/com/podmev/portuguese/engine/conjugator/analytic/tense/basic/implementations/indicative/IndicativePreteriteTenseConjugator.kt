@@ -12,6 +12,8 @@ import com.podmev.portuguese.engine.utils.verb.VerbEnds
 * 2 forms for prazer
 * prouve/prazeu
 * prouveram/prazeram
+*
+* malquerer - brazil - regular, pt - derivative form querer
 * */
 object IndicativePreteriteTenseConjugator : IndicativeMoodTenseConjugator, FiniteTenseConjugator() {
     override val arSuffix = SuffixGroup("ei", "aste", "ou", "amos", "astes", "aram")
