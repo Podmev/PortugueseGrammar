@@ -31,6 +31,8 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteT
     override val erSuffix = SuffixGroup("o", "es", "e", "emos", "eis", "em")
     override val irSuffix = SuffixGroup("o", "es", "e", "imos", "is", "em")
 
+    override val autoAddAcuteToE_LetterInDerivativesWith1Vowel = true
+
     override val irregularForms: Map<String, IrregularForm> = mapOf(
         Pair(IrregularVerbs.or.POR, IrregularForm(FormGroup("ponho", "pões", "põe", "pomos", "pondes", "põem"))),
 

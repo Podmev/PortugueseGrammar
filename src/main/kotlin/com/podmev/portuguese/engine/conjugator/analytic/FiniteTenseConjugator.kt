@@ -6,7 +6,8 @@ import com.podmev.portuguese.data.grammar.term.orthography.letters.E_Letter
 import com.podmev.portuguese.data.grammar.term.tense.GrammaticalTense
 import com.podmev.portuguese.data.grammar.term.verb.VerbArguments
 import com.podmev.portuguese.data.other.PortugueseLocale
-import com.podmev.portuguese.data.other.PortugueseLocale.*
+import com.podmev.portuguese.data.other.PortugueseLocale.BRAZIL
+import com.podmev.portuguese.data.other.PortugueseLocale.PORTUGAL
 import com.podmev.portuguese.engine.utils.verb.VerbEnds
 import com.podmev.portuguese.engine.utils.word.Wordifier
 import com.podmev.portuguese.utils.lang.mergeListMaps
@@ -34,6 +35,9 @@ abstract class FiniteTenseConjugator() : Conjugator {
     open val specialVerbBaseByTense: SpecialVerbBaseByTense? = null
 
     var defectiveGroupByVerbMap: Map<String, DefectiveGroup> = createDefectiveGroupByVerbMap()
+
+    /*using mostly in presente indicativo*/
+    open val autoAddAcuteToE_LetterInDerivativesWith1Vowel: Boolean = false
 
     override fun conjugateVerb(
         verbInInfinitive: String,
@@ -108,10 +112,14 @@ abstract class FiniteTenseConjugator() : Conjugator {
         val originForm: List<String> = originIrregularForm.getForm(verbArgs, originRegularTransformation) ?: return null
         val (diff: String, dropAtStart: Int) = VerbHelper.diffVerbAndOrigin(verb, originIrregularVerb)
         return originForm.map { singleOriginForm ->
-            diff + addDiacriticsOnOriginFormForDerivative(
-                singleOriginForm,
-                diff
-            ).drop(dropAtStart)
+            val modifiedOriginBase =
+                if (autoAddAcuteToE_LetterInDerivativesWith1Vowel)
+                    addDiacriticsOnOriginFormForDerivative(
+                        singleOriginForm,
+                        diff
+                    )
+                else singleOriginForm
+            diff + modifiedOriginBase.drop(dropAtStart)
         }
     }
 
@@ -127,7 +135,11 @@ abstract class FiniteTenseConjugator() : Conjugator {
         return originForm
     }
 
-    private fun regularChanging(verb: String, verbArgs: VerbArguments, settings: ConjugateSettings): RegularTransformation? {
+    private fun regularChanging(
+        verb: String,
+        verbArgs: VerbArguments,
+        settings: ConjugateSettings
+    ): RegularTransformation? {
         val suffixGroup = getSuffixGroup(verb, settings) ?: return null //in case of -or
         val suffix = suffixGroup.getSuffix(verbArgs)!! //for regular should not apear
         val preparedBase = prepareBase(verb, suffix, suffixGroup, verbArgs, settings)
@@ -141,7 +153,13 @@ abstract class FiniteTenseConjugator() : Conjugator {
         return specialEndingSuffix ?: regularSuffix
     }
 
-    private fun prepareBase(verb: String, suffix: String, suffixGroup: SuffixGroup, verbArgs: VerbArguments, settings: ConjugateSettings): String {
+    private fun prepareBase(
+        verb: String,
+        suffix: String,
+        suffixGroup: SuffixGroup,
+        verbArgs: VerbArguments,
+        settings: ConjugateSettings
+    ): String {
         val specialBasePlusInfinitiveEnding = specialVerbBaseByTense?.getBasePlusInfinitiveEnding(verb, settings)
         val usingVerb: String = specialBasePlusInfinitiveEnding ?: verb
         val preparedInfinitive = prepareInfinitive(
@@ -157,7 +175,7 @@ abstract class FiniteTenseConjugator() : Conjugator {
     }
 
     private fun getRegularSuffixGroup(verb: String, portugueseLocale: PortugueseLocale): SuffixGroup? =
-        when(portugueseLocale){
+        when (portugueseLocale) {
             BRAZIL -> getRegularSuffixGroupBrazil(verb)
             PORTUGAL -> getRegularSuffixGroupPortugal(verb)
         }
@@ -191,8 +209,10 @@ abstract class FiniteTenseConjugator() : Conjugator {
         return null
     }
 
-    private fun prepareInfinitive(originalInfinitive: String,
-                                  usingInfinitive: String, suffix: String, verbArgs: VerbArguments): String {
+    private fun prepareInfinitive(
+        originalInfinitive: String,
+        usingInfinitive: String, suffix: String, verbArgs: VerbArguments
+    ): String {
         var currentResult = usingInfinitive
         for (rule in baseChangingRules) {
             if (rule.isCorrectForm(verbArgs) && rule.fitsVerb(originalInfinitive)) {
