@@ -8,6 +8,11 @@ import com.podmev.portuguese.engine.conjugator.analytic.IrregularVerbs
 import com.podmev.portuguese.engine.conjugator.analytic.VerbHelper
 import com.podmev.portuguese.engine.utils.verb.VerbEnds
 
+/*
+* 2 forms for prazer
+* prouve/prazeu
+* prouveram/prazeram
+* */
 object IndicativePreteriteTenseConjugator : IndicativeMoodTenseConjugator, FiniteTenseConjugator() {
     override val arSuffix = SuffixGroup("ei", "aste", "ou", "amos", "astes", "aram")
     override val erSuffix = SuffixGroup("i", "este", "eu", "emos", "estes", "eram")
@@ -70,6 +75,7 @@ object IndicativePreteriteTenseConjugator : IndicativeMoodTenseConjugator, Finit
             IrregularVerbs.er.CABER,
             IrregularForm(FormGroup("coube", "coubeste", "coube", "coubemos", "coubestes", "couberam"))
         ),
+        Pair(IrregularVerbs.er.PRAZER, IrregularForm(FormGroup(null, null, "prouve", null, null, "prouveram"))),
 //        Pair(IrregularVerbs.er.PROVER, ), regular
 //        Pair(IrregularVerbs.er.CRER, ), regular
 //        Pair(IrregularVerbs.er.REQUERER, ), regular

@@ -44,6 +44,7 @@ object VerbLists {
                 "sobrepor", "supor", "transpor"
             )
         ),
+        Pair("prazer", listOf("aprazer")),
         Pair("rir", listOf("sorrir")),
         Pair("seguir", listOf("conseguir", "desconseguir", "desseguir", "perseguir", "prosseguir")),
         Pair("sumir", listOf("consumir")),
@@ -65,11 +66,11 @@ object VerbLists {
         mapOf(
             Pair(
                 DefectiveGroup(false, false, true, false, false, false),
-                listOf("prazer", "aprazer", "gear", "nevar")
+                listOf("gear", "nevar")
             ),
             Pair(
                 DefectiveGroup(false, false, true, false, false, true),
-                listOf("doer")
+                listOf("prazer", "aprazer", "doer")
             )
         )
 

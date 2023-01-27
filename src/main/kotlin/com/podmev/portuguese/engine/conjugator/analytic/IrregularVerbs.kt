@@ -25,6 +25,7 @@ object IrregularVerbs {
         const val VALER = "valer"
         const val ERGUER = "erguer"
         const val AQUECER = "aquecer"
+        const val PRAZER = "prazer"
 
     }
     object ir{
