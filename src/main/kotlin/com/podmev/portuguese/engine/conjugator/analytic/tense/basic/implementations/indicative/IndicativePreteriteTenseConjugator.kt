@@ -96,9 +96,16 @@ object IndicativePreteriteTenseConjugator : IndicativeMoodTenseConjugator, Finit
         override fun getSuffix(verb: String, regularSuffix: SuffixGroup) = AIR_UIR_suffix_group
     }
 
+    object OER_Suffix_Rule : SpecialEndingSuffixRule {
+        override val wordEnding = VerbEnds.OER
+        override fun getSuffix(verb: String, regularSuffix: SuffixGroup) =
+            regularSuffix.copy(singularFirst = "í")
+    }
+
     override val specialEndingSuffixRules: List<SpecialEndingSuffixRule> = listOf(
         AIR_Suffix_Rule,
-        UIR_Suffix_Rule
+        UIR_Suffix_Rule,
+        OER_Suffix_Rule
     )
 
     object C_TO_QU_Rule : BaseChangingRule {
