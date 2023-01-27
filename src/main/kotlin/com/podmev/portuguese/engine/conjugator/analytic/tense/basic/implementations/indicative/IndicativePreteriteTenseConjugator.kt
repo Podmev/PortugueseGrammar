@@ -63,7 +63,7 @@ object IndicativePreteriteTenseConjugator : IndicativeMoodTenseConjugator, Finit
         Pair(IrregularVerbs.er.LER, IrregularForm(FormGroup("li", "leste", "leu", "lemos", "lestes", "leram"))),
         Pair(
             IrregularVerbs.er.TRAZER,
-            IrregularForm(FormGroup("trouxe", "trouxeste", "trouxe", "trouxe", "trouxestes", "trouxeram"))
+            IrregularForm(FormGroup("trouxe", "trouxeste", "trouxe", "trouxemos", "trouxestes", "trouxeram"))
         ),
 //        Pair(IrregularVerbs.er.PERDER, ), regular
         Pair(
