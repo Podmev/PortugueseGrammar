@@ -2,10 +2,13 @@ package com.podmev.portuguese.engine.conjugator.analytic
 
 import com.podmev.portuguese.data.engine.conjugator.ConjugateSettings
 import com.podmev.portuguese.data.grammar.term.general.GrammaticalGender
+import com.podmev.portuguese.data.grammar.term.general.GrammaticalNumber.PLURAL
 import com.podmev.portuguese.data.grammar.term.general.GrammaticalNumber.SINGULAR
 import com.podmev.portuguese.data.grammar.term.general.GrammaticalPerson.FIRST
+import com.podmev.portuguese.data.grammar.term.general.GrammaticalPerson.THIRD
 import com.podmev.portuguese.data.grammar.term.tense.GrammaticalTense
 import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.indicative.IndicativePresentTense
+import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.indicative.IndicativePreteriteTense
 import com.podmev.portuguese.data.grammar.term.verb.GrammaticalVoice
 import com.podmev.portuguese.data.grammar.term.verb.VerbArguments
 
@@ -39,6 +42,27 @@ object FirstSingularIndicativePresentSpecialVerbBase :
     override fun getBase(verb: String, settings: ConjugateSettings): String? {
         val form = getForm(verb, settings).firstOrNull() ?: return null
         return form.dropLast(1) //dropping ending 'o'
+    }
+
+    override fun changeSettings(settings: ConjugateSettings): ConjugateSettings =
+        settings.copy(ignoreDefective = true)
+
+}
+
+object ThirdPluralIndicativePreteriteSpecialVerbBase :
+    SpecialVerbBaseByTense(
+        IndicativePreteriteTense,
+        VerbArguments(
+            person = THIRD,
+            number = PLURAL,
+            gender = GrammaticalGender.UNDEFINED,
+            voice = GrammaticalVoice.ACTIVE
+        )
+    ) {
+
+    override fun getBase(verb: String, settings: ConjugateSettings): String? {
+        val form = getForm(verb, settings).firstOrNull() ?: return null
+        return form.dropLast(4) //dropping ending '<a/e/i>ram'
     }
 
     override fun changeSettings(settings: ConjugateSettings): ConjugateSettings =
