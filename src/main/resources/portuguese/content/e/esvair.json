@@ -171,14 +171,14 @@
       "group": "indicative/preterite",
       "group_sort": 7,
       "sort": 0,
-      "value": "esvai"
+      "value": "esvaí"
     },
     {
       "form": "s2",
       "group": "indicative/preterite",
       "group_sort": 7,
       "sort": 1,
-      "value": "esvaiste"
+      "value": "esvaíste"
     },
     {
       "form": "s3",
@@ -192,21 +192,21 @@
       "group": "indicative/preterite",
       "group_sort": 7,
       "sort": 3,
-      "value": "esvaimos"
+      "value": "esvaímos"
     },
     {
       "form": "p2",
       "group": "indicative/preterite",
       "group_sort": 7,
       "sort": 4,
-      "value": "esvaistes"
+      "value": "esvaístes"
     },
     {
       "form": "p3",
       "group": "indicative/preterite",
       "group_sort": 7,
       "sort": 5,
-      "value": "esvairam"
+      "value": "esvaíram"
     },
     {
       "form": "s1",

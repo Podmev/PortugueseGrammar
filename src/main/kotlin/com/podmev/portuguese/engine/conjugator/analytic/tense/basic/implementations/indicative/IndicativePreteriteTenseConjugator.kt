@@ -6,11 +6,14 @@ import com.podmev.portuguese.data.grammar.term.verb.isFirstSingular
 import com.podmev.portuguese.engine.conjugator.analytic.FiniteTenseConjugator
 import com.podmev.portuguese.engine.conjugator.analytic.IrregularVerbs
 import com.podmev.portuguese.engine.conjugator.analytic.VerbHelper
+import com.podmev.portuguese.engine.utils.verb.VerbEnds
 
 object IndicativePreteriteTenseConjugator : IndicativeMoodTenseConjugator, FiniteTenseConjugator() {
     override val arSuffix = SuffixGroup("ei", "aste", "ou", "amos", "astes", "aram")
     override val erSuffix = SuffixGroup("i", "este", "eu", "emos", "estes", "eram")
     override val irSuffix = SuffixGroup("i", "iste", "iu", "imos", "istes", "iram")
+
+    val AIR_UIR_suffix_group = SuffixGroup("í", "íste", "iu", "ímos", "ístes", "íram")
 
     //special changes in Portugal for -ar suffix for nós
     override val arSuffixPortugal = arSuffix.copy(pluralFirst = "ámos")
@@ -81,9 +84,22 @@ object IndicativePreteriteTenseConjugator : IndicativeMoodTenseConjugator, Finit
 //        Pair(IrregularVerbs.ir.RIR, ), regular
     )
 
-    override val specialEndingSuffixRules: List<SpecialEndingSuffixRule>
-        get() = emptyList()
 
+    object AIR_Suffix_Rule : SpecialEndingSuffixRule {
+        override val wordEnding = VerbEnds.AIR
+        override fun getSuffix(verb: String, regularSuffix: SuffixGroup) = AIR_UIR_suffix_group
+    }
+
+    object UIR_Suffix_Rule : SpecialEndingSuffixRule {
+        override val wordEnding = VerbEnds.UIR
+        override val exceptions: List<String> = listOf("seguir", "extinguir", "distinguir", "retorquir")
+        override fun getSuffix(verb: String, regularSuffix: SuffixGroup) = AIR_UIR_suffix_group
+    }
+
+    override val specialEndingSuffixRules: List<SpecialEndingSuffixRule> = listOf(
+        AIR_Suffix_Rule,
+        UIR_Suffix_Rule
+    )
 
     object C_TO_QU_Rule : BaseChangingRule {
         override fun isCorrectForm(verbArgs: VerbArguments): Boolean = verbArgs.isFirstSingular()
