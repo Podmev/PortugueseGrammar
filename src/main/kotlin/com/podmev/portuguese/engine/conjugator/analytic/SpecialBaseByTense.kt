@@ -14,14 +14,15 @@ import com.podmev.portuguese.data.grammar.term.verb.VerbArguments
 
 abstract class SpecialVerbBaseByTense(
     val tense: GrammaticalTense,
-    val verbArgs: VerbArguments
+    val verbArgs: VerbArguments,
+    val amountOfTakingCharsFromTheEnd: Int
 ) {
     fun getForm(verb: String, settings: ConjugateSettings): List<String> =
         AnalyticConjugator.conjugateVerb(verb, tense, verbArgs, settings)
 
     fun getBasePlusInfinitiveEnding(verb: String, settings: ConjugateSettings): String? {
         val base = getBase(verb, changeSettings(settings)) ?: return null
-        return base + verb.takeLast(2)
+        return base + verb.takeLast(amountOfTakingCharsFromTheEnd)
     }
 
     abstract fun getBase(verb: String, settings: ConjugateSettings): String?
@@ -30,13 +31,14 @@ abstract class SpecialVerbBaseByTense(
 
 object FirstSingularIndicativePresentSpecialVerbBase :
     SpecialVerbBaseByTense(
-        IndicativePresentTense,
-        VerbArguments(
+        tense = IndicativePresentTense,
+        verbArgs = VerbArguments(
             person = FIRST,
             number = SINGULAR,
             gender = GrammaticalGender.UNDEFINED,
             voice = GrammaticalVoice.ACTIVE
-        )
+        ),
+        amountOfTakingCharsFromTheEnd = 2
     ) {
 
     override fun getBase(verb: String, settings: ConjugateSettings): String? {
@@ -51,18 +53,19 @@ object FirstSingularIndicativePresentSpecialVerbBase :
 
 object ThirdPluralIndicativePreteriteSpecialVerbBase :
     SpecialVerbBaseByTense(
-        IndicativePreteriteTense,
-        VerbArguments(
+        tense = IndicativePreteriteTense,
+        verbArgs = VerbArguments(
             person = THIRD,
             number = PLURAL,
             gender = GrammaticalGender.UNDEFINED,
             voice = GrammaticalVoice.ACTIVE
-        )
+        ),
+        amountOfTakingCharsFromTheEnd = 1
     ) {
 
     override fun getBase(verb: String, settings: ConjugateSettings): String? {
         val form = getForm(verb, settings).firstOrNull() ?: return null
-        return form.dropLast(4) //dropping ending '<a/e/i>ram'
+        return form.dropLast(3)
     }
 
     override fun changeSettings(settings: ConjugateSettings): ConjugateSettings =

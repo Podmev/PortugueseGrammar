@@ -14,6 +14,18 @@ object Wordifier {
         return replaceLastFoundGenericLetter(word, letter, diacriticLetter)
     }
 
+    fun addDiacriticsToLastLetterByPredicate(
+        word: String,
+        diacriticMark: DiacriticMark,
+        predicate: (Char)->Boolean
+    ): String {
+        val lastCharByPredicate = word.findLast (predicate)!!
+        val genericLetter = Alphabet.parseExactLetter(lastCharByPredicate)!!.genericLetter
+        val diacriticLetter: DiacriticLetter = genericLetter.changeDiacriticsMark(diacriticMark)
+            ?: throw Exception("Cannot add $diacriticMark to letter $genericLetter")
+        return replaceLastFoundGenericLetter(word, genericLetter, diacriticLetter)
+    }
+
     fun deleteLastDiacritics(
         word: String
     ): String {

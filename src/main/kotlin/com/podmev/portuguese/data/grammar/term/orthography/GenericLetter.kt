@@ -11,20 +11,21 @@ interface GenericLetter {
 
     fun baseLetter(): Letter
     fun category(): LetterCategory
+
     /*is forbidden in actual grammar (can be found in ald texts)*/
     fun obsolete(): Boolean
 
-    fun uppercaseExactLetter():ExactLetter = ExactLetter(this, UPPER_CASE)
-    fun lowercaseExactLetter():ExactLetter = ExactLetter(this, LOWER_CASE)
+    fun uppercaseExactLetter(): ExactLetter = ExactLetter(this, UPPER_CASE)
+    fun lowercaseExactLetter(): ExactLetter = ExactLetter(this, LOWER_CASE)
 
     fun viewBySize(letterSize: LetterSize): Char =
-        when(letterSize){
+        when (letterSize) {
             UPPER_CASE -> uppercase
             LOWER_CASE -> lowercase
         }
 
     fun exactLetterBySize(letterSize: LetterSize): ExactLetter =
-        when(letterSize){
+        when (letterSize) {
             UPPER_CASE -> uppercaseExactLetter()
             LOWER_CASE -> lowercaseExactLetter()
         }
@@ -32,5 +33,8 @@ interface GenericLetter {
     fun allExactLetters(): List<ExactLetter> =
         listOf(uppercaseExactLetter(), lowercaseExactLetter())
 
-    fun hasDiacritics() : Boolean = diacriticMark!=null
+    fun hasDiacritics(): Boolean = diacriticMark != null
+
+    fun changeDiacriticsMark(diacriticMark: DiacriticMark) =
+        baseLetter().addDiacriticMark(diacriticMark)
 }
