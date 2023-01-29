@@ -61,7 +61,11 @@ class AnalyticConjugatorPortugalNotIgnoreDefectiveTest {
 
     @ParameterizedTest
     @MethodSource("allVerbFormsAffirmativeImperativeTense")
-    fun imperativeTest(verbFormInfo: VerbFormInfo) = checkVerbFormInfo(verbFormInfo)
+    fun affirmativeImperativeTest(verbFormInfo: VerbFormInfo) = checkVerbFormInfo(verbFormInfo)
+
+    @ParameterizedTest
+    @MethodSource("allVerbFormsNegativeImperativeTense")
+    fun negativeImperativeTest(verbFormInfo: VerbFormInfo) = checkVerbFormInfo(verbFormInfo)
 
     @ParameterizedTest
     @MethodSource("allVerbFormsInfinitiveTense")
