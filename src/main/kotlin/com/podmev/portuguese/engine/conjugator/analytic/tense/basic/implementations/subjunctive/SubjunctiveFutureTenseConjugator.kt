@@ -14,7 +14,9 @@ import com.podmev.portuguese.engine.utils.verb.VerbEnds
 import com.podmev.portuguese.engine.utils.word.Wordifier
 import com.podmev.portuguese.utils.lang.getFromEnd
 
-
+/*
+* malquerer - br, malquiser -  pt
+* */
 object SubjunctiveFutureTenseConjugator : SubjunctiveMoodTenseConjugator, FiniteTenseConjugator() {
     val commonSuffix = SuffixGroup("", "es", "", "mos", "des", "em", droppingSuffixLength = 0)
     override val arSuffix = commonSuffix
