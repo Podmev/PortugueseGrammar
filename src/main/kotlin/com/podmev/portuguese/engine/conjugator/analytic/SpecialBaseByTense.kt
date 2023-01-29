@@ -72,3 +72,25 @@ object ThirdPluralIndicativePreteriteSpecialVerbBase :
         settings.copy(ignoreDefective = true)
 
 }
+
+object ThirdPluralIndicativePreteriteSpecialVerbBase2 :
+    SpecialVerbBaseByTense(
+        tense = IndicativePreteriteTense,
+        verbArgs = VerbArguments(
+            person = THIRD,
+            number = PLURAL,
+            gender = GrammaticalGender.UNDEFINED,
+            voice = GrammaticalVoice.ACTIVE
+        ),
+        amountOfTakingCharsFromTheEnd = 0
+    ) {
+
+    override fun getBase(verb: String, settings: ConjugateSettings): String? {
+        val form = getForm(verb, settings).firstOrNull() ?: return null
+        return form.dropLast(2)
+    }
+
+    override fun changeSettings(settings: ConjugateSettings): ConjugateSettings =
+        settings.copy(ignoreDefective = true)
+
+}
