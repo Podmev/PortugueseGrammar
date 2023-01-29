@@ -26,13 +26,6 @@ object SubjunctiveImperfectTenseConjugator : SubjunctiveMoodTenseConjugator, Fin
 
     override val specialVerbBaseByTense: SpecialVerbBaseByTense = ThirdPluralIndicativePreteriteSpecialVerbBase
 
-    override val irregularForms: Map<String, IrregularForm> = mapOf(
-    )
-    override val currentDefectiveGroups: Map<DefectiveGroup, List<String>>
-        get() = mapOf()
-    override val specialEndingSuffixRules: List<SpecialEndingSuffixRule>
-        get() = listOf()
-
     object DiacriticsBeforeEnding_Rule : BaseChangingRule {
         override fun isCorrectForm(verbArgs: VerbArguments): Boolean = verbArgs.isFirstOrSecondPlural()
         override fun changeBaseIfPossible(
@@ -45,7 +38,7 @@ object SubjunctiveImperfectTenseConjugator : SubjunctiveMoodTenseConjugator, Fin
             val exactLetter = Alphabet.parseExactLetter(lastVowelChar)!!
             val baseLetter = exactLetter.genericLetter.baseLetter()
             val diacriticMark = when (baseLetter) {
-                E_Letter -> (if (verbIsChanged)  AcuteDiacriticMark else CircumflexDiacriticMark)
+                E_Letter -> (if (verbIsChanged) AcuteDiacriticMark else CircumflexDiacriticMark)
                 I_Letter, A_Letter -> AcuteDiacriticMark
                 O_Letter -> CircumflexDiacriticMark
                 else -> throw Exception("impossible other letter from e, i, o, but had $baseLetter")
@@ -60,9 +53,12 @@ object SubjunctiveImperfectTenseConjugator : SubjunctiveMoodTenseConjugator, Fin
 
     }
 
-    override val baseChangingRules: List<BaseChangingRule> = listOf(
-        DiacriticsBeforeEnding_Rule
-    )
+    override val baseChangingRules: List<BaseChangingRule> = listOf(DiacriticsBeforeEnding_Rule)
+
+    //all empty others
+    override val irregularForms: Map<String, IrregularForm> = emptyMap()
+    override val currentDefectiveGroups: Map<DefectiveGroup, List<String>> get() = mapOf()
+    override val specialEndingSuffixRules: List<SpecialEndingSuffixRule> = emptyList()
 
 
     override fun toString(): String {
