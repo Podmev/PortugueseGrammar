@@ -14,6 +14,7 @@ import com.podmev.portuguese.engine.conjugator.analytic.FiniteTenseConjugator
 import com.podmev.portuguese.engine.conjugator.analytic.SpecialVerbBaseByTense
 import com.podmev.portuguese.engine.conjugator.analytic.ThirdPluralIndicativePreteriteSpecialVerbBase
 import com.podmev.portuguese.engine.utils.word.Wordifier
+import com.podmev.portuguese.utils.lang.getFromEnd
 
 /*malquerêssemos -br / malquiséssemos - pt
 
@@ -34,14 +35,14 @@ object SubjunctiveImperfectTenseConjugator : SubjunctiveMoodTenseConjugator, Fin
             verbArgs: VerbArguments,
             verbIsChanged: Boolean
         ): String {
-            val lastVowelChar = verb.dropLast(1).last()
+            val lastVowelChar = verb.getFromEnd(1)
             val exactLetter = Alphabet.parseExactLetter(lastVowelChar)!!
             val baseLetter = exactLetter.genericLetter.baseLetter()
             val diacriticMark = when (baseLetter) {
                 E_Letter -> (if (verbIsChanged) AcuteDiacriticMark else CircumflexDiacriticMark)
                 I_Letter, A_Letter -> AcuteDiacriticMark
                 O_Letter -> CircumflexDiacriticMark
-                else -> throw Exception("impossible other letter from e, i, o, but had $baseLetter")
+                else -> throw Exception("impossible other letter from e, a, i, o, but had $baseLetter")
 
             }
             return Wordifier.addDiacriticsToLastLetterByPredicate(

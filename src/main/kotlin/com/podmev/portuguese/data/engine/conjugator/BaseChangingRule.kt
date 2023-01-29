@@ -11,6 +11,9 @@ interface BaseChangingRule {
     val wordEnding: String?
         get() = null
 
+    val wordPossibleEndings: List<String>
+        get() = emptyList()
+
     //in case we need to set rule only for fixed list of verbs, but not for any with current word-ending
     val fixedVerbList: List<String>
         get() = emptyList()
@@ -20,6 +23,9 @@ interface BaseChangingRule {
 
     fun fitsVerb(verb: String): Boolean {
         if(wordEnding!=null && !verb.endsWith(wordEnding!!)){
+            return false
+        }
+        if(wordPossibleEndings.isNotEmpty() && !wordPossibleEndings.any{verb.endsWith(it)}){
             return false
         }
         val originOrVerb: String = VerbLists.irregularVerbOriginMap[verb] ?: verb
