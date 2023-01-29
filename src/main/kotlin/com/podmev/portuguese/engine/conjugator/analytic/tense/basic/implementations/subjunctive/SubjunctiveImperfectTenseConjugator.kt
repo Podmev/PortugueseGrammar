@@ -24,19 +24,6 @@ object SubjunctiveImperfectTenseConjugator : SubjunctiveMoodTenseConjugator, Fin
     override val specialVerbBaseByTense: SpecialVerbBaseByTense = ThirdPluralIndicativePreteriteSpecialVerbBase
 
     override val irregularForms: Map<String, IrregularForm> = mapOf(
-//            Pair(
-//                IrregularVerbs.or.POR,
-//                IrregularForm(FormGroup("punha", "punhas", "punha", "púnhamos", "púnheis", "punham"))
-//            ),
-//            Pair(IrregularVerbs.er.SER, IrregularForm(FormGroup("era", "eras", "era", "éramos", "éreis", "eram"))),
-//            Pair(
-//                IrregularVerbs.er.TER,
-//                IrregularForm(FormGroup("tinha", "tinhas", "tinha", "tínhamos", "tínheis", "tinham"))
-//            ),
-//            Pair(
-//                IrregularVerbs.ir.VIR,
-//                IrregularForm(FormGroup("vinha", "vinhas", "vinha", "vínhamos", "vínheis", "vinham"))
-//            )
     )
     override val currentDefectiveGroups: Map<DefectiveGroup, List<String>>
         get() = mapOf()
