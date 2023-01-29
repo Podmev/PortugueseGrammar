@@ -20,7 +20,9 @@ import com.podmev.portuguese.engine.conjugator.analytic.ThirdPluralIndicativePre
 import com.podmev.portuguese.engine.utils.verb.VerbEnds
 import com.podmev.portuguese.engine.utils.word.Wordifier
 import com.podmev.portuguese.utils.lang.getFromEnd
-
+/*
+malquisera - pt, malquerera - br
+* */
 object IndicativePluperfectTenseConjugator : IndicativeMoodTenseConjugator, FiniteTenseConjugator() {
     val commonSuffix = SuffixGroup("a", "as", "a", "amos", "eis", "am", droppingSuffixLength = 0)
     override val arSuffix = commonSuffix
