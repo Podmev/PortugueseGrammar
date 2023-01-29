@@ -213,10 +213,16 @@ abstract class FiniteTenseConjugator() : Conjugator {
         originalInfinitive: String,
         usingInfinitive: String, suffix: String, verbArgs: VerbArguments
     ): String {
+        val usingInfinitiveIsChanged = originalInfinitive != usingInfinitive
         var currentResult = usingInfinitive
         for (rule in baseChangingRules) {
             if (rule.isCorrectForm(verbArgs) && rule.fitsVerb(originalInfinitive)) {
-                val changeBaseIfPossible: String? = rule.changeBaseIfPossible(currentResult, suffix, verbArgs)
+                val changeBaseIfPossible: String? = rule.changeBaseIfPossible(
+                    verb = currentResult,
+                    exactSuffix = suffix,
+                    verbArgs = verbArgs,
+                    verbIsChanged = usingInfinitiveIsChanged
+                )
                 if (changeBaseIfPossible != null) {
                     currentResult = changeBaseIfPossible
                 }

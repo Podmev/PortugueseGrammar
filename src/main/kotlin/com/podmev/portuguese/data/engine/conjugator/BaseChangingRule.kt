@@ -6,7 +6,7 @@ import com.podmev.portuguese.engine.conjugator.analytic.VerbLists
 interface BaseChangingRule {
     fun isCorrectForm(verbArgs: VerbArguments): Boolean
     /*shouldn't take ending ar, er, ir*/
-    fun changeBaseIfPossible(verb: String, exactSuffix: String, verbArgs: VerbArguments): String?
+    fun changeBaseIfPossible(verb: String, exactSuffix: String, verbArgs: VerbArguments, verbIsChanged: Boolean): String?
 
     val wordEnding: String?
         get() = null

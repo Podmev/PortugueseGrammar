@@ -118,19 +118,34 @@ object IndicativePreteriteTenseConjugator : IndicativeMoodTenseConjugator, Finit
 
     object C_TO_QU_Rule : BaseChangingRule {
         override fun isCorrectForm(verbArgs: VerbArguments): Boolean = verbArgs.isFirstSingular()
-        override fun changeBaseIfPossible(verb: String, exactSuffix: String, verbArgs: VerbArguments): String? =
+        override fun changeBaseIfPossible(
+            verb: String,
+            exactSuffix: String,
+            verbArgs: VerbArguments,
+            verbIsChanged: Boolean
+        ): String? =
             VerbHelper.replaceIfNecessaryC_LetterForQU_FragmentOrNull(verb)
     }
 
     object G_TO_GU_Rule : BaseChangingRule {
         override fun isCorrectForm(verbArgs: VerbArguments): Boolean = verbArgs.isFirstSingular()
-        override fun changeBaseIfPossible(verb: String, exactSuffix: String, verbArgs: VerbArguments): String? =
+        override fun changeBaseIfPossible(
+            verb: String,
+            exactSuffix: String,
+            verbArgs: VerbArguments,
+            verbIsChanged: Boolean
+        ): String? =
             VerbHelper.replaceIfNecessaryG_LetterForGU_FragmentOrNull(verb)
     }
 
     object C_Cedilla_TO_C_Rule : BaseChangingRule {
         override fun isCorrectForm(verbArgs: VerbArguments): Boolean = verbArgs.isFirstSingular()
-        override fun changeBaseIfPossible(verb: String, exactSuffix: String, verbArgs: VerbArguments): String? =
+        override fun changeBaseIfPossible(
+            verb: String,
+            exactSuffix: String,
+            verbArgs: VerbArguments,
+            verbIsChanged: Boolean
+        ): String? =
             VerbHelper.replaceIfNecessaryC_Cedilla_LetterForC_LetterOrNull(verb)
     }
 

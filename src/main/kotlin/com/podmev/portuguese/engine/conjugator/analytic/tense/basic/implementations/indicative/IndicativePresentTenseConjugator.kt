@@ -171,26 +171,46 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteT
 
     object C_TO_C_Cedilla_Rule : BaseChangingRule {
         override fun isCorrectForm(verbArgs: VerbArguments): Boolean = verbArgs.isFirstSingular()
-        override fun changeBaseIfPossible(verb: String, exactSuffix: String, verbArgs: VerbArguments): String? =
+        override fun changeBaseIfPossible(
+            verb: String,
+            exactSuffix: String,
+            verbArgs: VerbArguments,
+            verbIsChanged: Boolean
+        ): String? =
             replaceIfNecessaryC_LetterForC_Cedilla_LetterOrNull(verb)
     }
 
     object G_TO_J_Rule : BaseChangingRule {
         override fun isCorrectForm(verbArgs: VerbArguments): Boolean = verbArgs.isFirstSingular()
-        override fun changeBaseIfPossible(verb: String, exactSuffix: String, verbArgs: VerbArguments): String? =
+        override fun changeBaseIfPossible(
+            verb: String,
+            exactSuffix: String,
+            verbArgs: VerbArguments,
+            verbIsChanged: Boolean
+        ): String? =
             replaceIfNecessaryG_LetterForJ_LetterOrNull(verb)
     }
 
     object EGU_TO_IG_Rule : BaseChangingRule {
         override fun isCorrectForm(verbArgs: VerbArguments): Boolean = verbArgs.isFirstSingular()
-        override fun changeBaseIfPossible(verb: String, exactSuffix: String, verbArgs: VerbArguments): String? =
+        override fun changeBaseIfPossible(
+            verb: String,
+            exactSuffix: String,
+            verbArgs: VerbArguments,
+            verbIsChanged: Boolean
+        ): String? =
             replaceIfNecessaryEGU_FragmentForIG_FragmentOrNull(verb)
     }
 
     object GU_TO_G_Rule : BaseChangingRule {
         override fun isCorrectForm(verbArgs: VerbArguments): Boolean = verbArgs.isFirstSingular()
 
-        override fun changeBaseIfPossible(verb: String, exactSuffix: String, verbArgs: VerbArguments): String? =
+        override fun changeBaseIfPossible(
+            verb: String,
+            exactSuffix: String,
+            verbArgs: VerbArguments,
+            verbIsChanged: Boolean
+        ): String? =
             replaceIfNecessaryGU_FragmentForG_FragmentOrNull(verb)
     }
 
@@ -199,7 +219,12 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteT
         override val exceptions: List<String>
             get() = listOf("manutenir", "premir", "renhir", "convelir", "discernir", "emergir")
 
-        override fun changeBaseIfPossible(verb: String, exactSuffix: String, verbArgs: VerbArguments): String? =
+        override fun changeBaseIfPossible(
+            verb: String,
+            exactSuffix: String,
+            verbArgs: VerbArguments,
+            verbIsChanged: Boolean
+        ): String? =
             replaceIfNecessaryE_LetterForI_LetterOrNull(verb)
     }
 
@@ -207,14 +232,24 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteT
         override fun isCorrectForm(verbArgs: VerbArguments): Boolean = !verbArgs.isFirstOrSecondPlural()
         override val fixedVerbList: List<String>
             get() = listOf("agredir")
-        override fun changeBaseIfPossible(verb: String, exactSuffix: String, verbArgs: VerbArguments): String? =
+        override fun changeBaseIfPossible(
+            verb: String,
+            exactSuffix: String,
+            verbArgs: VerbArguments,
+            verbIsChanged: Boolean
+        ): String? =
             replaceIfNecessaryE_LetterForI_LetterOrNull(verb)
     }
 
     object Construir_Destruir_U_TO_O_Rule : BaseChangingRule {
         override fun isCorrectForm(verbArgs: VerbArguments): Boolean = verbArgs.isSecondSingular() || verbArgs.isThird()
         override val fixedVerbList: List<String> = listOf("construir", "destruir")
-        override fun changeBaseIfPossible(verb: String, exactSuffix: String, verbArgs: VerbArguments): String =
+        override fun changeBaseIfPossible(
+            verb: String,
+            exactSuffix: String,
+            verbArgs: VerbArguments,
+            verbIsChanged: Boolean
+        ): String? =
             Wordifier.replaceLastFoundGenericLetter(
                 word = verb,
                 fromGenericLetter = U_Letter,
@@ -228,7 +263,12 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteT
     object OIBIR_I_TO_I_Acute_Rule : BaseChangingRule {
         override fun isCorrectForm(verbArgs: VerbArguments): Boolean = !verbArgs.isFirstOrSecondPlural()
         override val wordEnding: String = "oibir"
-        override fun changeBaseIfPossible(verb: String, exactSuffix: String, verbArgs: VerbArguments): String =
+        override fun changeBaseIfPossible(
+            verb: String,
+            exactSuffix: String,
+            verbArgs: VerbArguments,
+            verbIsChanged: Boolean
+        ): String? =
             Wordifier.replaceLastFoundGenericLetterInPrefix(
                 word = verb,
                 prefix = VerbHelper.dropInfinitiveSuffixXR(verb),
@@ -241,7 +281,12 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteT
     object Second_Vowel_From_End_Acute_Rule : BaseChangingRule {
         override fun isCorrectForm(verbArgs: VerbArguments): Boolean = !verbArgs.isFirstOrSecondPlural()
         override val fixedVerbList = listOf("aguar", "europeizar", "mobiliar", "reunir", "saudar")
-        override fun changeBaseIfPossible(verb: String, exactSuffix: String, verbArgs: VerbArguments): String =
+        override fun changeBaseIfPossible(
+            verb: String,
+            exactSuffix: String,
+            verbArgs: VerbArguments,
+            verbIsChanged: Boolean
+        ): String? =
             Wordifier.putDiacriticMarkOnLastVowelInPrefix(
                 word = verb,
                 prefix = VerbHelper.dropInfinitiveSuffixAllVowelsAndR(verb),
@@ -252,7 +297,12 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteT
     object Third_Vowel_From_End_Acute_Rule : BaseChangingRule {
         override fun isCorrectForm(verbArgs: VerbArguments): Boolean = !verbArgs.isFirstOrSecondPlural()
         override val fixedVerbList = listOf("resfolegar")
-        override fun changeBaseIfPossible(verb: String, exactSuffix: String, verbArgs: VerbArguments): String =
+        override fun changeBaseIfPossible(
+            verb: String,
+            exactSuffix: String,
+            verbArgs: VerbArguments,
+            verbIsChanged: Boolean
+        ): String? =
             Wordifier.putDiacriticMarkOnLastVowelInPrefix(
                 word = verb,
                 prefix = VerbHelper.dropInfinitiveSuffix2SetOfVowelsAndR(verb),
@@ -263,7 +313,12 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteT
         val form = PronounNumberGroup(false, true, true, false, false, true)
         override fun isCorrectForm(verbArgs: VerbArguments): Boolean = form.hasForm(verbArgs)
         override val fixedVerbList = listOf("sumir")
-        override fun changeBaseIfPossible(verb: String, exactSuffix: String, verbArgs: VerbArguments): String =
+        override fun changeBaseIfPossible(
+            verb: String,
+            exactSuffix: String,
+            verbArgs: VerbArguments,
+            verbIsChanged: Boolean
+        ): String? =
             Wordifier.replaceLastFoundGenericLetterInPrefix(
                 word = verb,
                 prefix = VerbHelper.dropInfinitiveSuffixXR(verb),
@@ -275,7 +330,12 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteT
     object O_TO_U_Rule : BaseChangingRule {
         override fun isCorrectForm(verbArgs: VerbArguments): Boolean = verbArgs.isFirstSingular()
         override val fixedVerbList = listOf("tossir")
-        override fun changeBaseIfPossible(verb: String, exactSuffix: String, verbArgs: VerbArguments): String =
+        override fun changeBaseIfPossible(
+            verb: String,
+            exactSuffix: String,
+            verbArgs: VerbArguments,
+            verbIsChanged: Boolean
+        ): String? =
             Wordifier.replaceLastFoundGenericLetterInPrefix(
                 word = verb,
                 prefix = VerbHelper.dropInfinitiveSuffixXR(verb),

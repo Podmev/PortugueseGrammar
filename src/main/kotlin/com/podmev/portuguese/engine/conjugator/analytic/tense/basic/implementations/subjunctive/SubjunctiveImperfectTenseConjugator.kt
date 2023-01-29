@@ -7,6 +7,7 @@ import com.podmev.portuguese.data.grammar.term.orthography.diacriticMarks.Circum
 import com.podmev.portuguese.data.grammar.term.orthography.letters.A_Letter
 import com.podmev.portuguese.data.grammar.term.orthography.letters.E_Letter
 import com.podmev.portuguese.data.grammar.term.orthography.letters.I_Letter
+import com.podmev.portuguese.data.grammar.term.orthography.letters.O_Letter
 import com.podmev.portuguese.data.grammar.term.verb.VerbArguments
 import com.podmev.portuguese.data.grammar.term.verb.isFirstOrSecondPlural
 import com.podmev.portuguese.engine.conjugator.analytic.FiniteTenseConjugator
@@ -44,13 +45,19 @@ object SubjunctiveImperfectTenseConjugator : SubjunctiveMoodTenseConjugator, Fin
 
     object DiacriticsBeforeEnding_Rule : BaseChangingRule {
         override fun isCorrectForm(verbArgs: VerbArguments): Boolean = verbArgs.isFirstOrSecondPlural()
-        override fun changeBaseIfPossible(verb: String, exactSuffix: String, verbArgs: VerbArguments): String {
+        override fun changeBaseIfPossible(
+            verb: String,
+            exactSuffix: String,
+            verbArgs: VerbArguments,
+            verbIsChanged: Boolean
+        ): String {
             val lastVowelChar = verb.dropLast(1).last()
             val exactLetter = Alphabet.parseExactLetter(lastVowelChar)!!
             val baseLetter = exactLetter.genericLetter.baseLetter()
             val diacriticMark = when (baseLetter) {
-                E_Letter -> CircumflexDiacriticMark
+                E_Letter -> (if (verbIsChanged)  AcuteDiacriticMark else CircumflexDiacriticMark)
                 I_Letter, A_Letter -> AcuteDiacriticMark
+                O_Letter -> CircumflexDiacriticMark
                 else -> throw Exception("impossible other letter from e, i, o, but had $baseLetter")
 
             }
