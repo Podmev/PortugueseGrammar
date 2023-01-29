@@ -4,9 +4,7 @@ import com.podmev.portuguese.data.engine.conjugator.*
 import com.podmev.portuguese.engine.conjugator.analytic.FiniteTenseConjugator
 import com.podmev.portuguese.engine.conjugator.analytic.IrregularVerbs
 import com.podmev.portuguese.engine.utils.verb.VerbEnds
-/*malquerêssemos -br / malquiséssemos - pt
 
-* */
 object IndicativeImperfectTenseConjugator : IndicativeMoodTenseConjugator, FiniteTenseConjugator() {
     override val arSuffix = SuffixGroup("ava", "avas", "ava", "ávamos", "áveis", "avam")
     override val erSuffix = SuffixGroup("ia", "ias", "ia", "íamos", "íeis", "iam")

@@ -15,6 +15,9 @@ import com.podmev.portuguese.engine.conjugator.analytic.SpecialVerbBaseByTense
 import com.podmev.portuguese.engine.conjugator.analytic.ThirdPluralIndicativePreteriteSpecialVerbBase
 import com.podmev.portuguese.engine.utils.word.Wordifier
 
+/*malquerêssemos -br / malquiséssemos - pt
+
+* */
 object SubjunctiveImperfectTenseConjugator : SubjunctiveMoodTenseConjugator, FiniteTenseConjugator() {
     val commonSuffix = SuffixGroup("sse", "sses", "sse", "ssemos", "sseis", "ssem", droppingSuffixLength = 1)
     override val arSuffix = commonSuffix
