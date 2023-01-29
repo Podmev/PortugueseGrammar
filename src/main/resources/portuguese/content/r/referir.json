@@ -420,42 +420,42 @@
     },
     {
       "form": "s1",
-      "group": "subjunctive/preterite",
+      "group": "subjunctive/future",
       "group_sort": 13,
       "sort": 0,
       "value": "referir"
     },
     {
       "form": "s2",
-      "group": "subjunctive/preterite",
+      "group": "subjunctive/future",
       "group_sort": 13,
       "sort": 1,
       "value": "referires"
     },
     {
       "form": "s3",
-      "group": "subjunctive/preterite",
+      "group": "subjunctive/future",
       "group_sort": 13,
       "sort": 2,
       "value": "referir"
     },
     {
       "form": "p1",
-      "group": "subjunctive/preterite",
+      "group": "subjunctive/future",
       "group_sort": 13,
       "sort": 3,
       "value": "referirmos"
     },
     {
       "form": "p2",
-      "group": "subjunctive/preterite",
+      "group": "subjunctive/future",
       "group_sort": 13,
       "sort": 4,
       "value": "referirdes"
     },
     {
       "form": "p3",
-      "group": "subjunctive/preterite",
+      "group": "subjunctive/future",
       "group_sort": 13,
       "sort": 5,
       "value": "referirem"

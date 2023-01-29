@@ -420,42 +420,42 @@
     },
     {
       "form": "s1",
-      "group": "subjunctive/preterite",
+      "group": "subjunctive/future",
       "group_sort": 13,
       "sort": 0,
       "value": "pruir"
     },
     {
       "form": "s2",
-      "group": "subjunctive/preterite",
+      "group": "subjunctive/future",
       "group_sort": 13,
       "sort": 1,
       "value": "pruíres"
     },
     {
       "form": "s3",
-      "group": "subjunctive/preterite",
+      "group": "subjunctive/future",
       "group_sort": 13,
       "sort": 2,
       "value": "pruir"
     },
     {
       "form": "p1",
-      "group": "subjunctive/preterite",
+      "group": "subjunctive/future",
       "group_sort": 13,
       "sort": 3,
       "value": "pruirmos"
     },
     {
       "form": "p2",
-      "group": "subjunctive/preterite",
+      "group": "subjunctive/future",
       "group_sort": 13,
       "sort": 4,
       "value": "pruirdes"
     },
     {
       "form": "p3",
-      "group": "subjunctive/preterite",
+      "group": "subjunctive/future",
       "group_sort": 13,
       "sort": 5,
       "value": "pruírem"

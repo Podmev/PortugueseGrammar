@@ -420,42 +420,42 @@
     },
     {
       "form": "s1",
-      "group": "subjunctive/preterite",
+      "group": "subjunctive/future",
       "group_sort": 13,
       "sort": 0,
       "value": "abandar"
     },
     {
       "form": "s2",
-      "group": "subjunctive/preterite",
+      "group": "subjunctive/future",
       "group_sort": 13,
       "sort": 1,
       "value": "abandares"
     },
     {
       "form": "s3",
-      "group": "subjunctive/preterite",
+      "group": "subjunctive/future",
       "group_sort": 13,
       "sort": 2,
       "value": "abandar"
     },
     {
       "form": "p1",
-      "group": "subjunctive/preterite",
+      "group": "subjunctive/future",
       "group_sort": 13,
       "sort": 3,
       "value": "abandarmos"
     },
     {
       "form": "p2",
-      "group": "subjunctive/preterite",
+      "group": "subjunctive/future",
       "group_sort": 13,
       "sort": 4,
       "value": "abandardes"
     },
     {
       "form": "p3",
-      "group": "subjunctive/preterite",
+      "group": "subjunctive/future",
       "group_sort": 13,
       "sort": 5,
       "value": "abandarem"

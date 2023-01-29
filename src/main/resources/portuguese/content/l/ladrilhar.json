@@ -420,42 +420,42 @@
     },
     {
       "form": "s1",
-      "group": "subjunctive/preterite",
+      "group": "subjunctive/future",
       "group_sort": 13,
       "sort": 0,
       "value": "ladrilhar"
     },
     {
       "form": "s2",
-      "group": "subjunctive/preterite",
+      "group": "subjunctive/future",
       "group_sort": 13,
       "sort": 1,
       "value": "ladrilhares"
     },
     {
       "form": "s3",
-      "group": "subjunctive/preterite",
+      "group": "subjunctive/future",
       "group_sort": 13,
       "sort": 2,
       "value": "ladrilhar"
     },
     {
       "form": "p1",
-      "group": "subjunctive/preterite",
+      "group": "subjunctive/future",
       "group_sort": 13,
       "sort": 3,
       "value": "ladrilharmos"
     },
     {
       "form": "p2",
-      "group": "subjunctive/preterite",
+      "group": "subjunctive/future",
       "group_sort": 13,
       "sort": 4,
       "value": "ladrilhardes"
     },
     {
       "form": "p3",
-      "group": "subjunctive/preterite",
+      "group": "subjunctive/future",
       "group_sort": 13,
       "sort": 5,
       "value": "ladrilharem"

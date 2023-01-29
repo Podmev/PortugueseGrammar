@@ -420,42 +420,42 @@
     },
     {
       "form": "s1",
-      "group": "subjunctive/preterite",
+      "group": "subjunctive/future",
       "group_sort": 13,
       "sort": 0,
       "value": "paginar"
     },
     {
       "form": "s2",
-      "group": "subjunctive/preterite",
+      "group": "subjunctive/future",
       "group_sort": 13,
       "sort": 1,
       "value": "paginares"
     },
     {
       "form": "s3",
-      "group": "subjunctive/preterite",
+      "group": "subjunctive/future",
       "group_sort": 13,
       "sort": 2,
       "value": "paginar"
     },
     {
       "form": "p1",
-      "group": "subjunctive/preterite",
+      "group": "subjunctive/future",
       "group_sort": 13,
       "sort": 3,
       "value": "paginarmos"
     },
     {
       "form": "p2",
-      "group": "subjunctive/preterite",
+      "group": "subjunctive/future",
       "group_sort": 13,
       "sort": 4,
       "value": "paginardes"
     },
     {
       "form": "p3",
-      "group": "subjunctive/preterite",
+      "group": "subjunctive/future",
       "group_sort": 13,
       "sort": 5,
       "value": "paginarem"
