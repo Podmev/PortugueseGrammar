@@ -6,6 +6,7 @@ import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.condi
 import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.imperative.AffirmativeImperativeTense
 import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.imperative.NegativeImperativeTense
 import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.indicative.*
+import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.subjunctive.SubjunctiveFutureTense
 import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.subjunctive.SubjunctiveImperfectTense
 import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.subjunctive.SubjunctivePresentTense
 import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.subjunctive.SubjunctivePreteriteTense
@@ -16,7 +17,7 @@ import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.subju
 /*name of tenses is from conjugation dataset
 *
 * made list with util function getAllConjugationGroups
-subjunctive/preterite
+subjunctive/future
 indicative/present
 conditional
 infinitive/personal
@@ -46,7 +47,7 @@ fun parseTenseByShortName(tenseName: String): List<GrammaticalTense> =
         "indicative/future" -> listOf(IndicativeFutureTense)
 
         "subjunctive/present" -> listOf(SubjunctivePresentTense)
-        "subjunctive/preterite" -> listOf(SubjunctivePreteriteTense)
+        "subjunctive/future" -> listOf(SubjunctiveFutureTense)
         "subjunctive/imperfect" -> listOf(SubjunctiveImperfectTense)
 
         "conditional" -> listOf(ConditionalTense)

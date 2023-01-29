@@ -17,7 +17,7 @@ fun parseGenderByTenseShortName(tenseName: String): GrammaticalGender =
         "indicative/future" -> GrammaticalGender.UNDEFINED
 
         "subjunctive/present" -> GrammaticalGender.UNDEFINED
-        "subjunctive/preterite" -> GrammaticalGender.UNDEFINED
+        "subjunctive/future" -> GrammaticalGender.UNDEFINED
         "subjunctive/imperfect" -> GrammaticalGender.UNDEFINED
 
         "conditional" -> GrammaticalGender.UNDEFINED

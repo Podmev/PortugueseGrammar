@@ -9,7 +9,7 @@ import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.imper
 import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.indicative.*
 import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.subjunctive.SubjunctiveImperfectTense
 import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.subjunctive.SubjunctivePresentTense
-import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.subjunctive.SubjunctivePreteriteTense
+import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.subjunctive.SubjunctiveFutureTense
 import com.podmev.portuguese.data.grammar.term.verb.VerbArguments
 import com.podmev.portuguese.data.grammar.term.verb.VerbFormInfo
 import com.podmev.portuguese.data.other.PortugueseLocale
@@ -48,8 +48,8 @@ class AnalyticConjugatorBrazilIgnoreDefectiveTest {
     fun subjunctivePresentTest(verbFormInfo: VerbFormInfo) = checkVerbFormInfo(verbFormInfo)
 
     @ParameterizedTest
-    @MethodSource("allVerbFormsSubjunctivePreteriteTense")
-    fun subjunctivePreteriteTest(verbFormInfo: VerbFormInfo) = checkVerbFormInfo(verbFormInfo)
+    @MethodSource("allVerbFormsSubjunctiveFutureTense")
+    fun subjunctiveFutureTest(verbFormInfo: VerbFormInfo) = checkVerbFormInfo(verbFormInfo)
 
     @ParameterizedTest
     @MethodSource("allVerbFormsSubjunctiveImperfectTense")
@@ -132,7 +132,7 @@ class AnalyticConjugatorBrazilIgnoreDefectiveTest {
         fun allVerbFormsSubjunctivePresentTense() = verbFormInfosByTense(SubjunctivePresentTense)
 
         @JvmStatic
-        fun allVerbFormsSubjunctivePreteriteTense() = verbFormInfosByTense(SubjunctivePreteriteTense)
+        fun allVerbFormsSubjunctiveFutureTense() = verbFormInfosByTense(SubjunctiveFutureTense)
 
         @JvmStatic
         fun allVerbFormsSubjunctiveImperfectTense() = verbFormInfosByTense(SubjunctiveImperfectTense)
