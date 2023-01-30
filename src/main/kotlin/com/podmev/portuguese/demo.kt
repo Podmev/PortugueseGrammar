@@ -9,6 +9,7 @@ import com.podmev.portuguese.data.grammar.term.tense.basic.implementations.indic
 import com.podmev.portuguese.data.grammar.term.verb.GrammaticalVoice
 import com.podmev.portuguese.data.grammar.term.verb.VerbArguments
 import com.podmev.portuguese.engine.conjugator.analytic.tense.basic.implementations.PastParticipleTenseConjugator
+import com.podmev.portuguese.engine.conjugator.analytic.tense.basic.implementations.imperative.AffirmativeImperativeTenseConjugator
 import com.podmev.portuguese.engine.conjugator.analytic.tense.basic.implementations.indicative.IndicativePresentTenseConjugator
 import com.podmev.portuguese.engine.conjugator.generator.VerbFormGenerator
 import com.podmev.portuguese.engine.dataset.verb.findInputVerbMeta

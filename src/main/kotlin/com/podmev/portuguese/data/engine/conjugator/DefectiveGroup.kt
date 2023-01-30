@@ -41,4 +41,26 @@ data class DefectiveGroup(
         }
 }
 
+val falseDefectiveGroup by lazy {
+    DefectiveGroup(
+        singularFirst = false,
+        singularSecond = false,
+        singularThird = false,
+        pluralFirst = false,
+        pluralSecond = false,
+        pluralThird = false
+    )
+}
+
+val trueDefectiveGroup by lazy {
+    DefectiveGroup(
+        singularFirst = true,
+        singularSecond = true,
+        singularThird = true,
+        pluralFirst = true,
+        pluralSecond = true,
+        pluralThird = true
+    )
+}
+
 

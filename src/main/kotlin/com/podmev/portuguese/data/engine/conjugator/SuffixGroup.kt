@@ -72,3 +72,15 @@ data class SuffixGroup(
             pluralThird?.prependIndent(string)
         )
 }
+
+val emptySuffixGroup by lazy {
+    SuffixGroup(
+        singularFirst = "",
+        singularSecond = "",
+        singularThird = "",
+        pluralFirst = "",
+        pluralSecond = "",
+        pluralThird = "",
+        droppingSuffixLength = 0
+    )
+}

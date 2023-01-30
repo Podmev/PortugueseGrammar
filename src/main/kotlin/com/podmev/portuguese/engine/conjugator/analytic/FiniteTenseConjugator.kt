@@ -34,6 +34,11 @@ abstract class FiniteTenseConjugator() : Conjugator {
     //usually not needed
     open val specialVerbBaseByTense: SpecialVerbBaseByTense? = null
 
+    /*use forms from this conjugator if there is - for imperative*/
+    open val originConjugator:Conjugator? = null
+
+    open val globalDefectiveGroup = trueDefectiveGroup
+
     var defectiveGroupByVerbMap: Map<String, DefectiveGroup> = createDefectiveGroupByVerbMap()
 
     /*using mostly in presente indicativo*/
@@ -46,6 +51,7 @@ abstract class FiniteTenseConjugator() : Conjugator {
         settings: ConjugateSettings
     ): List<String> {
         logger.fine("conjugateVerb $verbInInfinitive started for $tense $verbArgs $settings")
+        //defectiveness by verb
         if (!settings.ignoreDefective) {
             val defectiveGroup: DefectiveGroup? = getDefectiveGroup(verbInInfinitive)
             if (defectiveGroup?.hasForm(verbArgs) == false) {
@@ -53,6 +59,17 @@ abstract class FiniteTenseConjugator() : Conjugator {
                 return emptyList()
             }
         }
+        //global defectiveness
+        if (globalDefectiveGroup.hasForm(verbArgs) == false) {
+            print(globalDefectiveGroup)
+            //form doesn't exist, so it is empty
+            println("global defective")
+            return emptyList()
+        }
+        if(originConjugator!=null){
+            return originConjugator!!.conjugateVerb(verbInInfinitive, tense, verbArgs, settings)
+        }
+
         val regularTransformation = regularChanging(verbInInfinitive, verbArgs, settings)
         val irregularForm = irregularChanging(verbInInfinitive, verbArgs, regularTransformation, settings)
         if (irregularForm != null) {
