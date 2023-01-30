@@ -30,6 +30,8 @@ abstract class FiniteTenseConjugator() : Conjugator {
     abstract val specialEndingSuffixRules: List<SpecialEndingSuffixRule>
     abstract val baseChangingRules: List<BaseChangingRule>
     abstract val currentDefectiveGroups: Map<DefectiveGroup, List<String>>
+    open val commonDefectiveGroups: Map<DefectiveGroup, List<String>> =
+        VerbLists.commonDefectiveVerbGroups
 
     //usually not needed
     open val specialVerbBaseByTense: SpecialVerbBaseByTense? = null
@@ -249,7 +251,7 @@ abstract class FiniteTenseConjugator() : Conjugator {
     }
 
     private fun totalDefectiveGroups(): Map<DefectiveGroup, List<String>> =
-        mergeListMaps(currentDefectiveGroups, VerbLists.commonDefectiveVerbGroups)
+        mergeListMaps(currentDefectiveGroups, commonDefectiveGroups)
 
     private fun createDefectiveGroupByVerbMap(): Map<String, DefectiveGroup> =
         revertListMap(totalDefectiveGroups())

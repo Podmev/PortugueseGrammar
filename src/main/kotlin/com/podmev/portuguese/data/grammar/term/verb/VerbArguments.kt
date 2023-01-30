@@ -50,3 +50,6 @@ fun VerbArguments.isPlural(): Boolean =
 
 fun VerbArguments.isFirstOrSecondPlural(): Boolean =
     isFirstPlural() || isSecondPlural()
+
+fun VerbArguments.isFirstOrThirdSingular(): Boolean =
+    isFirstSingular() || isThirdSingular()

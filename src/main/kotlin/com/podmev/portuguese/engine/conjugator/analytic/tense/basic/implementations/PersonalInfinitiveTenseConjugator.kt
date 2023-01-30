@@ -1,94 +1,79 @@
 package com.podmev.portuguese.engine.conjugator.analytic.tense.basic.implementations
 
-import com.podmev.portuguese.data.engine.conjugator.ConjugateSettings
-import com.podmev.portuguese.data.grammar.term.general.GrammaticalNumber
-import com.podmev.portuguese.data.grammar.term.general.GrammaticalNumber.PLURAL
-import com.podmev.portuguese.data.grammar.term.general.GrammaticalNumber.SINGULAR
-import com.podmev.portuguese.data.grammar.term.general.GrammaticalPerson
+import com.podmev.portuguese.data.engine.conjugator.*
 import com.podmev.portuguese.data.grammar.term.general.GrammaticalPerson.*
-import com.podmev.portuguese.data.grammar.term.orthography.Alphabet
-import com.podmev.portuguese.data.grammar.term.tense.GrammaticalTense
-import com.podmev.portuguese.data.grammar.term.verb.VerbArguments
+import com.podmev.portuguese.data.grammar.term.verb.*
+import com.podmev.portuguese.engine.conjugator.analytic.DefectiveVerbs
+import com.podmev.portuguese.engine.conjugator.analytic.FiniteTenseConjugator
 import com.podmev.portuguese.engine.conjugator.analytic.VerbHelper
-import com.podmev.portuguese.engine.conjugator.analytic.VerbLists
 import com.podmev.portuguese.engine.conjugator.analytic.tense.basic.BasicTenseConjugator
-import com.podmev.portuguese.engine.utils.word.Wordifier
 import com.podmev.portuguese.engine.utils.verb.VerbEnds
+import com.podmev.portuguese.engine.utils.word.Wordifier
 
-/*Additional rules:
-1 -    Combination: VerbFormInfo(infinitive=instituir, tense=PersonalInfinitiveTense, person=THIRD, number=PLURAL, gender=UNDEFINED, voice=ACTIVE) ==>
-expected: <[instituírem]> but was: <[instituirem]>
-2 - Combination: VerbFormInfo(infinitive=pôr, tense=PersonalInfinitiveTense, person=THIRD, number=PLURAL, gender=UNDEFINED, voice=ACTIVE) ==>
-expected: <[porem]> but was: <[pôrem]>
-3 - Combination: VerbFormInfo(infinitive=oppôr, tense=PersonalInfinitiveTense, person=FIRST, number=PLURAL, gender=UNDEFINED, voice=ACTIVE) ==>
-expected: <[oppormos]> but was: <[oppôrmos]>
-4 - Combination: VerbFormInfo(infinitive=prazer, tense=PersonalInfinitiveTense, person=FIRST, number=SINGULAR, gender=UNDEFINED, voice=ACTIVE) ==> expected: <[-Normally defective:prazer]> but was: <[prazer]>
+@Suppress("ClassName")
+object PersonalInfinitiveTenseConjugator : BasicTenseConjugator, FiniteTenseConjugator() {
+    val commonSuffix = SuffixGroup("", "es", "", "mos", "des", "em", droppingSuffixLength = 0)
+    override val arSuffix = commonSuffix
+    override val erSuffix = commonSuffix
+    override val irSuffix = commonSuffix
 
-*/
-object PersonalInfinitiveTenseConjugator : BasicTenseConjugator {
-    override fun conjugateVerb(
-        verbInInfinitive: String,
-        tense: GrammaticalTense,
-        verbArgs: VerbArguments,
-        settings: ConjugateSettings
-    ): List<String> {
-        if(VerbHelper.forbiddenOnNotThirdSingularForm(verbInInfinitive, verbArgs)){
-            return emptyList()
-        }
-        val ending = getAdditionalSuffix(verbArgs.person, verbArgs.number)
-        if (ending.isEmpty()) {
-            return listOf(verbInInfinitive)
-        }
-        //since now word will be bigger
-        val newBase = changeBase(verbInInfinitive, ending)
-        val form = "$newBase$ending"
-        return listOf(form)
+    override val irregularForms: Map<String, IrregularForm> = emptyMap()
+    override val specialEndingSuffixRules: List<SpecialEndingSuffixRule> = emptyList()
+
+    /*delete common, because doesn't fit this tense*/
+    override val commonDefectiveGroups: Map<DefectiveGroup, List<String>>
+        get() = emptyMap()
+
+    override val currentDefectiveGroups: Map<DefectiveGroup, List<String>>
+        get() =
+            mapOf(
+                Pair(
+                    DefectiveGroup(false, false, true, false, false, false),
+                    listOf(
+                        DefectiveVerbs.APRAZER,
+                        DefectiveVerbs.DOER,
+                        DefectiveVerbs.GEAR,
+                        DefectiveVerbs.NEVAR,
+                        DefectiveVerbs.PRAZER,
+                    )
+                )
+            )
+
+    object I_Letter_To_I_Acute_Letter_Rule : BaseChangingRule {
+        override fun isCorrectForm(verbArgs: VerbArguments): Boolean =
+            verbArgs.isSecondSingular() || verbArgs.isThirdPlural()
+
+        override val wordEnding: String = VerbEnds.IR
+        override fun changeBaseIfPossible(
+            verb: String,
+            exactSuffix: String,
+            verbArgs: VerbArguments,
+            verbIsChanged: Boolean
+        ): String? =
+            VerbHelper.replaceIfNecessaryLastI_LetterForI_Acute_LetterOrNull(verb)
     }
 
-    private fun endingStartsWithVowel(ending: String): Boolean = Alphabet.isVowelChar(ending.first())
+    /*change last 'ô' for 'o': with circumflex. verbs pôr, oppôr*/
+    object O_Circumflex_Letter_To_O_Letter_Rule : BaseChangingRule {
+        override fun isCorrectForm(verbArgs: VerbArguments): Boolean =
+            !verbArgs.isFirstOrThirdSingular()
 
-    private fun changeBase(infinitive: String, ending: String): String {
-        if(endingStartsWithVowel(ending)){
-            val changedForm = VerbHelper.replaceIfNecessaryLastI_LetterForI_Acute_LetterOrNull(infinitive)
-            if(changedForm!=null){
-                return changedForm
-            }
-        }
-
-        if (infinitive.endsWith(VerbEnds.O_CIRCUMFLEX_R)) {
-            //change last 'ô' for 'o': with circumflex. verbs pôr, oppôr
-            return Wordifier.deleteLastDiacritics(infinitive)
-        }
-        return infinitive
+        override val wordEnding: String = VerbEnds.O_CIRCUMFLEX_R
+        override fun changeBaseIfPossible(
+            verb: String,
+            exactSuffix: String,
+            verbArgs: VerbArguments,
+            verbIsChanged: Boolean
+        ): String =
+            Wordifier.deleteLastDiacritics(verb)
     }
 
-    private fun getAdditionalSuffix(person: GrammaticalPerson, number: GrammaticalNumber): String =
-        when (number) {
-            GrammaticalNumber.UNDEFINED -> ""
-            SINGULAR ->
-                when (person) {
-                    FIRST -> ""
-                    SECOND -> "es"
-                    THIRD -> ""
-                    UNDEFINED -> ""
-                }
-
-            PLURAL ->
-                when (person) {
-                    FIRST -> "mos"
-                    SECOND -> "des"
-                    THIRD -> "em"
-                    UNDEFINED -> ""
-                }
-        }
+    override val baseChangingRules: List<BaseChangingRule> = listOf(
+        I_Letter_To_I_Acute_Letter_Rule,
+        O_Circumflex_Letter_To_O_Letter_Rule
+    )
 
     override fun toString(): String {
         return "PersonalInfinitiveTenseConjugator"
     }
-
-//    fun addAcuteAccentToLastI_Letter(s: String):String{
-//
-//    }
-//
-//    fun replaceLastFoundGeneralLetter()
 }
