@@ -1,12 +1,12 @@
 package com.podmev.portuguese.engine.conjugator.analytic.tense.basic.implementations.imperative
 
 import com.podmev.portuguese.data.engine.conjugator.*
-import com.podmev.portuguese.data.grammar.term.tense.GrammaticalTense
-import com.podmev.portuguese.data.grammar.term.verb.VerbArguments
+import com.podmev.portuguese.engine.conjugator.analytic.DefectiveVerbs
 import com.podmev.portuguese.engine.conjugator.analytic.FiniteTenseConjugator
 import com.podmev.portuguese.engine.conjugator.analytic.tense.basic.BasicTenseConjugator
 import com.podmev.portuguese.engine.conjugator.analytic.tense.basic.implementations.subjunctive.SubjunctivePresentTenseConjugator
-
+/*just need to fix 213 forms in db
+* */
 object NegativeImperativeTenseConjugator : BasicTenseConjugator, FiniteTenseConjugator() {
     //doesn't matter what is suffix, because we use originConjugator
     val commonSuffix = emptySuffixGroup
