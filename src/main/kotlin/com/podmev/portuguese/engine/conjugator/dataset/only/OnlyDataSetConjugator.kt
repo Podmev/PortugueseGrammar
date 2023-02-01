@@ -49,15 +49,12 @@ object OnlyDataSetConjugator : Conjugator {
             //form doesn't exists for verb
             return emptyList()
         }
-        val forms = verbVariantsSplit(verbInForm)
-        //special case of difference in locales
-        if(tense==IndicativePreteriteTense && verbArgs.isFirstPlural() ){
-            return when(settings.portugueseLocale){
-                PortugueseLocale.BRAZIL -> forms.take(1)
-                PortugueseLocale.PORTUGAL -> forms.drop(1)
-            }
+        val (brazilForms, portugalForms) = parseBrazilPortugueseForms(verbInForm)
+        val byCountryAllFormsTogether = when (settings.portugueseLocale) {
+            PortugueseLocale.BRAZIL -> brazilForms
+            PortugueseLocale.PORTUGAL -> portugalForms
         }
-        return forms
+        return verbVariantsSplit(byCountryAllFormsTogether)
     }
 
     fun getConjugatorCoveringData() =
@@ -112,6 +109,28 @@ object OnlyDataSetConjugator : Conjugator {
 
     private fun verbVariantsSplit(maybeVerbForms: String): List<String> {
         val forms = maybeVerbForms.split(" - ")
+        return forms.map { it.trim() }
+    }
+
+    /*first goes brazil forms and after '|' goes portugal forms. if no '|', so it g*/
+    private fun parseBrazilPortugueseForms(maybeVerbForms: String): Pair<String, String> {
+        val languageForms = verbVariantsLanguageSplit(maybeVerbForms)
+        return when (languageForms.size) {
+            1 -> {
+                val uniqueForm = languageForms.component1()
+                Pair(uniqueForm, uniqueForm)
+            }
+
+            2 ->{
+                Pair(languageForms.component1(), languageForms.component2())
+            }
+
+            else -> throw Exception("wrong size of languages")
+        }
+           }
+
+    private fun verbVariantsLanguageSplit(maybeVerbForms: String): List<String> {
+        val forms = maybeVerbForms.split(" | ")
         return forms.map { it.trim() }
     }
 
