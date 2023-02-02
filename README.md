@@ -57,7 +57,11 @@ Quiz App (next project) - Conjugation test
  - Verbs are the same tense or no
  - Verbs are the same person/number
  - Defective verb, show which forms don't exist
- - Similar verbs have thу same conjugation or no, after answer can show difference
+ - Similar verbs have the same conjugation or no, after answer can show difference
+ - Tests for multiple correct forms
+ - Test for brazilian/portuguese version
+   - by form need to understand, which language form is from
+   - write forms for brazil/portugal
  - Compare forms of 2 verbs
  - Tests for forms with diacritics
  - Report form for wrong test or information
@@ -99,6 +103,23 @@ Quiz App (next project) - Conjugation test
    - Portuguese Verb Master
  - Logo idea
    - Hedgehog with glasses
+ - Challenges
+   - Tries all verbs to conjugate
+     - by percent (10, 20, ... 100)
+   - tried all types of tests
+   - tried all tenses
+   - construct your test by filters
+   - Portuguese-Bilingual: tries both language versions
+   - Curiosity: turn-on forms for vos and use for some tests
+   - Bad bay: fail several tests in row
+   - strike(2, 3, 7, 14, 30, 365)
+   - reporter: report about mistake
+   - suggester: suggest new type of test
+   - memories: save some verbs (10) in bookmarks
+   - absolute unit: make correct some part of tests byr day or amount
+   - blacklist: add some verbs to black list
+   - passed all education in tree
+   - 
  
    
 
