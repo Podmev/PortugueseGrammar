@@ -104,6 +104,7 @@ Quiz App (next project) - Conjugation test
  - Logo idea
    - Hedgehog with glasses
  - Challenges
+   - first step: try one test
    - Tries all verbs to conjugate
      - by percent (10, 20, ... 100)
    - tried all types of tests
@@ -115,11 +116,30 @@ Quiz App (next project) - Conjugation test
    - strike(2, 3, 7, 14, 30, 365)
    - reporter: report about mistake
    - suggester: suggest new type of test
-   - memories: save some verbs (10) in bookmarks
-   - absolute unit: make correct some part of tests byr day or amount
+   - memories: 
+     - save some verbs (10) in bookmarks
+     - save some custom tests (3)
+     - save some verb lists (3)
+   - absolute unit: make correct some part of tests by day or amount
    - blacklist: add some verbs to black list
    - passed all education in tree
-   - 
+   - night bird: pass test during night 00:00-06:00
+   - publisher: share your test
+   - best-seller: 100 people passed your test
+ - Support teacher-students feature
+   - different type of account for teacher and student
+   - add student to teacher, add teacher to student
+   - teacher can see activity of student
+   - homework with due date
+     - teacher send tests for student
+     - notification for student
+     - send date for teacher to student
+     - due date for student
+     - reminder of soon due date
+     - see result for teacher of each student and statistic among all students
+     - choose mark system for grading
+     - scheduled homework with preplan, only current homework is available for student
+     - view homework result along the plan
  
    
 
