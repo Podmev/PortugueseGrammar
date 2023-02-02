@@ -5,10 +5,11 @@ import com.podmev.portuguese.engine.conjugator.analytic.RegularTransformation
 
 data class IrregularForm(
     val formGroup: FormGroup? = null,
-    //immutable
     val suffixGroup: SuffixGroup? = null,
     val baseGroup: BaseGroup? = null,
-    val base: String? = null
+    val base: String? = null,
+    //TODO use extendedFormGroup
+    val extendedFormGroup: ExtendedFormGroup? = null
 ){
     fun getForm(verbArguments: VerbArguments, regularTransformation: RegularTransformation?): List<String>?{
         //trying formGroup
