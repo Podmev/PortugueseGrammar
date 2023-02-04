@@ -1,25 +1,22 @@
 package com.podmev.portuguese.data.engine.conjugator
 
-import ExtendedPronounVerbForm
 import com.podmev.portuguese.data.grammar.term.general.GrammaticalNumber
 import com.podmev.portuguese.data.grammar.term.general.GrammaticalNumber.*
 import com.podmev.portuguese.data.grammar.term.general.GrammaticalNumber.UNDEFINED
 import com.podmev.portuguese.data.grammar.term.general.GrammaticalPerson
 import com.podmev.portuguese.data.grammar.term.general.GrammaticalPerson.*
 import com.podmev.portuguese.data.grammar.term.verb.VerbArguments
-import com.podmev.portuguese.data.other.PortugueseLocale
-import createExtendedFormGroupByString
 
-data class ExtendedFormGroup(
-    val singularFirst: ExtendedPronounVerbForm?,
-    val singularSecond: ExtendedPronounVerbForm?,
-    val singularThird: ExtendedPronounVerbForm?,
-    val pluralFirst: ExtendedPronounVerbForm?,
-    val pluralSecond: ExtendedPronounVerbForm?,
-    val pluralThird: ExtendedPronounVerbForm?
+data class ListFormGroup(
+    val singularFirst: ListPronounVerbForm?,
+    val singularSecond: ListPronounVerbForm?,
+    val singularThird: ListPronounVerbForm?,
+    val pluralFirst: ListPronounVerbForm?,
+    val pluralSecond: ListPronounVerbForm?,
+    val pluralThird: ListPronounVerbForm?
 ) {
 
-    fun getDefectiveGroup(portugueseLocale: PortugueseLocale): DefectiveGroup =
+    fun getDefectiveGroup(): DefectiveGroup =
         DefectiveGroup(
             singularFirst = singularFirst != null,
             singularSecond = singularSecond != null,
@@ -29,14 +26,13 @@ data class ExtendedFormGroup(
             pluralThird = pluralThird != null
         )
 
-    fun getForm(verbArgs: VerbArguments, portugueseLocale: PortugueseLocale): List<String>? =
-        getExtendedPronounVerbForm(verbArgs.person, verbArgs.number)
-            ?.getVersionsByLocale(portugueseLocale)
+    fun getForm(verbArgs: VerbArguments): List<String>? =
+        getListPronounVerbForm(verbArgs.person, verbArgs.number)?.versions?.toList()
 
-    fun getExtendedPronounVerbForm(
+    fun getListPronounVerbForm(
         person: GrammaticalPerson,
-        number: GrammaticalNumber,
-    ): ExtendedPronounVerbForm? =
+        number: GrammaticalNumber
+    ): ListPronounVerbForm? =
         when (number) {
             UNDEFINED -> null
             SINGULAR ->
@@ -57,19 +53,19 @@ data class ExtendedFormGroup(
         }
 
     override fun toString(): String {
-        return "ExtendedFormGroup($singularFirst, $singularSecond, $singularThird, $pluralFirst, $pluralSecond, $pluralThird)"
+        return "ListFormGroup($singularFirst, $singularSecond, $singularThird, $pluralFirst, $pluralSecond, $pluralThird)"
     }
 
 }
 
-fun FormGroup.convertToExtended():ExtendedFormGroup =
+fun ListFormGroup.convertToExtended(): ExtendedFormGroup =
     ExtendedFormGroup(
-        createExtendedFormGroupByString(singularFirst),
-        createExtendedFormGroupByString(singularSecond),
-        createExtendedFormGroupByString(singularThird),
-        createExtendedFormGroupByString(pluralFirst),
-        createExtendedFormGroupByString(pluralSecond),
-        createExtendedFormGroupByString(pluralThird),
+        singularFirst?.toExtended(),
+        singularSecond?.toExtended(),
+        singularThird?.toExtended(),
+        pluralFirst?.toExtended(),
+        pluralSecond?.toExtended(),
+        pluralThird?.toExtended()
     )
 
 

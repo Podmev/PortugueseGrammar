@@ -24,6 +24,21 @@ import com.podmev.portuguese.engine.utils.word.Wordifier
 * empedernir: firstSingular is missing in brazil, portugal - empedirno
 * submergir/emergir: firstSingular is submerjo/emerjo in brazil, portugal - submerjo/emerjo or submirjo/emirjo
 * malquerer: malquere - brasil, malquer - pt
+*
+*
+Portugal
+ «Eu ouço música para adormecer» ou «Eu oiço música para adormecer»?
+As duas formas são corretas.
+A variação entre o ditongo oi e ou é frequente na língua portuguesa,
+
+loiro ou louro,
+ouro ou oiro,
+touro ou toiro,
+dourado ou doirado,
+loiça ou louça,
+mouro ou moiro.
+
+
 * * * * */
 @Suppress("BooleanLiteralArgument", "ClassName")
 object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteTenseConjugator() {
@@ -60,7 +75,10 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteT
         Pair(IrregularVerbs.er.ERGUER, IrregularForm(FormGroup("ergo", null, null, null, null, null))),
 
         Pair(IrregularVerbs.ir.VIR, IrregularForm(FormGroup("venho", "vens", "vem", null, "vindes", "vêm"))),
-        Pair(IrregularVerbs.ir.OUVIR, IrregularForm(FormGroup("ouço", null, null, null, null, null))), //ouço ≈ oiço
+        Pair(
+            IrregularVerbs.ir.OUVIR,
+            IrregularForm(listFormGroup = ListFormGroup(L("ouço", "oiço"), null, null, null, null, null))
+        ), //ouço ≈ oiço
         Pair(IrregularVerbs.ir.PEDIR, IrregularForm(FormGroup("peço", null, null, null, null, null))),
         Pair(IrregularVerbs.ir.IR, IrregularForm(FormGroup("vou", "vais", "vai", "vamos", "ides", "vão"))),
         Pair(IrregularVerbs.ir.DORMIR, IrregularForm(FormGroup("durmo", null, null, null, null, null))),
@@ -232,6 +250,7 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteT
         override fun isCorrectForm(verbArgs: VerbArguments): Boolean = !verbArgs.isFirstOrSecondPlural()
         override val fixedVerbList: List<String>
             get() = listOf("agredir")
+
         override fun changeBaseIfPossible(
             verb: String,
             exactSuffix: String,
@@ -309,6 +328,7 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteT
                 diacriticMark = AcuteDiacriticMark
             )
     }
+
     object U_TO_O_Rule : BaseChangingRule {
         val form = PronounNumberGroup(false, true, true, false, false, true)
         override fun isCorrectForm(verbArgs: VerbArguments): Boolean = form.hasForm(verbArgs)
@@ -343,7 +363,6 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteT
                 toGenericLetter = U_Letter
             )
     }
-
 
 
     override val baseChangingRules = listOf(

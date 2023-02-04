@@ -37,7 +37,7 @@ abstract class FiniteTenseConjugator() : Conjugator {
     open val specialVerbBaseByTense: SpecialVerbBaseByTense? = null
 
     /*use forms from this conjugator if there is - for imperative*/
-    open val originConjugator:Conjugator? = null
+    open val originConjugator: Conjugator? = null
 
     open val globalDefectiveGroup = trueDefectiveGroup
 
@@ -63,12 +63,10 @@ abstract class FiniteTenseConjugator() : Conjugator {
         }
         //global defectiveness
         if (globalDefectiveGroup.hasForm(verbArgs) == false) {
-            print(globalDefectiveGroup)
             //form doesn't exist, so it is empty
-            println("global defective")
             return emptyList()
         }
-        if(originConjugator!=null){
+        if (originConjugator != null) {
             return originConjugator!!.conjugateVerb(verbInInfinitive, tense, verbArgs, settings)
         }
 
@@ -94,7 +92,13 @@ abstract class FiniteTenseConjugator() : Conjugator {
     ): List<String>? {
         val irregularForm: IrregularForm? = irregularForms[verb]
         if (irregularForm != null) {
-            return applyIrregularChanging(verb, irregularForm, verbArgs, regularTransformation)
+            return applyIrregularChanging(
+                verb = verb,
+                irregularForm = irregularForm,
+                verbArgs = verbArgs,
+                regularTransformation = regularTransformation,
+                portugueseLocale = settings.portugueseLocale
+            )
         }
         //trying to find derivatives
         val originIrregularVerb: String = VerbLists.irregularVerbOriginMap[verb] ?: return null
@@ -107,7 +111,8 @@ abstract class FiniteTenseConjugator() : Conjugator {
                 //TODO extract class for 3 next params, but cannot create appropriate name
                 originIrregularVerb = originIrregularVerb,
                 originIrregularForm = originIrregularForm,
-                originRegularTransformation = originRegularTransformation
+                originRegularTransformation = originRegularTransformation,
+                portugueseLocale = settings.portugueseLocale
             )
         }
         //verb in irregular list, but no irregular form for it
@@ -118,17 +123,20 @@ abstract class FiniteTenseConjugator() : Conjugator {
         verb: String,
         irregularForm: IrregularForm,
         verbArgs: VerbArguments,
-        regularTransformation: RegularTransformation?
-    ): List<String>? = irregularForm.getForm(verbArgs, regularTransformation)
+        regularTransformation: RegularTransformation?,
+        portugueseLocale: PortugueseLocale
+    ): List<String>? = irregularForm.getForm(verbArgs, regularTransformation, portugueseLocale)
 
     private fun applyDerivativeIrregularChanging(
         verb: String,
         verbArgs: VerbArguments,
         originIrregularVerb: String,
         originIrregularForm: IrregularForm,
-        originRegularTransformation: RegularTransformation?
+        originRegularTransformation: RegularTransformation?,
+        portugueseLocale: PortugueseLocale
     ): List<String>? {
-        val originForm: List<String> = originIrregularForm.getForm(verbArgs, originRegularTransformation) ?: return null
+        val originForm: List<String> =
+            originIrregularForm.getForm(verbArgs, originRegularTransformation, portugueseLocale) ?: return null
         val (diff: String, dropAtStart: Int) = VerbHelper.diffVerbAndOrigin(verb, originIrregularVerb)
         return originForm.map { singleOriginForm ->
             val modifiedOriginBase =

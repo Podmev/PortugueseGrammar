@@ -12,10 +12,10 @@ data class ExtendedPronounVerbForm(
 
     fun isEmpty(portugueseLocale: PortugueseLocale) =
         getVersionsByLocale(portugueseLocale).isEmpty()
+
+    fun isNotEmpty(portugueseLocale: PortugueseLocale) = !isEmpty(portugueseLocale)
 }
 
-fun createExtendedFormGroupByString(str: String?): ExtendedPronounVerbForm =
-    if (str != null) ExtendedPronounVerbForm(listOf(str), listOf(str))
-    else ExtendedPronounVerbForm(emptyList(), emptyList())
+fun createExtendedFormGroupByString(str: String?): ExtendedPronounVerbForm? =
+    if (str != null) ExtendedPronounVerbForm(listOf(str), listOf(str)) else null
 
-val emptyExtendedPronounVerbForm = ExtendedPronounVerbForm(emptyList(), emptyList())
