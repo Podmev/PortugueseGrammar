@@ -78,7 +78,7 @@ object IndicativePresentTenseConjugator : IndicativeMoodTenseConjugator, FiniteT
         Pair(
             IrregularVerbs.ir.OUVIR,
             IrregularForm(listFormGroup = ListFormGroup(L("ouço", "oiço"), null, null, null, null, null))
-        ), //ouço ≈ oiço
+        ),
         Pair(IrregularVerbs.ir.PEDIR, IrregularForm(FormGroup("peço", null, null, null, null, null))),
         Pair(IrregularVerbs.ir.IR, IrregularForm(FormGroup("vou", "vais", "vai", "vamos", "ides", "vão"))),
         Pair(IrregularVerbs.ir.DORMIR, IrregularForm(FormGroup("durmo", null, null, null, null, null))),

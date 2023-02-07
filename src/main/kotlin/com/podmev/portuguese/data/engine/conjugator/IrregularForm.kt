@@ -31,7 +31,7 @@ data class IrregularForm(
 
     fun getForm(
         verbArguments: VerbArguments,
-        regularTransformation: RegularTransformation?,
+        regularTransformations: List<RegularTransformation>,
         portugueseLocale: PortugueseLocale
     ): List<String>? {
         //trying updatedExtendedFormGroup
@@ -42,14 +42,20 @@ data class IrregularForm(
         val irregularSuffix = suffixGroup?.getSuffix(verbArguments)
         val irregularBase = baseGroup?.getBase(verbArguments) ?: base
         if (irregularSuffix == null) {
-            if (irregularBase != null && regularTransformation != null) {
-                return listOf(irregularBase + regularTransformation.suffix)
+            if (irregularBase != null && regularTransformations.isNotEmpty()) {
+                return regularTransformations
+                    .map{it.suffix}
+                    .distinct()
+                    .map{suffix ->  irregularBase + suffix }
             }
         } else {
             if (irregularBase != null) {
                 return listOf(irregularBase + irregularSuffix)
-            } else if (regularTransformation != null) {
-                return listOf(regularTransformation.base + irregularSuffix)
+            } else if (regularTransformations.isNotEmpty()) {
+                return regularTransformations
+                    .map{it.base}
+                    .distinct()
+                    .map{base ->  base + irregularSuffix }
             }
         }
         //there is no irregular form

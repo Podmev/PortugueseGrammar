@@ -14,7 +14,7 @@ import com.podmev.portuguese.utils.lang.mergeListMaps
 import com.podmev.portuguese.utils.lang.revertListMap
 import java.util.logging.Logger
 
-abstract class FiniteTenseConjugator() : Conjugator {
+abstract class FiniteTenseConjugator : Conjugator {
     private val logger: Logger = Logger.getLogger("FiniteTenseConjugator")
 
     //default is brazilian
@@ -70,16 +70,13 @@ abstract class FiniteTenseConjugator() : Conjugator {
             return originConjugator!!.conjugateVerb(verbInInfinitive, tense, verbArgs, settings)
         }
 
-        val regularTransformation = regularChanging(verbInInfinitive, verbArgs, settings)
-        val irregularForm = irregularChanging(verbInInfinitive, verbArgs, regularTransformation, settings)
+        val regularTransformations: List<RegularTransformation> = regularChanging(verbInInfinitive, verbArgs, settings)
+        val irregularForm = irregularChanging(verbInInfinitive, verbArgs, regularTransformations, settings)
         if (irregularForm != null) {
             return irregularForm //can be list
         }
         //irregular form doesn't exist so use regular
-        if (regularTransformation != null) {
-            return listOf(regularTransformation.regularForm)
-        }
-        return listOf()
+        return regularTransformations.map { it.regularForm }
     }
 
     /* origin irregular or derivative from one
@@ -87,23 +84,25 @@ abstract class FiniteTenseConjugator() : Conjugator {
     private fun irregularChanging(
         verb: String,
         verbArgs: VerbArguments,
-        regularTransformation: RegularTransformation?,
+        regularTransformations: List<RegularTransformation>,
         settings: ConjugateSettings
     ): List<String>? {
+
         val irregularForm: IrregularForm? = irregularForms[verb]
         if (irregularForm != null) {
             return applyIrregularChanging(
                 verb = verb,
                 irregularForm = irregularForm,
                 verbArgs = verbArgs,
-                regularTransformation = regularTransformation,
+                regularTransformations = regularTransformations,
                 portugueseLocale = settings.portugueseLocale
             )
         }
         //trying to find derivatives
         val originIrregularVerb: String = VerbLists.irregularVerbOriginMap[verb] ?: return null
         val originIrregularForm = irregularForms[originIrregularVerb]
-        val originRegularTransformation = regularChanging(originIrregularVerb, verbArgs, settings)
+        val originRegularTransformations: List<RegularTransformation> =
+            regularChanging(originIrregularVerb, verbArgs, settings)
         if (originIrregularForm != null) {
             return applyDerivativeIrregularChanging(
                 verb = verb,
@@ -111,7 +110,7 @@ abstract class FiniteTenseConjugator() : Conjugator {
                 //TODO extract class for 3 next params, but cannot create appropriate name
                 originIrregularVerb = originIrregularVerb,
                 originIrregularForm = originIrregularForm,
-                originRegularTransformation = originRegularTransformation,
+                originRegularTransformations = originRegularTransformations,
                 portugueseLocale = settings.portugueseLocale
             )
         }
@@ -123,20 +122,20 @@ abstract class FiniteTenseConjugator() : Conjugator {
         verb: String,
         irregularForm: IrregularForm,
         verbArgs: VerbArguments,
-        regularTransformation: RegularTransformation?,
+        regularTransformations: List<RegularTransformation>,
         portugueseLocale: PortugueseLocale
-    ): List<String>? = irregularForm.getForm(verbArgs, regularTransformation, portugueseLocale)
+    ): List<String>? = irregularForm.getForm(verbArgs, regularTransformations, portugueseLocale)
 
     private fun applyDerivativeIrregularChanging(
         verb: String,
         verbArgs: VerbArguments,
         originIrregularVerb: String,
         originIrregularForm: IrregularForm,
-        originRegularTransformation: RegularTransformation?,
+        originRegularTransformations: List<RegularTransformation>,
         portugueseLocale: PortugueseLocale
     ): List<String>? {
         val originForm: List<String> =
-            originIrregularForm.getForm(verbArgs, originRegularTransformation, portugueseLocale) ?: return null
+            originIrregularForm.getForm(verbArgs, originRegularTransformations, portugueseLocale) ?: return null
         val (diff: String, dropAtStart: Int) = VerbHelper.diffVerbAndOrigin(verb, originIrregularVerb)
         return originForm.map { singleOriginForm ->
             val modifiedOriginBase =
@@ -166,12 +165,13 @@ abstract class FiniteTenseConjugator() : Conjugator {
         verb: String,
         verbArgs: VerbArguments,
         settings: ConjugateSettings
-    ): RegularTransformation? {
-        val suffixGroup = getSuffixGroup(verb, settings) ?: return null //in case of -or
+    ): List<RegularTransformation> {
+        val suffixGroup = getSuffixGroup(verb, settings) ?: return emptyList() //in case of -or
         val suffix = suffixGroup.getSuffix(verbArgs)!! //for regular should not apear
-        val preparedBase = prepareBase(verb, suffix, suffixGroup, verbArgs, settings)
-        val regularTransformation = RegularTransformation(preparedBase + suffix, preparedBase, suffix, suffixGroup)
-        return regularTransformation
+        val preparedBases: List<String> = prepareBase(verb, suffix, suffixGroup, verbArgs, settings)
+        return preparedBases.map { preparedBase ->
+            RegularTransformation(preparedBase + suffix, preparedBase, suffix, suffixGroup)
+        }
     }
 
     fun getSuffixGroup(verb: String, settings: ConjugateSettings): SuffixGroup? {
@@ -186,19 +186,22 @@ abstract class FiniteTenseConjugator() : Conjugator {
         suffixGroup: SuffixGroup,
         verbArgs: VerbArguments,
         settings: ConjugateSettings
-    ): String {
+    ): List<String> {
         val specialBasePlusInfinitiveEnding = specialVerbBaseByTense?.getBasePlusInfinitiveEnding(verb, settings)
         val usingVerb: String = specialBasePlusInfinitiveEnding ?: verb
-        val preparedInfinitive = prepareInfinitive(
+        val preparedInfinitiveList: List<String> = prepareInfinitive(
             originalInfinitive = verb,
             usingInfinitive = usingVerb,
             suffix = suffix,
-            verbArgs = verbArgs
+            verbArgs = verbArgs,
+            portugueseLocale = settings.portugueseLocale
         )
-        return VerbHelper.dropInfinitiveSuffixByLength(
-            infinitive = preparedInfinitive,
-            lengthToDrop = suffixGroup.droppingSuffixLength
-        )
+        return preparedInfinitiveList.map { infinitive ->
+            VerbHelper.dropInfinitiveSuffixByLength(
+                infinitive = infinitive,
+                lengthToDrop = suffixGroup.droppingSuffixLength
+            )
+        }
     }
 
     private fun getRegularSuffixGroup(verb: String, portugueseLocale: PortugueseLocale): SuffixGroup? =
@@ -238,20 +241,28 @@ abstract class FiniteTenseConjugator() : Conjugator {
 
     private fun prepareInfinitive(
         originalInfinitive: String,
-        usingInfinitive: String, suffix: String, verbArgs: VerbArguments
-    ): String {
+        usingInfinitive: String, suffix: String, verbArgs: VerbArguments,
+        portugueseLocale: PortugueseLocale
+    ): List<String> {
         val usingInfinitiveIsChanged = originalInfinitive != usingInfinitive
-        var currentResult = usingInfinitive
+        var currentResult: List<String> = listOf(usingInfinitive)
         for (rule in baseChangingRules) {
-            if (rule.isCorrectForm(verbArgs) && rule.fitsVerb(originalInfinitive)) {
-                val changeBaseIfPossible: String? = rule.changeBaseIfPossible(
-                    verb = currentResult,
-                    exactSuffix = suffix,
-                    verbArgs = verbArgs,
-                    verbIsChanged = usingInfinitiveIsChanged
-                )
-                if (changeBaseIfPossible != null) {
-                    currentResult = changeBaseIfPossible
+            if (rule.isCorrectForm(verbArgs) && rule.fitsVerb(originalInfinitive, portugueseLocale)) {
+                val oneRuleResult: ArrayList<String> = arrayListOf()
+                for (oneOfCurrentForms in currentResult) {
+                    val changeBaseIfPossible: List<String>? = rule.fullChangeBaseIfPossible(
+                        verb = oneOfCurrentForms,
+                        exactSuffix = suffix,
+                        verbArgs = verbArgs,
+                        verbIsChanged = usingInfinitiveIsChanged,
+                        portugueseLocale = portugueseLocale
+                    )
+                    if (changeBaseIfPossible != null) {
+                        oneRuleResult.addAll(changeBaseIfPossible)
+                    }
+                }
+                if(oneRuleResult.isNotEmpty()) {
+                    currentResult = oneRuleResult
                 }
             }
         }
