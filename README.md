@@ -64,6 +64,8 @@ Quiz App (next project) - Conjugation test
    - write forms for brazil/portugal
  - Compare forms of 2 verbs
  - Tests for forms with diacritics
+ - Tests for choosing tense by description (when we use tense) and opposite
+ - Tests for choosing correct tense by model of changing
  - Report form for wrong test or information
  - Tests configurator with filters
  - Test chapters, like in book. Every can have multiple tests inside
